@@ -1,0 +1,304 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Wisdomize Engine Output Schema v2.1",
+  "description": "Per-dilemma output structure used in benchmarks_v2_batch1_W001-W020.json and produced by the live engine. Flat top-level design; verse_match and closest_teaching both required, exactly one non-null.",
+  "type": "object",
+  "required": [
+    "dilemma_id",
+    "dilemma",
+    "verdict_sentence",
+    "classification",
+    "alignment_score",
+    "confidence",
+    "internal_driver",
+    "core_reading",
+    "gita_analysis",
+    "verse_match",
+    "closest_teaching",
+    "if_you_continue",
+    "counterfactuals",
+    "higher_path",
+    "ethical_dimensions",
+    "missing_facts",
+    "share_layer"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "dilemma_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64,
+      "description": "Stable identifier, required in every response (benchmark and live). Benchmark files use the W### scheme (e.g. 'W001'); live engine issues its own (UUID-style recommended). Must be non-empty."
+    },
+    "dilemma": {
+      "type": "string",
+      "minLength": 20,
+      "maxLength": 600,
+      "description": "Verbatim user-submitted dilemma."
+    },
+
+    "verdict_sentence": {
+      "type": "string",
+      "maxLength": 160,
+      "description": "Single declarative sentence answering the user's actual question. Anti-preachy: no second-person imperatives. Sharper viral edge."
+    },
+    "classification": {
+      "type": "string",
+      "enum": ["Dharmic", "Adharmic", "Mixed", "Context-dependent", "Insufficient information"]
+    },
+    "alignment_score": {
+      "type": "integer",
+      "minimum": -100,
+      "maximum": 100,
+      "description": "Weighted aggregate of the 8 ethical dimensions, scaled to [-100, +100]. Deterministic function of ethical_dimensions scores."
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Engine's confidence in the classification. Capped at 0.85 unless all 8 dimensions are scored AND missing_facts is empty."
+    },
+
+    "internal_driver": {
+      "type": "object",
+      "required": ["primary", "hidden_risk"],
+      "additionalProperties": false,
+      "properties": {
+        "primary": {
+          "type": "string",
+          "maxLength": 200,
+          "description": "Dominant inner force behind the dilemma (e.g. 'Wounded ego braided with legitimate grievance')."
+        },
+        "hidden_risk": {
+          "type": "string",
+          "maxLength": 200,
+          "description": "The failure mode the user is most likely to rationalize around."
+        }
+      }
+    },
+
+    "core_reading": {
+      "type": "string",
+      "maxLength": 600,
+      "description": "2–3 sentences naming what is actually happening underneath the surface question. Observational, not prescriptive."
+    },
+    "gita_analysis": {
+      "type": "string",
+      "maxLength": 500,
+      "description": "What Krishna would question (not command) about this specific situation. Mirrors the Gita's interrogative register."
+    },
+
+    "verse_match": {
+      "description": "Canonical verse retrieval. Null if no verse clears the match threshold.",
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "required": [
+            "verse_ref",
+            "sanskrit_devanagari",
+            "sanskrit_iast",
+            "hindi_translation",
+            "english_translation",
+            "source",
+            "why_it_applies",
+            "match_confidence"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "verse_ref": {
+              "type": "string",
+              "pattern": "^[0-9]+\\.[0-9]+(-[0-9]+)?$",
+              "description": "Chapter.verse or Chapter.verse-range, e.g. '2.47' or '16.1-3'."
+            },
+            "sanskrit_devanagari": {
+              "type": "string",
+              "description": "Verbatim Devanagari. Never LLM-generated."
+            },
+            "sanskrit_iast": {
+              "type": ["string", "null"],
+              "description": "IAST transliteration. Null if unavailable — never invented."
+            },
+            "hindi_translation": {
+              "type": "string",
+              "description": "Verbatim from Gita Press Gorakhpur or other cited trusted Hindi source."
+            },
+            "english_translation": {
+              "type": "string",
+              "description": "Verbatim from Edwin Arnold (public domain) or other cited source. Never paraphrased."
+            },
+            "source": {
+              "type": "string",
+              "description": "Citation for both language sources, e.g. 'Gita Press Gorakhpur (Hindi) / Edwin Arnold (English, public domain)'."
+            },
+            "why_it_applies": {
+              "type": "string",
+              "maxLength": 500,
+              "description": "Why this verse is relevant to this specific dilemma. Not a generic verse gloss."
+            },
+            "match_confidence": {
+              "type": "number",
+              "minimum": 0.6,
+              "maximum": 1,
+              "description": "Threshold: verses below 0.6 are suppressed and closest_teaching is used instead."
+            }
+          }
+        }
+      ]
+    },
+    "closest_teaching": {
+      "type": ["string", "null"],
+      "maxLength": 500,
+      "description": "Honest paraphrased teaching when no specific verse clears threshold. Explicitly not quoted as scripture."
+    },
+
+    "if_you_continue": {
+      "type": "object",
+      "required": ["short_term", "long_term"],
+      "additionalProperties": false,
+      "properties": {
+        "short_term": { "type": "string", "maxLength": 400 },
+        "long_term":  { "type": "string", "maxLength": 400 }
+      },
+      "description": "Consequences of continuing on the current path. Observational; no threats."
+    },
+
+    "counterfactuals": {
+      "type": "object",
+      "required": ["clearly_adharmic_version", "clearly_dharmic_version"],
+      "additionalProperties": false,
+      "properties": {
+        "clearly_adharmic_version": { "$ref": "#/definitions/counterfactual" },
+        "clearly_dharmic_version":  { "$ref": "#/definitions/counterfactual" }
+      },
+      "description": "Two plausible variants of the same situation — one tilted adharmic, one tilted dharmic. Assumed contexts must be realistic, not strawmen."
+    },
+
+    "higher_path": {
+      "type": "string",
+      "maxLength": 500,
+      "description": "Dharmic alternative in the user's actual situation. Concrete steps, no preaching."
+    },
+
+    "ethical_dimensions": {
+      "type": "object",
+      "required": [
+        "dharma_duty",
+        "satya_truth",
+        "ahimsa_nonharm",
+        "nishkama_detachment",
+        "shaucha_intent",
+        "sanyama_restraint",
+        "lokasangraha_welfare",
+        "viveka_discernment"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "dharma_duty":          { "$ref": "#/definitions/dimension" },
+        "satya_truth":          { "$ref": "#/definitions/dimension" },
+        "ahimsa_nonharm":       { "$ref": "#/definitions/dimension" },
+        "nishkama_detachment":  { "$ref": "#/definitions/dimension" },
+        "shaucha_intent":       { "$ref": "#/definitions/dimension" },
+        "sanyama_restraint":    { "$ref": "#/definitions/dimension" },
+        "lokasangraha_welfare": { "$ref": "#/definitions/dimension" },
+        "viveka_discernment":   { "$ref": "#/definitions/dimension" }
+      }
+    },
+
+    "missing_facts": {
+      "type": "array",
+      "items": { "type": "string", "maxLength": 200 },
+      "maxItems": 6,
+      "description": "Specific questions, not vague 'need more info.' Empty array is valid when all relevant facts are present."
+    },
+
+    "share_layer": {
+      "type": "object",
+      "required": ["anonymous_share_title", "card_quote", "reflective_question"],
+      "additionalProperties": false,
+      "properties": {
+        "anonymous_share_title": {
+          "type": "string",
+          "maxLength": 120,
+          "description": "'Overheard' style: 'The app said ...'. Tweet-shaped."
+        },
+        "card_quote": {
+          "type": "string",
+          "maxLength": 180,
+          "description": "Screenshot-ready takeaway. Declarative, aphoristic."
+        },
+        "reflective_question": {
+          "type": "string",
+          "maxLength": 200,
+          "pattern": "\\?$",
+          "description": "Must end in '?'. Opens, does not close."
+        }
+      }
+    }
+  },
+
+  "definitions": {
+    "dimension": {
+      "type": "object",
+      "required": ["score", "note"],
+      "additionalProperties": false,
+      "properties": {
+        "score": {
+          "type": "integer",
+          "minimum": -5,
+          "maximum": 5,
+          "description": "0 = neutral / not an axis here. Use 0 rather than forcing a signed score."
+        },
+        "note": {
+          "type": "string",
+          "maxLength": 200,
+          "description": "One-line justification for this specific dimension's score in this specific dilemma."
+        }
+      }
+    },
+    "counterfactual": {
+      "type": "object",
+      "required": ["assumed_context", "decision", "why"],
+      "additionalProperties": false,
+      "properties": {
+        "assumed_context": {
+          "type": "string",
+          "maxLength": 400,
+          "description": "Plausible context making this tilt realistic (same situation, worse/better motive or safeguards). Not a strawman."
+        },
+        "decision": {
+          "type": "string",
+          "maxLength": 200,
+          "description": "The action taken in this counterfactual."
+        },
+        "why": {
+          "type": "string",
+          "maxLength": 300,
+          "description": "Why this variant lands on that side of the dharmic/adharmic line."
+        }
+      }
+    }
+  },
+
+  "allOf": [
+    {
+      "description": "verse_match and closest_teaching are mutually exclusive — exactly one must be non-null. Both fields are required to be present at the top level; whichever is unused must be explicitly set to null.",
+      "oneOf": [
+        {
+          "description": "Branch A: verse match populated, closest_teaching is null.",
+          "properties": {
+            "verse_match":      { "type": "object" },
+            "closest_teaching": { "type": "null" }
+          }
+        },
+        {
+          "description": "Branch B: verse match is null, closest_teaching populated.",
+          "properties": {
+            "verse_match":      { "type": "null" },
+            "closest_teaching": { "type": "string", "minLength": 1 }
+          }
+        }
+      ]
+    }
+  ]
+}
