@@ -1,0 +1,71 @@
+{
+  "total": 5,
+  "passed": 5,
+  "failed": 0,
+  "selected_dilemma_ids": [
+    "W008",
+    "W009",
+    "W014",
+    "W018",
+    "W020"
+  ],
+  "failed_dilemma_ids": [],
+  "top_error_categories": [],
+  "results": [
+    {
+      "dilemma_id": "W008",
+      "valid_semantic_schema": true,
+      "exact_dimension_keys": true,
+      "ambiguity_matches_gold_context_dependent": true,
+      "missing_facts_len_le_6": true,
+      "reflective_question_nested_and_question_mark": true,
+      "fake_scripture_leak_free": true,
+      "passed_all_checks": true,
+      "errors": []
+    },
+    {
+      "dilemma_id": "W009",
+      "valid_semantic_schema": true,
+      "exact_dimension_keys": true,
+      "ambiguity_matches_gold_context_dependent": true,
+      "missing_facts_len_le_6": true,
+      "reflective_question_nested_and_question_mark": true,
+      "fake_scripture_leak_free": true,
+      "passed_all_checks": true,
+      "errors": []
+    },
+    {
+      "dilemma_id": "W014",
+      "valid_semantic_schema": true,
+      "exact_dimension_keys": true,
+      "ambiguity_matches_gold_context_dependent": true,
+      "missing_facts_len_le_6": true,
+      "reflective_question_nested_and_question_mark": true,
+      "fake_scripture_leak_free": true,
+      "passed_all_checks": true,
+      "errors": []
+    },
+    {
+      "dilemma_id": "W018",
+      "valid_semantic_schema": true,
+      "exact_dimension_keys": true,
+      "ambiguity_matches_gold_context_dependent": true,
+      "missing_facts_len_le_6": true,
+      "reflective_question_nested_and_question_mark": true,
+      "fake_scripture_leak_free": true,
+      "passed_all_checks": true,
+      "errors": []
+    },
+    {
+      "dilemma_id": "W020",
+      "valid_semantic_schema": true,
+      "exact_dimension_keys": true,
+      "ambiguity_matches_gold_context_dependent": true,
+      "missing_facts_len_le_6": true,
+      "reflective_question_nested_and_question_mark": true,
+      "fake_scripture_leak_free": true,
+      "passed_all_checks": true,
+      "errors": []
+    }
+  ]
+}

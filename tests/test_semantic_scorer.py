@@ -10,6 +10,7 @@ from typing import Any
 import pytest
 
 from app.semantic.guards import run_post_generation_guards
+from app.semantic.prompts import USER_PROMPT_TEMPLATE
 from app.semantic.scorer import (
     _get_anthropic_client,
     _stub_payload,
@@ -44,6 +45,31 @@ def test_guards_pass_on_stub_output() -> None:
     )
     ok, issues = run_post_generation_guards(payload)
     assert ok, issues
+
+
+def test_prompt_contains_ambiguity_overfire_negative_examples() -> None:
+    assert "inter-caste marriage" in USER_PROMPT_TEMPLATE
+    assert "terminal diagnosis disclosure by a doctor" in USER_PROMPT_TEMPLATE
+    assert "elective cosmetic surgery for an adult" in USER_PROMPT_TEMPLATE
+    assert "competent adult parent refuses treatment" in USER_PROMPT_TEMPLATE
+    assert "missing_facts can refine recommendation" in USER_PROMPT_TEMPLATE
+
+
+def test_guard_allows_benign_pure_usage() -> None:
+    payload = semantic_scorer("Need deterministic payload", use_stub=True)
+    payload["gita_analysis"] = (
+        "The analysis stays purely descriptive and avoids direct moral labeling."
+    )
+    ok, issues = run_post_generation_guards(payload)
+    assert ok, issues
+
+
+def test_guard_still_blocks_direct_moralizing_label() -> None:
+    payload = semantic_scorer("Need deterministic payload", use_stub=True)
+    payload["gita_analysis"] = "This action is pure and holy."
+    ok, issues = run_post_generation_guards(payload)
+    assert not ok
+    assert any("direct moral-label phrasing" in issue for issue in issues)
 
 
 def test_live_anthropic_success_json_parse(monkeypatch: Any) -> None:
@@ -100,7 +126,7 @@ def test_live_schema_failure_path(monkeypatch: Any) -> None:
 
 def test_live_guard_failure_path(monkeypatch: Any) -> None:
     payload = semantic_scorer("Need deterministic payload", use_stub=True)
-    payload["share_layer"]["card_quote"] = "This holy framing should trigger banned-word guard checks."
+    payload["share_layer"]["card_quote"] = "This action is sinful and should trigger guard checks."
 
     class _Block:
         def __init__(self, text: str) -> None:

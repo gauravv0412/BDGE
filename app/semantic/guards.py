@@ -4,9 +4,10 @@ Post-generation guard checks for semantic scorer payloads.
 
 from __future__ import annotations
 
+import re
 from typing import Any
 
-_BANNED_WORDS = {"evil", "sinful", "shameful", "disgusting", "pure", "holy"}
+_MORAL_LABEL_WORDS = ("evil", "sinful", "shameful", "disgusting", "pure", "holy")
 _SCRIPTURE_MARKERS = (
     "bhagavad gita",
     "chapter ",
@@ -15,6 +16,13 @@ _SCRIPTURE_MARKERS = (
     "śloka",
     "2.47",
     "16.21",
+)
+_COPULA = r"(?:is|are|was|were|be|being|seems|looks|sounds)"
+_MORAL_LABEL_RE = re.compile(
+    rf"\b(?:this action|that action|this choice|that choice|the action|the choice|"
+    rf"this|that|it|you|they|he|she)\b\s+{_COPULA}\s+"
+    rf"(?:morally\s+)?(?:{'|'.join(_MORAL_LABEL_WORDS)})\b",
+    re.IGNORECASE,
 )
 
 
@@ -41,7 +49,13 @@ def check_no_fake_scripture(payload: dict[str, Any]) -> list[str]:
 
 
 def check_banned_words(payload: dict[str, Any]) -> list[str]:
-    """Block restricted words in selected narrative fields."""
+    """
+    Catch overt moral-label phrasing in selected narrative fields.
+
+    This is intentionally narrower than token matching: benign analytical usage
+    (e.g., "purely procedural") should pass, while direct labels like
+    "this action is sinful" should fail.
+    """
     issues: list[str] = []
     restricted_fields = {
         "core_reading": payload.get("core_reading", ""),
@@ -49,10 +63,9 @@ def check_banned_words(payload: dict[str, Any]) -> list[str]:
         "share_layer.card_quote": payload.get("share_layer", {}).get("card_quote", ""),
     }
     for field_name, text in restricted_fields.items():
-        lower_text = str(text).lower()
-        for word in _BANNED_WORDS:
-            if word in lower_text:
-                issues.append(f"{field_name}: contains banned word '{word}'")
+        text_str = str(text)
+        if _MORAL_LABEL_RE.search(text_str):
+            issues.append(f"{field_name}: contains direct moral-label phrasing")
     return issues
 
 

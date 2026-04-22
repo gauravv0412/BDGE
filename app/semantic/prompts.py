@@ -26,11 +26,20 @@ Requirements:
 - Do not invent alternate moral dimensions or alternate dimension names.
 - ambiguity_flag guidance:
   - Set ambiguity_flag=true only when unresolved facts could plausibly flip the final class.
-  - missing_facts can exist while ambiguity_flag=false when facts only refine execution/advice.
+  - missing_facts can refine recommendation while ambiguity_flag=false when class would likely stay the same.
+  - Do not set ambiguity_flag=true just because many facts are missing.
   - Positive example (set ambiguity_flag=true): "Should I quit to follow my calling?"
     If runway, spouse alignment, and minimum viability are unknown, plausible answers can flip class.
   - Positive example (set ambiguity_flag=true): "Should I cut contact with an abusive parent?"
     If severity/currentness, safe alternatives, and safety obligations are unknown, class can flip.
+  - Negative example (keep ambiguity_flag=false): inter-caste marriage where parental disapproval is high.
+    Motive quality may refine advice, but parental disapproval alone does not make class ambiguous.
+  - Negative example (keep ambiguity_flag=false): terminal diagnosis disclosure by a doctor.
+    Missing facts can refine disclosure method, not whether patient autonomy matters.
+  - Negative example (keep ambiguity_flag=false): elective cosmetic surgery for an adult.
+    Motive questions exist, but not every body-autonomy case is class-flipping.
+  - Negative example (keep ambiguity_flag=false): competent adult parent refuses treatment.
+    Missing facts may refine care planning, but explicit refusal should not default to ambiguity_flag=true.
   - Negative example (keep ambiguity_flag=false): whistleblowing on serious pollution with strong
     evidence and clear harm. Many missing facts may refine tactics, but class itself may stay stable.
 - reflective_question must be nested inside share_layer and must end with '?'.
