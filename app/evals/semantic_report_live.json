@@ -1,0 +1,241 @@
+{
+  "total": 20,
+  "passed": 18,
+  "failed": 2,
+  "failed_dilemma_ids": [
+    "W003",
+    "W007"
+  ],
+  "top_error_categories": [
+    [
+      "consistency",
+      2
+    ]
+  ],
+  "results": [
+    {
+      "dilemma_id": "W001",
+      "valid_semantic_schema": true,
+      "exact_dimension_keys": true,
+      "ambiguity_matches_gold_context_dependent": true,
+      "missing_facts_len_le_6": true,
+      "reflective_question_nested_and_question_mark": true,
+      "fake_scripture_leak_free": true,
+      "passed_all_checks": true,
+      "errors": []
+    },
+    {
+      "dilemma_id": "W002",
+      "valid_semantic_schema": true,
+      "exact_dimension_keys": true,
+      "ambiguity_matches_gold_context_dependent": true,
+      "missing_facts_len_le_6": true,
+      "reflective_question_nested_and_question_mark": true,
+      "fake_scripture_leak_free": true,
+      "passed_all_checks": true,
+      "errors": []
+    },
+    {
+      "dilemma_id": "W003",
+      "valid_semantic_schema": true,
+      "exact_dimension_keys": true,
+      "ambiguity_matches_gold_context_dependent": false,
+      "missing_facts_len_le_6": true,
+      "reflective_question_nested_and_question_mark": true,
+      "fake_scripture_leak_free": true,
+      "passed_all_checks": false,
+      "errors": [
+        "consistency:ambiguity_flag mismatch vs gold Context-dependent classification"
+      ]
+    },
+    {
+      "dilemma_id": "W004",
+      "valid_semantic_schema": true,
+      "exact_dimension_keys": true,
+      "ambiguity_matches_gold_context_dependent": true,
+      "missing_facts_len_le_6": true,
+      "reflective_question_nested_and_question_mark": true,
+      "fake_scripture_leak_free": true,
+      "passed_all_checks": true,
+      "errors": []
+    },
+    {
+      "dilemma_id": "W005",
+      "valid_semantic_schema": true,
+      "exact_dimension_keys": true,
+      "ambiguity_matches_gold_context_dependent": true,
+      "missing_facts_len_le_6": true,
+      "reflective_question_nested_and_question_mark": true,
+      "fake_scripture_leak_free": true,
+      "passed_all_checks": true,
+      "errors": []
+    },
+    {
+      "dilemma_id": "W006",
+      "valid_semantic_schema": true,
+      "exact_dimension_keys": true,
+      "ambiguity_matches_gold_context_dependent": true,
+      "missing_facts_len_le_6": true,
+      "reflective_question_nested_and_question_mark": true,
+      "fake_scripture_leak_free": true,
+      "passed_all_checks": true,
+      "errors": []
+    },
+    {
+      "dilemma_id": "W007",
+      "valid_semantic_schema": true,
+      "exact_dimension_keys": true,
+      "ambiguity_matches_gold_context_dependent": false,
+      "missing_facts_len_le_6": true,
+      "reflective_question_nested_and_question_mark": true,
+      "fake_scripture_leak_free": true,
+      "passed_all_checks": false,
+      "errors": [
+        "consistency:ambiguity_flag mismatch vs gold Context-dependent classification"
+      ]
+    },
+    {
+      "dilemma_id": "W008",
+      "valid_semantic_schema": true,
+      "exact_dimension_keys": true,
+      "ambiguity_matches_gold_context_dependent": true,
+      "missing_facts_len_le_6": true,
+      "reflective_question_nested_and_question_mark": true,
+      "fake_scripture_leak_free": true,
+      "passed_all_checks": true,
+      "errors": []
+    },
+    {
+      "dilemma_id": "W009",
+      "valid_semantic_schema": true,
+      "exact_dimension_keys": true,
+      "ambiguity_matches_gold_context_dependent": true,
+      "missing_facts_len_le_6": true,
+      "reflective_question_nested_and_question_mark": true,
+      "fake_scripture_leak_free": true,
+      "passed_all_checks": true,
+      "errors": []
+    },
+    {
+      "dilemma_id": "W010",
+      "valid_semantic_schema": true,
+      "exact_dimension_keys": true,
+      "ambiguity_matches_gold_context_dependent": true,
+      "missing_facts_len_le_6": true,
+      "reflective_question_nested_and_question_mark": true,
+      "fake_scripture_leak_free": true,
+      "passed_all_checks": true,
+      "errors": []
+    },
+    {
+      "dilemma_id": "W011",
+      "valid_semantic_schema": true,
+      "exact_dimension_keys": true,
+      "ambiguity_matches_gold_context_dependent": true,
+      "missing_facts_len_le_6": true,
+      "reflective_question_nested_and_question_mark": true,
+      "fake_scripture_leak_free": true,
+      "passed_all_checks": true,
+      "errors": []
+    },
+    {
+      "dilemma_id": "W012",
+      "valid_semantic_schema": true,
+      "exact_dimension_keys": true,
+      "ambiguity_matches_gold_context_dependent": true,
+      "missing_facts_len_le_6": true,
+      "reflective_question_nested_and_question_mark": true,
+      "fake_scripture_leak_free": true,
+      "passed_all_checks": true,
+      "errors": []
+    },
+    {
+      "dilemma_id": "W013",
+      "valid_semantic_schema": true,
+      "exact_dimension_keys": true,
+      "ambiguity_matches_gold_context_dependent": true,
+      "missing_facts_len_le_6": true,
+      "reflective_question_nested_and_question_mark": true,
+      "fake_scripture_leak_free": true,
+      "passed_all_checks": true,
+      "errors": []
+    },
+    {
+      "dilemma_id": "W014",
+      "valid_semantic_schema": true,
+      "exact_dimension_keys": true,
+      "ambiguity_matches_gold_context_dependent": true,
+      "missing_facts_len_le_6": true,
+      "reflective_question_nested_and_question_mark": true,
+      "fake_scripture_leak_free": true,
+      "passed_all_checks": true,
+      "errors": []
+    },
+    {
+      "dilemma_id": "W015",
+      "valid_semantic_schema": true,
+      "exact_dimension_keys": true,
+      "ambiguity_matches_gold_context_dependent": true,
+      "missing_facts_len_le_6": true,
+      "reflective_question_nested_and_question_mark": true,
+      "fake_scripture_leak_free": true,
+      "passed_all_checks": true,
+      "errors": []
+    },
+    {
+      "dilemma_id": "W016",
+      "valid_semantic_schema": true,
+      "exact_dimension_keys": true,
+      "ambiguity_matches_gold_context_dependent": true,
+      "missing_facts_len_le_6": true,
+      "reflective_question_nested_and_question_mark": true,
+      "fake_scripture_leak_free": true,
+      "passed_all_checks": true,
+      "errors": []
+    },
+    {
+      "dilemma_id": "W017",
+      "valid_semantic_schema": true,
+      "exact_dimension_keys": true,
+      "ambiguity_matches_gold_context_dependent": true,
+      "missing_facts_len_le_6": true,
+      "reflective_question_nested_and_question_mark": true,
+      "fake_scripture_leak_free": true,
+      "passed_all_checks": true,
+      "errors": []
+    },
+    {
+      "dilemma_id": "W018",
+      "valid_semantic_schema": true,
+      "exact_dimension_keys": true,
+      "ambiguity_matches_gold_context_dependent": true,
+      "missing_facts_len_le_6": true,
+      "reflective_question_nested_and_question_mark": true,
+      "fake_scripture_leak_free": true,
+      "passed_all_checks": true,
+      "errors": []
+    },
+    {
+      "dilemma_id": "W019",
+      "valid_semantic_schema": true,
+      "exact_dimension_keys": true,
+      "ambiguity_matches_gold_context_dependent": true,
+      "missing_facts_len_le_6": true,
+      "reflective_question_nested_and_question_mark": true,
+      "fake_scripture_leak_free": true,
+      "passed_all_checks": true,
+      "errors": []
+    },
+    {
+      "dilemma_id": "W020",
+      "valid_semantic_schema": true,
+      "exact_dimension_keys": true,
+      "ambiguity_matches_gold_context_dependent": true,
+      "missing_facts_len_le_6": true,
+      "reflective_question_nested_and_question_mark": true,
+      "fake_scripture_leak_free": true,
+      "passed_all_checks": true,
+      "errors": []
+    }
+  ]
+}

@@ -64,19 +64,12 @@ def check_reflective_question(payload: dict[str, Any]) -> list[str]:
     return ["share_layer.reflective_question must end with '?'"]
 
 
-def check_ambiguity_not_conflated(payload: dict[str, Any]) -> list[str]:
-    """
-    Basic placeholder check for v2.1.1 ambiguity semantics.
-
-    Non-empty missing_facts should not imply ambiguity_flag must be true.
-    This check only ensures types and presence are coherent.
-    """
+def check_ambiguity_types(payload: dict[str, Any]) -> list[str]:
+    """Ensure ambiguity_flag is bool and missing_facts is list."""
     issues: list[str] = []
-    ambiguity_flag = payload.get("ambiguity_flag")
-    missing_facts = payload.get("missing_facts")
-    if not isinstance(ambiguity_flag, bool):
+    if not isinstance(payload.get("ambiguity_flag"), bool):
         issues.append("ambiguity_flag must be boolean")
-    if not isinstance(missing_facts, list):
+    if not isinstance(payload.get("missing_facts"), list):
         issues.append("missing_facts must be a list")
     return issues
 
@@ -87,6 +80,6 @@ def run_post_generation_guards(payload: dict[str, Any]) -> tuple[bool, list[str]
     issues.extend(check_no_fake_scripture(payload))
     issues.extend(check_banned_words(payload))
     issues.extend(check_reflective_question(payload))
-    issues.extend(check_ambiguity_not_conflated(payload))
+    issues.extend(check_ambiguity_types(payload))
     return (len(issues) == 0, issues)
 

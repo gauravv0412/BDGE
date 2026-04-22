@@ -19,10 +19,48 @@ Dilemma:
 
 Requirements:
 - Score all 8 ethical dimensions with integer scores in [-5, 5] and concise notes.
+- ethical_dimensions must be an OBJECT (dictionary), never a list.
+- ethical_dimensions must use ONLY these exact keys:
+  dharma_duty, satya_truth, ahimsa_nonharm, nishkama_detachment,
+  shaucha_intent, sanyama_restraint, lokasangraha_welfare, viveka_discernment.
+- Do not invent alternate moral dimensions or alternate dimension names.
 - Set ambiguity_flag=true only when unresolved ambiguity could plausibly flip final class.
 - missing_facts can be present even when ambiguity_flag is false.
-- reflective_question must end with '?'.
+- reflective_question must be nested inside share_layer and must end with '?'.
+- All required top-level fields must be present:
+  ethical_dimensions, internal_driver, core_reading, gita_analysis, higher_path,
+  missing_facts, ambiguity_flag, if_you_continue, counterfactuals, share_layer.
 - Do not include verse_match, closest_teaching, alignment_score, classification, or confidence.
+
+Compact JSON shape (field names must match exactly):
+{{
+  "ethical_dimensions": {{
+    "dharma_duty": {{"score": 0, "note": "..."}},
+    "satya_truth": {{"score": 0, "note": "..."}},
+    "ahimsa_nonharm": {{"score": 0, "note": "..."}},
+    "nishkama_detachment": {{"score": 0, "note": "..."}},
+    "shaucha_intent": {{"score": 0, "note": "..."}},
+    "sanyama_restraint": {{"score": 0, "note": "..."}},
+    "lokasangraha_welfare": {{"score": 0, "note": "..."}},
+    "viveka_discernment": {{"score": 0, "note": "..."}}
+  }},
+  "internal_driver": {{"primary": "...", "hidden_risk": "..."}},
+  "core_reading": "...",
+  "gita_analysis": "...",
+  "higher_path": "...",
+  "missing_facts": [],
+  "ambiguity_flag": false,
+  "if_you_continue": {{"short_term": "...", "long_term": "..."}},
+  "counterfactuals": {{
+    "clearly_adharmic_version": {{"assumed_context": "...", "decision": "...", "why": "..."}},
+    "clearly_dharmic_version": {{"assumed_context": "...", "decision": "...", "why": "..."}}
+  }},
+  "share_layer": {{
+    "anonymous_share_title": "...",
+    "card_quote": "...",
+    "reflective_question": "..."
+  }}
+}}
 """.strip()
 
 

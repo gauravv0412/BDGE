@@ -12,6 +12,7 @@ import pytest
 from app.semantic.guards import run_post_generation_guards
 from app.semantic.scorer import (
     _get_anthropic_client,
+    _stub_payload,
     load_semantic_config,
     load_semantic_config as _load_cfg,
     load_local_secrets,
@@ -122,6 +123,49 @@ def test_live_guard_failure_path(monkeypatch: Any) -> None:
         semantic_scorer("Test dilemma for guard failure.", use_stub=False)
 
 
+def test_live_repair_retry_prompt_triggered_on_invalid_output(monkeypatch: Any) -> None:
+    first_invalid = {"ethical_dimensions": []}
+    second_valid = _stub_payload()
+    calls: list[dict[str, Any]] = []
+
+    class _Block:
+        def __init__(self, text: str) -> None:
+            self.text = text
+
+    class _Resp:
+        def __init__(self, text: str) -> None:
+            self.content = [_Block(text)]
+
+    class _Messages:
+        def __init__(self) -> None:
+            self._idx = 0
+
+        def create(self, **kwargs: Any) -> _Resp:
+            calls.append(kwargs)
+            if self._idx == 0:
+                self._idx += 1
+                return _Resp(json.dumps(first_invalid))
+            return _Resp(json.dumps(second_valid))
+
+    class _Client:
+        def __init__(self) -> None:
+            self.messages = _Messages()
+
+    client = _Client()
+    monkeypatch.setattr("app.semantic.scorer._get_anthropic_client", lambda: client)
+    cfg = dict(_load_cfg())
+    cfg["max_retries"] = 1
+    monkeypatch.setattr("app.semantic.scorer.load_semantic_config", lambda: cfg)
+
+    out = semantic_scorer("Retry path dilemma.", use_stub=False)
+    assert out["share_layer"]["reflective_question"].endswith("?")
+    assert len(calls) == 2, "Expected retry call after validation failure"
+    repair_prompt = calls[1]["messages"][0]["content"]
+    assert "REPAIR REQUIRED" in repair_prompt
+    assert "Use ONLY the fixed Wisdomize schema keys" in repair_prompt
+    assert "Do NOT invent alternate moral dimensions" in repair_prompt
+
+
 def test_stub_default_mode_is_safe_for_development(monkeypatch: Any) -> None:
     cfg = dict(_load_cfg())
     cfg["use_stub_default"] = True
@@ -129,6 +173,25 @@ def test_stub_default_mode_is_safe_for_development(monkeypatch: Any) -> None:
     out = semantic_scorer("Test dilemma for config-driven default.", use_stub=None)
     ok, errors = validate_semantic_payload(out)
     assert ok, errors
+
+
+def test_invalid_alternate_ethical_dimensions_structure_rejected() -> None:
+    payload = _stub_payload()
+    payload["ethical_dimensions"] = [
+        {"name": "dharma_duty", "score": 1, "note": "wrong shape for schema"}
+    ]
+    ok, errors = validate_semantic_payload(payload)
+    assert not ok
+    assert any("ethical_dimensions" in err for err in errors)
+
+
+def test_top_level_reflective_question_without_share_layer_rejected() -> None:
+    payload = _stub_payload()
+    payload.pop("share_layer")
+    payload["reflective_question"] = "Should this be at top level?"
+    ok, errors = validate_semantic_payload(payload)
+    assert not ok
+    assert any("share_layer" in err for err in errors)
 
 
 def test_missing_local_secrets_file_raises_clear_error(tmp_path: Any) -> None:

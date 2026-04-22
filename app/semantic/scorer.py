@@ -111,36 +111,48 @@ def _get_anthropic_client(*, secrets_path: Path | None = None) -> Any:
     return Anthropic(api_key=api_key.strip())
 
 
-def _call_anthropic(dilemma: str, config: dict[str, Any]) -> dict[str, Any]:
-    """
-    Call Anthropic Messages API and return parsed JSON payload.
+def _build_repair_prompt(base_prompt: str, validation_errors: list[str]) -> str:
+    """Append a corrective repair instruction with exact schema violations."""
+    error_lines = "\n".join(f"- {err}" for err in validation_errors)
+    return (
+        f"{base_prompt}\n\n"
+        "REPAIR REQUIRED: Your previous JSON failed schema validation.\n"
+        "Fix the output and return ONLY corrected JSON.\n"
+        "Validation errors:\n"
+        f"{error_lines}\n\n"
+        "Use ONLY the fixed Wisdomize schema keys.\n"
+        "Do NOT invent alternate moral dimensions.\n"
+        "ethical_dimensions must be an object with exactly these keys:\n"
+        "- dharma_duty\n"
+        "- satya_truth\n"
+        "- ahimsa_nonharm\n"
+        "- nishkama_detachment\n"
+        "- shaucha_intent\n"
+        "- sanyama_restraint\n"
+        "- lokasangraha_welfare\n"
+        "- viveka_discernment\n"
+        "reflective_question must be nested under share_layer, not top-level.\n"
+    )
 
-    Retries up to ``max_retries + 1`` total attempts.
+
+def _call_anthropic_once(user_prompt: str, config: dict[str, Any]) -> dict[str, Any]:
+    """
+    Call Anthropic Messages API once and return parsed JSON payload.
     """
     client = _get_anthropic_client()
-    user_prompt = build_user_prompt(dilemma)
-    attempts = int(config.get("max_retries", 0)) + 1
-    last_error: Exception | None = None
-
-    for _attempt in range(attempts):
-        try:
-            resp = client.messages.create(
-                model=config["model"],
-                max_tokens=int(config["max_tokens"]),
-                temperature=float(config["temperature"]),
-                system=SYSTEM_PROMPT,
-                messages=[{"role": "user", "content": user_prompt}],
-            )
-            content_blocks = getattr(resp, "content", [])
-            text_parts = [getattr(block, "text", "") for block in content_blocks]
-            raw_text = "\n".join(part for part in text_parts if part)
-            if not raw_text:
-                raise ValueError("Anthropic response did not contain text content.")
-            return _extract_json_object(raw_text)
-        except Exception as exc:  # noqa: BLE001
-            last_error = exc
-
-    raise RuntimeError(f"Anthropic semantic scoring failed after {attempts} attempts: {last_error}")
+    resp = client.messages.create(
+        model=config["model"],
+        max_tokens=int(config["max_tokens"]),
+        temperature=float(config["temperature"]),
+        system=SYSTEM_PROMPT,
+        messages=[{"role": "user", "content": user_prompt}],
+    )
+    content_blocks = getattr(resp, "content", [])
+    text_parts = [getattr(block, "text", "") for block in content_blocks]
+    raw_text = "\n".join(part for part in text_parts if part)
+    if not raw_text:
+        raise ValueError("Anthropic response did not contain text content.")
+    return _extract_json_object(raw_text)
 
 
 def _stub_payload() -> dict[str, Any]:
@@ -222,7 +234,38 @@ def semantic_scorer(dilemma: str, *, use_stub: bool | None = None) -> dict[str, 
         provider = str(config.get("provider", "")).lower().strip()
         if provider != "anthropic":
             raise ValueError(f"Unsupported semantic scorer provider: {provider!r}")
-        payload = _call_anthropic(dilemma, config)
+        attempts = int(config.get("max_retries", 0)) + 1
+        user_prompt = build_user_prompt(dilemma)
+        last_error: Exception | None = None
+        last_validation_errors: list[str] = []
+        payload: dict[str, Any] | None = None
+
+        for attempt in range(attempts):
+            try:
+                candidate = _call_anthropic_once(user_prompt, config)
+                ok, validation_errors = validate_semantic_payload(candidate)
+                if ok:
+                    payload = candidate
+                    break
+
+                last_validation_errors = validation_errors
+                if attempt < attempts - 1:
+                    user_prompt = _build_repair_prompt(user_prompt, validation_errors)
+                    continue
+            except Exception as exc:  # noqa: BLE001
+                last_error = exc
+                if attempt < attempts - 1:
+                    continue
+
+        if payload is None:
+            if last_validation_errors:
+                raise ValueError(
+                    "Semantic scorer schema validation failed after retries: "
+                    f"{last_validation_errors}"
+                )
+            raise RuntimeError(
+                f"Anthropic semantic scoring failed after {attempts} attempts: {last_error}"
+            )
 
     ok, errors = validate_semantic_payload(payload)
     if not ok:
