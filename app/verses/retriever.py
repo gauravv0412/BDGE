@@ -6,6 +6,7 @@ from typing import TypedDict
 
 from app.core.models import EthicalDimensions, VerseMatch
 from app.verses.catalog import VerseCatalog
+from app.verses.fallback import build_closest_teaching
 from app.verses.loader import load_curated_verses
 from app.verses.scorer import RetrievalContext, VerseScoreResult, rank_candidates
 from app.verses.types import DimensionKey
@@ -19,9 +20,6 @@ class VerseResult(TypedDict):
 
 
 _MATCH_THRESHOLD = 6
-_NO_MATCH_CLOSEST_TEACHING = (
-    "[STUB] No verse cleared deterministic threshold; closest_teaching generation pending."
-)
 _SEVERE_BLOCKERS = {
     "active-harm",
     "imminent-violence",
@@ -159,20 +157,24 @@ def retrieve_verse(
     context = _build_context(dilemma, dimensions, context_override)
 
     if set(context.blocker_signals) & _SEVERE_BLOCKERS:
-        return VerseResult(verse_match=None, closest_teaching=_NO_MATCH_CLOSEST_TEACHING)
+        fallback = build_closest_teaching(context)
+        return VerseResult(verse_match=None, closest_teaching=fallback.closest_teaching)
 
     ranked = rank_candidates(active_entries, context)
 
     if not ranked:
-        return VerseResult(verse_match=None, closest_teaching=_NO_MATCH_CLOSEST_TEACHING)
+        fallback = build_closest_teaching(context)
+        return VerseResult(verse_match=None, closest_teaching=fallback.closest_teaching)
 
     best = ranked[0]
     if best.rejected or best.total_score < _MATCH_THRESHOLD:
-        return VerseResult(verse_match=None, closest_teaching=_NO_MATCH_CLOSEST_TEACHING)
+        fallback = build_closest_teaching(context)
+        return VerseResult(verse_match=None, closest_teaching=fallback.closest_teaching)
 
     winner = catalog.get_by_ref(best.verse_ref)
     if winner is None:
-        return VerseResult(verse_match=None, closest_teaching=_NO_MATCH_CLOSEST_TEACHING)
+        fallback = build_closest_teaching(context)
+        return VerseResult(verse_match=None, closest_teaching=fallback.closest_teaching)
 
     match = VerseMatch(
         verse_ref=winner.verse_ref,
