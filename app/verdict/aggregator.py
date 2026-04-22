@@ -1,15 +1,8 @@
 """
-Verdict aggregation — stub.
+Verdict aggregation: alignment score, classification, confidence, stub prose.
 
-Phase 1 target: implement ``aggregate_verdict`` to compute ``alignment_score``
-as a weighted sum of the eight dimension scores (scaled to [-100, +100]),
-derive ``classification`` from the score band (§3 of design_spec.md), and
-enforce the ``confidence`` cap (> 0.85 only when all 8 dimensions scored AND
-``missing_facts`` is empty).
-
-``VerdictResult`` is the shared intermediate type consumed by the assembler in
-``engine/analyzer.py``, ``counterfactuals/generator.py``, and
-``share/layer.py``.  Keep it stable — downstream stubs depend on these keys.
+Dimension *notes* remain the scorer’s responsibility; this layer only consumes
+``EthicalDimensions`` and ambiguity signals described in design_spec.md §3, §6–7.
 """
 
 from __future__ import annotations
@@ -17,6 +10,9 @@ from __future__ import annotations
 from typing import TypedDict
 
 from app.core.models import Classification, EthicalDimensions, IfYouContinue, InternalDriver
+from app.verdict.alignment import compute_alignment_score
+from app.verdict.classification import count_scorable_dimensions, resolve_classification
+from app.verdict.confidence import compute_confidence
 
 
 class VerdictResult(TypedDict):
@@ -34,19 +30,59 @@ class VerdictResult(TypedDict):
     missing_facts: list[str]
 
 
-def aggregate_verdict(dimensions: EthicalDimensions, dilemma: str) -> VerdictResult:
-    """
-    Derive verdict fields from *dimensions* scores for *dilemma*.
+def _stub_verdict_sentence(cls: Classification) -> str:
+    """Short placeholder until narrative generation exists (schema ≤160 chars)."""
+    return {
+        Classification.DHARMIC: "[STUB] Leans dharmic by the current aggregate.",
+        Classification.ADHARMIC: "[STUB] Leans adharmic by the current aggregate.",
+        Classification.MIXED: "[STUB] Mixed trade-offs; narrative pending.",
+        Classification.CONTEXT_DEPENDENT: "[STUB] Outcome hinges on unstated facts.",
+        Classification.INSUFFICIENT_INFORMATION: "[STUB] Too little to score reliably.",
+    }[cls]
 
-    Stub returns zeroed score, CONTEXT_DEPENDENT classification, and
-    confidence 0.5.  Real implementation: weighted sum → alignment_score →
-    classification band → confidence cap logic (verdict/rules.py).
+
+def aggregate_verdict(
+    dimensions: EthicalDimensions,
+    dilemma: str,
+    *,
+    scorable_mask: tuple[bool, bool, bool, bool, bool, bool, bool, bool] | None = None,
+    context_dependent_override: bool = False,
+    missing_facts: list[str] | None = None,
+) -> VerdictResult:
     """
+    Derive verdict fields from *dimensions* for *dilemma* (text for future detectors).
+
+    *scorable_mask* marks which of the eight dimensions count toward the §6 rule
+    “fewer than four scorable dimensions → Insufficient information”.  When
+    omitted, all eight are scorable.
+
+    *context_dependent_override* forces Context-dependent when ambiguity is
+    detected without a populated ``missing_facts`` list yet.
+
+    *missing_facts* is clamped to six entries (schema ``maxItems``).
+    """
+    _ = dilemma  # reserved for future ambiguity heuristics on raw text
+    facts = list(missing_facts or [])[:6]
+
+    scorable_count = count_scorable_dimensions(scorable_mask)
+    alignment_score = compute_alignment_score(dimensions)
+    classification = resolve_classification(
+        alignment_score,
+        scorable_count=scorable_count,
+        missing_facts=facts,
+        context_dependent_override=context_dependent_override,
+    )
+    confidence = compute_confidence(
+        scorable_count,
+        facts,
+        context_dependent=context_dependent_override,
+    )
+
     return VerdictResult(
-        alignment_score=0,
-        classification=Classification.CONTEXT_DEPENDENT,
-        confidence=0.5,
-        verdict_sentence="[STUB] Verdict sentence pending real analysis.",
+        alignment_score=alignment_score,
+        classification=classification,
+        confidence=confidence,
+        verdict_sentence=_stub_verdict_sentence(classification),
         internal_driver=InternalDriver(
             primary="[STUB] Primary driver text.",
             hidden_risk="[STUB] Hidden risk text.",
@@ -58,5 +94,5 @@ def aggregate_verdict(dimensions: EthicalDimensions, dilemma: str) -> VerdictRes
             long_term="[STUB] Long-term consequence placeholder.",
         ),
         higher_path="[STUB] Higher path: concrete steps will come from the engine.",
-        missing_facts=[],
+        missing_facts=facts,
     )
