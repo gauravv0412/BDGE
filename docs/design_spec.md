@@ -1,10 +1,12 @@
-# Wisdomize — Engine Design Specification v2.1
+# Wisdomize — Engine Design Specification v2.1.1
 
 An ethical decision engine anchored in the Bhagavad Gita. This spec documents the engine behavior as implemented in `benchmarks_v2_batch1_W001-W020.json` and `output_schema.json`.
 
 **Changes from v1.0 → v2.0:** flattened the output structure, renamed the verdict/shareable fields, and added three new blocks: `internal_driver` (with hidden_risk), `core_reading` + `gita_analysis` (replacing the v1 `reasoning` blob), and `counterfactuals` (plausible adharmic/dharmic variants of the same situation). Verse match now carries full Devanagari + IAST + Hindi + English with source attribution.
 
 **Changes from v2.0 → v2.1 (contract patch):** (1) tightened the XOR between `verse_match` and `closest_teaching` — both fields are now top-level-required, so presence is enforced and "neither present" is a rejection (prior schema only enforced the type constraint, not presence). (2) `dilemma_id` is now unambiguously required in both benchmark and live responses (minLength 1, maxLength 64); live engine issues its own. (3) added the benchmark-file integrity rule (§10) — distribution metadata must be computed from the dilemmas array.
+
+**Changes from v2.1 → v2.1.1 (spec-only clarifications):** (1) §6 separates `missing_facts[]` (may populate on any verdict) from the Context-dependent classification trigger (only fires when missing facts could flip the verdict). (2) §3 adds an explicit weights formula — v2.1 MVP uses equal weights for `alignment_score`, with `weights` as a configurable aggregator parameter. (3) §11 rewrites the implementation phase order to: deterministic verdict spine → LLM semantic scorer → curated verse retrieval → counterfactual/share refinement. Schema contract unchanged.
 
 ---
 
@@ -91,6 +93,17 @@ Invariants (enforced by `output_schema.json`):
 
 The last two bypass the score band — if the dilemma is fundamentally under-specified, do not produce a confident number.
 
+**Weights (v2.1 MVP):**
+
+`alignment_score` is a weighted sum of the 8 dimension scores, scaled and clamped to `[-100, +100]`. For v2.1 the aggregator uses **equal weights** (each dimension = 1/8) as the temporary default:
+
+    raw = sum(score[i] for i in 8 dimensions)   # each score ∈ [-5, +5]; raw ∈ [-40, +40]
+    alignment_score = round(raw × 2.5)          # scaled to [-100, +100], clamped
+
+Weights are configurable, not a hardcoded constant. The aggregator accepts a `weights: Dict[str, float]` parameter that must sum to `1.0`; when omitted (MVP default), equal weights apply. Calibration from real usage is a Phase 4 concern — until then, treating ahimsa and sanyama as equally load-bearing is intentional under-opinionation, not a claim about the world.
+
+*Known drift:* Batch 1 alignment scores remain canonical for eval purposes in v2.1.x. When the aggregator ships, formula-derived scores should be compared against benchmark scores and any drift flagged for calibration review, not auto-overwritten.
+
 ---
 
 ## 4. Verse Selection Logic
@@ -141,18 +154,25 @@ The last two bypass the score band — if the dilemma is fundamentally under-spe
 
 ---
 
-## 6. Ambiguity Rules (Context-dependent / Insufficient information triggers)
+## 6. Ambiguity & Missing-Facts Rules
 
-Trigger when any apply:
+Two concepts that look related but are not. Keep them separate in implementation.
 
-1. Actor intent missing.
-2. Stakeholder relationships unspecified when action affects others.
-3. Legality unstated and materially relevant.
+**`missing_facts[]` can populate on any verdict.** The array lists specific, advice-refining questions whose answers would let the engine (or the user) act more precisely. A Dharmic verdict can carry missing facts (W012 is Dharmic but still asks whether a whistleblower lawyer has been consulted); an Adharmic verdict can too (W009 is Adharmic but still asks whether the patient has been asked directly). Presence of items in `missing_facts[]` does **not** by itself imply Context-dependent.
+
+A dilemma may include `missing_facts[]` and still resolve to Dharmic, Adharmic, or Mixed when the missing facts refine the recommendation but do not plausibly change the class.
+
+**Context-dependent is triggered only when a missing fact could flip the classification.** Use Context-dependent when one or more of the following is both (a) unstated and (b) decisive enough that different plausible answers would move the classification across a category boundary:
+
+1. Actor intent that determines motive-class (shaucha, nishkama).
+2. Stakeholder relationships when the action's harm profile depends on them.
+3. Legality where legality itself is load-bearing (not just colour).
 4. Consent ambiguity involving others.
-5. Fewer than 4 of 8 dimensions scorable at confidence ≥ 0.5.
-6. Binary framing hides material nuance ("Is lying bad?").
+5. Binary framing that hides material nuance ("Is lying bad?").
 
-When triggered, `missing_facts[]` lists **specific questions**, not vague "need more info." Batch 1 examples: *"Is the abuse ongoing or historical?"*, *"Have you actually tried RTI / grievance portal?"*, *"Is your spouse actually aligned — have you modeled the worst case together?"*
+**Insufficient information** is a stricter case: fewer than 4 of 8 dimensions scorable at confidence ≥ 0.5, or the dilemma is under-specified to the point that no responsible reading is possible. This bypasses the alignment-score band entirely.
+
+**Quality rule for `missing_facts[]` — on any verdict.** Items must be specific, answerable questions, not vague "need more info." Batch 1 examples: *"Is the abuse ongoing or historical?"*, *"Have you actually tried RTI / grievance portal?"*, *"Is your spouse actually aligned — have you modeled the worst case together?"*
 
 ---
 
@@ -220,23 +240,42 @@ All three must be consistent with the verdict — no shareable should contradict
 
 ## 11. Implementation Phases
 
-**Phase 1 — Core ethics engine (Django):**
-- `dimensions/` — one scorer class per dimension, each a pluggable module exposing `score(dilemma_context) -> (int, str_note)`.
-- `verdict/` — aggregator mapping 8 scores → `alignment_score` → `classification`.
-- `share/` — `share_layer` generator.
-- Verse retrieval off. Outputs everything except `verse_match` and `counterfactuals`.
+Build order is bottom-up: a deterministic spine first, then the semantic layer that feeds it, then retrieval, then polish. Every phase is shippable on its own — the system produces a reduced-but-valid v2.1 response after each.
 
-**Phase 2 — Verse layer:**
-- Build curated index of ~80–120 verses across ~30 theme tags. Store in Postgres with full-text + theme-tag lookup (Django `ArrayField` for themes works).
-- Integrate match scorer as a separate service module; verse retrieval is independent of dimension scoring.
-- A/B test verse-on vs. verse-off for user trust metrics.
+**Phase 1 — Deterministic verdict spine.**
+The parts of the engine that have no LLM dependency. Hand-authored dimension scores (e.g. batch 1) are valid input; the spine turns them into a compliant output.
+- `verdict/aggregator.py` — 8 dimension scores → `raw` → `alignment_score` → `classification`. Honors the `weights` parameter; defaults to equal weights (§3).
+- `verdict/rules.py` — confidence cap (§7.4), Context-dependent trigger (§6), Insufficient-information trigger (§6).
+- `share/layer.py` — template-based `share_layer` generator. Tone can be crude at this stage; §4 polishes it.
+- `core/schema.py` — pydantic models matching `output_schema.json`, used everywhere downstream.
+- Test harness: batch 1 dilemmas with their authored `ethical_dimensions` → the spine should produce valid responses that pass the schema and match the documented `classification` for each.
 
-**Phase 3 — Counterfactuals + refinement:**
-- Add `counterfactuals` generator.
-- Collect user feedback on verse relevance (thumbs) to refine the match-scorer weights.
-- Optional commentary layer (Shankara, Ramanuja, modern readings) for users who want depth.
+**Phase 2 — LLM semantic scorer.**
+The layer that turns a free-text dilemma into the 8 dimension scores plus the narrative blocks. This is where prompt engineering lives.
+- `dimensions/llm_scorer.py` — single module (not 8) that scores all dimensions in one structured call, producing `{score, note}` per dimension.
+- `narrative/generator.py` — produces `internal_driver`, `core_reading`, `gita_analysis`, `if_you_continue`, `higher_path`, `missing_facts` in a structured call.
+- Anti-preachy rules (§7) and tone directive encoded as system prompt + few-shot examples drawn from batch 1.
+- Calibration check: run the scorer over batch 1 dilemmas, compare LLM-produced dimension scores against the hand-authored ones, measure drift per dimension, iterate on prompt until drift is acceptable.
+- After Phase 2, the engine is end-to-end for free-text dilemmas and emits a schema-compliant response. Until curated verse retrieval is enabled, it should return verse_match: null and closest_teaching populated.
 
-Each phase's module should expose a clean interface (`score`, `retrieve`, `generate`) so the others can be swapped or disabled without breaking the pipeline.
+**Phase 3 — Curated verse retrieval.**
+Plugs in between Phase 2's narrative output and the final response.
+- `verses/index/` — curated JSON, ~80–120 verses across ~30 theme tags. Devanagari + IAST + Hindi + English verbatim; `applies_when` / `does_not_apply_when` tags.
+- `verses/loader.py` — validates source completeness at load time; rejects any verse missing Devanagari or source citation.
+- `verses/retriever.py` — match-scoring pipeline (§4). Returns `verse_match` object or `None`.
+- `verses/fallback.py` — when retrieval returns `None`, generates `closest_teaching` via LLM with strict guardrails: must name a related Gita concept by chapter, must not quote verses, must acknowledge the gap honestly.
+- Storage: Postgres with theme-tag lookup (Django `ArrayField`) for fast filtering; JSON blob for the rest.
+- A/B testable: the retriever can be disabled via config, in which case all responses fall to `closest_teaching`. Useful for measuring user trust lift from verse attribution.
+
+**Phase 4 — Counterfactual & share refinement.**
+Polish. The system is already useful without this; this makes it viral.
+- `counterfactuals/generator.py` — produces `clearly_adharmic_version` / `clearly_dharmic_version` with plausibility guard (rejects strawmen; context must be a realistic variation of the same situation, not a different situation).
+- `share/llm_layer.py` — upgrades Phase 1's template share output to LLM-generated with tone-directive prompts. Card quotes tweet-shaped, overheard-style share titles, reflective questions that open (not close).
+- Feedback loop: thumbs-up/down on verse relevance feeds into match-scorer weight tuning (Phase 3 retriever becomes adaptive).
+- Optional: commentary layer (Shankara, Ramanuja, modern readings) for users who want depth — renders as a collapsible alongside `verse_match`.
+- Optional: begin collecting user-signal data for dimension-weight calibration (§3 Weights) — this is what eventually replaces the equal-weights default.
+
+**Module contract across phases.** Every module exposes a narrow interface — `score`, `retrieve`, `generate`, `aggregate` — so any phase can be disabled or swapped without breaking the pipeline. Benchmark files serve as golden regression tests at every phase boundary; a change to any module must not drift the batch 1 outputs beyond a configurable tolerance.
 
 ---
 

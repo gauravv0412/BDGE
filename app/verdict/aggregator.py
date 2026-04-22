@@ -47,6 +47,7 @@ def aggregate_verdict(
     *,
     scorable_mask: tuple[bool, bool, bool, bool, bool, bool, bool, bool] | None = None,
     context_dependent_override: bool = False,
+    ambiguity_can_flip_class: bool = False,
     missing_facts: list[str] | None = None,
 ) -> VerdictResult:
     """
@@ -56,8 +57,12 @@ def aggregate_verdict(
     “fewer than four scorable dimensions → Insufficient information”.  When
     omitted, all eight are scorable.
 
-    *context_dependent_override* forces Context-dependent when ambiguity is
-    detected without a populated ``missing_facts`` list yet.
+    *context_dependent_override* is a compatibility alias for callers already
+    using that name. It maps to ``ambiguity_can_flip_class``.
+
+    *ambiguity_can_flip_class* should be set only when unresolved ambiguity is
+    decisive enough that plausible answers could change classification. Non-empty
+    ``missing_facts`` alone does not imply this.
 
     *missing_facts* is clamped to six entries (schema ``maxItems``).
     """
@@ -66,16 +71,16 @@ def aggregate_verdict(
 
     scorable_count = count_scorable_dimensions(scorable_mask)
     alignment_score = compute_alignment_score(dimensions)
+    ambiguity_flag = ambiguity_can_flip_class or context_dependent_override
     classification = resolve_classification(
         alignment_score,
         scorable_count=scorable_count,
-        missing_facts=facts,
-        context_dependent_override=context_dependent_override,
+        ambiguity_can_flip_class=ambiguity_flag,
     )
     confidence = compute_confidence(
         scorable_count,
         facts,
-        context_dependent=context_dependent_override,
+        ambiguity_flag=ambiguity_flag,
     )
 
     return VerdictResult(

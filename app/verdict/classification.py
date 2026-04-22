@@ -4,7 +4,7 @@ Map ``alignment_score`` and ambiguity signals to ``Classification``.
 Precedence follows design_spec.md §3 table plus §6 ambiguity rules:
 
 1. Fewer than four scorable dimensions (at model confidence ≥ 0.5) → Insufficient information.
-2. Unstated facts / ambiguity (non-empty ``missing_facts`` or explicit override) → Context-dependent.
+2. Ambiguity only when the unresolved signal could flip class → Context-dependent.
 3. Otherwise score bands: ≥ +40 Dharmic, ≤ −40 Adharmic, else Mixed.
 """
 
@@ -33,18 +33,18 @@ def resolve_classification(
     alignment_score: int,
     *,
     scorable_count: int,
-    missing_facts: list[str],
-    context_dependent_override: bool = False,
+    ambiguity_can_flip_class: bool = False,
 ) -> Classification:
     """
     Choose ``Classification`` given numeric score and ambiguity signals.
 
-    *context_dependent_override* is the explicit §6 “unstated facts” path when
-    there are no curated ``missing_facts`` strings yet (tests and future detectors).
+    ``missing_facts`` are intentionally not an input here. Per v2.1.1 spec,
+    missing facts can coexist with Dharmic/Adharmic/Mixed when they refine the
+    recommendation but do not plausibly change class.
     """
     if scorable_count < 4:
         return Classification.INSUFFICIENT_INFORMATION
-    if context_dependent_override or len(missing_facts) > 0:
+    if ambiguity_can_flip_class:
         return Classification.CONTEXT_DEPENDENT
     if alignment_score >= 40:
         return Classification.DHARMIC

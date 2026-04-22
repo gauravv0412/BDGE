@@ -51,14 +51,14 @@ def test_mixed_mid_range_scores_mixed() -> None:
     assert v["classification"] == Classification.MIXED
 
 
-def test_ambiguity_override_context_dependent_via_missing_facts() -> None:
+def test_missing_facts_do_not_force_context_dependent() -> None:
     dims = _uniform_dimensions(5)
     v = aggregate_verdict(
         dims,
         "x" * 25,
         missing_facts=["Who else is affected by this choice?"],
     )
-    assert v["classification"] == Classification.CONTEXT_DEPENDENT
+    assert v["classification"] == Classification.DHARMIC
     assert len(v["missing_facts"]) == 1
 
 
@@ -69,6 +69,17 @@ def test_ambiguity_override_context_dependent_explicit_flag() -> None:
         "x" * 25,
         context_dependent_override=True,
         missing_facts=[],
+    )
+    assert v["classification"] == Classification.CONTEXT_DEPENDENT
+
+
+def test_ambiguity_flip_signal_context_dependent() -> None:
+    dims = _uniform_dimensions(5)
+    v = aggregate_verdict(
+        dims,
+        "x" * 25,
+        ambiguity_can_flip_class=True,
+        missing_facts=["Is consent present?"],
     )
     assert v["classification"] == Classification.CONTEXT_DEPENDENT
 
@@ -98,8 +109,7 @@ def test_resolve_classification_priority_insufficient_before_context() -> None:
         resolve_classification(
             100,
             scorable_count=2,
-            missing_facts=["fact?"],
-            context_dependent_override=True,
+            ambiguity_can_flip_class=True,
         )
         == Classification.INSUFFICIENT_INFORMATION
     )
@@ -109,20 +119,20 @@ def test_resolve_classification_priority_insufficient_before_context() -> None:
 
 def test_classification_at_plus_40_is_dharmic() -> None:
     # Spec table: +40 to +100 → Dharmic.  Pinned so the boundary stays explicit.
-    assert resolve_classification(40, scorable_count=8, missing_facts=[]) == Classification.DHARMIC
+    assert resolve_classification(40, scorable_count=8) == Classification.DHARMIC
 
 
 def test_classification_at_plus_39_is_mixed() -> None:
-    assert resolve_classification(39, scorable_count=8, missing_facts=[]) == Classification.MIXED
+    assert resolve_classification(39, scorable_count=8) == Classification.MIXED
 
 
 def test_classification_at_minus_40_is_adharmic() -> None:
     # Spec table: -40 to -100 → Adharmic.
-    assert resolve_classification(-40, scorable_count=8, missing_facts=[]) == Classification.ADHARMIC
+    assert resolve_classification(-40, scorable_count=8) == Classification.ADHARMIC
 
 
 def test_classification_at_minus_39_is_mixed() -> None:
-    assert resolve_classification(-39, scorable_count=8, missing_facts=[]) == Classification.MIXED
+    assert resolve_classification(-39, scorable_count=8) == Classification.MIXED
 
 
 # --- alignment score at the raw-sum boundary that produces ±40 ---
@@ -144,13 +154,13 @@ def test_alignment_score_at_raw_boundary_for_adharmic() -> None:
 def test_confidence_cap_with_context_dependent_override() -> None:
     # All 8 scored, no missing_facts — but ambiguity flagged via override.
     # Must still be capped at 0.85 (spec: cap unless all scored AND missing_facts empty).
-    result = compute_confidence(8, [], context_dependent=True)
+    result = compute_confidence(8, [], ambiguity_flag=True)
     assert result <= 0.85
 
 
 def test_confidence_no_cap_when_all_conditions_clear() -> None:
     # All 8 scored, no missing_facts, no override → allowed above 0.85.
-    result = compute_confidence(8, [], context_dependent=False)
+    result = compute_confidence(8, [], ambiguity_flag=False)
     assert result == pytest.approx(0.88)
 
 
@@ -159,3 +169,16 @@ def test_missing_facts_clamped_to_six() -> None:
     facts = [f"fact {i}?" for i in range(10)]
     v = aggregate_verdict(dims, "x" * 25, missing_facts=facts)
     assert len(v["missing_facts"]) == 6
+
+
+def test_missing_facts_caps_confidence_even_when_classification_stays_dharmic() -> None:
+    # Decoupling: missing_facts does NOT push classification to Context-dependent,
+    # but the spec's cap rule still applies — confidence must be ≤ 0.85.
+    dims = _uniform_dimensions(5)
+    v = aggregate_verdict(
+        dims,
+        "x" * 25,
+        missing_facts=["Is this person acting with full information?"],
+    )
+    assert v["classification"] == Classification.DHARMIC
+    assert v["confidence"] <= 0.85
