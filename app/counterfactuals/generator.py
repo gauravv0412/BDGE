@@ -1,12 +1,13 @@
 """
-Counterfactual generation — stub.
+Counterfactual generation — stub (not currently called by the live pipeline).
 
-Phase 3 target: given the dilemma text and the verdict, produce two plausible
-variants of the same situation: one tilted adharmic (worse motive / fewer
-safeguards) and one tilted dharmic (better motive / more safeguards).
+The live pipeline obtains counterfactuals from ``app/semantic/scorer.py``,
+which produces them as part of the LLM semantic payload.  This module is
+retained for offline testing of counterfactual shapes without invoking
+the full semantic scorer.
 
-Both variants must be realistic, not strawmen, and must bracket the actual
-dilemma (§8 of design_spec.md).
+If a deterministic or template-based counterfactual generator is ever needed
+alongside the LLM path, implement it here (§8 of design_spec.md).
 """
 
 from __future__ import annotations

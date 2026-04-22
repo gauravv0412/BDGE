@@ -1,10 +1,13 @@
 """
-Ethical dimension scorer — stub.
+Ethical dimension scorer — stub (not currently called by the live pipeline).
 
-Phase 1 target: replace ``score_dimensions`` with real per-dimension scorers,
-each in its own submodule (dharma_duty.py, satya_truth.py, …) that implements
-``score(dilemma_text: str) -> DimensionScore``.  This function then aggregates
-all eight calls into ``EthicalDimensions``.
+The live pipeline obtains dimension scores from ``app/semantic/scorer.py``,
+which produces them as part of the LLM semantic payload.  This module is
+retained as a standalone fixture for unit tests that need
+``EthicalDimensions`` without invoking the full semantic scorer.
+
+If a deterministic rule-based scorer is ever needed alongside the LLM path
+(e.g. for offline evaluation), implement it here.
 """
 
 from __future__ import annotations

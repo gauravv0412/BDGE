@@ -1,12 +1,13 @@
 """
-Share-layer generation — stub.
+Share-layer generation — stub (not currently called by the live pipeline).
 
-Phase 1 target: generate the three shareable fields
-(``anonymous_share_title``, ``card_quote``, ``reflective_question``) that are
-consistent with the verdict (§9 of design_spec.md).
+The live pipeline obtains the share layer from ``app/semantic/scorer.py``,
+which produces it as part of the LLM semantic payload.  This module is
+retained for offline testing of share-layer shapes without invoking the
+full semantic scorer.
 
-All three must align with the classification and verdict_sentence — no
-shareable should chase engagement at the cost of contradicting the analysis.
+If a deterministic or template-based share-layer generator is ever needed
+alongside the LLM path, implement it here (§9 of design_spec.md).
 """
 
 from __future__ import annotations

@@ -1,0 +1,115 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Wisdomize Semantic Scorer Output Schema v1.0",
+  "description": "Output contract for the LLM semantic interpretation layer. Consumed by the deterministic verdict aggregator and the curated verse retriever. Does NOT emit alignment_score, classification, confidence, verse_match, closest_teaching, or canonical verse text.",
+  "type": "object",
+  "required": [
+    "ethical_dimensions",
+    "internal_driver",
+    "core_reading",
+    "gita_analysis",
+    "higher_path",
+    "missing_facts",
+    "ambiguity_flag",
+    "if_you_continue",
+    "counterfactuals",
+    "share_layer"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "ethical_dimensions": {
+      "type": "object",
+      "required": [
+        "dharma_duty",
+        "satya_truth",
+        "ahimsa_nonharm",
+        "nishkama_detachment",
+        "shaucha_intent",
+        "sanyama_restraint",
+        "lokasangraha_welfare",
+        "viveka_discernment"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "dharma_duty":          { "$ref": "#/definitions/dimension" },
+        "satya_truth":          { "$ref": "#/definitions/dimension" },
+        "ahimsa_nonharm":       { "$ref": "#/definitions/dimension" },
+        "nishkama_detachment":  { "$ref": "#/definitions/dimension" },
+        "shaucha_intent":       { "$ref": "#/definitions/dimension" },
+        "sanyama_restraint":    { "$ref": "#/definitions/dimension" },
+        "lokasangraha_welfare": { "$ref": "#/definitions/dimension" },
+        "viveka_discernment":   { "$ref": "#/definitions/dimension" }
+      }
+    },
+    "internal_driver": {
+      "type": "object",
+      "required": ["primary", "hidden_risk"],
+      "additionalProperties": false,
+      "properties": {
+        "primary":     { "type": "string", "minLength": 10, "maxLength": 200 },
+        "hidden_risk": { "type": "string", "minLength": 10, "maxLength": 200 }
+      }
+    },
+    "core_reading":  { "type": "string", "minLength": 50, "maxLength": 600 },
+    "gita_analysis": { "type": "string", "minLength": 40, "maxLength": 500 },
+    "higher_path":   { "type": "string", "minLength": 30, "maxLength": 500 },
+    "missing_facts": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 10, "maxLength": 200 },
+      "maxItems": 6
+    },
+    "ambiguity_flag": {
+      "type": "boolean",
+      "description": "True only when unresolved ambiguity could plausibly flip the final classification across a category boundary. Items in missing_facts do not by themselves imply this."
+    },
+    "if_you_continue": {
+      "type": "object",
+      "required": ["short_term", "long_term"],
+      "additionalProperties": false,
+      "properties": {
+        "short_term": { "type": "string", "minLength": 20, "maxLength": 400 },
+        "long_term":  { "type": "string", "minLength": 20, "maxLength": 400 }
+      }
+    },
+    "counterfactuals": {
+      "type": "object",
+      "required": ["clearly_adharmic_version", "clearly_dharmic_version"],
+      "additionalProperties": false,
+      "properties": {
+        "clearly_adharmic_version": { "$ref": "#/definitions/counterfactual" },
+        "clearly_dharmic_version":  { "$ref": "#/definitions/counterfactual" }
+      }
+    },
+    "share_layer": {
+      "type": "object",
+      "required": ["anonymous_share_title", "card_quote", "reflective_question"],
+      "additionalProperties": false,
+      "properties": {
+        "anonymous_share_title": { "type": "string", "minLength": 15, "maxLength": 120 },
+        "card_quote":            { "type": "string", "minLength": 15, "maxLength": 180 },
+        "reflective_question":   { "type": "string", "minLength": 10, "maxLength": 200, "pattern": "\\?$" }
+      }
+    }
+  },
+  "definitions": {
+    "dimension": {
+      "type": "object",
+      "required": ["score", "note"],
+      "additionalProperties": false,
+      "properties": {
+        "score": { "type": "integer", "minimum": -5, "maximum": 5 },
+        "note":  { "type": "string", "minLength": 10, "maxLength": 200 }
+      }
+    },
+    "counterfactual": {
+      "type": "object",
+      "required": ["assumed_context", "decision", "why"],
+      "additionalProperties": false,
+      "properties": {
+        "assumed_context": { "type": "string", "minLength": 30, "maxLength": 400 },
+        "decision":        { "type": "string", "minLength": 10, "maxLength": 200 },
+        "why":             { "type": "string", "minLength": 20, "maxLength": 300 }
+      }
+    }
+  }
+}

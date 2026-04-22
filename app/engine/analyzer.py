@@ -1,30 +1,35 @@
 """
 Top-level dilemma analysis entrypoint.
 
-``analyze_dilemma`` is the single public function.  It orchestrates five
-sequential stages that map directly to the implementation phases in
-design_spec.md §11:
+``analyze_dilemma`` is the single public function.  ``_run_pipeline`` executes
+three sequential stages:
 
-    Stage 1  dimensions/scorer.py      — score all 8 ethical dimensions
-    Stage 2  verdict/aggregator.py     — derive alignment_score, classification,
-                                         confidence, and all prose verdict fields
-    Stage 3  verses/retriever.py       — retrieve matched verse or closest_teaching
-    Stage 4  counterfactuals/gen.py    — generate adharmic / dharmic variants
-    Stage 5  share/layer.py            — build the shareable card / question
+    Stage 1  semantic/scorer.py        — LLM semantic interpretation: dimension
+                                         scores, narrative prose, counterfactuals,
+                                         share layer, ambiguity signals
+    Stage 2  verdict/aggregator.py     — deterministic: alignment_score,
+                                         classification, confidence, verdict_sentence
+    Stage 3  verses/retriever.py       — curated verse match or closest_teaching
 
-To implement a phase, replace the stub function in the relevant stage module.
-The assembler below and all other stages remain untouched.
+To wire in the live LLM for Stage 1, set ``use_stub=False`` in
+``semantic_scorer`` once the API integration is ready.  Stages 2 and 3 are
+independent of that change.
 """
 
 from __future__ import annotations
 
 import uuid
 
-from app.core.models import WisdomizeEngineOutput
+from app.core.models import (
+    Counterfactuals,
+    EthicalDimensions,
+    IfYouContinue,
+    InternalDriver,
+    ShareLayer,
+    WisdomizeEngineOutput,
+)
 from app.core.types import EngineOutputDict
-from app.counterfactuals.generator import generate_counterfactuals
-from app.dimensions.scorer import score_dimensions
-from app.share.layer import generate_share_layer
+from app.semantic.scorer import semantic_scorer
 from app.verdict.aggregator import aggregate_verdict
 from app.verses.retriever import retrieve_verse
 
@@ -51,7 +56,7 @@ def _run_pipeline(
     dilemma_id: str | None = None,
 ) -> WisdomizeEngineOutput:
     """
-    Execute all five stages and assemble a validated ``WisdomizeEngineOutput``.
+    Execute the three-stage pipeline and assemble a validated ``WisdomizeEngineOutput``.
 
     Private; called by ``analyze_dilemma`` (returns dict) and re-exported by
     ``engine/factory.py`` (returns the typed model, used in tests).
@@ -59,20 +64,22 @@ def _run_pipeline(
     did = dilemma_id or f"live-{uuid.uuid4().hex[:16]}"
     text = _normalize_dilemma(dilemma)
 
-    # Stage 1 — ethical dimension scores
-    dimensions = score_dimensions(text)
+    # Stage 1 — semantic interpretation (mode controlled by semantic scorer config)
+    semantic = semantic_scorer(text)
+    dimensions = EthicalDimensions.model_validate(semantic["ethical_dimensions"])
+    ambiguity_flag = bool(semantic["ambiguity_flag"])
+    missing_facts = list(semantic["missing_facts"])
 
-    # Stage 2 — verdict: alignment_score, classification, confidence, prose
-    verdict = aggregate_verdict(dimensions, text)
+    # Stage 2 — deterministic verdict layer
+    verdict = aggregate_verdict(
+        dimensions,
+        text,
+        ambiguity_can_flip_class=ambiguity_flag,
+        missing_facts=missing_facts,
+    )
 
     # Stage 3 — verse match or closest_teaching fallback (XOR enforced below)
     verse_result = retrieve_verse(text, dimensions)
-
-    # Stage 4 — counterfactual adharmic / dharmic variants
-    counterfactuals = generate_counterfactuals(text, verdict)
-
-    # Stage 5 — shareable card fields
-    share = generate_share_layer(text, verdict)
 
     return WisdomizeEngineOutput(
         dilemma_id=did,
@@ -81,17 +88,17 @@ def _run_pipeline(
         classification=verdict["classification"],
         alignment_score=verdict["alignment_score"],
         confidence=verdict["confidence"],
-        internal_driver=verdict["internal_driver"],
-        core_reading=verdict["core_reading"],
-        gita_analysis=verdict["gita_analysis"],
+        internal_driver=InternalDriver.model_validate(semantic["internal_driver"]),
+        core_reading=str(semantic["core_reading"]),
+        gita_analysis=str(semantic["gita_analysis"]),
         verse_match=verse_result["verse_match"],
         closest_teaching=verse_result["closest_teaching"],
-        if_you_continue=verdict["if_you_continue"],
-        counterfactuals=counterfactuals,
-        higher_path=verdict["higher_path"],
+        if_you_continue=IfYouContinue.model_validate(semantic["if_you_continue"]),
+        counterfactuals=Counterfactuals.model_validate(semantic["counterfactuals"]),
+        higher_path=str(semantic["higher_path"]),
         ethical_dimensions=dimensions,
-        missing_facts=verdict["missing_facts"],
-        share_layer=share,
+        missing_facts=missing_facts,
+        share_layer=ShareLayer.model_validate(semantic["share_layer"]),
     )
 
 
