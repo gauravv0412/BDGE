@@ -150,9 +150,19 @@ def run_semantic_scorer_benchmarks(
     *,
     benchmark_path: Path | None = None,
     use_stub: bool | None = None,
+    selected_ids: list[str] | None = None,
 ) -> dict[str, Any]:
     """Run semantic scorer benchmark checks and return structured report data."""
     dilemmas = load_dilemmas(path=benchmark_path)
+    if selected_ids:
+        wanted = {d.strip() for d in selected_ids if d.strip()}
+        present = {str(item.get("dilemma_id", "")) for item in dilemmas}
+        unknown = sorted(wanted - present)
+        if unknown:
+            raise ValueError(
+                "Unknown dilemma_id values requested: " + ", ".join(unknown)
+            )
+        dilemmas = [item for item in dilemmas if str(item.get("dilemma_id", "")) in wanted]
     results = [_evaluate_one(item, use_stub=use_stub) for item in dilemmas]
 
     passed = sum(1 for r in results if r.passed_all_checks)
@@ -168,6 +178,7 @@ def run_semantic_scorer_benchmarks(
         "total": total,
         "passed": passed,
         "failed": total - passed,
+        "selected_dilemma_ids": selected_ids or [],
         "failed_dilemma_ids": failed_ids,
         "top_error_categories": categories.most_common(10),
         "results": [asdict(r) for r in results],
@@ -175,6 +186,9 @@ def run_semantic_scorer_benchmarks(
 
 
 def _print_summary(report: dict[str, Any]) -> None:
+    selected = report.get("selected_dilemma_ids") or []
+    if selected:
+        print("Selected dilemma IDs:", ", ".join(selected))
     total = report["total"]
     passed = report["passed"]
     failed = report["failed"]
@@ -201,6 +215,19 @@ def main() -> None:
         help="Path to benchmark JSON (default: docs/benchmarks_v2_batch1_W001-W020.json)",
     )
     parser.add_argument(
+        "--ids",
+        type=str,
+        default="",
+        help="Comma-separated dilemma IDs to run (e.g. W003,W007).",
+    )
+    parser.add_argument(
+        "--id",
+        dest="ids_list",
+        action="append",
+        default=[],
+        help="Repeatable dilemma ID filter (e.g. --id W003 --id W007).",
+    )
+    parser.add_argument(
         "--mode",
         choices=("default", "stub", "live"),
         default="default",
@@ -223,9 +250,21 @@ def main() -> None:
     elif args.mode == "live":
         use_stub = False
 
+    selected_ids: list[str] = []
+    if args.ids:
+        selected_ids.extend([chunk.strip() for chunk in args.ids.split(",") if chunk.strip()])
+    if args.ids_list:
+        selected_ids.extend([chunk.strip() for chunk in args.ids_list if chunk.strip()])
+
+    deduped_selected_ids: list[str] = []
+    for did in selected_ids:
+        if did not in deduped_selected_ids:
+            deduped_selected_ids.append(did)
+
     report = run_semantic_scorer_benchmarks(
         benchmark_path=args.benchmark,
         use_stub=use_stub,
+        selected_ids=deduped_selected_ids or None,
     )
     _print_summary(report)
 

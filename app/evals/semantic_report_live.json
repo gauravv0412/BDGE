@@ -1,15 +1,23 @@
 {
   "total": 20,
-  "passed": 18,
-  "failed": 2,
+  "passed": 15,
+  "failed": 5,
+  "selected_dilemma_ids": [],
   "failed_dilemma_ids": [
-    "W003",
-    "W007"
+    "W008",
+    "W009",
+    "W014",
+    "W018",
+    "W020"
   ],
   "top_error_categories": [
     [
       "consistency",
-      2
+      4
+    ],
+    [
+      "semantic_call_failed",
+      1
     ]
   ],
   "results": [
@@ -39,14 +47,12 @@
       "dilemma_id": "W003",
       "valid_semantic_schema": true,
       "exact_dimension_keys": true,
-      "ambiguity_matches_gold_context_dependent": false,
+      "ambiguity_matches_gold_context_dependent": true,
       "missing_facts_len_le_6": true,
       "reflective_question_nested_and_question_mark": true,
       "fake_scripture_leak_free": true,
-      "passed_all_checks": false,
-      "errors": [
-        "consistency:ambiguity_flag mismatch vs gold Context-dependent classification"
-      ]
+      "passed_all_checks": true,
+      "errors": []
     },
     {
       "dilemma_id": "W004",
@@ -85,6 +91,17 @@
       "dilemma_id": "W007",
       "valid_semantic_schema": true,
       "exact_dimension_keys": true,
+      "ambiguity_matches_gold_context_dependent": true,
+      "missing_facts_len_le_6": true,
+      "reflective_question_nested_and_question_mark": true,
+      "fake_scripture_leak_free": true,
+      "passed_all_checks": true,
+      "errors": []
+    },
+    {
+      "dilemma_id": "W008",
+      "valid_semantic_schema": true,
+      "exact_dimension_keys": true,
       "ambiguity_matches_gold_context_dependent": false,
       "missing_facts_len_le_6": true,
       "reflective_question_nested_and_question_mark": true,
@@ -95,26 +112,17 @@
       ]
     },
     {
-      "dilemma_id": "W008",
-      "valid_semantic_schema": true,
-      "exact_dimension_keys": true,
-      "ambiguity_matches_gold_context_dependent": true,
-      "missing_facts_len_le_6": true,
-      "reflective_question_nested_and_question_mark": true,
-      "fake_scripture_leak_free": true,
-      "passed_all_checks": true,
-      "errors": []
-    },
-    {
       "dilemma_id": "W009",
       "valid_semantic_schema": true,
       "exact_dimension_keys": true,
-      "ambiguity_matches_gold_context_dependent": true,
+      "ambiguity_matches_gold_context_dependent": false,
       "missing_facts_len_le_6": true,
       "reflective_question_nested_and_question_mark": true,
       "fake_scripture_leak_free": true,
-      "passed_all_checks": true,
-      "errors": []
+      "passed_all_checks": false,
+      "errors": [
+        "consistency:ambiguity_flag mismatch vs gold Context-dependent classification"
+      ]
     },
     {
       "dilemma_id": "W010",
@@ -162,14 +170,16 @@
     },
     {
       "dilemma_id": "W014",
-      "valid_semantic_schema": true,
-      "exact_dimension_keys": true,
-      "ambiguity_matches_gold_context_dependent": true,
-      "missing_facts_len_le_6": true,
-      "reflective_question_nested_and_question_mark": true,
-      "fake_scripture_leak_free": true,
-      "passed_all_checks": true,
-      "errors": []
+      "valid_semantic_schema": false,
+      "exact_dimension_keys": false,
+      "ambiguity_matches_gold_context_dependent": false,
+      "missing_facts_len_le_6": false,
+      "reflective_question_nested_and_question_mark": false,
+      "fake_scripture_leak_free": false,
+      "passed_all_checks": false,
+      "errors": [
+        "semantic_call_failed: Semantic scorer guard checks failed: [\"gita_analysis: contains banned word 'pure'\"]"
+      ]
     },
     {
       "dilemma_id": "W015",
@@ -208,12 +218,14 @@
       "dilemma_id": "W018",
       "valid_semantic_schema": true,
       "exact_dimension_keys": true,
-      "ambiguity_matches_gold_context_dependent": true,
+      "ambiguity_matches_gold_context_dependent": false,
       "missing_facts_len_le_6": true,
       "reflective_question_nested_and_question_mark": true,
       "fake_scripture_leak_free": true,
-      "passed_all_checks": true,
-      "errors": []
+      "passed_all_checks": false,
+      "errors": [
+        "consistency:ambiguity_flag mismatch vs gold Context-dependent classification"
+      ]
     },
     {
       "dilemma_id": "W019",
@@ -230,12 +242,14 @@
       "dilemma_id": "W020",
       "valid_semantic_schema": true,
       "exact_dimension_keys": true,
-      "ambiguity_matches_gold_context_dependent": true,
+      "ambiguity_matches_gold_context_dependent": false,
       "missing_facts_len_le_6": true,
       "reflective_question_nested_and_question_mark": true,
       "fake_scripture_leak_free": true,
-      "passed_all_checks": true,
-      "errors": []
+      "passed_all_checks": false,
+      "errors": [
+        "consistency:ambiguity_flag mismatch vs gold Context-dependent classification"
+      ]
     }
   ]
 }

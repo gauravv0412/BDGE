@@ -24,8 +24,15 @@ Requirements:
   dharma_duty, satya_truth, ahimsa_nonharm, nishkama_detachment,
   shaucha_intent, sanyama_restraint, lokasangraha_welfare, viveka_discernment.
 - Do not invent alternate moral dimensions or alternate dimension names.
-- Set ambiguity_flag=true only when unresolved ambiguity could plausibly flip final class.
-- missing_facts can be present even when ambiguity_flag is false.
+- ambiguity_flag guidance:
+  - Set ambiguity_flag=true only when unresolved facts could plausibly flip the final class.
+  - missing_facts can exist while ambiguity_flag=false when facts only refine execution/advice.
+  - Positive example (set ambiguity_flag=true): "Should I quit to follow my calling?"
+    If runway, spouse alignment, and minimum viability are unknown, plausible answers can flip class.
+  - Positive example (set ambiguity_flag=true): "Should I cut contact with an abusive parent?"
+    If severity/currentness, safe alternatives, and safety obligations are unknown, class can flip.
+  - Negative example (keep ambiguity_flag=false): whistleblowing on serious pollution with strong
+    evidence and clear harm. Many missing facts may refine tactics, but class itself may stay stable.
 - reflective_question must be nested inside share_layer and must end with '?'.
 - All required top-level fields must be present:
   ethical_dimensions, internal_driver, core_reading, gita_analysis, higher_path,
