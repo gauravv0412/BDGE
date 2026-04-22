@@ -135,6 +135,29 @@ def _build_repair_prompt(base_prompt: str, validation_errors: list[str]) -> str:
     )
 
 
+def _build_guard_repair_prompt(base_prompt: str, guard_issues: list[str]) -> str:
+    """Append corrective guard-failure guidance for retry."""
+    issue_lines = "\n".join(f"- {issue}" for issue in guard_issues)
+    lower_blob = " ".join(guard_issues).lower()
+    scripture_hint = ""
+    if "scripture" in lower_blob or "2.47" in lower_blob or "chapter" in lower_blob or "verse" in lower_blob:
+        scripture_hint = (
+            "\nScripture safety reminder:\n"
+            "- semantic scorer must never output chapter.verse markers\n"
+            "- must never output quoted scripture\n"
+            "- must never output Sanskrit / Devanagari / verse references\n"
+            "- semantic stage gives teaching-language only, not citations\n"
+        )
+    return (
+        f"{base_prompt}\n\n"
+        "REPAIR REQUIRED: Your previous JSON failed post-generation guard checks.\n"
+        "Fix the output and return ONLY corrected JSON.\n"
+        "Guard failures:\n"
+        f"{issue_lines}\n"
+        f"{scripture_hint}"
+    )
+
+
 def _call_anthropic_once(user_prompt: str, config: dict[str, Any]) -> dict[str, Any]:
     """
     Call Anthropic Messages API once and return parsed JSON payload.
@@ -238,6 +261,7 @@ def semantic_scorer(dilemma: str, *, use_stub: bool | None = None) -> dict[str, 
         user_prompt = build_user_prompt(dilemma)
         last_error: Exception | None = None
         last_validation_errors: list[str] = []
+        last_guard_issues: list[str] = []
         payload: dict[str, Any] | None = None
 
         for attempt in range(attempts):
@@ -245,8 +269,15 @@ def semantic_scorer(dilemma: str, *, use_stub: bool | None = None) -> dict[str, 
                 candidate = _call_anthropic_once(user_prompt, config)
                 ok, validation_errors = validate_semantic_payload(candidate)
                 if ok:
-                    payload = candidate
-                    break
+                    guards_ok, guard_issues = run_post_generation_guards(candidate)
+                    if guards_ok:
+                        payload = candidate
+                        break
+                    last_guard_issues = guard_issues
+                    if attempt < attempts - 1:
+                        user_prompt = _build_guard_repair_prompt(user_prompt, guard_issues)
+                        continue
+                    continue
 
                 last_validation_errors = validation_errors
                 if attempt < attempts - 1:
@@ -262,6 +293,11 @@ def semantic_scorer(dilemma: str, *, use_stub: bool | None = None) -> dict[str, 
                 raise ValueError(
                     "Semantic scorer schema validation failed after retries: "
                     f"{last_validation_errors}"
+                )
+            if last_guard_issues:
+                raise ValueError(
+                    "Semantic scorer guard checks failed after retries: "
+                    f"{last_guard_issues}"
                 )
             raise RuntimeError(
                 f"Anthropic semantic scoring failed after {attempts} attempts: {last_error}"

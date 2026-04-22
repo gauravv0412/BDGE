@@ -1,23 +1,10 @@
 {
   "total": 20,
-  "passed": 17,
-  "failed": 3,
+  "passed": 20,
+  "failed": 0,
   "selected_dilemma_ids": [],
-  "failed_dilemma_ids": [
-    "W007",
-    "W017",
-    "W020"
-  ],
-  "top_error_categories": [
-    [
-      "semantic_call_failed",
-      2
-    ],
-    [
-      "consistency",
-      1
-    ]
-  ],
+  "failed_dilemma_ids": [],
+  "top_error_categories": [],
   "results": [
     {
       "dilemma_id": "W001",
@@ -87,16 +74,14 @@
     },
     {
       "dilemma_id": "W007",
-      "valid_semantic_schema": false,
-      "exact_dimension_keys": false,
-      "ambiguity_matches_gold_context_dependent": false,
-      "missing_facts_len_le_6": false,
-      "reflective_question_nested_and_question_mark": false,
-      "fake_scripture_leak_free": false,
-      "passed_all_checks": false,
-      "errors": [
-        "semantic_call_failed: Semantic scorer guard checks failed: [\"possible_scripture_claim: found marker '2.47'\"]"
-      ]
+      "valid_semantic_schema": true,
+      "exact_dimension_keys": true,
+      "ambiguity_matches_gold_context_dependent": true,
+      "missing_facts_len_le_6": true,
+      "reflective_question_nested_and_question_mark": true,
+      "fake_scripture_leak_free": true,
+      "passed_all_checks": true,
+      "errors": []
     },
     {
       "dilemma_id": "W008",
@@ -201,14 +186,12 @@
       "dilemma_id": "W017",
       "valid_semantic_schema": true,
       "exact_dimension_keys": true,
-      "ambiguity_matches_gold_context_dependent": false,
+      "ambiguity_matches_gold_context_dependent": true,
       "missing_facts_len_le_6": true,
       "reflective_question_nested_and_question_mark": true,
       "fake_scripture_leak_free": true,
-      "passed_all_checks": false,
-      "errors": [
-        "consistency:ambiguity_flag mismatch vs gold Context-dependent classification"
-      ]
+      "passed_all_checks": true,
+      "errors": []
     },
     {
       "dilemma_id": "W018",
@@ -234,16 +217,14 @@
     },
     {
       "dilemma_id": "W020",
-      "valid_semantic_schema": false,
-      "exact_dimension_keys": false,
-      "ambiguity_matches_gold_context_dependent": false,
-      "missing_facts_len_le_6": false,
-      "reflective_question_nested_and_question_mark": false,
-      "fake_scripture_leak_free": false,
-      "passed_all_checks": false,
-      "errors": [
-        "semantic_call_failed: Semantic scorer guard checks failed: [\"possible_scripture_claim: found marker 'chapter '\"]"
-      ]
+      "valid_semantic_schema": true,
+      "exact_dimension_keys": true,
+      "ambiguity_matches_gold_context_dependent": true,
+      "missing_facts_len_le_6": true,
+      "reflective_question_nested_and_question_mark": true,
+      "fake_scripture_leak_free": true,
+      "passed_all_checks": true,
+      "errors": []
     }
   ]
 }

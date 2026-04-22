@@ -32,6 +32,8 @@ Requirements:
     If runway, spouse alignment, and minimum viability are unknown, plausible answers can flip class.
   - Positive example (set ambiguity_flag=true): "Should I cut contact with an abusive parent?"
     If severity/currentness, safe alternatives, and safety obligations are unknown, class can flip.
+  - Positive example (set ambiguity_flag=true): close friend cheating where your spouse is also that friend.
+    Health risk, solicited involvement, and role proximity can flip class.
   - Negative example (keep ambiguity_flag=false): inter-caste marriage where parental disapproval is high.
     Motive quality may refine advice, but parental disapproval alone does not make class ambiguous.
   - Negative example (keep ambiguity_flag=false): terminal diagnosis disclosure by a doctor.
@@ -40,6 +42,8 @@ Requirements:
     Motive questions exist, but not every body-autonomy case is class-flipping.
   - Negative example (keep ambiguity_flag=false): competent adult parent refuses treatment.
     Missing facts may refine care planning, but explicit refusal should not default to ambiguity_flag=true.
+  - Negative example (keep ambiguity_flag=false): apparently competent adult explicitly refusing treatment.
+    Missing facts may refine care planning; do not default this to ambiguity_flag=true.
   - Negative example (keep ambiguity_flag=false): whistleblowing on serious pollution with strong
     evidence and clear harm. Many missing facts may refine tactics, but class itself may stay stable.
 - reflective_question must be nested inside share_layer and must end with '?'.

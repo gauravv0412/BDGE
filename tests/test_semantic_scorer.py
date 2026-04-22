@@ -55,6 +55,16 @@ def test_prompt_contains_ambiguity_overfire_negative_examples() -> None:
     assert "missing_facts can refine recommendation" in USER_PROMPT_TEMPLATE
 
 
+def test_prompt_contains_w017_positive_ambiguity_example() -> None:
+    assert "close friend cheating" in USER_PROMPT_TEMPLATE
+    assert "role proximity can flip class" in USER_PROMPT_TEMPLATE
+
+
+def test_prompt_contains_w020_negative_ambiguity_example() -> None:
+    assert "apparently competent adult explicitly refusing treatment" in USER_PROMPT_TEMPLATE
+    assert "do not default this to ambiguity_flag=true" in USER_PROMPT_TEMPLATE
+
+
 def test_guard_allows_benign_pure_usage() -> None:
     payload = semantic_scorer("Need deterministic payload", use_stub=True)
     payload["gita_analysis"] = (
@@ -147,6 +157,93 @@ def test_live_guard_failure_path(monkeypatch: Any) -> None:
     monkeypatch.setattr("app.semantic.scorer._get_anthropic_client", lambda: _Client())
     with pytest.raises(ValueError, match="guard checks failed"):
         semantic_scorer("Test dilemma for guard failure.", use_stub=False)
+
+
+def test_guard_failure_triggers_repair_retry_path(monkeypatch: Any) -> None:
+    first_guard_fail = _stub_payload()
+    first_guard_fail["gita_analysis"] = (
+        "This action is sinful because it hides accountability and calls harm a strategy."
+    )
+    second_valid = _stub_payload()
+    calls: list[dict[str, Any]] = []
+
+    class _Block:
+        def __init__(self, text: str) -> None:
+            self.text = text
+
+    class _Resp:
+        def __init__(self, text: str) -> None:
+            self.content = [_Block(text)]
+
+    class _Messages:
+        def __init__(self) -> None:
+            self._idx = 0
+
+        def create(self, **kwargs: Any) -> _Resp:
+            calls.append(kwargs)
+            if self._idx == 0:
+                self._idx += 1
+                return _Resp(json.dumps(first_guard_fail))
+            return _Resp(json.dumps(second_valid))
+
+    class _Client:
+        def __init__(self) -> None:
+            self.messages = _Messages()
+
+    client = _Client()
+    monkeypatch.setattr("app.semantic.scorer._get_anthropic_client", lambda: client)
+    cfg = dict(_load_cfg())
+    cfg["max_retries"] = 1
+    monkeypatch.setattr("app.semantic.scorer.load_semantic_config", lambda: cfg)
+
+    out = semantic_scorer("Guard retry dilemma.", use_stub=False)
+    assert out["share_layer"]["reflective_question"].endswith("?")
+    assert len(calls) == 2
+    repair_prompt = calls[1]["messages"][0]["content"]
+    assert "failed post-generation guard checks" in repair_prompt
+
+
+def test_chapter_verse_leakage_is_repairable_first_failure(monkeypatch: Any) -> None:
+    first_scripture_leak = _stub_payload()
+    first_scripture_leak["gita_analysis"] = "A direct citation like 2.47 appears here."
+    second_valid = _stub_payload()
+    calls: list[dict[str, Any]] = []
+
+    class _Block:
+        def __init__(self, text: str) -> None:
+            self.text = text
+
+    class _Resp:
+        def __init__(self, text: str) -> None:
+            self.content = [_Block(text)]
+
+    class _Messages:
+        def __init__(self) -> None:
+            self._idx = 0
+
+        def create(self, **kwargs: Any) -> _Resp:
+            calls.append(kwargs)
+            if self._idx == 0:
+                self._idx += 1
+                return _Resp(json.dumps(first_scripture_leak))
+            return _Resp(json.dumps(second_valid))
+
+    class _Client:
+        def __init__(self) -> None:
+            self.messages = _Messages()
+
+    client = _Client()
+    monkeypatch.setattr("app.semantic.scorer._get_anthropic_client", lambda: client)
+    cfg = dict(_load_cfg())
+    cfg["max_retries"] = 1
+    monkeypatch.setattr("app.semantic.scorer.load_semantic_config", lambda: cfg)
+
+    out = semantic_scorer("Scripture leak retry dilemma.", use_stub=False)
+    assert out["core_reading"]
+    assert len(calls) == 2
+    repair_prompt = calls[1]["messages"][0]["content"]
+    assert "must never output chapter.verse markers" in repair_prompt
+    assert "must never output quoted scripture" in repair_prompt
 
 
 def test_live_repair_retry_prompt_triggered_on_invalid_output(monkeypatch: Any) -> None:
