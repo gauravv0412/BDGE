@@ -9,9 +9,8 @@ and support typed construction without implementing ethical or scoring logic.
 from __future__ import annotations
 
 from enum import StrEnum
-from typing import Literal
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 
 class Classification(StrEnum):
@@ -66,7 +65,7 @@ class VerseMatch(BaseModel):
 
     model_config = ConfigDict(extra="forbid", frozen=True)
 
-    verse_ref: str
+    verse_ref: str = Field(pattern=r"^[0-9]+\.[0-9]+(-[0-9]+)?$")
     sanskrit_devanagari: str
     sanskrit_iast: str | None
     hindi_translation: str
@@ -137,3 +136,16 @@ class WisdomizeEngineOutput(BaseModel):
     ethical_dimensions: EthicalDimensions
     missing_facts: list[str] = Field(max_length=6)
     share_layer: ShareLayer
+
+    @model_validator(mode="after")
+    def _verse_or_closest_xor(self) -> WisdomizeEngineOutput:
+        """Mirror schema: exactly one of ``verse_match`` or ``closest_teaching`` is non-null."""
+        has_verse = self.verse_match is not None
+        has_closest = self.closest_teaching is not None
+        if has_verse and has_closest:
+            raise ValueError("verse_match and closest_teaching cannot both be non-null.")
+        if not has_verse and not has_closest:
+            raise ValueError("Exactly one of verse_match or closest_teaching must be non-null.")
+        if not has_verse and self.closest_teaching is not None and not self.closest_teaching.strip():
+            raise ValueError("closest_teaching must be non-empty when verse_match is null.")
+        return self
