@@ -1,0 +1,1 @@
+"""Wisdomize application package."""
