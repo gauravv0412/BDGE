@@ -11,7 +11,8 @@ All stub data now lives in the stage modules it logically belongs to:
   - app/verses/retriever.py
   - app/counterfactuals/deterministic.py (counterfactuals in pipeline output)
   - app/counterfactuals/generator.py (offline stub helper)
-  - app/share/layer.py
+  - app/share/deterministic.py (share_layer in pipeline output)
+  - app/share/layer.py (offline stub helper)
 """
 
 from __future__ import annotations

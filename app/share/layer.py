@@ -1,13 +1,12 @@
 """
 Share-layer generation — stub (not currently called by the live pipeline).
 
-The live pipeline obtains the share layer from ``app/semantic/scorer.py``,
-which produces it as part of the LLM semantic payload.  This module is
-retained for offline testing of share-layer shapes without invoking the
-full semantic scorer.
+The live pipeline overlays ``share_layer`` in ``app/engine/analyzer.py`` using
+``app/share/deterministic.build_refined_share_layer``.  Semantic JSON still
+includes share-shaped fields for schema validation.
 
-If a deterministic or template-based share-layer generator is ever needed
-alongside the LLM path, implement it here (§9 of design_spec.md).
+This module remains a small offline stub for tests that import
+``generate_share_layer`` directly.
 """
 
 from __future__ import annotations

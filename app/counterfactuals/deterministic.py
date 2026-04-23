@@ -70,6 +70,11 @@ def _detect_family(low: str) -> Family:
             "work ",
             " my job",
             "team lead",
+            "director",
+            "vp",
+            "executive",
+            "leadership",
+            "board",
         )
     ):
         return "work"
@@ -104,6 +109,11 @@ def _detect_family(low: str) -> Family:
     ):
         return "truth_disclosure"
     return "general"
+
+
+def detect_dilemma_family(dilemma: str) -> Family:
+    """Public helper for other deterministic stages (e.g. share layer)."""
+    return _detect_family((dilemma or "").lower())
 
 
 def _axis_phrases(dimensions: EthicalDimensions) -> tuple[str, str]:

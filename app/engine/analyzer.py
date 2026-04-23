@@ -11,8 +11,9 @@ three sequential stages:
                                          classification, confidence, verdict_sentence
     Stage 3  verses/retriever.py       — curated verse match or closest_teaching
 
-Counterfactuals in the final output are built by ``app/counterfactuals/deterministic.py``
-(Stage 1 semantic JSON still carries counterfactual-shaped placeholders for validation).
+Counterfactuals in the final output are built by ``app/counterfactuals/deterministic.py``;
+``share_layer`` is built by ``app/share/deterministic.py``.  Stage 1 semantic JSON still
+carries placeholder-shaped fields for those keys for validation only.
 
 To wire in the live LLM for Stage 1, set ``use_stub=False`` in
 ``semantic_scorer`` once the API integration is ready.  Stages 2 and 3 are
@@ -34,6 +35,7 @@ from app.core.models import (
 from app.core.types import EngineOutputDict
 from app.counterfactuals.deterministic import build_refined_counterfactuals
 from app.semantic.scorer import semantic_scorer
+from app.share.deterministic import build_refined_share_layer
 from app.verdict.aggregator import aggregate_verdict
 from app.verses.retriever import retrieve_verse
 from app.verses.scorer import RetrievalContext
@@ -103,6 +105,19 @@ def _run_pipeline(
         dimensions=dimensions,
         missing_facts=missing_facts,
     )
+    counterfactuals_model = Counterfactuals.model_validate(cf_dict)
+    share_dict = build_refined_share_layer(
+        dilemma=text,
+        classification=str(verdict["classification"]),
+        verdict_sentence=str(verdict["verdict_sentence"]),
+        internal_driver=internal_driver_raw if isinstance(internal_driver_raw, dict) else None,
+        core_reading=str(semantic["core_reading"]),
+        gita_analysis=str(semantic["gita_analysis"]),
+        verse_match=verse_result["verse_match"],
+        closest_teaching=verse_result["closest_teaching"],
+        counterfactuals=counterfactuals_model,
+        missing_facts=missing_facts,
+    )
 
     return WisdomizeEngineOutput(
         dilemma_id=did,
@@ -117,11 +132,11 @@ def _run_pipeline(
         verse_match=verse_result["verse_match"],
         closest_teaching=verse_result["closest_teaching"],
         if_you_continue=IfYouContinue.model_validate(semantic["if_you_continue"]),
-        counterfactuals=Counterfactuals.model_validate(cf_dict),
+        counterfactuals=counterfactuals_model,
         higher_path=str(semantic["higher_path"]),
         ethical_dimensions=dimensions,
         missing_facts=missing_facts,
-        share_layer=ShareLayer.model_validate(semantic["share_layer"]),
+        share_layer=ShareLayer.model_validate(share_dict),
     )
 
 
