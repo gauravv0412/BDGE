@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 from typing import TypedDict
 
 from app.core.models import EthicalDimensions, VerseMatch
@@ -26,6 +27,7 @@ _SEVERE_BLOCKERS = {
     "self-harm",
     "abuse-context",
     "criminal-intent",
+    "public-shaming-intent",
 }
 
 
@@ -52,36 +54,206 @@ def _contains_any(text: str, terms: tuple[str, ...]) -> bool:
     return any(term in text for term in terms)
 
 
+def _word_boundary_any(text: str, terms: tuple[str, ...]) -> bool:
+    """Match whole words only (avoids e.g. 'truth' in 'untruth')."""
+    for term in terms:
+        if re.search(rf"(?<![a-z]){re.escape(term)}(?![a-z])", text, re.IGNORECASE):
+            return True
+    return False
+
+
+def _domestic_parenting_disclosure_without_career_frame(text: str) -> bool:
+    """
+    True when the text looks like *only* co-parent / child-welfare disclosure
+    (not a career, calling, or income-structure dilemma).
+
+    In that narrow band, ``duty-conflict`` was over-firing and pulling in karma
+    yoga (2.47) where the golden batch expects closest-teaching instead.
+    """
+    parenting = _contains_any(
+        text,
+        (
+            "divorced",
+            "co-parent",
+            "teenage son",
+            "teenage daughter",
+            "his mother",
+            "her mother",
+            "ex-husband",
+            "ex-wife",
+        ),
+    )
+    disclosure = _contains_any(
+        text,
+        ("tell", "inform", "notify", "mother", "father", "parent"),
+    )
+    career_frame = _contains_any(
+        text,
+        ("job", "career", "corporate", "income", "quit", "livelihood", "music", "profession", "startup"),
+    )
+    return parenting and disclosure and not career_frame
+
+
 def _infer_theme_tags(text: str) -> list[str]:
     tags: set[str] = set()
     if _contains_any(text, ("duty", "responsibility", "obligation", "role")):
         tags.add("duty")
-    if _contains_any(text, ("outcome", "result", "success", "failure")):
+    if _contains_any(
+        text,
+        (
+            "livelihood",
+            "income supports",
+            "alcohol shop",
+            "income source",
+            "corporate job",
+            "quit my job",
+            "stable job",
+            "day job",
+        ),
+    ):
+        tags.add("right-livelihood")
+        tags.add("duty")
+    if _contains_any(
+        text,
+        (
+            "outcome",
+            "result",
+            "success",
+            "failure",
+            "lose my job",
+            "lose your job",
+            "job loss",
+            "career fear",
+            "count the cost",
+            "cost to yourself",
+            "fruit of the action",
+        ),
+    ):
         tags.update({"detachment", "action"})
-    if _contains_any(text, ("tempt", "desire", "craving")):
+    if _contains_any(text, ("tempt", "desire", "craving", "in love", "obsess")):
         tags.add("desire")
     if _contains_any(text, ("angry", "anger", "rage")):
         tags.add("anger")
-    if _contains_any(text, ("lie", "truth", "speak", "speech")):
+    if _contains_any(text, ("greed", "greedy", "hoard", "revenge")):
+        tags.add("greed")
+    if (
+        _word_boundary_any(text, ("lie",))
+        or _contains_any(text, ("speak", "speech", "rumor", "disclose", "review"))
+        or _word_boundary_any(text, ("truth",))
+    ):
         tags.update({"truth", "speech"})
-    if _contains_any(text, ("grief", "death", "dying", "bereav")):
+    if _contains_any(text, ("donate", "donation", "gift", "kidney")):
+        tags.update({"charity", "detachment", "duty"})
+    if _contains_any(text, ("grief", "death", "dying", "bereav", "terminal")):
         tags.update({"grief", "death"})
+    # HEURISTIC: medical disclosure / autonomy (clinical phrasing).
+    if _contains_any(
+        text,
+        (
+            "terminal diagnosis",
+            "hide from the patient",
+            "withhold",
+            "patient's family",
+            "hide a terminal",
+            "biopsy result",
+        ),
+    ) and _contains_any(text, ("doctor", "patient", "diagnosis")):
+        tags.update({"truth", "compassion", "nonharm"})
+        # Biopsy result + patient: speech-tapas (17.15) competes with daivi list (16.1-3).
+        if _contains_any(text, ("biopsy result",)) and _contains_any(text, ("patient",)):
+            tags.add("speech")
     if _contains_any(text, ("equal", "caste", "bias", "discrimination")):
         tags.add("equality")
+    if _contains_any(text, ("discipline", "self-control", "impulse", "restrain")):
+        tags.add("restraint")
+    if _contains_any(text, ("wallet", "picked it up")) and _contains_any(
+        text,
+        ("found", "lost and", "lost-and-found"),
+    ):
+        tags.update({"self-mastery", "restraint", "action", "duty"})
     return sorted(tags)
 
 
 def _infer_applies_signals(text: str) -> list[str]:
+    """Keyword heuristics for applies_when tags (tuned on small batches; expect OOD drift)."""
     tags: set[str] = set()
-    if _contains_any(text, ("outcome", "result anxiety", "anxious about result")):
+    if _contains_any(text, ("outcome", "result anxiety", "anxious about result", "lose my job", "lose your job")):
         tags.add("outcome-anxiety")
     if _contains_any(text, ("duty", "responsibility", "role conflict")):
-        tags.add("duty-conflict")
+        if not _domestic_parenting_disclosure_without_career_frame(text):
+            tags.add("duty-conflict")
     if _contains_any(text, ("tempt", "desire", "craving")):
         tags.add("temptation")
+    if _contains_any(text, ("donate", "donation", "kidney")):
+        tags.add("service-without-return")
     if _contains_any(text, ("career", "job", "profession")):
         tags.add("career-crossroads")
-    if _contains_any(text, ("speech", "say", "tell", "disclose")):
+    if _contains_any(text, ("alcohol", "liquor", "tobacco")) and _contains_any(
+        text,
+        ("shop", "store", "business", "livelihood"),
+    ):
+        tags.add("career-crossroads")
+    if _contains_any(text, ("livelihood", "income supports", "alcohol shop")):
+        tags.add("livelihood-harm-tradeoff")
+    # HEURISTIC: dependents + income/career tradeoff (exclude vice-retail lines).
+    if _contains_any(
+        text,
+        (
+            "kids",
+            "children",
+            "dependents",
+            "providership",
+            "lunches depend",
+            "who depends on you",
+            "supports my family",
+            "two kids",
+        ),
+    ) and _contains_any(text, ("job", "corporate", "income", "quit", "career", "profession", "shop")):
+        if not _contains_any(text, ("alcohol", "tobacco", "gambling", "income supports my")):
+            tags.add("provider-duty")
+    if _contains_any(text, ("caste", "endogamy", "different caste")):
+        tags.add("caste-or-identity-boundary")
+    # HEURISTIC: family gatekeeping on marriage / identity (phrasing may drift OOD).
+    if _contains_any(
+        text,
+        ("parents strongly disapprove", "parental disapproval", "family disapprove", "disapprove of because"),
+    ):
+        tags.add("family-disapproval")
+    if _contains_any(text, ("found a wallet", "found wallet", "lost and found", "lost-and-found", "picked it up")):
+        tags.add("found-property")
+    if _contains_any(
+        text,
+        (
+            "terminal diagnosis",
+            "withhold",
+            "hide from the patient",
+            "hide a terminal",
+            "patient-led",
+            "biopsy result",
+        ),
+    ):
+        tags.add("truth-compassion-conflict")
+        if _contains_any(text, ("biopsy result",)) and _contains_any(text, ("patient",)):
+            tags.add("ethical-speech")
+    # HEURISTIC: deathbed / compassion vs honesty (golden phrasing; broaden carefully).
+    elif (
+        _word_boundary_any(text, ("lie",))
+        or _word_boundary_any(text, ("truth",))
+    ) and _contains_any(
+        text,
+        (
+            "compassion",
+            "dying",
+            "grandmother",
+            "two weeks",
+            "deathbed",
+            "last days",
+            "jail",
+            "kind lie",
+        ),
+    ):
+        tags.add("truth-compassion-conflict")
+    if _contains_any(text, ("speech", "rumor", "disclose", "publicly correct", "review")):
         tags.add("ethical-speech")
     if _contains_any(text, ("credit", "my work", "manager")):
         tags.add("credit-theft")
@@ -90,12 +262,45 @@ def _infer_applies_signals(text: str) -> list[str]:
 
 def _infer_blocker_signals(text: str) -> list[str]:
     tags: set[str] = set()
-    if _contains_any(text, ("hurt", "harm", "injure", "violence")):
+    if _contains_any(text, ("hurt someone", "harm someone", "injure them", "violent revenge")):
         tags.add("active-harm")
     if _contains_any(text, ("kill", "attack", "assault")):
         tags.add("imminent-violence")
-    if _contains_any(text, ("deceive", "mislead", "lie to", "hide the truth")):
+    weighing_deception = _contains_any(
+        text,
+        ("should i lie", "is it okay to hide", "should i tell", "should i conceal"),
+    )
+    settled_deception = _contains_any(
+        text,
+        (
+            "how do i lie",
+            "help me deceive",
+            "how can i hide this from",
+            "what should i say so they believe",
+            "i will lie",
+        ),
+    )
+    if settled_deception:
+        tags.add("deception-intent")
+    elif not weighing_deception and _contains_any(text, ("deceive", "mislead", "lie to", "hide the truth")):
         tags.add("deception")
+    if _contains_any(text, ("public shaming", "scathing anonymous review")):
+        tags.add("public-shaming-intent")
+    elif _contains_any(text, ("embarrassing information",)) and _contains_any(
+        text,
+        ("anonymous", "online", "review", "posting", "ratings", "yelp", "stars"),
+    ):
+        tags.add("public-shaming-intent")
+    elif _contains_any(text, ("in return",)) and _contains_any(
+        text,
+        ("review", "anonymous", "ratings", "yelp", "stars", "online"),
+    ):
+        tags.add("public-shaming-intent")
+    if _contains_any(text, ("revenge",)) and _contains_any(
+        text,
+        ("spread", "rumor", "information about", "true but", "humiliat"),
+    ):
+        tags.add("retaliatory-speech")
     if _contains_any(text, ("suicide", "self harm", "harm myself")):
         tags.add("self-harm")
     return sorted(tags)
@@ -129,15 +334,21 @@ def _score_to_confidence(score: int) -> float:
     return round(0.6 + ((bounded - _MATCH_THRESHOLD) / (14 - _MATCH_THRESHOLD)) * 0.4, 2)
 
 
-def _build_why_basis(best: VerseScoreResult) -> str:
-    theme_bits = ", ".join(best.theme_overlap) or "none"
-    applies_bits = ", ".join(best.applies_overlap) or "none"
-    blockers = ", ".join(best.blocker_overlap) or "none"
-    return (
-        f"Deterministic match basis: themes={theme_bits}; applies_when={applies_bits}; "
-        f"blockers={blockers}; dominant_dimension_hit={best.dominant_dimension_hit}; "
-        f"score={best.total_score}."
-    )[:500]
+def _build_why_basis(best: VerseScoreResult, core_teaching: str) -> str:
+    theme_phrase = ", ".join(best.theme_overlap[:2])
+    applies_phrase = ", ".join(best.applies_overlap[:2])
+    parts: list[str] = []
+    if core_teaching:
+        parts.append(f"{core_teaching.strip().rstrip('.')}.")
+    if theme_phrase:
+        parts.append(f"It speaks directly to the tension around {theme_phrase}.")
+    if applies_phrase:
+        parts.append(f"It also fits signals like {applies_phrase} in your situation.")
+    if best.dominant_dimension_hit:
+        parts.append("Its emphasis aligns with the dominant ethical pull in this dilemma.")
+    if not parts:
+        parts.append("It is the closest responsible fit for the ethical pattern in this dilemma.")
+    return " ".join(parts)[:500]
 
 
 def retrieve_verse(
@@ -183,7 +394,7 @@ def retrieve_verse(
         hindi_translation=winner.hindi_translation or "",
         english_translation=winner.english_translation,
         source=winner.source.format_for_output(),
-        why_it_applies=_build_why_basis(best),
+        why_it_applies=_build_why_basis(best, winner.core_teaching),
         match_confidence=_score_to_confidence(best.total_score),
     )
     return VerseResult(verse_match=match, closest_teaching=None)

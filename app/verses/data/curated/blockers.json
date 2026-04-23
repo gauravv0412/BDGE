@@ -3,8 +3,10 @@
   "abuse-context",
   "criminal-intent",
   "deception",
+  "deception-intent",
   "imminent-violence",
   "public-shaming-intent",
+  "retaliatory-speech",
   "scripture-as-weapon",
   "self-harm"
 ]

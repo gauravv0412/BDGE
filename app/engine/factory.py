@@ -9,7 +9,8 @@ All stub data now lives in the stage modules it logically belongs to:
   - app/dimensions/scorer.py
   - app/verdict/aggregator.py
   - app/verses/retriever.py
-  - app/counterfactuals/generator.py
+  - app/counterfactuals/deterministic.py (counterfactuals in pipeline output)
+  - app/counterfactuals/generator.py (offline stub helper)
   - app/share/layer.py
 """
 

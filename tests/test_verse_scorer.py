@@ -93,7 +93,7 @@ def test_stronger_thematic_match_beats_shallow_match() -> None:
     assert ranked[0].verse_ref == "2.47"
 
 
-def test_deterministic_tie_break_by_verse_ref() -> None:
+def test_deterministic_tie_break_by_verse_coordinate() -> None:
     entries = load_curated_verses()
     base = next(item for item in entries if item.verse_ref == "2.47")
     first = base.model_copy(update={"verse_id": "BG-T1", "verse_ref": "2.47"})

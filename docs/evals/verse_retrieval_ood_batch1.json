@@ -1,0 +1,1012 @@
+{
+  "benchmark_version": "wisdomize-verse-retrieval-ood-v1",
+  "schema_version": "2.1",
+  "batch": "verse retrieval held-out OOD batch 1",
+  "tone_directive": "Eval-only file for deterministic verse retrieval harness; not a full engine golden batch.",
+  "distribution": {
+    "total": 20,
+    "purpose": "Held-out dilemmas for retrieval generalization; expectations are curator labels, not engine outputs."
+  },
+  "dilemmas": [
+    {
+      "dilemma_id": "OOD-01",
+      "dilemma": "As an oncologist, relatives insist I hide the biopsy result from my competent adult patient. Should I refuse?",
+      "classification": "Context-dependent",
+      "internal_driver": {
+        "primary": "Clinical autonomy",
+        "hidden_risk": "Family pressure"
+      },
+      "core_reading": "The chart belongs to the patient.",
+      "gita_analysis": "Krishna would ask who is being protected.",
+      "ethical_dimensions": {
+        "dharma_duty": {
+          "score": -2,
+          "note": ""
+        },
+        "satya_truth": {
+          "score": -3,
+          "note": ""
+        },
+        "ahimsa_nonharm": {
+          "score": -2,
+          "note": ""
+        },
+        "nishkama_detachment": {
+          "score": 0,
+          "note": ""
+        },
+        "shaucha_intent": {
+          "score": 0,
+          "note": ""
+        },
+        "sanyama_restraint": {
+          "score": 0,
+          "note": ""
+        },
+        "lokasangraha_welfare": {
+          "score": 0,
+          "note": ""
+        },
+        "viveka_discernment": {
+          "score": 0,
+          "note": ""
+        }
+      },
+      "missing_facts": [],
+      "eval_note": "Speech ethics: truthful, beneficial, non-injurious patient communication (curator target).",
+      "verse_match": null,
+      "closest_teaching": null,
+      "retrieval_golden_verse_ref": "17.15"
+    },
+    {
+      "dilemma_id": "OOD-02",
+      "dilemma": "My partner and I are different castes; elders threaten to disown us if we register the marriage. What now?",
+      "classification": "Context-dependent",
+      "internal_driver": {
+        "primary": "Conscience vs lineage",
+        "hidden_risk": "Performative defiance"
+      },
+      "core_reading": "The pain is real; so is your adulthood.",
+      "gita_analysis": "Equal vision is named plainly in the Gita.",
+      "ethical_dimensions": {
+        "dharma_duty": {
+          "score": 2,
+          "note": ""
+        },
+        "satya_truth": {
+          "score": 2,
+          "note": ""
+        },
+        "ahimsa_nonharm": {
+          "score": 0,
+          "note": ""
+        },
+        "nishkama_detachment": {
+          "score": 0,
+          "note": ""
+        },
+        "shaucha_intent": {
+          "score": 0,
+          "note": ""
+        },
+        "sanyama_restraint": {
+          "score": 0,
+          "note": ""
+        },
+        "lokasangraha_welfare": {
+          "score": 2,
+          "note": ""
+        },
+        "viveka_discernment": {
+          "score": 0,
+          "note": ""
+        }
+      },
+      "missing_facts": [],
+      "eval_note": "Boundary vs family hierarchy; sama-darshana.",
+      "verse_match": null,
+      "closest_teaching": null,
+      "retrieval_golden_verse_ref": "5.18"
+    },
+    {
+      "dilemma_id": "OOD-03",
+      "dilemma": "I found a designer bag on an empty train seat with cash inside and no CCTV. Nobody saw me. What should I do?",
+      "classification": "Context-dependent",
+      "internal_driver": {
+        "primary": "Temptation",
+        "hidden_risk": "Self-story"
+      },
+      "core_reading": "The audience that matters is tomorrow-you.",
+      "gita_analysis": "Krishna would ask which self you are voting for.",
+      "ethical_dimensions": {
+        "dharma_duty": {
+          "score": 0,
+          "note": ""
+        },
+        "satya_truth": {
+          "score": -2,
+          "note": ""
+        },
+        "ahimsa_nonharm": {
+          "score": 0,
+          "note": ""
+        },
+        "nishkama_detachment": {
+          "score": 0,
+          "note": ""
+        },
+        "shaucha_intent": {
+          "score": -3,
+          "note": ""
+        },
+        "sanyama_restraint": {
+          "score": 0,
+          "note": ""
+        },
+        "lokasangraha_welfare": {
+          "score": 0,
+          "note": ""
+        },
+        "viveka_discernment": {
+          "score": 0,
+          "note": ""
+        }
+      },
+      "missing_facts": [],
+      "eval_note": "Found property / temptation to rationalize keeping it.",
+      "verse_match": null,
+      "closest_teaching": null,
+      "retrieval_golden_verse_ref": "3.37"
+    },
+    {
+      "dilemma_id": "OOD-04",
+      "dilemma": "I am infatuated with my colleague who is married; I have not acted. Should I confess to clear my chest?",
+      "classification": "Context-dependent",
+      "internal_driver": {
+        "primary": "Desire narrating itself as honesty",
+        "hidden_risk": "Confession as relief for you"
+      },
+      "core_reading": "Naming it to them loads them with your problem.",
+      "gita_analysis": "The enemy here is usually the craving, not the silence.",
+      "ethical_dimensions": {
+        "dharma_duty": {
+          "score": 0,
+          "note": ""
+        },
+        "satya_truth": {
+          "score": 0,
+          "note": ""
+        },
+        "ahimsa_nonharm": {
+          "score": 0,
+          "note": ""
+        },
+        "nishkama_detachment": {
+          "score": -3,
+          "note": ""
+        },
+        "shaucha_intent": {
+          "score": -2,
+          "note": ""
+        },
+        "sanyama_restraint": {
+          "score": 0,
+          "note": ""
+        },
+        "lokasangraha_welfare": {
+          "score": 0,
+          "note": ""
+        },
+        "viveka_discernment": {
+          "score": 0,
+          "note": ""
+        }
+      },
+      "missing_facts": [],
+      "eval_note": "Desire vs anger; craving management.",
+      "verse_match": null,
+      "closest_teaching": null,
+      "retrieval_golden_verse_ref": "3.37"
+    },
+    {
+      "dilemma_id": "OOD-05",
+      "dilemma": "A rival started a lie about my project online. I could post true but humiliating screenshots of their DMs. Should I?",
+      "classification": "Context-dependent",
+      "internal_driver": {
+        "primary": "Revenge with receipts",
+        "hidden_risk": "Accuracy as alibi"
+      },
+      "core_reading": "Truth used as a weapon stops being truth.",
+      "gita_analysis": "Krishna would ask which speech-act you are about to perform.",
+      "ethical_dimensions": {
+        "dharma_duty": {
+          "score": 0,
+          "note": ""
+        },
+        "satya_truth": {
+          "score": 1,
+          "note": ""
+        },
+        "ahimsa_nonharm": {
+          "score": -3,
+          "note": ""
+        },
+        "nishkama_detachment": {
+          "score": 0,
+          "note": ""
+        },
+        "shaucha_intent": {
+          "score": 0,
+          "note": ""
+        },
+        "sanyama_restraint": {
+          "score": 0,
+          "note": ""
+        },
+        "lokasangraha_welfare": {
+          "score": 0,
+          "note": ""
+        },
+        "viveka_discernment": {
+          "score": 0,
+          "note": ""
+        }
+      },
+      "missing_facts": [],
+      "eval_note": "Retaliation framed as truth; expect closest_teaching (severe retaliatory-speech band).",
+      "verse_match": null,
+      "closest_teaching": null,
+      "retrieval_expect_closest_teaching": true
+    },
+    {
+      "dilemma_id": "OOD-06",
+      "dilemma": "We are divorced; I discovered our 14-year-old vaping. Do I have to inform my ex before I talk to our child?",
+      "classification": "Context-dependent",
+      "internal_driver": {
+        "primary": "Co-parent coordination",
+        "hidden_risk": "Using the kid as messenger"
+      },
+      "core_reading": "Both parents need the same facts.",
+      "gita_analysis": "Krishna would separate awkwardness from duty.",
+      "ethical_dimensions": {
+        "dharma_duty": {
+          "score": 2,
+          "note": ""
+        },
+        "satya_truth": {
+          "score": 2,
+          "note": ""
+        },
+        "ahimsa_nonharm": {
+          "score": 0,
+          "note": ""
+        },
+        "nishkama_detachment": {
+          "score": 0,
+          "note": ""
+        },
+        "shaucha_intent": {
+          "score": 0,
+          "note": ""
+        },
+        "sanyama_restraint": {
+          "score": 0,
+          "note": ""
+        },
+        "lokasangraha_welfare": {
+          "score": 0,
+          "note": ""
+        },
+        "viveka_discernment": {
+          "score": 0,
+          "note": ""
+        }
+      },
+      "missing_facts": [],
+      "eval_note": "Co-parent disclosure edge; domestic-only band should not force karma-yoga verse.",
+      "verse_match": null,
+      "closest_teaching": null,
+      "retrieval_expect_closest_teaching": true
+    },
+    {
+      "dilemma_id": "OOD-07",
+      "dilemma": "I earn well in corporate law but dread the hours; my household depends on my salary. Is quitting for a nonprofit insane?",
+      "classification": "Context-dependent",
+      "internal_driver": {
+        "primary": "Calling vs provision",
+        "hidden_risk": "Romanticizing escape"
+      },
+      "core_reading": "The binary is often false.",
+      "gita_analysis": "Svadharma includes people who did not sign up for your dream.",
+      "ethical_dimensions": {
+        "dharma_duty": {
+          "score": 1,
+          "note": ""
+        },
+        "satya_truth": {
+          "score": 0,
+          "note": ""
+        },
+        "ahimsa_nonharm": {
+          "score": 0,
+          "note": ""
+        },
+        "nishkama_detachment": {
+          "score": 1,
+          "note": ""
+        },
+        "shaucha_intent": {
+          "score": 0,
+          "note": ""
+        },
+        "sanyama_restraint": {
+          "score": 0,
+          "note": ""
+        },
+        "lokasangraha_welfare": {
+          "score": 0,
+          "note": ""
+        },
+        "viveka_discernment": {
+          "score": 0,
+          "note": ""
+        }
+      },
+      "missing_facts": [],
+      "eval_note": "Career vs livelihood; no clean single verse fit at current thresholds.",
+      "verse_match": null,
+      "closest_teaching": null,
+      "retrieval_expect_closest_teaching": true
+    },
+    {
+      "dilemma_id": "OOD-08",
+      "dilemma": "I run a licensed tobacco kiosk that feeds my family; health advocates say I should exit. Is staying dharmic?",
+      "classification": "Context-dependent",
+      "internal_driver": {
+        "primary": "Harm tradeoff",
+        "hidden_risk": "Legality as ceiling"
+      },
+      "core_reading": "Smoke scales with dependence.",
+      "gita_analysis": "The Gita asks what work you can live with long-term.",
+      "ethical_dimensions": {
+        "dharma_duty": {
+          "score": 1,
+          "note": ""
+        },
+        "satya_truth": {
+          "score": 0,
+          "note": ""
+        },
+        "ahimsa_nonharm": {
+          "score": -2,
+          "note": ""
+        },
+        "nishkama_detachment": {
+          "score": 0,
+          "note": ""
+        },
+        "shaucha_intent": {
+          "score": 0,
+          "note": ""
+        },
+        "sanyama_restraint": {
+          "score": 0,
+          "note": ""
+        },
+        "lokasangraha_welfare": {
+          "score": 0,
+          "note": ""
+        },
+        "viveka_discernment": {
+          "score": 0,
+          "note": ""
+        }
+      },
+      "missing_facts": [],
+      "eval_note": "Right-livelihood vs harm; ambiguous without stronger signals.",
+      "verse_match": null,
+      "closest_teaching": null,
+      "retrieval_expect_closest_teaching": true
+    },
+    {
+      "dilemma_id": "OOD-09",
+      "dilemma": "My factory quietly vents solvents into a creek. Reporting it may cost my visa and job. Should I report anyway?",
+      "classification": "Context-dependent",
+      "internal_driver": {
+        "primary": "Silence as choice",
+        "hidden_risk": "Fear of paperwork"
+      },
+      "core_reading": "Inaction is also a vote.",
+      "gita_analysis": "Detached action still includes acting.",
+      "ethical_dimensions": {
+        "dharma_duty": {
+          "score": 3,
+          "note": ""
+        },
+        "satya_truth": {
+          "score": 0,
+          "note": ""
+        },
+        "ahimsa_nonharm": {
+          "score": 0,
+          "note": ""
+        },
+        "nishkama_detachment": {
+          "score": 2,
+          "note": ""
+        },
+        "shaucha_intent": {
+          "score": 0,
+          "note": ""
+        },
+        "sanyama_restraint": {
+          "score": 0,
+          "note": ""
+        },
+        "lokasangraha_welfare": {
+          "score": 3,
+          "note": ""
+        },
+        "viveka_discernment": {
+          "score": 0,
+          "note": ""
+        }
+      },
+      "missing_facts": [],
+      "eval_note": "Whistleblowing / welfare vs self; expect CT at current retrieval.",
+      "verse_match": null,
+      "closest_teaching": null,
+      "retrieval_expect_closest_teaching": true
+    },
+    {
+      "dilemma_id": "OOD-10",
+      "dilemma": "I draft harsh one-star reviews under a sock puppet when a cafe upsets me. The facts are true. Is this fine?",
+      "classification": "Context-dependent",
+      "internal_driver": {
+        "primary": "Venting as review",
+        "hidden_risk": "Anonymity as license"
+      },
+      "core_reading": "Tone still belongs to you.",
+      "gita_analysis": "Speech ethics are not only about factual accuracy.",
+      "ethical_dimensions": {
+        "dharma_duty": {
+          "score": 0,
+          "note": ""
+        },
+        "satya_truth": {
+          "score": 1,
+          "note": ""
+        },
+        "ahimsa_nonharm": {
+          "score": -2,
+          "note": ""
+        },
+        "nishkama_detachment": {
+          "score": 0,
+          "note": ""
+        },
+        "shaucha_intent": {
+          "score": 0,
+          "note": ""
+        },
+        "sanyama_restraint": {
+          "score": 0,
+          "note": ""
+        },
+        "lokasangraha_welfare": {
+          "score": 0,
+          "note": ""
+        },
+        "viveka_discernment": {
+          "score": 0,
+          "note": ""
+        }
+      },
+      "missing_facts": [],
+      "eval_note": "Speech ethics vs anonymity.",
+      "verse_match": null,
+      "closest_teaching": null,
+      "retrieval_golden_verse_ref": "17.15"
+    },
+    {
+      "dilemma_id": "OOD-11",
+      "dilemma": "I keep a private bank account my spouse does not know about for personal security. Is that always wrong?",
+      "classification": "Context-dependent",
+      "internal_driver": {
+        "primary": "Autonomy vs intimacy",
+        "hidden_risk": "Security as cover"
+      },
+      "core_reading": "Secrets change the map of trust.",
+      "gita_analysis": "Satya in households is structural, not dramatic.",
+      "ethical_dimensions": {
+        "dharma_duty": {
+          "score": 0,
+          "note": ""
+        },
+        "satya_truth": {
+          "score": -2,
+          "note": ""
+        },
+        "ahimsa_nonharm": {
+          "score": 0,
+          "note": ""
+        },
+        "nishkama_detachment": {
+          "score": 0,
+          "note": ""
+        },
+        "shaucha_intent": {
+          "score": -1,
+          "note": ""
+        },
+        "sanyama_restraint": {
+          "score": 0,
+          "note": ""
+        },
+        "lokasangraha_welfare": {
+          "score": 0,
+          "note": ""
+        },
+        "viveka_discernment": {
+          "score": 0,
+          "note": ""
+        }
+      },
+      "missing_facts": [],
+      "eval_note": "Concealment in intimacy; expect CT.",
+      "verse_match": null,
+      "closest_teaching": null,
+      "retrieval_expect_closest_teaching": true
+    },
+    {
+      "dilemma_id": "OOD-12",
+      "dilemma": "I want to fund a village well anonymously with no plaque; the NGO wants publicity. Should I insist on silence?",
+      "classification": "Context-dependent",
+      "internal_driver": {
+        "primary": "Pure gift",
+        "hidden_risk": "Ego of humility"
+      },
+      "core_reading": "Sattvic giving is quiet.",
+      "gita_analysis": "Duty-sense without performance is the test.",
+      "ethical_dimensions": {
+        "dharma_duty": {
+          "score": 0,
+          "note": ""
+        },
+        "satya_truth": {
+          "score": 0,
+          "note": ""
+        },
+        "ahimsa_nonharm": {
+          "score": 0,
+          "note": ""
+        },
+        "nishkama_detachment": {
+          "score": 2,
+          "note": ""
+        },
+        "shaucha_intent": {
+          "score": 0,
+          "note": ""
+        },
+        "sanyama_restraint": {
+          "score": 0,
+          "note": ""
+        },
+        "lokasangraha_welfare": {
+          "score": 2,
+          "note": ""
+        },
+        "viveka_discernment": {
+          "score": 0,
+          "note": ""
+        }
+      },
+      "missing_facts": [],
+      "eval_note": "Motives in charity / austerity of intent.",
+      "verse_match": null,
+      "closest_teaching": null,
+      "retrieval_golden_verse_ref": "17.20"
+    },
+    {
+      "dilemma_id": "OOD-13",
+      "dilemma": "After betrayal I fantasize about keying their car. I have not done it. How do I work with the rage?",
+      "classification": "Context-dependent",
+      "internal_driver": {
+        "primary": "Anger loop",
+        "hidden_risk": "Plotting as relief"
+      },
+      "core_reading": "The Gita names the gates.",
+      "gita_analysis": "Let the feeling starve instead of feeding it with scenes.",
+      "ethical_dimensions": {
+        "dharma_duty": {
+          "score": 0,
+          "note": ""
+        },
+        "satya_truth": {
+          "score": 0,
+          "note": ""
+        },
+        "ahimsa_nonharm": {
+          "score": -2,
+          "note": ""
+        },
+        "nishkama_detachment": {
+          "score": 0,
+          "note": ""
+        },
+        "shaucha_intent": {
+          "score": 0,
+          "note": ""
+        },
+        "sanyama_restraint": {
+          "score": -3,
+          "note": ""
+        },
+        "lokasangraha_welfare": {
+          "score": 0,
+          "note": ""
+        },
+        "viveka_discernment": {
+          "score": 0,
+          "note": ""
+        }
+      },
+      "missing_facts": [],
+      "eval_note": "Anger/desire fantasy without action; expect CT.",
+      "verse_match": null,
+      "closest_teaching": null,
+      "retrieval_expect_closest_teaching": true
+    },
+    {
+      "dilemma_id": "OOD-14",
+      "dilemma": "My startup asks me to exaggerate metrics to investors. Refusing may sink the round. What is clean speech here?",
+      "classification": "Context-dependent",
+      "internal_driver": {
+        "primary": "Truth vs survival",
+        "hidden_risk": "Soft fraud as culture"
+      },
+      "core_reading": "Numbers are speech acts.",
+      "gita_analysis": "Ethical speech is not only kind; it is non-deceptive.",
+      "ethical_dimensions": {
+        "dharma_duty": {
+          "score": 0,
+          "note": ""
+        },
+        "satya_truth": {
+          "score": -3,
+          "note": ""
+        },
+        "ahimsa_nonharm": {
+          "score": 0,
+          "note": ""
+        },
+        "nishkama_detachment": {
+          "score": 0,
+          "note": ""
+        },
+        "shaucha_intent": {
+          "score": -2,
+          "note": ""
+        },
+        "sanyama_restraint": {
+          "score": 0,
+          "note": ""
+        },
+        "lokasangraha_welfare": {
+          "score": 0,
+          "note": ""
+        },
+        "viveka_discernment": {
+          "score": 0,
+          "note": ""
+        }
+      },
+      "missing_facts": [],
+      "eval_note": "Deceptive speech in institutions.",
+      "verse_match": null,
+      "closest_teaching": null,
+      "retrieval_golden_verse_ref": "17.15"
+    },
+    {
+      "dilemma_id": "OOD-15",
+      "dilemma": "Parents reject my partner over religion not caste; I still want to marry. Is walking away from the family event dharmic?",
+      "classification": "Context-dependent",
+      "internal_driver": {
+        "primary": "Boundary vs cruelty",
+        "hidden_risk": "Wedding as battlefield"
+      },
+      "core_reading": "Love is the motive; hierarchy is the obstacle.",
+      "gita_analysis": "Equal regard is named for wise seeing.",
+      "ethical_dimensions": {
+        "dharma_duty": {
+          "score": 2,
+          "note": ""
+        },
+        "satya_truth": {
+          "score": 0,
+          "note": ""
+        },
+        "ahimsa_nonharm": {
+          "score": 1,
+          "note": ""
+        },
+        "nishkama_detachment": {
+          "score": 0,
+          "note": ""
+        },
+        "shaucha_intent": {
+          "score": 0,
+          "note": ""
+        },
+        "sanyama_restraint": {
+          "score": 0,
+          "note": ""
+        },
+        "lokasangraha_welfare": {
+          "score": 0,
+          "note": ""
+        },
+        "viveka_discernment": {
+          "score": 0,
+          "note": ""
+        }
+      },
+      "missing_facts": [],
+      "eval_note": "Family boundary vs sama-darshana stressor (wording differs from batch caste rows).",
+      "verse_match": null,
+      "closest_teaching": null,
+      "retrieval_golden_verse_ref": "5.18"
+    },
+    {
+      "dilemma_id": "OOD-16",
+      "dilemma": "I screamed at a ticket clerk for a delay I know is not their fault; I want to apologize without making it weird.",
+      "classification": "Context-dependent",
+      "internal_driver": {
+        "primary": "Anger discharge",
+        "hidden_risk": "Pride"
+      },
+      "core_reading": "The clerk is a person-shaped stress ball.",
+      "gita_analysis": "Krishna would name the craving behind the volume.",
+      "ethical_dimensions": {
+        "dharma_duty": {
+          "score": 0,
+          "note": ""
+        },
+        "satya_truth": {
+          "score": 0,
+          "note": ""
+        },
+        "ahimsa_nonharm": {
+          "score": -2,
+          "note": ""
+        },
+        "nishkama_detachment": {
+          "score": 0,
+          "note": ""
+        },
+        "shaucha_intent": {
+          "score": 0,
+          "note": ""
+        },
+        "sanyama_restraint": {
+          "score": -3,
+          "note": ""
+        },
+        "lokasangraha_welfare": {
+          "score": 0,
+          "note": ""
+        },
+        "viveka_discernment": {
+          "score": 0,
+          "note": ""
+        }
+      },
+      "missing_facts": [],
+      "eval_note": "Anger at innocent target; desire/kama angle.",
+      "verse_match": null,
+      "closest_teaching": null,
+      "retrieval_golden_verse_ref": "3.37"
+    },
+    {
+      "dilemma_id": "OOD-17",
+      "dilemma": "I found a wallet with ID and cards on a park bench; I could drop it at police or mail it myself. Which is cleaner?",
+      "classification": "Context-dependent",
+      "internal_driver": {
+        "primary": "Return instinct",
+        "hidden_risk": "Time tax"
+      },
+      "core_reading": "Return is the default plot.",
+      "gita_analysis": "Krishna would ask what story you want about money.",
+      "ethical_dimensions": {
+        "dharma_duty": {
+          "score": 0,
+          "note": ""
+        },
+        "satya_truth": {
+          "score": 2,
+          "note": ""
+        },
+        "ahimsa_nonharm": {
+          "score": 0,
+          "note": ""
+        },
+        "nishkama_detachment": {
+          "score": 0,
+          "note": ""
+        },
+        "shaucha_intent": {
+          "score": 2,
+          "note": ""
+        },
+        "sanyama_restraint": {
+          "score": 0,
+          "note": ""
+        },
+        "lokasangraha_welfare": {
+          "score": 0,
+          "note": ""
+        },
+        "viveka_discernment": {
+          "score": 0,
+          "note": ""
+        }
+      },
+      "missing_facts": [],
+      "eval_note": "Found property with identifiable owner.",
+      "verse_match": null,
+      "closest_teaching": null,
+      "retrieval_golden_verse_ref": "6.5"
+    },
+    {
+      "dilemma_id": "OOD-18",
+      "dilemma": "A journalist asks me to confirm a rumor about my neighbor's affair; I know it is true. Should I speak on the record?",
+      "classification": "Context-dependent",
+      "internal_driver": {
+        "primary": "Gossip economy",
+        "hidden_risk": "Righteous leak"
+      },
+      "core_reading": "Truth without consent is still a weapon.",
+      "gita_analysis": "Public speech has a welfare dimension.",
+      "ethical_dimensions": {
+        "dharma_duty": {
+          "score": 0,
+          "note": ""
+        },
+        "satya_truth": {
+          "score": 1,
+          "note": ""
+        },
+        "ahimsa_nonharm": {
+          "score": -2,
+          "note": ""
+        },
+        "nishkama_detachment": {
+          "score": 0,
+          "note": ""
+        },
+        "shaucha_intent": {
+          "score": 0,
+          "note": ""
+        },
+        "sanyama_restraint": {
+          "score": 0,
+          "note": ""
+        },
+        "lokasangraha_welfare": {
+          "score": -2,
+          "note": ""
+        },
+        "viveka_discernment": {
+          "score": 0,
+          "note": ""
+        }
+      },
+      "missing_facts": [],
+      "eval_note": "Private conduct vs public speech.",
+      "verse_match": null,
+      "closest_teaching": null,
+      "retrieval_golden_verse_ref": "17.15"
+    },
+    {
+      "dilemma_id": "OOD-19",
+      "dilemma": "My uncle wants me to hire my cousin who is mediocre; refusing may fracture the family business. What is fair?",
+      "classification": "Context-dependent",
+      "internal_driver": {
+        "primary": "Nepotism pressure",
+        "hidden_risk": "Loyalty theater"
+      },
+      "core_reading": "Merit vs kinship is an old knot.",
+      "gita_analysis": "Svadharma includes stewardship of roles.",
+      "ethical_dimensions": {
+        "dharma_duty": {
+          "score": 2,
+          "note": ""
+        },
+        "satya_truth": {
+          "score": 0,
+          "note": ""
+        },
+        "ahimsa_nonharm": {
+          "score": 0,
+          "note": ""
+        },
+        "nishkama_detachment": {
+          "score": 0,
+          "note": ""
+        },
+        "shaucha_intent": {
+          "score": 0,
+          "note": ""
+        },
+        "sanyama_restraint": {
+          "score": 0,
+          "note": ""
+        },
+        "lokasangraha_welfare": {
+          "score": 1,
+          "note": ""
+        },
+        "viveka_discernment": {
+          "score": 0,
+          "note": ""
+        }
+      },
+      "missing_facts": [],
+      "eval_note": "Institutional duty vs kinship; expect CT.",
+      "verse_match": null,
+      "closest_teaching": null,
+      "retrieval_expect_closest_teaching": true
+    },
+    {
+      "dilemma_id": "OOD-20",
+      "dilemma": "I post long threads about my fasting discipline mainly so people admire my willpower. Is the practice still sattvic?",
+      "classification": "Context-dependent",
+      "internal_driver": {
+        "primary": "Discipline display",
+        "hidden_risk": "Vanity in austerity"
+      },
+      "core_reading": "The body is doing one thing; the feed is doing another.",
+      "gita_analysis": "Krishna distinguishes motive sharply.",
+      "ethical_dimensions": {
+        "dharma_duty": {
+          "score": 0,
+          "note": ""
+        },
+        "satya_truth": {
+          "score": 0,
+          "note": ""
+        },
+        "ahimsa_nonharm": {
+          "score": 0,
+          "note": ""
+        },
+        "nishkama_detachment": {
+          "score": -2,
+          "note": ""
+        },
+        "shaucha_intent": {
+          "score": -2,
+          "note": ""
+        },
+        "sanyama_restraint": {
+          "score": 0,
+          "note": ""
+        },
+        "lokasangraha_welfare": {
+          "score": 0,
+          "note": ""
+        },
+        "viveka_discernment": {
+          "score": 0,
+          "note": ""
+        }
+      },
+      "missing_facts": [],
+      "eval_note": "Showy tapas / motive pollution; expect CT.",
+      "verse_match": null,
+      "closest_teaching": null,
+      "retrieval_expect_closest_teaching": true
+    }
+  ]
+}

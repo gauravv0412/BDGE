@@ -7,6 +7,26 @@ from pydantic import BaseModel, ConfigDict, Field
 from app.verses.types import CuratedVerseEntry, DimensionKey
 
 
+def verse_coordinate(verse_ref: str) -> tuple[int, int]:
+    """
+    Map ``chapter.verse`` / ``chapter.start-end`` to (chapter, first_verse).
+
+    Used only as a **last-resort deterministic tie-break** after score, overlap
+    counts, priority, and dimension hit — not as a semantic ranking. Earlier
+    Bhagavad Gita positions sort first (smaller tuple).
+    """
+    s = verse_ref.strip().replace("–", "-")
+    if "." not in s:
+        return (9999, 9999)
+    ch_s, rest = s.split(".", 1)
+    chapter = int(ch_s)
+    if "-" in rest:
+        verse_start = int(rest.split("-", 1)[0])
+    else:
+        verse_start = int(rest)
+    return (chapter, verse_start)
+
+
 class RetrievalContext(BaseModel):
     """Signals extracted from current dilemma state for deterministic matching."""
 
@@ -68,13 +88,20 @@ def rank_candidates(
     entries: list[CuratedVerseEntry],
     context: RetrievalContext,
 ) -> list[VerseScoreResult]:
-    """Rank scored candidates, preferring stronger thematic matches."""
+    """
+    Rank scored candidates, preferring stronger thematic matches.
+
+    Tie order (first wins): non-rejected, >=2 theme hits, total_score,
+    theme_overlap count, applies_overlap count, curated ``priority``,
+    dominant-dimension hit, then ``verse_coordinate`` (earlier Gita text).
+    """
     scored = [score_entry(entry, context) for entry in entries]
 
-    def _sort_key(result: VerseScoreResult) -> tuple[int, int, int, int, int, int, str]:
+    def _sort_key(result: VerseScoreResult) -> tuple[int, int, int, int, int, int, int, int]:
         two_plus_theme = 1 if len(result.theme_overlap) >= 2 else 0
         non_rejected = 1 if not result.rejected else 0
         dim_hit = 1 if result.dominant_dimension_hit else 0
+        ch, v0 = verse_coordinate(result.verse_ref)
         return (
             -non_rejected,
             -two_plus_theme,
@@ -83,7 +110,8 @@ def rank_candidates(
             -len(result.applies_overlap),
             -result.priority_used,
             -dim_hit,
-            result.verse_ref,
+            ch,
+            v0,
         )
 
     return sorted(scored, key=_sort_key)

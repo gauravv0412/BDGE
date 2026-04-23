@@ -114,9 +114,9 @@ def _mode_a_concept_linked(
     chapter_part = f" Related grounding appears in Chapter {', '.join(chapters)}." if chapters else ""
     class_part = _classification_phrase(context.classification)
     text = (
-        f"No single verse clears the match threshold, but the closest Gita lens is {concepts[0]}."
-        f" This is a concept-level reading rather than a quoted verse.{chapter_part}"
-        f" {class_part} The Gita gives direction, but this exact modern structure needs careful judgment."
+        f"No single verse clears the match threshold, but the closest Gita lens here is {concepts[0]}."
+        f" This is concept-level guidance, not a scripture quote.{chapter_part}"
+        f" {class_part} The framing is useful, while the modern details still need case-level judgment."
     ).strip()
     return ClosestTeachingResult(
         closest_teaching=text[:_MAX_CLOSEST_TEACHING_LEN],
@@ -135,9 +135,8 @@ def _mode_b_chapter_anchored(
     concept_part = f" Key lenses: {', '.join(concepts[:3])}." if concepts else ""
     text = (
         "No verse was strong enough to attach responsibly, but the nearest zone is "
-        f"Chapter {', '.join(chapters)}.{concept_part} This is chapter-level guidance, "
-        "not a scripture quotation. "
-        f"{class_part} The Gita offers ethical frames here without mapping the full modern setup exactly."
+        f"Chapter {', '.join(chapters)}.{concept_part} This is chapter-anchored guidance, not a verse quotation. "
+        f"{class_part} The Gita offers a stable ethical frame, while the exact modern structure remains partially outside direct one-verse mapping."
     ).strip()
     return ClosestTeachingResult(
         closest_teaching=text[:_MAX_CLOSEST_TEACHING_LEN],
@@ -152,7 +151,7 @@ def _mode_c_no_clean_fit(context: RetrievalContext) -> ClosestTeachingResult:
     text = (
         "No specific verse cleared the threshold for this case. The Gita still offers useful lenses "
         "through duty, intention, non-harm, restraint, and welfare-of-all, but this modern structure "
-        "does not map cleanly to one verse without forcing certainty. "
+        "does not map cleanly to one verse without forced certainty. "
         f"{class_part}"
     ).strip()
     return ClosestTeachingResult(

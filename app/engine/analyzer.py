@@ -11,6 +11,9 @@ three sequential stages:
                                          classification, confidence, verdict_sentence
     Stage 3  verses/retriever.py       — curated verse match or closest_teaching
 
+Counterfactuals in the final output are built by ``app/counterfactuals/deterministic.py``
+(Stage 1 semantic JSON still carries counterfactual-shaped placeholders for validation).
+
 To wire in the live LLM for Stage 1, set ``use_stub=False`` in
 ``semantic_scorer`` once the API integration is ready.  Stages 2 and 3 are
 independent of that change.
@@ -29,9 +32,12 @@ from app.core.models import (
     WisdomizeEngineOutput,
 )
 from app.core.types import EngineOutputDict
+from app.counterfactuals.deterministic import build_refined_counterfactuals
 from app.semantic.scorer import semantic_scorer
 from app.verdict.aggregator import aggregate_verdict
 from app.verses.retriever import retrieve_verse
+from app.verses.scorer import RetrievalContext
+from app.verses.types import DimensionKey
 
 
 def _normalize_dilemma(text: str) -> str:
@@ -79,7 +85,24 @@ def _run_pipeline(
     )
 
     # Stage 3 — verse match or closest_teaching fallback (XOR enforced below)
-    verse_result = retrieve_verse(text, dimensions)
+    context_override = _build_retrieval_context_override(
+        dilemma_id=did,
+        dilemma=text,
+        semantic=semantic,
+        verdict_classification=str(verdict["classification"]),
+        dimensions=dimensions,
+        missing_facts=missing_facts,
+    )
+    verse_result = retrieve_verse(text, dimensions, context_override=context_override)
+
+    internal_driver_raw = semantic.get("internal_driver")
+    cf_dict = build_refined_counterfactuals(
+        dilemma=text,
+        classification=str(verdict["classification"]),
+        internal_driver=internal_driver_raw if isinstance(internal_driver_raw, dict) else None,
+        dimensions=dimensions,
+        missing_facts=missing_facts,
+    )
 
     return WisdomizeEngineOutput(
         dilemma_id=did,
@@ -94,7 +117,7 @@ def _run_pipeline(
         verse_match=verse_result["verse_match"],
         closest_teaching=verse_result["closest_teaching"],
         if_you_continue=IfYouContinue.model_validate(semantic["if_you_continue"]),
-        counterfactuals=Counterfactuals.model_validate(semantic["counterfactuals"]),
+        counterfactuals=Counterfactuals.model_validate(cf_dict),
         higher_path=str(semantic["higher_path"]),
         ethical_dimensions=dimensions,
         missing_facts=missing_facts,
@@ -110,3 +133,57 @@ def analyze_dilemma(dilemma: str) -> EngineOutputDict:
     layer.  It calls ``_run_pipeline`` and serializes the result to plain JSON.
     """
     return _run_pipeline(dilemma).model_dump(mode="json")
+
+
+def _top_dominant_dimensions(
+    dimensions: EthicalDimensions,
+    *,
+    min_score: int = 2,
+) -> list[DimensionKey]:
+    pairs = [
+        ("dharma_duty", dimensions.dharma_duty.score),
+        ("satya_truth", dimensions.satya_truth.score),
+        ("ahimsa_nonharm", dimensions.ahimsa_nonharm.score),
+        ("nishkama_detachment", dimensions.nishkama_detachment.score),
+        ("shaucha_intent", dimensions.shaucha_intent.score),
+        ("sanyama_restraint", dimensions.sanyama_restraint.score),
+        ("lokasangraha_welfare", dimensions.lokasangraha_welfare.score),
+        ("viveka_discernment", dimensions.viveka_discernment.score),
+    ]
+    ranked = sorted(pairs, key=lambda item: item[1], reverse=True)
+    return [name for name, score in ranked if score >= min_score]
+
+
+def _as_str_list(value: object) -> list[str]:
+    if not isinstance(value, list):
+        return []
+    return [str(item).strip() for item in value if str(item).strip()]
+
+
+def _build_retrieval_context_override(
+    *,
+    dilemma_id: str,
+    dilemma: str,
+    semantic: dict[str, object],
+    verdict_classification: str,
+    dimensions: EthicalDimensions,
+    missing_facts: list[str],
+) -> RetrievalContext:
+    internal_driver = semantic.get("internal_driver")
+    primary_driver = ""
+    hidden_risk = ""
+    if isinstance(internal_driver, dict):
+        primary_driver = str(internal_driver.get("primary", "")).strip()
+        hidden_risk = str(internal_driver.get("hidden_risk", "")).strip()
+
+    return RetrievalContext(
+        dilemma_id=dilemma_id,
+        classification=verdict_classification,
+        primary_driver=primary_driver,
+        hidden_risk=hidden_risk,
+        dominant_dimensions=_top_dominant_dimensions(dimensions),
+        theme_tags=_as_str_list(semantic.get("theme_tags")) or [],
+        applies_signals=_as_str_list(semantic.get("applies_signals")) or [],
+        blocker_signals=_as_str_list(semantic.get("blocker_signals")) or [],
+        missing_facts=missing_facts,
+    )

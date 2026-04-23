@@ -1,13 +1,13 @@
 """
 Counterfactual generation — stub (not currently called by the live pipeline).
 
-The live pipeline obtains counterfactuals from ``app/semantic/scorer.py``,
-which produces them as part of the LLM semantic payload.  This module is
-retained for offline testing of counterfactual shapes without invoking
-the full semantic scorer.
+The live pipeline overlays counterfactuals in ``app/engine/analyzer.py`` using
+``app/counterfactuals/deterministic.build_refined_counterfactuals`` (deterministic,
+dilemma-shaped).  ``semantic_scorer`` still returns counterfactual-shaped keys for
+schema validation of the semantic payload; the engine replaces them before output.
 
-If a deterministic or template-based counterfactual generator is ever needed
-alongside the LLM path, implement it here (§8 of design_spec.md).
+This module remains a small offline stub for tests that import
+``generate_counterfactuals`` directly.
 """
 
 from __future__ import annotations

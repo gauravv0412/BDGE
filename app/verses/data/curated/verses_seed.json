@@ -14,7 +14,7 @@
       "english": "Edwin Arnold (public domain)"
     },
     "core_teaching": "Inevitable cycles of birth and death call for steadiness over despair.",
-    "themes": ["death", "detachment", "truth"],
+    "themes": ["death", "detachment", "grief"],
     "applies_when": ["bereavement"],
     "does_not_apply_when": ["self-harm"],
     "dimension_affinity": { "viveka_discernment": 3, "nishkama_detachment": 2 },
@@ -58,8 +58,8 @@
       "english": "Edwin Arnold (public domain)"
     },
     "core_teaching": "Fulfill your own dharma rather than imitating another life path.",
-    "themes": ["duty", "discernment", "action"],
-    "applies_when": ["career-crossroads", "duty-conflict"],
+    "themes": ["duty", "discernment", "action", "right-livelihood"],
+    "applies_when": ["career-crossroads", "duty-conflict", "livelihood-harm-tradeoff", "provider-duty"],
     "does_not_apply_when": ["active-harm", "criminal-intent"],
     "dimension_affinity": { "dharma_duty": 4, "viveka_discernment": 2 },
     "priority": 4,
@@ -80,11 +80,11 @@
       "english": "Edwin Arnold (public domain)"
     },
     "core_teaching": "Unchecked desire and anger become the internal enemy.",
-    "themes": ["anger", "restraint", "self-mastery"],
+    "themes": ["anger", "restraint", "self-mastery", "desire"],
     "applies_when": ["anger-spike", "temptation"],
     "does_not_apply_when": ["self-harm"],
     "dimension_affinity": { "sanyama_restraint": 4, "shaucha_intent": 2 },
-    "priority": 4,
+    "priority": 5,
     "status": "active"
   },
   {
@@ -103,7 +103,7 @@
     },
     "core_teaching": "A wise person sees equal dignity across social categories.",
     "themes": ["equality", "compassion", "truth"],
-    "applies_when": ["class-bias"],
+    "applies_when": ["class-bias", "caste-or-identity-boundary", "family-disapproval"],
     "does_not_apply_when": ["active-harm"],
     "dimension_affinity": { "lokasangraha_welfare": 4, "ahimsa_nonharm": 2 },
     "priority": 4,
@@ -125,10 +125,10 @@
     },
     "core_teaching": "You become either your own ally or your own saboteur through action.",
     "themes": ["self-mastery", "restraint", "action"],
-    "applies_when": ["self-sabotage", "temptation"],
+    "applies_when": ["self-sabotage", "temptation", "found-property"],
     "does_not_apply_when": ["self-harm"],
     "dimension_affinity": { "sanyama_restraint": 3, "viveka_discernment": 3 },
-    "priority": 4,
+    "priority": 5,
     "status": "active"
   },
   {
@@ -148,9 +148,9 @@
     "core_teaching": "Divine qualities hold truth and compassion together.",
     "themes": ["truth", "compassion", "nonharm"],
     "applies_when": ["truth-compassion-conflict"],
-    "does_not_apply_when": ["criminal-intent", "active-harm"],
+    "does_not_apply_when": ["criminal-intent", "active-harm", "deception-intent"],
     "dimension_affinity": { "satya_truth": 3, "ahimsa_nonharm": 3 },
-    "priority": 5,
+    "priority": 4,
     "status": "active"
   },
   {
@@ -168,11 +168,11 @@
       "english": "Edwin Arnold (public domain)"
     },
     "core_teaching": "Lust, anger, and greed are self-destructive gates.",
-    "themes": ["anger", "greed", "restraint"],
+    "themes": ["desire", "anger", "greed"],
     "applies_when": ["anger-spike", "temptation"],
     "does_not_apply_when": ["self-harm"],
     "dimension_affinity": { "sanyama_restraint": 4, "shaucha_intent": 3 },
-    "priority": 5,
+    "priority": 3,
     "status": "active"
   },
   {
@@ -192,7 +192,7 @@
     "core_teaching": "Ethical speech must be truthful, beneficial, and non-agitating.",
     "themes": ["speech", "truth", "nonharm"],
     "applies_when": ["ethical-speech", "truth-compassion-conflict"],
-    "does_not_apply_when": ["deception", "active-harm"],
+    "does_not_apply_when": ["deception-intent", "active-harm", "public-shaming-intent", "retaliatory-speech"],
     "dimension_affinity": { "satya_truth": 3, "ahimsa_nonharm": 2 },
     "priority": 5,
     "status": "active"
@@ -234,11 +234,11 @@
       "english": "Edwin Arnold (public domain)"
     },
     "core_teaching": "Work aligned with your nature is preferable to borrowed ideals.",
-    "themes": ["duty", "action", "discernment"],
-    "applies_when": ["career-crossroads", "duty-conflict"],
+    "themes": ["duty", "action", "discernment", "right-livelihood"],
+    "applies_when": ["career-crossroads", "duty-conflict", "livelihood-harm-tradeoff"],
     "does_not_apply_when": ["active-harm", "criminal-intent"],
     "dimension_affinity": { "dharma_duty": 4, "viveka_discernment": 2 },
-    "priority": 4,
+    "priority": 5,
     "status": "active"
   }
 ]

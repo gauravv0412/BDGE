@@ -14,6 +14,10 @@ from pydantic import BaseModel, ConfigDict, Field
 _DEFAULT_BENCHMARK_PATH = (
     Path(__file__).resolve().parents[2] / "docs" / "benchmarks_v2_batch1_W001-W020.json"
 )
+DEFAULT_BENCHMARK_PATH = _DEFAULT_BENCHMARK_PATH
+OOD_VERSE_RETRIEVAL_BATCH1_PATH = (
+    Path(__file__).resolve().parents[2] / "docs" / "evals" / "verse_retrieval_ood_batch1.json"
+)
 
 
 class BenchmarkFile(BaseModel):

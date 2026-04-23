@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from app.verses.fallback import build_closest_teaching
 from app.verses.scorer import RetrievalContext
+from app.verses.style_guards import evaluate_closest_teaching_style
 from app.verses.types import DimensionKey
 
 
@@ -98,4 +99,19 @@ def test_fallback_stays_within_schema_length() -> None:
         )
     )
     assert len(result.closest_teaching) <= 500
+
+
+def test_fallback_style_guards_no_overclaim_or_preachy() -> None:
+    result = build_closest_teaching(
+        _context(
+            classification="Mixed",
+            themes=["duty", "action"],
+            applies=["duty-conflict"],
+            blockers=[],
+            dominant_dimensions=["dharma_duty"],
+        )
+    )
+    issues = evaluate_closest_teaching_style(result.closest_teaching)
+    assert "closest_teaching_overclaim" not in issues
+    assert "closest_teaching_preachy_imperative" not in issues
 
