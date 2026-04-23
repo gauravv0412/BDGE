@@ -15,6 +15,12 @@ Step 16 presentation refinement keeps the same behavior and contract while impro
 - Classification/alignment/confidence are shown as quick-scan summary metrics.
 - Verse/teaching, counterfactuals, missing facts, and share layer have clearer visual contrast for screenshot use.
 
+Step 19 screenshot/share refinement strengthens first-view composition:
+
+- Verdict + summary metrics + share-layer spotlight are composed as the top hero view.
+- Verse/closest teaching cards are tuned for respectful screenshot crops.
+- Empty/loading/error states are intentionally styled for cleaner demos and review captures.
+
 ## Included in Scope
 
 - Single textarea input for dilemma
@@ -47,3 +53,11 @@ Step 16 presentation refinement keeps the same behavior and contract while impro
 ## Client Rendering Note (Step 17)
 
 The page route (`/`) now serves a shell scaffold and renders analyze results directly in-browser from the `/api/v1/analyze` JSON response. The shell does not use server postback rendering for response cards.
+
+## Browser Integration Tests (Step 18)
+
+- Browser-level runtime tests live in `tests/test_frontend_shell_browser.py`.
+- They run the real shell JS in headless Chromium and intercept `/api/v1/analyze` with mocked responses.
+- Run:
+  - `python -m playwright install chromium` (first-time browser install)
+  - `pytest tests/test_frontend_shell_browser.py`

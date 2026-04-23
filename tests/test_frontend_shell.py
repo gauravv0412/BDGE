@@ -52,6 +52,9 @@ def test_frontend_shell_success_section_renderers_present() -> None:
     ]:
         assert f'"{section}"' in html
     assert "renderSuccess(payload, requestId)" in html
+    assert '"hero-grid"' in html
+    assert '"card share spotlight"' in html
+    assert '"Share-ready"' in html
 
 
 def test_frontend_shell_public_error_renderer_present() -> None:

@@ -30,10 +30,17 @@ def shell_view(request: HttpRequest) -> HttpResponse:
     h4 {{ margin: 0 0 8px; font-size: 15px; letter-spacing: 0.01em; }}
     .subtitle {{ color: #4f5b77; margin-top: 0; margin-bottom: 18px; max-width: 760px; }}
     .card {{ background: #fff; border-radius: 14px; padding: 18px 20px; margin: 14px 0; box-shadow: 0 8px 20px rgba(17, 28, 45, 0.06); border: 1px solid #e8ecf5; }}
+    .stack {{ display: grid; gap: 14px; }}
     .meta {{ background: #fcfdff; }}
     .meta-grid {{ display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; max-width: 420px; }}
     .error {{ border-left: 5px solid #d33b3b; background: #fff8f8; }}
+    .error .code-chip {{ display: inline-block; background: #f3dede; color: #7f2626; border-radius: 999px; padding: 4px 10px; font-size: 12px; margin-bottom: 8px; }}
     .share {{ border-left: 5px solid #5b49d8; background: linear-gradient(155deg, #f6f2ff 0%, #fbf9ff 100%); }}
+    .share.spotlight {{ border-left-width: 0; border: 1px solid #d9cffd; background: linear-gradient(145deg, #f1ebff 0%, #fcfaff 100%); box-shadow: 0 12px 26px rgba(91, 73, 216, 0.14); }}
+    .share-title {{ margin: 0; color: #3d2f90; font-size: 20px; letter-spacing: -0.01em; }}
+    .share-tag {{ display: inline-block; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; background: #e6ddff; color: #4a3bb9; padding: 4px 8px; border-radius: 999px; margin-bottom: 8px; }}
+    .share-quote {{ margin: 10px 0; padding: 12px 14px; background: rgba(255,255,255,0.72); border-left: 4px solid #6e59e0; border-radius: 10px; font-size: 19px; font-weight: 700; color: #241a55; }}
+    .share-question {{ margin-top: 8px; color: #433784; font-weight: 600; }}
     textarea {{ width: 100%; min-height: 128px; border-radius: 10px; border: 1px solid #c7cfdf; padding: 12px; font-size: 14px; resize: vertical; }}
     textarea:focus {{ outline: 2px solid #8fb0ff; border-color: #7fa2f9; }}
     button {{ margin-top: 12px; background: #1d4ed8; color: #fff; border: none; border-radius: 10px; padding: 10px 16px; cursor: pointer; font-weight: 600; font-size: 14px; }}
@@ -48,6 +55,7 @@ def shell_view(request: HttpRequest) -> HttpResponse:
     .verdict.negative {{ border-left-color: #c85b5b; }}
     .verdict.mixed {{ border-left-color: #b88e2d; }}
     .verse {{ background: linear-gradient(180deg, #fffdf7 0%, #fffcf2 100%); border-left: 5px solid #af8a2a; }}
+    .verse .capture-note {{ display: inline-block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: #7b6438; background: #f4e9cb; padding: 4px 7px; border-radius: 999px; margin-bottom: 8px; }}
     .verse-ref {{ color: #7a5c1e; font-size: 13px; margin: 0 0 6px; letter-spacing: 0.04em; text-transform: uppercase; }}
     .verse-sanskrit {{ font-size: 22px; color: #5a3e10; margin: 4px 0 2px; line-height: 1.4; }}
     .verse-iast {{ font-style: italic; color: #9a7640; font-size: 13px; margin: 0 0 10px; }}
@@ -69,9 +77,13 @@ def shell_view(request: HttpRequest) -> HttpResponse:
     .missing-facts li {{ margin: 6px 0; }}
     blockquote {{ margin: 8px 0; padding: 10px 12px; background: rgba(255,255,255,0.72); border-left: 4px solid #6e59e0; border-radius: 8px; font-size: 17px; font-weight: 600; }}
     #loading {{ display:none; color:#1f4ed8; font-weight:700; margin-top:10px; background:#eaf1ff; border:1px solid #cddcff; border-radius:8px; padding:8px 10px; }}
+    .loading-dot {{ display:inline-block; margin-left:6px; width:6px; height:6px; border-radius:999px; background:#1f4ed8; vertical-align:middle; }}
+    .hero-grid {{ display:grid; grid-template-columns: 1.3fr 1fr; gap: 14px; align-items: stretch; }}
+    .empty-hint {{ color:#5f6b86; }}
     @media (max-width: 860px) {{
-      .summary-grid, .two-col, .row, .meta-grid {{ grid-template-columns: 1fr; }}
+      .summary-grid, .two-col, .row, .meta-grid, .hero-grid {{ grid-template-columns: 1fr; }}
       .lead {{ font-size: 24px; }}
+      .share-quote {{ font-size: 17px; }}
     }}
   </style>
 </head>
@@ -87,12 +99,12 @@ def shell_view(request: HttpRequest) -> HttpResponse:
         <div id="client-validation" style="color:#c52626;margin-top:8px;"></div>
         <button id="submit-btn" type="submit">Analyze Dilemma</button>
       </form>
-      <p id="loading">Analyzing dilemma and preparing the structured response...</p>
+      <p id="loading">Analyzing dilemma and preparing the structured response...<span class="loading-dot"></span></p>
     </section>
-    <div id="result-root">
+    <div id="result-root" class="stack">
       <section class="card meta" id="empty-state">
         <h2>Ready for Analysis</h2>
-        <p>Submit a dilemma to render the full Wisdomize response here.</p>
+        <p class="empty-hint">Submit a dilemma to render a screenshot-ready Wisdomize response here.</p>
       </section>
     </div>
   </div>
@@ -137,7 +149,7 @@ def shell_view(request: HttpRequest) -> HttpResponse:
         resultRoot.replaceChildren();
         const card = make("section", "card error");
         card.appendChild(make("h2", "", "Request Failed"));
-        appendPair(card, "Code", text((error && error.code) || "engine_execution_failed"));
+        card.appendChild(make("div", "code-chip", text((error && error.code) || "engine_execution_failed")));
         appendPair(card, "Message", text((error && error.message) || "Internal engine failure."));
         if (requestId) appendPair(card, "Request ID", requestId);
         resultRoot.appendChild(card);
@@ -147,6 +159,7 @@ def shell_view(request: HttpRequest) -> HttpResponse:
         const closest = output && output.closest_teaching;
         const card = make("section", "card verse");
         if (verse) {{
+          card.appendChild(make("div", "capture-note", "Scriptural guidance"));
           card.appendChild(make("h3", "", "Verse Match"));
           card.appendChild(make("p", "verse-ref", text(verse.verse_ref)));
           card.appendChild(make("p", "verse-sanskrit", text(verse.sanskrit_devanagari)));
@@ -158,6 +171,7 @@ def shell_view(request: HttpRequest) -> HttpResponse:
           appendPair(card, "Why it applies", verse.why_it_applies);
           card.appendChild(make("p", "verse-confidence", "Match confidence: " + text(verse.match_confidence)));
         }} else if (closest) {{
+          card.appendChild(make("div", "capture-note", "Scriptural guidance"));
           card.appendChild(make("h3", "", "Closest Teaching"));
           card.appendChild(make("p", "", text(closest)));
         }} else {{
@@ -210,7 +224,8 @@ def shell_view(request: HttpRequest) -> HttpResponse:
         if (requestId) appendPair(metaCard, "Request ID", requestId);
         resultRoot.appendChild(metaCard);
 
-        const verdict = make("section", "card verdict " + tone);
+        const hero = make("section", "hero-grid");
+        const verdict = make("div", "card verdict " + tone);
         verdict.appendChild(make("h3", "", "Verdict"));
         verdict.appendChild(make("p", "lead", text(output.verdict_sentence)));
         const summary = make("div", "summary-grid");
@@ -221,7 +236,15 @@ def shell_view(request: HttpRequest) -> HttpResponse:
           summary.appendChild(m);
         }});
         verdict.appendChild(summary);
-        resultRoot.appendChild(verdict);
+        hero.appendChild(verdict);
+
+        const shareSpotlight = make("div", "card share spotlight");
+        shareSpotlight.appendChild(make("div", "share-tag", "Share-ready"));
+        shareSpotlight.appendChild(make("h3", "share-title", text(output.share_layer && output.share_layer.anonymous_share_title)));
+        shareSpotlight.appendChild(make("div", "share-quote", text(output.share_layer && output.share_layer.card_quote)));
+        shareSpotlight.appendChild(make("p", "share-question", text(output.share_layer && output.share_layer.reflective_question)));
+        hero.appendChild(shareSpotlight);
+        resultRoot.appendChild(hero);
 
         const inner = make("section", "card");
         inner.appendChild(make("h3", "", "Inner Dynamics"));

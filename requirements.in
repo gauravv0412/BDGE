@@ -2,3 +2,4 @@ pydantic>=2.8
 jsonschema>=4.23
 pytest>=8.3
 rich>=13.7
+playwright>=1.58
