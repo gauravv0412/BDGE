@@ -76,6 +76,28 @@ def test_handle_engine_request_success_envelope_stable(monkeypatch: Any) -> None
     )
     assert isinstance(resp, EngineAnalyzeResponse)
     dumped = resp.model_dump(mode="json")
-    assert sorted(dumped.keys()) == ["meta", "output"]
+    assert list(dumped.keys()) == ["meta", "output"]
     assert dumped["meta"]["contract_version"] == "1.0"
     assert dumped["output"]["dilemma_id"] == "contract-test-02"
+
+
+def test_handle_engine_request_sanitizes_long_internal_exception(monkeypatch: Any) -> None:
+    long_exception_text = "x" * 1200
+
+    def _raise_long_exception(dilemma: str) -> dict[str, Any]:
+        raise RuntimeError(long_exception_text)
+
+    monkeypatch.setattr("app.engine.analyzer.semantic_scorer", _raise_long_exception)
+    resp = handle_engine_request(
+        {
+            "dilemma": "Another synthetic dilemma for the analyzer stub path, long enough for schema.",
+            "dilemma_id": "contract-test-03",
+            "contract_version": "1.0",
+        }
+    )
+    assert isinstance(resp, EngineAnalyzeErrorResponse)
+    dumped = resp.model_dump(mode="json")
+    assert dumped["error"]["code"] == "engine_execution_failed"
+    assert dumped["error"]["message"] == "Internal engine failure."
+    assert len(dumped["error"]["message"]) <= 500
+    assert long_exception_text not in dumped["error"]["message"]

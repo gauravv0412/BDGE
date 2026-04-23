@@ -1,0 +1,29 @@
+{
+  "contract_version": "1.0",
+  "envelope_shape": {
+    "required_top_level_keys": ["meta", "error"],
+    "error_required_keys": ["code", "message"]
+  },
+  "errors": [
+    {
+      "code": "request_validation_failed",
+      "http_status": 400,
+      "meaning": "Request payload or contract-version validation failed at public boundary.",
+      "message_policy": "descriptive_validation_message_bounded_to_500_chars"
+    },
+    {
+      "code": "engine_execution_failed",
+      "http_status": 500,
+      "meaning": "Unexpected internal failure while processing an accepted request.",
+      "message_policy": "fixed_sanitized_public_message",
+      "fixed_message": "Internal engine failure."
+    }
+  ],
+  "client_reliance": {
+    "stable_fields": ["error.code", "http_status", "envelope_shape"],
+    "message_stability": {
+      "request_validation_failed": "descriptive_but_not_programmatic",
+      "engine_execution_failed": "fixed_string"
+    }
+  }
+}

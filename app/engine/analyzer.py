@@ -41,6 +41,7 @@ from app.core.models import (
 )
 from app.core.types import EngineOutputDict
 from app.counterfactuals.deterministic import build_refined_counterfactuals
+from app.engine.public_errors import normalize_public_error
 from app.semantic.scorer import load_semantic_config, semantic_scorer
 from app.narrative.deterministic import build_refined_higher_path, build_refined_if_you_continue
 from app.share.deterministic import build_refined_share_layer
@@ -51,8 +52,6 @@ from app.verses.types import DimensionKey
 
 _CONTRACT_VERSION = "1.0"
 _ENGINE_VERSION = "2.1"
-
-
 def _normalize_dilemma(text: str) -> str:
     """
     Clamp *text* to JSON Schema length bounds (20–600 chars).
@@ -217,20 +216,21 @@ def handle_engine_request(
         )
     try:
         return analyze_dilemma_request(request)
-    except Exception as exc:  # noqa: BLE001
+    except Exception:  # noqa: BLE001
         return build_engine_error_response(
             code="engine_execution_failed",
-            message=str(exc),
+            message="Internal engine failure.",
         )
 
 
 def build_engine_error_response(*, code: str, message: str) -> EngineAnalyzeErrorResponse:
     """Construct a stable API error envelope with standard metadata."""
+    normalized_code, normalized_message = normalize_public_error(code=code, message=message)
     return EngineAnalyzeErrorResponse(
         meta=_build_response_meta(),
         error=EngineError(
-            code=code,
-            message=message,
+            code=normalized_code,
+            message=normalized_message,
         ),
     )
 
