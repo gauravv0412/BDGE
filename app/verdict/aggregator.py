@@ -1,5 +1,5 @@
 """
-Verdict aggregation: alignment score, classification, confidence, stub prose.
+Verdict aggregation: alignment score, classification, confidence, sentence checks.
 
 Dimension *notes* remain the scorer’s responsibility; this layer only consumes
 ``EthicalDimensions`` and ambiguity signals described in design_spec.md §3, §6–7.
@@ -7,6 +7,7 @@ Dimension *notes* remain the scorer’s responsibility; this layer only consumes
 
 from __future__ import annotations
 
+import re
 from typing import TypedDict
 
 from app.core.models import Classification, EthicalDimensions
@@ -31,21 +32,75 @@ class VerdictResult(TypedDict):
     missing_facts: list[str]
 
 
-def _stub_verdict_sentence(cls: Classification) -> str:
-    """Short placeholder until narrative generation exists (schema ≤160 chars)."""
-    return {
-        Classification.DHARMIC: "[STUB] Leans dharmic by the current aggregate.",
-        Classification.ADHARMIC: "[STUB] Leans adharmic by the current aggregate.",
-        Classification.MIXED: "[STUB] Mixed trade-offs; narrative pending.",
-        Classification.CONTEXT_DEPENDENT: "[STUB] Outcome hinges on unstated facts.",
-        Classification.INSUFFICIENT_INFORMATION: "[STUB] Too little to score reliably.",
-    }[cls]
+def _clip_sentence(text: str, max_len: int = 160) -> str:
+    cleaned = re.sub(r"\s+", " ", (text or "")).strip()
+    if len(cleaned) <= max_len:
+        return cleaned
+    clipped = cleaned[: max_len - 1].rstrip(" ,;:-")
+    return f"{clipped}."
+
+
+def _is_invalid_sentence(text: str) -> bool:
+    low = text.lower()
+    if not text:
+        return True
+    banned = (
+        "[stub]",
+        "narrative pending",
+        "short answer",
+    )
+    if any(b in low for b in banned):
+        return True
+    if re.search(r"\byou (must|should|need to|have to|ought to)\b", low):
+        return True
+    return False
+
+
+def _fallback_verdict_sentence(
+    *,
+    classification: Classification,
+    alignment_score: int,
+    missing_facts: list[str],
+) -> str:
+    if classification == Classification.DHARMIC:
+        sentence = "The current action is ethically aligned on balance, with method and motive largely coherent."
+    elif classification == Classification.ADHARMIC:
+        sentence = "The current action is ethically misaligned on balance, with preventable harm or distortion driving the move."
+    elif classification == Classification.MIXED:
+        sentence = "The current action protects one value but creates enough ethical cost to keep the verdict genuinely split."
+    elif classification == Classification.CONTEXT_DEPENDENT:
+        sentence = "The ethical verdict turns on unresolved facts that could plausibly reverse this classification."
+    else:
+        sentence = "The available facts are too thin to issue a stable ethical verdict with responsible confidence."
+    if abs(alignment_score) >= 75 and classification in (Classification.DHARMIC, Classification.ADHARMIC):
+        sentence = sentence.replace("on balance", "with strong directional signal")
+    if missing_facts and classification != Classification.INSUFFICIENT_INFORMATION:
+        sentence = sentence.replace(".", ", while key facts still shape execution details.")
+    return _clip_sentence(sentence)
+
+
+def _resolve_verdict_sentence(
+    *,
+    semantic_verdict_sentence: str | None,
+    classification: Classification,
+    alignment_score: int,
+    missing_facts: list[str],
+) -> str:
+    candidate = _clip_sentence(semantic_verdict_sentence or "")
+    if not _is_invalid_sentence(candidate):
+        return candidate
+    return _fallback_verdict_sentence(
+        classification=classification,
+        alignment_score=alignment_score,
+        missing_facts=missing_facts,
+    )
 
 
 def aggregate_verdict(
     dimensions: EthicalDimensions,
     dilemma: str,
     *,
+    semantic_verdict_sentence: str | None = None,
     scorable_mask: tuple[bool, bool, bool, bool, bool, bool, bool, bool] | None = None,
     context_dependent_override: bool = False,
     ambiguity_can_flip_class: bool = False,
@@ -88,6 +143,11 @@ def aggregate_verdict(
         alignment_score=alignment_score,
         classification=classification,
         confidence=confidence,
-        verdict_sentence=_stub_verdict_sentence(classification),
+        verdict_sentence=_resolve_verdict_sentence(
+            semantic_verdict_sentence=semantic_verdict_sentence,
+            classification=classification,
+            alignment_score=alignment_score,
+            missing_facts=facts,
+        ),
         missing_facts=facts,
     )

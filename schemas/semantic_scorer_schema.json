@@ -4,6 +4,7 @@
   "description": "Output contract for the LLM semantic interpretation layer. Consumed by the deterministic verdict aggregator and the curated verse retriever. Does NOT emit alignment_score, classification, confidence, verse_match, closest_teaching, or canonical verse text.",
   "type": "object",
   "required": [
+    "verdict_sentence",
     "ethical_dimensions",
     "internal_driver",
     "core_reading",
@@ -17,6 +18,7 @@
   ],
   "additionalProperties": false,
   "properties": {
+    "verdict_sentence": { "type": "string", "minLength": 20, "maxLength": 160 },
     "ethical_dimensions": {
       "type": "object",
       "required": [

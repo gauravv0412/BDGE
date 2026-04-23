@@ -48,12 +48,15 @@ Requirements:
     evidence and clear harm. Many missing facts may refine tactics, but class itself may stay stable.
 - reflective_question must be nested inside share_layer and must end with '?'.
 - All required top-level fields must be present:
-  ethical_dimensions, internal_driver, core_reading, gita_analysis, higher_path,
+  verdict_sentence, ethical_dimensions, internal_driver, core_reading, gita_analysis, higher_path,
   missing_facts, ambiguity_flag, if_you_continue, counterfactuals, share_layer.
+- verdict_sentence must be one declarative top-line judgment (<=160 chars), anti-preachy,
+  and not a label-only phrase.
 - Do not include verse_match, closest_teaching, alignment_score, classification, or confidence.
 
 Compact JSON shape (field names must match exactly):
 {{
+  "verdict_sentence": "...",
   "ethical_dimensions": {{
     "dharma_duty": {{"score": 0, "note": "..."}},
     "satya_truth": {{"score": 0, "note": "..."}},

@@ -181,6 +181,7 @@ def _call_anthropic_once(user_prompt: str, config: dict[str, Any]) -> dict[str, 
 def _stub_payload() -> dict[str, Any]:
     """Schema-valid stub payload for scaffold mode."""
     return {
+        "verdict_sentence": "The hardest part here is not the choice itself but whether the method stays truthful under pressure.",
         "ethical_dimensions": {
             "dharma_duty": {"score": 1, "note": "Role obligations are present but not singularly decisive here."},
             "satya_truth": {"score": 2, "note": "The user appears oriented toward truthful disclosure over convenience."},

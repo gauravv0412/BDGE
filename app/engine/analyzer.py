@@ -12,8 +12,9 @@ three sequential stages:
     Stage 3  verses/retriever.py       — curated verse match or closest_teaching
 
 Counterfactuals in the final output are built by ``app/counterfactuals/deterministic.py``;
-``share_layer`` is built by ``app/share/deterministic.py``.  Stage 1 semantic JSON still
-carries placeholder-shaped fields for those keys for validation only.
+``share_layer`` by ``app/share/deterministic.py``; ``if_you_continue`` and ``higher_path``
+by ``app/narrative/deterministic.py``.  Stage 1 semantic JSON still carries placeholder-shaped
+fields for those keys for validation only.
 
 To wire in the live LLM for Stage 1, set ``use_stub=False`` in
 ``semantic_scorer`` once the API integration is ready.  Stages 2 and 3 are
@@ -23,9 +24,15 @@ independent of that change.
 from __future__ import annotations
 
 import uuid
+from typing import Any
 
 from app.core.models import (
     Counterfactuals,
+    EngineAnalyzeErrorResponse,
+    EngineAnalyzeRequest,
+    EngineAnalyzeResponse,
+    EngineError,
+    EngineResponseMeta,
     EthicalDimensions,
     IfYouContinue,
     InternalDriver,
@@ -34,12 +41,16 @@ from app.core.models import (
 )
 from app.core.types import EngineOutputDict
 from app.counterfactuals.deterministic import build_refined_counterfactuals
-from app.semantic.scorer import semantic_scorer
+from app.semantic.scorer import load_semantic_config, semantic_scorer
+from app.narrative.deterministic import build_refined_higher_path, build_refined_if_you_continue
 from app.share.deterministic import build_refined_share_layer
 from app.verdict.aggregator import aggregate_verdict
 from app.verses.retriever import retrieve_verse
 from app.verses.scorer import RetrievalContext
 from app.verses.types import DimensionKey
+
+_CONTRACT_VERSION = "1.0"
+_ENGINE_VERSION = "2.1"
 
 
 def _normalize_dilemma(text: str) -> str:
@@ -82,6 +93,7 @@ def _run_pipeline(
     verdict = aggregate_verdict(
         dimensions,
         text,
+        semantic_verdict_sentence=str(semantic.get("verdict_sentence", "")).strip() or None,
         ambiguity_can_flip_class=ambiguity_flag,
         missing_facts=missing_facts,
     )
@@ -118,6 +130,26 @@ def _run_pipeline(
         counterfactuals=counterfactuals_model,
         missing_facts=missing_facts,
     )
+    iyc_dict = build_refined_if_you_continue(
+        dilemma=text,
+        classification=str(verdict["classification"]),
+        internal_driver=internal_driver_raw if isinstance(internal_driver_raw, dict) else None,
+        dimensions=dimensions,
+        missing_facts=missing_facts,
+        counterfactuals=counterfactuals_model,
+        verse_match=verse_result["verse_match"],
+        closest_teaching=verse_result["closest_teaching"],
+    )
+    higher_path_refined = build_refined_higher_path(
+        dilemma=text,
+        classification=str(verdict["classification"]),
+        internal_driver=internal_driver_raw if isinstance(internal_driver_raw, dict) else None,
+        dimensions=dimensions,
+        missing_facts=missing_facts,
+        counterfactuals=counterfactuals_model,
+        verse_match=verse_result["verse_match"],
+        closest_teaching=verse_result["closest_teaching"],
+    )
 
     return WisdomizeEngineOutput(
         dilemma_id=did,
@@ -131,9 +163,9 @@ def _run_pipeline(
         gita_analysis=str(semantic["gita_analysis"]),
         verse_match=verse_result["verse_match"],
         closest_teaching=verse_result["closest_teaching"],
-        if_you_continue=IfYouContinue.model_validate(semantic["if_you_continue"]),
+        if_you_continue=IfYouContinue.model_validate(iyc_dict),
         counterfactuals=counterfactuals_model,
-        higher_path=str(semantic["higher_path"]),
+        higher_path=higher_path_refined,
         ethical_dimensions=dimensions,
         missing_facts=missing_facts,
         share_layer=ShareLayer.model_validate(share_dict),
@@ -148,6 +180,69 @@ def analyze_dilemma(dilemma: str) -> EngineOutputDict:
     layer.  It calls ``_run_pipeline`` and serializes the result to plain JSON.
     """
     return _run_pipeline(dilemma).model_dump(mode="json")
+
+
+def analyze_dilemma_request(request: EngineAnalyzeRequest) -> EngineAnalyzeResponse:
+    """
+    Public request/response contract entrypoint for API boundary wiring.
+
+    Orchestrates:
+    - Stage 1: ``app.semantic.scorer.semantic_scorer``
+    - Stage 2: ``app.verdict.aggregator.aggregate_verdict``
+    - Stage 3: ``app.verses.retriever.retrieve_verse``
+    - Deterministic narrative, counterfactual, and share overlays
+    """
+    output = _run_pipeline(request.dilemma, dilemma_id=request.dilemma_id)
+    return EngineAnalyzeResponse(
+        meta=_build_response_meta(),
+        output=output,
+    )
+
+
+def handle_engine_request(
+    payload: dict[str, Any],
+) -> EngineAnalyzeResponse | EngineAnalyzeErrorResponse:
+    """
+    API-facing boundary handler that validates request and returns a stable envelope.
+
+    Unlike ``analyze_dilemma_request``, this function does not raise validation or
+    runtime exceptions to callers; it returns ``EngineAnalyzeErrorResponse`` instead.
+    """
+    try:
+        request = EngineAnalyzeRequest.model_validate(payload)
+    except Exception as exc:  # noqa: BLE001
+        return EngineAnalyzeErrorResponse(
+            meta=_build_response_meta(),
+            error=EngineError(
+                code="request_validation_failed",
+                message=str(exc),
+            ),
+        )
+    try:
+        return analyze_dilemma_request(request)
+    except Exception as exc:  # noqa: BLE001
+        return EngineAnalyzeErrorResponse(
+            meta=_build_response_meta(),
+            error=EngineError(
+                code="engine_execution_failed",
+                message=str(exc),
+            ),
+        )
+
+
+def _build_response_meta() -> EngineResponseMeta:
+    return EngineResponseMeta(
+        contract_version=_CONTRACT_VERSION,
+        engine_version=_ENGINE_VERSION,
+        semantic_mode_default=_semantic_mode_default(),
+    )
+
+
+def _semantic_mode_default() -> str:
+    cfg = load_semantic_config()
+    if bool(cfg.get("use_stub_default", True)):
+        return "stub_default"
+    return "live_default"
 
 
 def _top_dominant_dimensions(

@@ -13,6 +13,7 @@ All stub data now lives in the stage modules it logically belongs to:
   - app/counterfactuals/generator.py (offline stub helper)
   - app/share/deterministic.py (share_layer in pipeline output)
   - app/share/layer.py (offline stub helper)
+  - app/narrative/deterministic.py (if_you_continue, higher_path in pipeline output)
 """
 
 from __future__ import annotations

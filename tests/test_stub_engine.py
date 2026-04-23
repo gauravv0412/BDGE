@@ -46,6 +46,7 @@ def test_analyzer_uses_semantic_scorer(monkeypatch: Any) -> None:
     def _fake_semantic_scorer(dilemma: str, *, use_stub: bool = True) -> dict[str, Any]:
         calls.append(dilemma)
         return {
+            "verdict_sentence": "The apparent fix secures image first and leaves the duty ledger ethically unstable.",
             "ethical_dimensions": {
                 "dharma_duty": {"score": 1, "note": "fake note one."},
                 "satya_truth": {"score": 1, "note": "fake note two."},
@@ -100,3 +101,27 @@ def test_analyzer_uses_semantic_scorer(monkeypatch: Any) -> None:
     assert out["internal_driver"]["primary"] == "Fake semantic primary driver for test verification."
     ok, errors = validate_against_output_schema(out)
     assert ok, errors
+
+
+def test_analyzer_ships_semantic_authored_verdict_sentence(monkeypatch: Any) -> None:
+    sentence = "The draft response protects calm now but quietly weakens the ethical core of the decision."
+
+    def _semantic_stub(dilemma: str) -> dict[str, Any]:
+        payload = semantic_scorer(dilemma, use_stub=True)
+        payload["verdict_sentence"] = sentence
+        return payload
+
+    monkeypatch.setattr("app.engine.analyzer.semantic_scorer", _semantic_stub)
+    out = analyze_dilemma("A long enough dilemma text to keep schema validation satisfied.")
+    assert out["verdict_sentence"] == sentence
+
+
+def test_analyzer_sanitizes_invalid_semantic_verdict_sentence(monkeypatch: Any) -> None:
+    def _semantic_stub(dilemma: str) -> dict[str, Any]:
+        payload = semantic_scorer(dilemma, use_stub=True)
+        payload["verdict_sentence"] = "You should do this immediately."
+        return payload
+
+    monkeypatch.setattr("app.engine.analyzer.semantic_scorer", _semantic_stub)
+    out = analyze_dilemma("A long enough dilemma text to keep schema validation satisfied.")
+    assert "you should" not in out["verdict_sentence"].lower()

@@ -182,3 +182,39 @@ def test_missing_facts_caps_confidence_even_when_classification_stays_dharmic() 
     )
     assert v["classification"] == Classification.DHARMIC
     assert v["confidence"] <= 0.85
+
+
+def test_semantic_authored_verdict_sentence_is_shipped() -> None:
+    dims = _uniform_dimensions(5)
+    v = aggregate_verdict(
+        dims,
+        "Should I hide an audit error to protect quarterly targets and save my team?",
+        semantic_verdict_sentence="The audit concealment move breaks ethical coherence despite short-term pressure relief.",
+    )
+    sentence = v["verdict_sentence"]
+    assert len(sentence) <= 160
+    assert sentence.startswith("The audit concealment move breaks ethical coherence")
+
+
+def test_invalid_semantic_verdict_sentence_falls_back_safely() -> None:
+    dims = _uniform_dimensions(-5)
+    v = aggregate_verdict(
+        dims,
+        "My manager asked me to falsify reimbursement receipts before finance review.",
+        semantic_verdict_sentence="You should definitely do this now.",
+    )
+    sentence = v["verdict_sentence"].lower()
+    assert "you should" not in sentence
+    assert "ethically" in sentence
+
+
+def test_missing_semantic_verdict_sentence_falls_back() -> None:
+    dims = _uniform_dimensions(1)
+    v = aggregate_verdict(
+        dims,
+        "Should I post humiliating screenshots after being slandered at work?",
+        semantic_verdict_sentence=None,
+    )
+    sentence = v["verdict_sentence"]
+    assert len(sentence) <= 160
+    assert sentence

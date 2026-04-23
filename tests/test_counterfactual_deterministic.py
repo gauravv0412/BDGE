@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from app.core.models import Counterfactuals, DimensionScore, EthicalDimensions
-from app.counterfactuals.deterministic import build_refined_counterfactuals
+from app.counterfactuals.deterministic import build_refined_counterfactuals, detect_dilemma_family
 from app.engine.analyzer import analyze_dilemma
 
 
@@ -165,3 +165,10 @@ def test_eval_slice_no_template_domination() -> None:
         assert len(set(ad.split())) > 12
         bodies.append(ad)
     assert len(set(bodies)) >= 5, "adharmic contexts should mostly diverge across dilemmas"
+
+
+def test_family_detection_word_boundary_avoids_ex_in_next() -> None:
+    family = detect_dilemma_family(
+        "I need to decide the next step after a contract dispute with no relationship context."
+    )
+    assert family != "relationship"

@@ -57,8 +57,11 @@ def _situation_spine(dilemma: str, *, max_len: int = 160) -> str:
 
 
 def _detect_family(low: str) -> Family:
+    def _has_word(token: str) -> bool:
+        return bool(re.search(rf"\b{re.escape(token)}\b", low))
+
     if any(
-        w in low
+        _has_word(w)
         for w in (
             "manager",
             "boss",
@@ -67,19 +70,18 @@ def _detect_family(low: str) -> Family:
             "colleague",
             "office",
             "promotion",
-            "work ",
-            " my job",
-            "team lead",
+            "work",
+            "job",
             "director",
             "vp",
             "executive",
             "leadership",
             "board",
         )
-    ):
+    ) or "team lead" in low:
         return "work"
     if any(
-        w in low
+        _has_word(w)
         for w in (
             "spouse",
             "partner",
@@ -89,24 +91,23 @@ def _detect_family(low: str) -> Family:
             "father",
             "family",
             "child",
-            "divorc",
             "relative",
+            "ex",
         )
-    ):
+    ) or "divorc" in low:
         return "relationship"
     if any(
-        w in low
+        _has_word(w)
         for w in (
             "lie",
             "truth",
             "hide",
             "disclose",
             "secret",
-            "tell them",
             "conceal",
             "honest",
         )
-    ):
+    ) or "tell them" in low:
         return "truth_disclosure"
     return "general"
 
@@ -127,11 +128,30 @@ def _axis_phrases(dimensions: EthicalDimensions) -> tuple[str, str]:
     return neg_label, pos_label
 
 
+def _looks_like_taxonomy_label(text: str) -> bool:
+    """
+    Suppress curator-style tags (e.g. ``provider-duty``, ``career_crossroads``)
+    from user-facing narrative surfaces.
+    """
+    t = (text or "").strip().lower()
+    if not t:
+        return False
+    if re.fullmatch(r"[a-z0-9]+(?:[-_][a-z0-9]+){1,5}", t):
+        return True
+    if " " not in t and any(ch in t for ch in ("-", "_")):
+        return True
+    return False
+
+
 def _driver_snippets(internal_driver: dict[str, Any] | None) -> tuple[str, str]:
     if not isinstance(internal_driver, dict):
         return "the stated tension", "an unnamed rationalization"
     primary = _clip(str(internal_driver.get("primary", "")), 90).rstrip(".!?")
     hidden = _clip(str(internal_driver.get("hidden_risk", "")), 90).rstrip(".!?")
+    if _looks_like_taxonomy_label(primary):
+        primary = ""
+    if _looks_like_taxonomy_label(hidden):
+        hidden = ""
     if not primary:
         primary = "the stated tension"
     if not hidden:

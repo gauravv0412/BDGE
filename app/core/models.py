@@ -149,3 +149,50 @@ class WisdomizeEngineOutput(BaseModel):
         if not has_verse and self.closest_teaching is not None and not self.closest_teaching.strip():
             raise ValueError("closest_teaching must be non-empty when verse_match is null.")
         return self
+
+
+class EngineAnalyzeRequest(BaseModel):
+    """Public engine request shape for API-facing boundary."""
+
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    dilemma: str = Field(min_length=20, max_length=600)
+    dilemma_id: str | None = Field(default=None, min_length=1, max_length=64)
+    contract_version: str = Field(default="1.0", min_length=1, max_length=16)
+
+
+class EngineResponseMeta(BaseModel):
+    """Stable metadata envelope for API-facing responses."""
+
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    contract_version: str = Field(min_length=1, max_length=16)
+    engine_version: str = Field(min_length=1, max_length=16)
+    semantic_mode_default: str = Field(min_length=1, max_length=32)
+
+
+class EngineError(BaseModel):
+    """Stable error payload for API-facing error envelopes."""
+
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    code: str = Field(min_length=1, max_length=64)
+    message: str = Field(min_length=1, max_length=500)
+
+
+class EngineAnalyzeResponse(BaseModel):
+    """Public success response wrapper for stable API contracts."""
+
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    meta: EngineResponseMeta
+    output: WisdomizeEngineOutput
+
+
+class EngineAnalyzeErrorResponse(BaseModel):
+    """Public error response wrapper for stable API contracts."""
+
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    meta: EngineResponseMeta
+    error: EngineError
