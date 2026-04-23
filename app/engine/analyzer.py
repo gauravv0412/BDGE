@@ -211,23 +211,28 @@ def handle_engine_request(
     try:
         request = EngineAnalyzeRequest.model_validate(payload)
     except Exception as exc:  # noqa: BLE001
-        return EngineAnalyzeErrorResponse(
-            meta=_build_response_meta(),
-            error=EngineError(
-                code="request_validation_failed",
-                message=str(exc),
-            ),
+        return build_engine_error_response(
+            code="request_validation_failed",
+            message=str(exc),
         )
     try:
         return analyze_dilemma_request(request)
     except Exception as exc:  # noqa: BLE001
-        return EngineAnalyzeErrorResponse(
-            meta=_build_response_meta(),
-            error=EngineError(
-                code="engine_execution_failed",
-                message=str(exc),
-            ),
+        return build_engine_error_response(
+            code="engine_execution_failed",
+            message=str(exc),
         )
+
+
+def build_engine_error_response(*, code: str, message: str) -> EngineAnalyzeErrorResponse:
+    """Construct a stable API error envelope with standard metadata."""
+    return EngineAnalyzeErrorResponse(
+        meta=_build_response_meta(),
+        error=EngineError(
+            code=code,
+            message=message,
+        ),
+    )
 
 
 def _build_response_meta() -> EngineResponseMeta:
