@@ -70,7 +70,20 @@ Current state: stub engine with schema validation in place. Real dimension score
 ## Commands
 
 ```bash
-# Run all tests
+# Fast tests (excludes Playwright browser tests — default local feedback)
+make test-fast
+# or: pytest -m "not browser"
+
+# Browser tests only (requires: playwright install chromium)
+make test-browser
+
+# Full suite including browser
+make test-all
+
+# Smoke: in-process POST /api/v1/analyze (no server)
+make smoke
+
+# Run all tests (same as make test-all)
 pytest
 
 # Run a single test file
@@ -88,6 +101,8 @@ PYTHONPATH=. python -m app.evals.run_benchmarks --benchmark docs/benchmarks_v2_b
 ```
 
 The virtual environment is at `.venv/`. Tests are discovered automatically via `pytest.ini` (`pythonpath = .`, `testpaths = tests`).
+
+Trusted-user / demo expectations (safety copy, limitations, checklist): **`docs/first_user_readiness.md`**.
 
 ## Architecture
 

@@ -21,6 +21,12 @@ Step 19 screenshot/share refinement strengthens first-view composition:
 - Verse/closest teaching cards are tuned for respectful screenshot crops.
 - Empty/loading/error states are intentionally styled for cleaner demos and review captures.
 
+Step 24 adds **trust copy only** (no new API fields):
+
+- A short **input-area safety note** (`#shell-input-safety`) before the textarea: emergencies, legal/medical decisions, self-harm, harm to others, acute crisis → qualified help, not this tool alone.
+- A **global footer disclaimer** (`#shell-global-disclaimer`): reflective guidance, plural interpretation of scripture, not sole authority for urgent harm or tailored professional care.
+- These strings are **not** injected into each analysis result card (single global surfaces only).
+
 ## Included in Scope
 
 - Single textarea input for dilemma

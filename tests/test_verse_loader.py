@@ -8,11 +8,13 @@ from pathlib import Path
 import pytest
 
 from app.verses.loader import (
+    curated_verses_seed_path,
     load_applies_when_vocab,
     load_blocker_vocab,
     load_curated_verses,
     load_theme_vocab,
     validate_curated_entry,
+    validate_curated_seed_payload,
 )
 from app.verses.types import VerseSource
 
@@ -44,6 +46,14 @@ def _sample_entry(*, status: str = "active", hindi_translation: str | None = "Hi
 
 def _write_seed(path: Path, entries: list[dict]) -> None:
     path.write_text(json.dumps(entries), encoding="utf-8")
+
+
+def test_validate_curated_seed_payload_matches_load_curated_verses() -> None:
+    path = curated_verses_seed_path()
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    from_payload = validate_curated_seed_payload(payload)
+    from_loader = load_curated_verses(path)
+    assert [e.model_dump() for e in from_payload] == [e.model_dump() for e in from_loader]
 
 
 def test_load_curated_vocab_files() -> None:

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import os
 import re
+from pathlib import Path
 
 import django
 from django.test import Client
@@ -25,6 +26,23 @@ def test_frontend_shell_page_presence() -> None:
     assert 'textarea id="dilemma"' in html
     assert 'id="result-root"' in html
     assert "Ready for Analysis" in html
+
+
+def test_first_user_readiness_doc_exists() -> None:
+    root = Path(__file__).resolve().parents[1]
+    doc = root / "docs" / "first_user_readiness.md"
+    assert doc.is_file()
+    text = doc.read_text(encoding="utf-8")
+    assert "## What the product can do today" in text
+    assert "crisis" in text.lower()
+
+
+def test_frontend_shell_disclaimer_and_input_safety_present() -> None:
+    html = _page_html()
+    assert 'id="shell-global-disclaimer"' in html
+    assert 'id="shell-input-safety"' in html
+    assert "reflective guidance" in html
+    assert "acute crisis" in html
 
 
 def test_frontend_shell_client_submission_path_uses_public_api() -> None:

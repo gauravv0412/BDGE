@@ -1,0 +1,30 @@
+# Fast CI: CPU-only dependencies, excludes Playwright browser tests.
+# Browser tests: run locally with `make test-browser` after `playwright install chromium`.
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  test-fast:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-ci.txt
+
+      - name: Run fast tests
+        env:
+          PYTHONPATH: .
+          DJANGO_SETTINGS_MODULE: tests.django_test_settings
+        run: pytest -m "not browser"

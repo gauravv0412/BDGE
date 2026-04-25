@@ -15,6 +15,11 @@ _BLOCKERS_PATH = _CURATED_DIR / "blockers.json"
 _VERSES_SEED_PATH = _CURATED_DIR / "verses_seed.json"
 
 
+def curated_verses_seed_path() -> Path:
+    """Path to the production ``verses_seed.json`` (active retrieval metadata)."""
+    return _VERSES_SEED_PATH
+
+
 def _load_json(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
 
@@ -74,12 +79,10 @@ def validate_curated_entry(
     return parsed
 
 
-def load_curated_verses(path: Path | None = None) -> list[CuratedVerseEntry]:
-    """Load validated curated verse entries from the seed file."""
-    target_path = path or _VERSES_SEED_PATH
-    payload = _load_json(target_path)
+def validate_curated_seed_payload(payload: Any) -> list[CuratedVerseEntry]:
+    """Validate a full curated seed list (same rules as :func:`load_curated_verses`)."""
     if not isinstance(payload, list):
-        raise ValueError(f"Expected list payload in {target_path.name}.")
+        raise ValueError("Expected list payload for curated verse seed.")
 
     theme_vocab = load_theme_vocab()
     applies_when_vocab = load_applies_when_vocab()
@@ -106,4 +109,11 @@ def load_curated_verses(path: Path | None = None) -> list[CuratedVerseEntry]:
         entries.append(entry)
 
     return entries
+
+
+def load_curated_verses(path: Path | None = None) -> list[CuratedVerseEntry]:
+    """Load validated curated verse entries from the seed file."""
+    target_path = path or _VERSES_SEED_PATH
+    payload = _load_json(target_path)
+    return validate_curated_seed_payload(payload)
 

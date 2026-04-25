@@ -80,6 +80,9 @@ def shell_view(request: HttpRequest) -> HttpResponse:
     .loading-dot {{ display:inline-block; margin-left:6px; width:6px; height:6px; border-radius:999px; background:#1f4ed8; vertical-align:middle; }}
     .hero-grid {{ display:grid; grid-template-columns: 1.3fr 1fr; gap: 14px; align-items: stretch; }}
     .empty-hint {{ color:#5f6b86; }}
+    .safety-note {{ font-size: 13px; color: #4a5672; background: #f4f6fb; border: 1px solid #e0e6f2; border-radius: 10px; padding: 10px 12px; margin: 8px 0 12px; line-height: 1.45; }}
+    .global-foot {{ margin-top: 28px; padding: 16px 20px 28px; border-top: 1px solid #dde3f0; background: #eef2fb; color: #3d4a63; font-size: 13px; line-height: 1.55; max-width: 1040px; margin-left: auto; margin-right: auto; }}
+    .global-foot strong {{ color: #243047; }}
     @media (max-width: 860px) {{
       .summary-grid, .two-col, .row, .meta-grid, .hero-grid {{ grid-template-columns: 1fr; }}
       .lead {{ font-size: 24px; }}
@@ -95,6 +98,10 @@ def shell_view(request: HttpRequest) -> HttpResponse:
       <form id="analyze-form" method="post" novalidate>
         <input type="hidden" name="csrfmiddlewaretoken" value="{escape(csrf_token)}">
         <label for="dilemma"><strong>Dilemma</strong></label>
+        <p class="safety-note" id="shell-input-safety" role="note">
+          For medical emergencies, legal decisions, active self-harm or harm to others, or an acute crisis,
+          do not rely on this tool alone. Use emergency services and qualified professionals.
+        </p>
         <textarea id="dilemma" name="dilemma" placeholder="Describe your dilemma..."></textarea>
         <div id="client-validation" style="color:#c52626;margin-top:8px;"></div>
         <button id="submit-btn" type="submit">Analyze Dilemma</button>
@@ -108,6 +115,13 @@ def shell_view(request: HttpRequest) -> HttpResponse:
       </section>
     </div>
   </div>
+  <footer class="global-foot" id="shell-global-disclaimer">
+    <strong>About Wisdomize.</strong>
+    This shell offers <em>reflective guidance</em>, not absolute religious, legal, or medical advice.
+    Scripture is interpreted in many traditions; here it is one condensed lens for everyday ethics.
+    If you face urgent harm, a mental-health emergency, or need tailored legal or clinical care,
+    seek qualified human help rather than this output alone.
+  </footer>
   <script>
     (function() {{
       const MIN_LEN = {_MIN_DILEMMA_LEN};
