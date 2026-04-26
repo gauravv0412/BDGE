@@ -43,6 +43,32 @@ PYTHONPATH=. .venv/bin/python -m app.scripts.run_curation_promotion \\
   --out app/verses/data/curation_prep/verses_promotion_review.json
 ```
 
+## Apply reviewed promotion (Step 25.1)
+
+Use the guarded apply CLI to merge a reviewed promotion artifact into a seed path.
+
+Dry-run (default, no mutation):
+
+```bash
+PYTHONPATH=. .venv/bin/python -m app.scripts.apply_curation_promotion \
+  --review app/verses/data/curation_prep/verses_promotion_review.json
+```
+
+Write mode:
+
+```bash
+PYTHONPATH=. .venv/bin/python -m app.scripts.apply_curation_promotion \
+  --review app/verses/data/curation_prep/verses_promotion_review.json \
+  --write --confirm-production-curated-write
+```
+
+Safety behavior:
+
+- Production seed writes require both `--write` and `--confirm-production-curated-write`.
+- Duplicate/conflict entries fail clearly.
+- Malformed review artifacts fail clearly.
+- Dry-run validates in memory and prints before/after counts plus verse refs to add.
+
 ## Out of scope
 
 - Admin/editor UI, automatic full-corpus tagging, retrieval retuning, frontend changes, doctrine beyond this Bhagavad Gita corpus.

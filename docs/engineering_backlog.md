@@ -75,6 +75,15 @@ Valid but should not interrupt progress:
 - Consider `verse_id` duplicate-only conflict message distinct from `verse_ref` for operator clarity.
 - Optional: checksum or content hash of `scripture` block in review artifact for audit trails.
 
+
+## Batch curation workflow
+
+- Add a semantic diff viewer for batch import (scripture unchanged + metadata delta summary).
+- Add per-batch QA scorecard (tag entropy, priority distribution, blocker coverage).
+- Consider fixture-driven micro-batches for faster unit tests than full canonical loads.
+
+- Add optional `--print-diff` mode to `apply_curation_promotion` for concise metadata deltas before write.
+
 ## Release / Deployment
 
 - Add production logging / log shipping notes when a real deployment exists.

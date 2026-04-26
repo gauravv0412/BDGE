@@ -10,3 +10,6 @@ config/local_secrets.json
 # Generated editor-prep skeleton (regenerate via app.scripts.export_curation_prep)
 app/verses/data/curation_prep/verses_editor_prep.json
 app/verses/data/curation_prep/verses_promotion_review.json
+
+# Generated 10-batch curation draft/merge artifacts
+app/verses/data/curation_prep/batches/*.json

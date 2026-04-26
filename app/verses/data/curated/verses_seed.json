@@ -1,5 +1,23 @@
 [
   {
+    "core_teaching": "Inevitable cycles of birth and death call for steadiness over despair.",
+    "themes": [
+      "death",
+      "detachment",
+      "grief"
+    ],
+    "applies_when": [
+      "bereavement"
+    ],
+    "does_not_apply_when": [
+      "self-harm"
+    ],
+    "dimension_affinity": {
+      "viveka_discernment": 3,
+      "nishkama_detachment": 2
+    },
+    "priority": 4,
+    "status": "active",
     "verse_id": "BG-2-27",
     "verse_ref": "2.27",
     "chapter": 2,
@@ -12,16 +30,29 @@
     "source": {
       "hindi": "Gita Press Gorakhpur",
       "english": "Edwin Arnold (public domain)"
-    },
-    "core_teaching": "Inevitable cycles of birth and death call for steadiness over despair.",
-    "themes": ["death", "detachment", "grief"],
-    "applies_when": ["bereavement"],
-    "does_not_apply_when": ["self-harm"],
-    "dimension_affinity": { "viveka_discernment": 3, "nishkama_detachment": 2 },
-    "priority": 4,
-    "status": "active"
+    }
   },
   {
+    "core_teaching": "Act diligently while releasing fixation on outcomes.",
+    "themes": [
+      "action",
+      "detachment",
+      "duty"
+    ],
+    "applies_when": [
+      "outcome-anxiety",
+      "duty-conflict"
+    ],
+    "does_not_apply_when": [
+      "active-harm",
+      "criminal-intent"
+    ],
+    "dimension_affinity": {
+      "nishkama_detachment": 4,
+      "dharma_duty": 3
+    },
+    "priority": 5,
+    "status": "active",
     "verse_id": "BG-2-47",
     "verse_ref": "2.47",
     "chapter": 2,
@@ -34,16 +65,32 @@
     "source": {
       "hindi": "Gita Press Gorakhpur",
       "english": "Edwin Arnold (public domain)"
-    },
-    "core_teaching": "Act diligently while releasing fixation on outcomes.",
-    "themes": ["action", "detachment", "duty"],
-    "applies_when": ["outcome-anxiety", "duty-conflict"],
-    "does_not_apply_when": ["active-harm", "criminal-intent"],
-    "dimension_affinity": { "nishkama_detachment": 4, "dharma_duty": 3 },
-    "priority": 5,
-    "status": "active"
+    }
   },
   {
+    "core_teaching": "Fulfill your own dharma rather than imitating another life path.",
+    "themes": [
+      "duty",
+      "discernment",
+      "action",
+      "right-livelihood"
+    ],
+    "applies_when": [
+      "career-crossroads",
+      "duty-conflict",
+      "livelihood-harm-tradeoff",
+      "provider-duty"
+    ],
+    "does_not_apply_when": [
+      "active-harm",
+      "criminal-intent"
+    ],
+    "dimension_affinity": {
+      "dharma_duty": 4,
+      "viveka_discernment": 2
+    },
+    "priority": 4,
+    "status": "active",
     "verse_id": "BG-3-35",
     "verse_ref": "3.35",
     "chapter": 3,
@@ -56,16 +103,29 @@
     "source": {
       "hindi": "Gita Press Gorakhpur",
       "english": "Edwin Arnold (public domain)"
-    },
-    "core_teaching": "Fulfill your own dharma rather than imitating another life path.",
-    "themes": ["duty", "discernment", "action", "right-livelihood"],
-    "applies_when": ["career-crossroads", "duty-conflict", "livelihood-harm-tradeoff", "provider-duty"],
-    "does_not_apply_when": ["active-harm", "criminal-intent"],
-    "dimension_affinity": { "dharma_duty": 4, "viveka_discernment": 2 },
-    "priority": 4,
-    "status": "active"
+    }
   },
   {
+    "core_teaching": "Unchecked desire and anger become the internal enemy.",
+    "themes": [
+      "anger",
+      "restraint",
+      "self-mastery",
+      "desire"
+    ],
+    "applies_when": [
+      "anger-spike",
+      "temptation"
+    ],
+    "does_not_apply_when": [
+      "self-harm"
+    ],
+    "dimension_affinity": {
+      "sanyama_restraint": 4,
+      "shaucha_intent": 2
+    },
+    "priority": 5,
+    "status": "active",
     "verse_id": "BG-3-37",
     "verse_ref": "3.37",
     "chapter": 3,
@@ -78,16 +138,29 @@
     "source": {
       "hindi": "Gita Press Gorakhpur",
       "english": "Edwin Arnold (public domain)"
-    },
-    "core_teaching": "Unchecked desire and anger become the internal enemy.",
-    "themes": ["anger", "restraint", "self-mastery", "desire"],
-    "applies_when": ["anger-spike", "temptation"],
-    "does_not_apply_when": ["self-harm"],
-    "dimension_affinity": { "sanyama_restraint": 4, "shaucha_intent": 2 },
-    "priority": 5,
-    "status": "active"
+    }
   },
   {
+    "core_teaching": "A wise person sees equal dignity across social categories.",
+    "themes": [
+      "equality",
+      "compassion",
+      "truth"
+    ],
+    "applies_when": [
+      "class-bias",
+      "caste-or-identity-boundary",
+      "family-disapproval"
+    ],
+    "does_not_apply_when": [
+      "active-harm"
+    ],
+    "dimension_affinity": {
+      "lokasangraha_welfare": 4,
+      "ahimsa_nonharm": 2
+    },
+    "priority": 4,
+    "status": "active",
     "verse_id": "BG-5-18",
     "verse_ref": "5.18",
     "chapter": 5,
@@ -100,16 +173,29 @@
     "source": {
       "hindi": "Gita Press Gorakhpur",
       "english": "Edwin Arnold (public domain)"
-    },
-    "core_teaching": "A wise person sees equal dignity across social categories.",
-    "themes": ["equality", "compassion", "truth"],
-    "applies_when": ["class-bias", "caste-or-identity-boundary", "family-disapproval"],
-    "does_not_apply_when": ["active-harm"],
-    "dimension_affinity": { "lokasangraha_welfare": 4, "ahimsa_nonharm": 2 },
-    "priority": 4,
-    "status": "active"
+    }
   },
   {
+    "core_teaching": "You become either your own ally or your own saboteur through action.",
+    "themes": [
+      "self-mastery",
+      "restraint",
+      "action"
+    ],
+    "applies_when": [
+      "self-sabotage",
+      "temptation",
+      "found-property"
+    ],
+    "does_not_apply_when": [
+      "self-harm"
+    ],
+    "dimension_affinity": {
+      "sanyama_restraint": 3,
+      "viveka_discernment": 3
+    },
+    "priority": 5,
+    "status": "active",
     "verse_id": "BG-6-5",
     "verse_ref": "6.5",
     "chapter": 6,
@@ -122,16 +208,29 @@
     "source": {
       "hindi": "Gita Press Gorakhpur",
       "english": "Edwin Arnold (public domain)"
-    },
-    "core_teaching": "You become either your own ally or your own saboteur through action.",
-    "themes": ["self-mastery", "restraint", "action"],
-    "applies_when": ["self-sabotage", "temptation", "found-property"],
-    "does_not_apply_when": ["self-harm"],
-    "dimension_affinity": { "sanyama_restraint": 3, "viveka_discernment": 3 },
-    "priority": 5,
-    "status": "active"
+    }
   },
   {
+    "core_teaching": "Divine qualities hold truth and compassion together.",
+    "themes": [
+      "truth",
+      "compassion",
+      "nonharm"
+    ],
+    "applies_when": [
+      "truth-compassion-conflict"
+    ],
+    "does_not_apply_when": [
+      "criminal-intent",
+      "active-harm",
+      "deception-intent"
+    ],
+    "dimension_affinity": {
+      "satya_truth": 3,
+      "ahimsa_nonharm": 3
+    },
+    "priority": 4,
+    "status": "active",
     "verse_id": "BG-16-1-3",
     "verse_ref": "16.1-3",
     "chapter": 16,
@@ -144,16 +243,28 @@
     "source": {
       "hindi": "Gita Press Gorakhpur",
       "english": "Edwin Arnold (public domain)"
-    },
-    "core_teaching": "Divine qualities hold truth and compassion together.",
-    "themes": ["truth", "compassion", "nonharm"],
-    "applies_when": ["truth-compassion-conflict"],
-    "does_not_apply_when": ["criminal-intent", "active-harm", "deception-intent"],
-    "dimension_affinity": { "satya_truth": 3, "ahimsa_nonharm": 3 },
-    "priority": 4,
-    "status": "active"
+    }
   },
   {
+    "core_teaching": "Lust, anger, and greed are self-destructive gates.",
+    "themes": [
+      "desire",
+      "anger",
+      "greed"
+    ],
+    "applies_when": [
+      "anger-spike",
+      "temptation"
+    ],
+    "does_not_apply_when": [
+      "self-harm"
+    ],
+    "dimension_affinity": {
+      "sanyama_restraint": 4,
+      "shaucha_intent": 3
+    },
+    "priority": 3,
+    "status": "active",
     "verse_id": "BG-16-21",
     "verse_ref": "16.21",
     "chapter": 16,
@@ -166,16 +277,31 @@
     "source": {
       "hindi": "Gita Press Gorakhpur",
       "english": "Edwin Arnold (public domain)"
-    },
-    "core_teaching": "Lust, anger, and greed are self-destructive gates.",
-    "themes": ["desire", "anger", "greed"],
-    "applies_when": ["anger-spike", "temptation"],
-    "does_not_apply_when": ["self-harm"],
-    "dimension_affinity": { "sanyama_restraint": 4, "shaucha_intent": 3 },
-    "priority": 3,
-    "status": "active"
+    }
   },
   {
+    "core_teaching": "Ethical speech must be truthful, beneficial, and non-agitating.",
+    "themes": [
+      "speech",
+      "truth",
+      "nonharm"
+    ],
+    "applies_when": [
+      "ethical-speech",
+      "truth-compassion-conflict"
+    ],
+    "does_not_apply_when": [
+      "deception-intent",
+      "active-harm",
+      "public-shaming-intent",
+      "retaliatory-speech"
+    ],
+    "dimension_affinity": {
+      "satya_truth": 3,
+      "ahimsa_nonharm": 2
+    },
+    "priority": 5,
+    "status": "active",
     "verse_id": "BG-17-15",
     "verse_ref": "17.15",
     "chapter": 17,
@@ -188,16 +314,28 @@
     "source": {
       "hindi": "Gita Press Gorakhpur",
       "english": "Edwin Arnold (public domain)"
-    },
-    "core_teaching": "Ethical speech must be truthful, beneficial, and non-agitating.",
-    "themes": ["speech", "truth", "nonharm"],
-    "applies_when": ["ethical-speech", "truth-compassion-conflict"],
-    "does_not_apply_when": ["deception-intent", "active-harm", "public-shaming-intent", "retaliatory-speech"],
-    "dimension_affinity": { "satya_truth": 3, "ahimsa_nonharm": 2 },
-    "priority": 5,
-    "status": "active"
+    }
   },
   {
+    "core_teaching": "True giving is duty-driven and free from return expectation.",
+    "themes": [
+      "charity",
+      "detachment",
+      "duty"
+    ],
+    "applies_when": [
+      "service-without-return"
+    ],
+    "does_not_apply_when": [
+      "deception",
+      "criminal-intent"
+    ],
+    "dimension_affinity": {
+      "nishkama_detachment": 3,
+      "lokasangraha_welfare": 2
+    },
+    "priority": 4,
+    "status": "active",
     "verse_id": "BG-17-20",
     "verse_ref": "17.20",
     "chapter": 17,
@@ -210,16 +348,31 @@
     "source": {
       "hindi": "Gita Press Gorakhpur",
       "english": "Edwin Arnold (public domain)"
-    },
-    "core_teaching": "True giving is duty-driven and free from return expectation.",
-    "themes": ["charity", "detachment", "duty"],
-    "applies_when": ["service-without-return"],
-    "does_not_apply_when": ["deception", "criminal-intent"],
-    "dimension_affinity": { "nishkama_detachment": 3, "lokasangraha_welfare": 2 },
-    "priority": 4,
-    "status": "active"
+    }
   },
   {
+    "core_teaching": "Work aligned with your nature is preferable to borrowed ideals.",
+    "themes": [
+      "duty",
+      "action",
+      "discernment",
+      "right-livelihood"
+    ],
+    "applies_when": [
+      "career-crossroads",
+      "duty-conflict",
+      "livelihood-harm-tradeoff"
+    ],
+    "does_not_apply_when": [
+      "active-harm",
+      "criminal-intent"
+    ],
+    "dimension_affinity": {
+      "dharma_duty": 4,
+      "viveka_discernment": 2
+    },
+    "priority": 5,
+    "status": "active",
     "verse_id": "BG-18-47",
     "verse_ref": "18.47",
     "chapter": 18,
@@ -232,13 +385,3341 @@
     "source": {
       "hindi": "Gita Press Gorakhpur",
       "english": "Edwin Arnold (public domain)"
-    },
-    "core_teaching": "Work aligned with your nature is preferable to borrowed ideals.",
-    "themes": ["duty", "action", "discernment", "right-livelihood"],
-    "applies_when": ["career-crossroads", "duty-conflict", "livelihood-harm-tradeoff"],
-    "does_not_apply_when": ["active-harm", "criminal-intent"],
-    "dimension_affinity": { "dharma_duty": 4, "viveka_discernment": 2 },
+    }
+  },
+  {
+    "core_teaching": "When the duty is clear and the body is the only thing refusing, the work is to stand up — not to keep negotiating with the flinch.",
+    "themes": [
+      "duty",
+      "self-mastery"
+    ],
+    "applies_when": [
+      "self-sabotage",
+      "duty-conflict"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "self-harm",
+      "scripture-as-weapon",
+      "public-shaming-intent",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_2_3",
+    "verse_ref": "2.3",
+    "chapter": 2,
+    "verse_start": 3,
+    "verse_end": 3,
+    "sanskrit_devanagari": "क्लैब्यं मा स्म गमः पार्थ नैतत्त्वय्युपपद्यते। क्षुद्रं हृदयदौर्बल्यं त्यक्त्वोत्तिष्ठ परन्तप।।2.3।।",
+    "sanskrit_iast": "klaibyaṁ mā sma gamaḥ pārtha naitat tvayyupapadyate kṣhudraṁ hṛidaya-daurbalyaṁ tyaktvottiṣhṭha parantapa",
+    "hindi_translation": "।।2.3।। हे पृथानन्दन अर्जुन ! इस नपुंसकताको मत प्राप्त हो; क्योंकि तुम्हारेमें यह उचित नहीं है। हे परंतप ! हृदयकी इस तुच्छ दुर्बलताका त्याग करके युद्धके लिये खड़े हो जाओ।",
+    "english_translation": "Do not yield to impotence, O Arjuna, son of Pritha. It does not befit you. Cast off this mean weakness of the heart! Stand up, O conqueror of foes!",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Grief that performs wisdom is still grief. The teaching is to stop needing the people we love to be permanent in order to love them well.",
+    "themes": [
+      "grief",
+      "death",
+      "discernment"
+    ],
+    "applies_when": [
+      "bereavement",
+      "terminal-diagnosis-disclosure"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "self-harm",
+      "scripture-as-weapon",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_2_11",
+    "verse_ref": "2.11",
+    "chapter": 2,
+    "verse_start": 11,
+    "verse_end": 11,
+    "sanskrit_devanagari": "श्री भगवानुवाच अशोच्यानन्वशोचस्त्वं प्रज्ञावादांश्च भाषसे। गतासूनगतासूंश्च नानुशोचन्ति पण्डिताः।।2.11।।",
+    "sanskrit_iast": "śhrī bhagavān uvācha aśhochyān-anvaśhochas-tvaṁ prajñā-vādānśh cha bhāṣhase gatāsūn-agatāsūnśh-cha nānuśhochanti paṇḍitāḥ",
+    "hindi_translation": "।।2.11।। श्रीभगवान् बोले - तुमने शोक न करनेयोग्यका शोक किया है और पण्डिताईकी बातें कह रहे हो; परन्तु जिनके प्राण चले गये हैं, उनके लिये और जिनके प्राण नहीं गये हैं, उनके लिये पण्डितलोग शोक नहीं करते।",
+    "english_translation": "The Blessed Lord said, \"You have grieved for those who should not be grieved for; yet, you speak words of wisdom. The wise grieve neither for the living nor for the dead.\"",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Death is one more transition in a sequence the body has been making since childhood. Wisdom sees the continuity grief cannot.",
+    "themes": [
+      "death",
+      "grief",
+      "discernment"
+    ],
+    "applies_when": [
+      "bereavement",
+      "terminal-diagnosis-disclosure"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "active-harm",
+      "self-harm",
+      "scripture-as-weapon"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_2_13",
+    "verse_ref": "2.13",
+    "chapter": 2,
+    "verse_start": 13,
+    "verse_end": 13,
+    "sanskrit_devanagari": "देहिनोऽस्मिन्यथा देहे कौमारं यौवनं जरा। तथा देहान्तरप्राप्तिर्धीरस्तत्र न मुह्यति।।2.13।।",
+    "sanskrit_iast": "dehino ’smin yathā dehe kaumāraṁ yauvanaṁ jarā tathā dehāntara-prāptir dhīras tatra na muhyati",
+    "hindi_translation": "।।2.13।। देहधारीके इस मनुष्यशरीरमें जैसे बालकपन, जवानी और वृद्धावस्था होती है, ऐसे ही देहान्तरकी प्राप्ति होती है। उस विषयमें धीर मनुष्य मोहित नहीं होता।",
+    "english_translation": "Just as the embodied soul passes through childhood, youth, and old age in this body, so too does it pass into another body; the steadfast one does not grieve over this.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Heat and cold, pleasure and pain are passing weather. The work is endurance through them, not the prevention of weather.",
+    "themes": [
+      "equanimity",
+      "self-mastery"
+    ],
+    "applies_when": [
+      "outcome-anxiety",
+      "self-sabotage"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "active-harm",
+      "self-harm",
+      "scripture-as-weapon"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_2_14",
+    "verse_ref": "2.14",
+    "chapter": 2,
+    "verse_start": 14,
+    "verse_end": 14,
+    "sanskrit_devanagari": "मात्रास्पर्शास्तु कौन्तेय शीतोष्णसुखदुःखदाः। आगमापायिनोऽनित्यास्तांस्तितिक्षस्व भारत।।2.14।।",
+    "sanskrit_iast": "mātrā-sparśhās tu kaunteya śhītoṣhṇa-sukha-duḥkha-dāḥ āgamāpāyino ’nityās tans-titikṣhasva bhārata",
+    "hindi_translation": "।।2.14।। हे कुन्तीनन्दन! इन्द्रियोंके जो विषय (जड पदार्थ) हैं, वो तो शीत (अनुकूलता) और उष्ण (प्रतिकूलता) - के द्वारा सुख और दुःख देनेवाले हैं तथा आने-जानेवाले और अनित्य हैं। हे भरतवंशोद्भव अर्जुन! उनको तुम सहन करो।",
+    "english_translation": "The contact of the senses with the objects, O son of Kunti, which causes heat and cold, pleasure and pain, has a beginning and an end; they are impermanent; endure them bravely, O Arjuna.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "What you grieve in death is the body, not the person. The part that did not begin does not end.",
+    "themes": [
+      "death",
+      "grief"
+    ],
+    "applies_when": [
+      "bereavement",
+      "terminal-diagnosis-disclosure"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "active-harm",
+      "self-harm",
+      "scripture-as-weapon"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_2_20",
+    "verse_ref": "2.20",
+    "chapter": 2,
+    "verse_start": 20,
+    "verse_end": 20,
+    "sanskrit_devanagari": "न जायते म्रियते वा कदाचि न्नायं भूत्वा भविता वा न भूयः। अजो नित्यः शाश्वतोऽयं पुराणो न हन्यते हन्यमाने शरीरे।।2.20।।",
+    "sanskrit_iast": "na jāyate mriyate vā kadāchin nāyaṁ bhūtvā bhavitā vā na bhūyaḥ ajo nityaḥ śhāśhvato ’yaṁ purāṇo na hanyate hanyamāne śharīre",
+    "hindi_translation": "।।2.20।। यह शरीरी न कभी जन्मता है और न मरता है तथा यह उत्पन्न होकर फिर होनेवाला नहीं है। यह जन्मरहित, नित्य-निरन्तर रहनेवाला, शाश्वत और पुराण (अनादि) है। शरीरके मारे जानेपर भी यह नहीं मारा जाता।",
+    "english_translation": "It is not born, nor does it ever die; after having been, it again does not cease to be; unborn, eternal, changeless, and ancient, it is not killed when the body is killed.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "The body is a worn garment, not the wearer. Death is a change of clothes — painful to watch, but not the ending grief takes it for.",
+    "themes": [
+      "death",
+      "grief"
+    ],
+    "applies_when": [
+      "bereavement",
+      "terminal-diagnosis-disclosure"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "active-harm",
+      "self-harm",
+      "scripture-as-weapon"
+    ],
+    "dimension_affinity": {},
     "priority": 5,
-    "status": "active"
+    "status": "draft",
+    "verse_id": "BG_2_22",
+    "verse_ref": "2.22",
+    "chapter": 2,
+    "verse_start": 22,
+    "verse_end": 22,
+    "sanskrit_devanagari": "वासांसि जीर्णानि यथा विहाय नवानि गृह्णाति नरोऽपराणि। तथा शरीराणि विहाय जीर्णा न्यन्यानि संयाति नवानि देही।।2.22।।",
+    "sanskrit_iast": "vāsānsi jīrṇāni yathā vihāya navāni gṛihṇāti naro ’parāṇi tathā śharīrāṇi vihāya jīrṇānya nyāni sanyāti navāni dehī",
+    "hindi_translation": "।।2.22।। मनुष्य जैसे पुराने कपड़ोंको छोड़कर दूसरे नये कपड़े धारण कर लेता है, ऐसे ही देही पुराने शरीरोंको छोड़कर दूसरे नये शरीरोंमें चला जाता है।",
+    "english_translation": "Just as a man casts off worn-out clothes and puts on new ones, so too the embodied Self casts off worn-out bodies and enters others that are new.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "When the call is genuinely yours and refusing it is a flinch from your station, the hesitation itself is the wrong move.",
+    "themes": [
+      "duty",
+      "action"
+    ],
+    "applies_when": [
+      "duty-conflict",
+      "career-vs-calling"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "active-harm",
+      "deception",
+      "criminal-intent",
+      "scripture-as-weapon",
+      "self-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_2_31",
+    "verse_ref": "2.31",
+    "chapter": 2,
+    "verse_start": 31,
+    "verse_end": 31,
+    "sanskrit_devanagari": "स्वधर्ममपि चावेक्ष्य न विकम्पितुमर्हसि। धर्म्याद्धि युद्धाछ्रेयोऽन्यत्क्षत्रियस्य न विद्यते।।2.31।।",
+    "sanskrit_iast": "swa-dharmam api chāvekṣhya na vikampitum arhasi dharmyāddhi yuddhāch chhreyo ’nyat kṣhatriyasya na vidyate",
+    "hindi_translation": "।।2.31।। अपने स्वधर्म (क्षात्रधर्म) को देखकर भी तुम्हें विकम्पित अर्थात् कर्तव्य-कर्मसे विचलित नहीं होना चाहिये; क्योंकि धर्ममय युद्धसे बढ़कर क्षत्रियके लिये दूसरा कोई कल्याणकारक कर्म नहीं है।",
+    "english_translation": "Further, having regard to your duty, you should not waver, for there is nothing higher for a Kshatriya than a righteous war.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Walking away from a duty that is genuinely yours has its own cost. The choice is not between action and rest — it is between two different kinds of debt.",
+    "themes": [
+      "duty",
+      "action"
+    ],
+    "applies_when": [
+      "duty-conflict",
+      "career-vs-calling"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "active-harm",
+      "deception",
+      "criminal-intent",
+      "scripture-as-weapon",
+      "self-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_2_33",
+    "verse_ref": "2.33",
+    "chapter": 2,
+    "verse_start": 33,
+    "verse_end": 33,
+    "sanskrit_devanagari": "अथ चैत्त्वमिमं धर्म्यं संग्रामं न करिष्यसि। ततः स्वधर्मं कीर्तिं च हित्वा पापमवाप्स्यसि।।2.33।।",
+    "sanskrit_iast": "atha chet tvam imaṁ dharmyaṁ saṅgrāmaṁ na kariṣhyasi tataḥ sva-dharmaṁ kīrtiṁ cha hitvā pāpam avāpsyasi",
+    "hindi_translation": "।।2.33।। अब अगर तू यह धर्ममय युद्ध नहीं करेगा, तो अपने धर्म और कीर्तिका त्याग करके पापको प्राप्त होगा।",
+    "english_translation": "But if you will not fight this righteous war, then having abandoned your own duty and reputation, you will incur sin.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Treating gain and loss, pleasure and pain as equal isn't apathy — it is what lets you act without the action becoming about you.",
+    "themes": [
+      "equanimity",
+      "action",
+      "self-mastery"
+    ],
+    "applies_when": [
+      "outcome-anxiety",
+      "service-without-return"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "active-harm",
+      "criminal-intent",
+      "scripture-as-weapon",
+      "self-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_2_38",
+    "verse_ref": "2.38",
+    "chapter": 2,
+    "verse_start": 38,
+    "verse_end": 38,
+    "sanskrit_devanagari": "सुखदुःखे समे कृत्वा लाभालाभौ जयाजयौ। ततो युद्धाय युज्यस्व नैवं पापमवाप्स्यसि।।2.38।।",
+    "sanskrit_iast": "sukha-duḥkhe same kṛitvā lābhālābhau jayājayau tato yuddhāya yujyasva naivaṁ pāpam avāpsyasi",
+    "hindi_translation": "।।2.38।। जय-पराजय, लाभ-हानि और सुख-दुःखको समान करके फिर युद्धमें लग जा। इस प्रकार युद्ध करनेसे तू पापको प्राप्त नहीं होगा।",
+    "english_translation": "Having made pleasure and pain, gain and loss, victory and defeat equal, engage in battle for the sake of battle; thus, you shall not incur sin.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Single-pointed resolve cuts cleanly. Endless branching of the mind is not deliberation — it is the work of avoidance wearing thinking as a costume.",
+    "themes": [
+      "discernment",
+      "self-mastery",
+      "action"
+    ],
+    "applies_when": [
+      "career-crossroads",
+      "self-sabotage",
+      "duty-conflict"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "active-harm",
+      "scripture-as-weapon",
+      "self-harm",
+      "criminal-intent"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_2_41",
+    "verse_ref": "2.41",
+    "chapter": 2,
+    "verse_start": 41,
+    "verse_end": 41,
+    "sanskrit_devanagari": "व्यवसायात्मिका बुद्धिरेकेह कुरुनन्दन। बहुशाखा ह्यनन्ताश्च बुद्धयोऽव्यवसायिनाम्।।2.41।।",
+    "sanskrit_iast": "vyavasāyātmikā buddhir ekeha kuru-nandana bahu-śhākhā hyanantāśh cha buddhayo ’vyavasāyinām",
+    "hindi_translation": "।।2.41।। हे कुरुनन्दन! इस समबुद्धिकी प्राप्तिके विषयमें व्यवसायात्मिका बुद्धि एक ही होती है। अव्यवसायी मनुष्योंकी बुद्धियाँ अनन्त और बहुशाखाओंवाली ही होती हैं।",
+    "english_translation": "Here, O joy of the Kurus, there is only one single-pointed determination; many-branched and endless are the thoughts of the indecisive.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Yoga is skill in action — doing the right thing well, not doing it loudly.",
+    "themes": [
+      "action",
+      "discernment",
+      "self-mastery"
+    ],
+    "applies_when": [
+      "duty-conflict",
+      "career-vs-calling"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "active-harm",
+      "deception",
+      "criminal-intent",
+      "scripture-as-weapon",
+      "self-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_2_50",
+    "verse_ref": "2.50",
+    "chapter": 2,
+    "verse_start": 50,
+    "verse_end": 50,
+    "sanskrit_devanagari": "बुद्धियुक्तो जहातीह उभे सुकृतदुष्कृते। तस्माद्योगाय युज्यस्व योगः कर्मसु कौशलम्।।2.50।।",
+    "sanskrit_iast": "buddhi-yukto jahātīha ubhe sukṛita-duṣhkṛite tasmād yogāya yujyasva yogaḥ karmasu kauśhalam",
+    "hindi_translation": "।।2.50।। बुद्धि-(समता) से युक्त मनुष्य यहाँ जीवित अवस्थामें ही पुण्य और पाप दोनोंका त्याग कर देता है। अतः तू योग-(समता-) में लग जा, क्योंकि योग ही कर्मोंमें कुशलता है।",
+    "english_translation": "Endowed with wisdom and evenness of mind, one casts off in this life both good and evil deeds; therefore, devote yourself to Yoga; Yoga is skill in action.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Steadiness shows in a profile, not a posture: unshaken in adversity, not chasing pleasure, free of attachment, fear, and anger. Test the four together, not one by one.",
+    "themes": [
+      "equanimity",
+      "self-mastery",
+      "anger"
+    ],
+    "applies_when": [
+      "anger-spike",
+      "outcome-anxiety",
+      "private-conduct-test"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "self-harm",
+      "scripture-as-weapon",
+      "active-harm",
+      "retaliatory-speech"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_2_56",
+    "verse_ref": "2.56",
+    "chapter": 2,
+    "verse_start": 56,
+    "verse_end": 56,
+    "sanskrit_devanagari": "दुःखेष्वनुद्विग्नमनाः सुखेषु विगतस्पृहः। वीतरागभयक्रोधः स्थितधीर्मुनिरुच्यते।।2.56।।",
+    "sanskrit_iast": "duḥkheṣhv-anudvigna-manāḥ sukheṣhu vigata-spṛihaḥ vīta-rāga-bhaya-krodhaḥ sthita-dhīr munir uchyate",
+    "hindi_translation": "।।2.56।। दुःखोंकी प्राप्ति होनेपर जिसके मनमें उद्वेग नहीं होता और सुखोंकी प्राप्ति होनेपर जिसके मनमें स्पृहा नहीं होती तथा जो राग, भय और क्रोधसे सर्वथा रहित हो गया है, वह मननशील मनुष्य स्थिरबुद्धि कहा जाता है।",
+    "english_translation": "He whose mind is not shaken by adversity, who does not long for pleasures, and is free from attachment, fear, and anger, is called a sage of steady wisdom.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Withdraw the senses from their objects the way a tortoise pulls in its limbs — deliberately, without drama, when the ground is no longer safe to walk on.",
+    "themes": [
+      "restraint",
+      "self-mastery",
+      "discernment"
+    ],
+    "applies_when": [
+      "temptation",
+      "private-conduct-test",
+      "self-sabotage"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "self-harm",
+      "scripture-as-weapon",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_2_58",
+    "verse_ref": "2.58",
+    "chapter": 2,
+    "verse_start": 58,
+    "verse_end": 58,
+    "sanskrit_devanagari": "यदा संहरते चायं कूर्मोऽङ्गानीव सर्वशः। इन्द्रियाणीन्द्रियार्थेभ्यस्तस्य प्रज्ञा प्रतिष्ठिता।।2.58।।",
+    "sanskrit_iast": "yadā sanharate chāyaṁ kūrmo ’ṅgānīva sarvaśhaḥ indriyāṇīndriyārthebhyas tasya prajñā pratiṣhṭhitā",
+    "hindi_translation": "।।2.58।। जिस तरह कछुआ अपने अङ्गोंको सब ओरसे समेट लेता है, ऐसे ही जिस कालमें यह कर्मयोगी इन्द्रियोंके विषयोंसे इन्द्रियोंको सब प्रकारसे समेट लेता (हटा लेता) है, तब उसकी बुद्धि प्रतिष्ठित हो जाती है।",
+    "english_translation": "When, like the tortoise which withdraws all its limbs on all sides, he withdraws his senses from the sense-objects, then his wisdom becomes steady.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Dwelling on an object grows attachment to it; attachment grows desire; desire grows anger. Anger doesn't appear — it is manufactured several steps upstream.",
+    "themes": [
+      "anger",
+      "desire",
+      "self-mastery"
+    ],
+    "applies_when": [
+      "anger-spike",
+      "temptation",
+      "private-conduct-test"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "retaliatory-speech",
+      "scripture-as-weapon",
+      "self-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_2_62",
+    "verse_ref": "2.62",
+    "chapter": 2,
+    "verse_start": 62,
+    "verse_end": 62,
+    "sanskrit_devanagari": "ध्यायतो विषयान्पुंसः सङ्गस्तेषूपजायते। सङ्गात् संजायते कामः कामात्क्रोधोऽभिजायते।।2.62।।",
+    "sanskrit_iast": "dhyāyato viṣhayān puṁsaḥ saṅgas teṣhūpajāyate saṅgāt sañjāyate kāmaḥ kāmāt krodho ’bhijāyate",
+    "hindi_translation": "।।2.62 -- 2.63।। विषयोंका चिन्तन करनेवाले मनुष्यकी उन विषयोंमें आसक्ति पैदा हो जाती है। आसक्तिसे कामना पैदा होती है। कामनासे क्रोध पैदा होता है। क्रोध होनेपर सम्मोह (मूढ़भाव) हो जाता है। सम्मोहसे स्मृति भ्रष्ट हो जाती है। स्मृति भ्रष्ट होनेपर बुद्धिका नाश हो जाता है। बुद्धिका नाश होनेपर मनुष्यका पतन हो जाता है।",
+    "english_translation": "When one thinks of objects, attachment to them arises; from attachment, desire is born; from desire, anger arises.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Anger clouds judgment, judgment loses memory, memory loses discernment, and the person you wanted to be is destroyed. The ladder downward is short.",
+    "themes": [
+      "anger",
+      "discernment",
+      "self-mastery"
+    ],
+    "applies_when": [
+      "anger-spike",
+      "public-humiliation-impulse",
+      "private-conduct-test"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "retaliatory-speech",
+      "scripture-as-weapon",
+      "self-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 5,
+    "status": "draft",
+    "verse_id": "BG_2_63",
+    "verse_ref": "2.63",
+    "chapter": 2,
+    "verse_start": 63,
+    "verse_end": 63,
+    "sanskrit_devanagari": "क्रोधाद्भवति संमोहः संमोहात्स्मृतिविभ्रमः। स्मृतिभ्रंशाद् बुद्धिनाशो बुद्धिनाशात्प्रणश्यति।।2.63।।",
+    "sanskrit_iast": "krodhād bhavati sammohaḥ sammohāt smṛiti-vibhramaḥ smṛiti-bhranśhād buddhi-nāśho buddhi-nāśhāt praṇaśhyati",
+    "hindi_translation": "।।2.62 -- 2.63।। विषयोंका चिन्तन करनेवाले मनुष्यकी उन विषयोंमें आसक्ति पैदा हो जाती है। आसक्तिसे कामना पैदा होती है। कामनासे क्रोध पैदा होता है। क्रोध होनेपर सम्मोह (मूढ़भाव) हो जाता है। सम्मोहसे स्मृति भ्रष्ट हो जाती है। स्मृति भ्रष्ट होनेपर बुद्धिका नाश हो जाता है। बुद्धिका नाश होनेपर मनुष्यका पतन हो जाता है।",
+    "english_translation": "Anger leads to delusion, which causes loss of memory; this, in turn, leads to the destruction of discrimination, resulting in destruction.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Be the ocean: desires enter and find no purchase. The full person isn't the one with no wants — it's the one whose wants don't run the meeting.",
+    "themes": [
+      "equanimity",
+      "detachment",
+      "self-mastery"
+    ],
+    "applies_when": [
+      "outcome-anxiety",
+      "temptation",
+      "private-conduct-test"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "self-harm",
+      "scripture-as-weapon",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_2_70",
+    "verse_ref": "2.70",
+    "chapter": 2,
+    "verse_start": 70,
+    "verse_end": 70,
+    "sanskrit_devanagari": "आपूर्यमाणमचलप्रतिष्ठं समुद्रमापः प्रविशन्ति यद्वत्। तद्वत्कामा यं प्रविशन्ति सर्वे स शान्तिमाप्नोति न कामकामी।।2.70।।",
+    "sanskrit_iast": "āpūryamāṇam achala-pratiṣhṭhaṁ samudram āpaḥ praviśhanti yadvat tadvat kāmā yaṁ praviśhanti sarve sa śhāntim āpnoti na kāma-kāmī",
+    "hindi_translation": "।।2.70।। जैसे सम्पूर्ण नदियोंका जल चारों ओरसे जलद्वारा परिपूर्ण समुद्रमें आकर मिलता है, पर समुद्र अपनी मर्यादामें अचल प्रतिष्ठित रहता है ऐसे ही सम्पूर्ण भोग-पदार्थ जिस संयमी मनुष्य को विकार उत्पन्न किये बिना ही उसको प्राप्त होते हैं, वही मनुष्य परमशान्तिको प्राप्त होता है, भोगोंकी कामनावाला नहीं।",
+    "english_translation": "He attains peace into whom all desires enter, just as waters enter the ocean which, filled from all sides, remains unmoved; but not the man who is full of desires.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Peace arrives when longing, possessiveness, and 'this is mine because I am me' all loosen at once. Any one of them left tight will pull the other two back.",
+    "themes": [
+      "detachment",
+      "self-mastery",
+      "restraint"
+    ],
+    "applies_when": [
+      "credit-theft",
+      "service-without-return",
+      "outcome-anxiety"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "deception",
+      "criminal-intent",
+      "scripture-as-weapon",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_2_71",
+    "verse_ref": "2.71",
+    "chapter": 2,
+    "verse_start": 71,
+    "verse_end": 71,
+    "sanskrit_devanagari": "विहाय कामान्यः सर्वान्पुमांश्चरति निःस्पृहः। निर्ममो निरहंकारः स शांतिमधिगच्छति।।2.71।।",
+    "sanskrit_iast": "vihāya kāmān yaḥ sarvān pumānśh charati niḥspṛihaḥ nirmamo nirahankāraḥ sa śhāntim adhigachchhati",
+    "hindi_translation": "।।2.71।। जो मनुष्य सम्पूर्ण कामनाओंका त्याग करके स्पृहारहित, ममतारहित और अहंकाररहित होकर आचरण करता है, वह शान्तिको प्राप्त होता है।",
+    "english_translation": "That person attains peace who, abandoning all desires, moves about without longing, without the sense of ownership, and without egoism.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Avoiding action is not the same as transcending it; quitting alone does not produce wisdom or peace.",
+    "themes": [
+      "action",
+      "discernment"
+    ],
+    "applies_when": [
+      "self-sabotage",
+      "career-vs-calling"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_3_4",
+    "verse_ref": "3.4",
+    "chapter": 3,
+    "verse_start": 4,
+    "verse_end": 4,
+    "sanskrit_devanagari": "न कर्मणामनारम्भान्नैष्कर्म्यं पुरुषोऽश्नुते। न च संन्यसनादेव सिद्धिं समधिगच्छति।।3.4।।",
+    "sanskrit_iast": "na karmaṇām anārambhān naiṣhkarmyaṁ puruṣho ’śhnute na cha sannyasanād eva siddhiṁ samadhigachchhati",
+    "hindi_translation": "।।3.4।। मनुष्य न तो कर्मोंका आरम्भ किये बिना निष्कर्मताको प्राप्त होता है और न कर्मोंके त्यागमात्रसे सिद्धिको ही प्राप्त होता है।",
+    "english_translation": "Man does not reach actionlessness by not performing actions; nor does he attain perfection by mere renunciation.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "External restraint while the mind still craves the object is hypocrisy, not self-mastery.",
+    "themes": [
+      "self-mastery",
+      "restraint",
+      "discernment"
+    ],
+    "applies_when": [
+      "private-conduct-test",
+      "temptation"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "self-harm",
+      "active-harm",
+      "retaliatory-speech"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_3_6",
+    "verse_ref": "3.6",
+    "chapter": 3,
+    "verse_start": 6,
+    "verse_end": 6,
+    "sanskrit_devanagari": "कर्मेन्द्रियाणि संयम्य य आस्ते मनसा स्मरन्। इन्द्रियार्थान्विमूढात्मा मिथ्याचारः स उच्यते।।3.6।।",
+    "sanskrit_iast": "karmendriyāṇi sanyamya ya āste manasā smaran indriyārthān vimūḍhātmā mithyāchāraḥ sa uchyate",
+    "hindi_translation": "।।3.6।। जो कर्मेन्द्रियों- (सम्पूर्ण इन्द्रियों-) को हठपूर्वक रोककर मनसे इन्द्रियोंके विषयोंका चिन्तन करता रहता है, वह मूढ़ बुद्धिवाला मनुष्य मिथ्याचारी (मिथ्या आचरण करनेवाला) कहा जाता है।",
+    "english_translation": "He who, restraining the organs of action, sits thinking of the sense-objects in his mind, he of deluded understanding is called a hypocrite.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "True practice is engaging in necessary action with the mind in command of the senses, not in withdrawal from action.",
+    "themes": [
+      "action",
+      "self-mastery",
+      "detachment"
+    ],
+    "applies_when": [
+      "duty-conflict",
+      "career-vs-calling"
+    ],
+    "does_not_apply_when": [
+      "criminal-intent",
+      "abuse-context",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_3_7",
+    "verse_ref": "3.7",
+    "chapter": 3,
+    "verse_start": 7,
+    "verse_end": 7,
+    "sanskrit_devanagari": "यस्त्विन्द्रियाणि मनसा नियम्यारभतेऽर्जुन। कर्मेन्द्रियैः कर्मयोगमसक्तः स विशिष्यते।।3.7।।",
+    "sanskrit_iast": "yas tvindriyāṇi manasā niyamyārabhate ’rjuna karmendriyaiḥ karma-yogam asaktaḥ sa viśhiṣhyate",
+    "hindi_translation": "।।3.7।। हे अर्जुन! जो मनुष्य मनसे इन्द्रियोंपर नियन्त्रण करके आसक्तिरहित होकर (निष्काम भावसे) समस्त इन्द्रियोंके द्वारा कर्मयोगका आचरण करता है, वही श्रेष्ठ है।",
+    "english_translation": "But whoever, controlling the senses by the mind, O Arjuna, engages himself in Karma Yoga with the organs of action, without attachment, he excels.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Doing your assigned duty is superior to passive avoidance; even bodily survival depends on action.",
+    "themes": [
+      "duty",
+      "action"
+    ],
+    "applies_when": [
+      "duty-conflict",
+      "self-sabotage",
+      "provider-duty"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "criminal-intent",
+      "self-harm",
+      "active-harm",
+      "scripture-as-weapon"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_3_8",
+    "verse_ref": "3.8",
+    "chapter": 3,
+    "verse_start": 8,
+    "verse_end": 8,
+    "sanskrit_devanagari": "नियतं कुरु कर्म त्वं कर्म ज्यायो ह्यकर्मणः। शरीरयात्रापि च ते न प्रसिद्ध्येदकर्मणः।।3.8।।",
+    "sanskrit_iast": "niyataṁ kuru karma tvaṁ karma jyāyo hyakarmaṇaḥ śharīra-yātrāpi cha te na prasiddhyed akarmaṇaḥ",
+    "hindi_translation": "।।3.8।। तू शास्त्रविधिसे नियत किये हुए कर्तव्य-कर्म कर; क्योंकि कर्म न करनेकी अपेक्षा कर्म करना श्रेष्ठ है तथा कर्म न करनेसे तेरा शरीर-निर्वाह भी सिद्ध नहीं होगा।",
+    "english_translation": "Perform your bounden duty, for action is superior to inaction, and even the maintenance of the body would not be possible for you through inaction.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Persistently do the work that ought to be done while staying unattached to its outcomes.",
+    "themes": [
+      "action",
+      "detachment",
+      "duty"
+    ],
+    "applies_when": [
+      "outcome-anxiety",
+      "service-without-return",
+      "duty-conflict"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "criminal-intent",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_3_19",
+    "verse_ref": "3.19",
+    "chapter": 3,
+    "verse_start": 19,
+    "verse_end": 19,
+    "sanskrit_devanagari": "तस्मादसक्तः सततं कार्यं कर्म समाचर। असक्तो ह्याचरन्कर्म परमाप्नोति पूरुषः।।3.19।।",
+    "sanskrit_iast": "tasmād asaktaḥ satataṁ kāryaṁ karma samāchara asakto hyācharan karma param āpnoti pūruṣhaḥ",
+    "hindi_translation": "।।3.19।। इसलिये तू निरन्तर आसक्तिरहित होकर कर्तव्य-कर्मका भलीभाँति आचरण कर; क्योंकि आसक्तिरहित होकर कर्म करता हुआ मनुष्य परमात्माको प्राप्त हो जाता है।",
+    "english_translation": "Therefore, without attachment, always perform the actions that should be done; for by performing actions without attachment, one reaches the Supreme.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Even those who do not personally need to act should act for the welfare of those who depend on them.",
+    "themes": [
+      "duty",
+      "welfare-of-all",
+      "action"
+    ],
+    "applies_when": [
+      "provider-duty",
+      "duty-conflict"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "self-harm",
+      "active-harm",
+      "criminal-intent"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_3_20",
+    "verse_ref": "3.20",
+    "chapter": 3,
+    "verse_start": 20,
+    "verse_end": 20,
+    "sanskrit_devanagari": "कर्मणैव हि संसिद्धिमास्थिता जनकादयः। लोकसंग्रहमेवापि संपश्यन्कर्तुमर्हसि।।3.20।।",
+    "sanskrit_iast": "karmaṇaiva hi sansiddhim āsthitā janakādayaḥ loka-saṅgraham evāpi sampaśhyan kartum arhasi",
+    "hindi_translation": "।।3.20।। राजा जनक-जैसे अनेक महापुरुष भी कर्मके द्वारा ही परमसिद्धिको प्राप्त हुए हैं। इसलिये लोकसंग्रहको देखते हुए भी तू (निष्कामभावसे) कर्म करनेके योग्य है।",
+    "english_translation": "Janaka and others attained perfection indeed through action alone; even with the intention of protecting the masses, you should perform action.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Those in visible roles set the standard for others; their private actions become the public norm.",
+    "themes": [
+      "duty",
+      "welfare-of-all"
+    ],
+    "applies_when": [
+      "private-conduct-test",
+      "provider-duty"
+    ],
+    "does_not_apply_when": [
+      "scripture-as-weapon",
+      "abuse-context",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_3_21",
+    "verse_ref": "3.21",
+    "chapter": 3,
+    "verse_start": 21,
+    "verse_end": 21,
+    "sanskrit_devanagari": "यद्यदाचरति श्रेष्ठस्तत्तदेवेतरो जनः। स यत्प्रमाणं कुरुते लोकस्तदनुवर्तते।।3.21।।",
+    "sanskrit_iast": "yad yad ācharati śhreṣhṭhas tat tad evetaro janaḥ sa yat pramāṇaṁ kurute lokas tad anuvartate",
+    "hindi_translation": "।।3.21।। श्रेष्ठ मनुष्य जो-जो आचरण करता है, दूसरे मनुष्य वैसा-वैसा ही आचरण करते हैं। वह जो कुछ प्रमाण देता है, दूसरे मनुष्य उसीके अनुसार आचरण करते हैं।",
+    "english_translation": "Whatever a great man does, others also do; whatever he establishes as the standard, the world follows.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Do not destabilize someone's working framework just to display a higher one; meet them where they are and do the work alongside.",
+    "themes": [
+      "discernment",
+      "welfare-of-all"
+    ],
+    "applies_when": [
+      "ethical-speech",
+      "family-disapproval"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "scripture-as-weapon",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_3_26",
+    "verse_ref": "3.26",
+    "chapter": 3,
+    "verse_start": 26,
+    "verse_end": 26,
+    "sanskrit_devanagari": "न बुद्धिभेदं जनयेदज्ञानां कर्मसङ्गिनाम्। जोषयेत्सर्वकर्माणि विद्वान् युक्तः समाचरन्।।3.26।।",
+    "sanskrit_iast": "na buddhi-bhedaṁ janayed ajñānāṁ karma-saṅginām joṣhayet sarva-karmāṇi vidvān yuktaḥ samācharan",
+    "hindi_translation": "।।3.25 -- 3.26।। हे भरतवंशोद्भव अर्जुन! कर्ममें आसक्त हुए अज्ञानीजन जिस प्रकार कर्म करते हैं आसक्तिरहित विद्वान भी लोकसंग्रह करना चाहता हुआ उसी प्रकार कर्म करे। सावधान तत्त्वज्ञ महापुरुष कर्मोंमें आसक्तिवाले अज्ञानी मनुष्योंकी बुद्धिमें भ्रम उत्पन्न न करे, प्रत्युत स्वयं समस्त कर्मोंको अच्छी तरहसे करता हुआ उनसे भी वैसे ही करवाये।",
+    "english_translation": "Let no wise man unsettle the minds of ignorant people who are attached to action; he should engage them in all actions, himself fulfilling them with devotion.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Conditions, temperament, and circumstance produce most of what we then claim as personal achievement; the 'I did it' frame is largely ego.",
+    "themes": [
+      "discernment",
+      "self-mastery"
+    ],
+    "applies_when": [
+      "credit-theft",
+      "outcome-anxiety"
+    ],
+    "does_not_apply_when": [
+      "scripture-as-weapon",
+      "criminal-intent",
+      "self-harm",
+      "active-harm",
+      "abuse-context"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_3_27",
+    "verse_ref": "3.27",
+    "chapter": 3,
+    "verse_start": 27,
+    "verse_end": 27,
+    "sanskrit_devanagari": "प्रकृतेः क्रियमाणानि गुणैः कर्माणि सर्वशः। अहङ्कारविमूढात्मा कर्ताऽहमिति मन्यते।।3.27।।",
+    "sanskrit_iast": "prakṛiteḥ kriyamāṇāni guṇaiḥ karmāṇi sarvaśhaḥ ahankāra-vimūḍhātmā kartāham iti manyate",
+    "hindi_translation": "।।3.27।। सम्पूर्ण कर्म सब प्रकारसे प्रकृतिके गुणोंद्वारा किये जाते हैं; परन्तु अहंकारसे मोहित अन्तःकरणवाला अज्ञानी मनुष्य 'मैं कर्ता हूँ' -- ऐसा मानता है।",
+    "english_translation": "All actions are wrought in all cases by the qualities of Nature alone. He whose mind is deluded by egoism thinks, \"I am the doer.\"",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Do the hard thing required of you with the mind dropped of personal expectation and feverish anxiety.",
+    "themes": [
+      "action",
+      "duty",
+      "equanimity"
+    ],
+    "applies_when": [
+      "duty-conflict",
+      "outcome-anxiety"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "criminal-intent",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_3_30",
+    "verse_ref": "3.30",
+    "chapter": 3,
+    "verse_start": 30,
+    "verse_end": 30,
+    "sanskrit_devanagari": "मयि सर्वाणि कर्माणि संन्यस्याध्यात्मचेतसा। निराशीर्निर्ममो भूत्वा युध्यस्व विगतज्वरः।।3.30।।",
+    "sanskrit_iast": "mayi sarvāṇi karmāṇi sannyasyādhyātma-chetasā nirāśhīr nirmamo bhūtvā yudhyasva vigata-jvaraḥ",
+    "hindi_translation": "।।3.30।। तू विवेकवती बुद्धिके द्वारा सम्पूर्ण कर्तव्य-कर्मोंको मेरे अर्पण करके कामना, ममता और संताप-रहित होकर युद्धरूप कर्तव्य-कर्मको कर।",
+    "english_translation": "Renouncing all actions in Me, with the mind centered on the Self, free from hope and egoism, and from mental fever, fight thou.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "One's deep nature shapes action more than willpower; pretending otherwise wastes energy.",
+    "themes": [
+      "self-mastery",
+      "discernment"
+    ],
+    "applies_when": [
+      "career-vs-calling",
+      "self-sabotage"
+    ],
+    "does_not_apply_when": [
+      "criminal-intent",
+      "abuse-context",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_3_33",
+    "verse_ref": "3.33",
+    "chapter": 3,
+    "verse_start": 33,
+    "verse_end": 33,
+    "sanskrit_devanagari": "सदृशं चेष्टते स्वस्याः प्रकृतेर्ज्ञानवानपि। प्रकृतिं यान्ति भूतानि निग्रहः किं करिष्यति।।3.33।।",
+    "sanskrit_iast": "sadṛiśhaṁ cheṣhṭate svasyāḥ prakṛiter jñānavān api prakṛitiṁ yānti bhūtāni nigrahaḥ kiṁ kariṣhyati",
+    "hindi_translation": "।।3.33।। सम्पूर्ण प्राणी प्रकृतिको प्राप्त होते हैं। ज्ञानी महापुरुष भी अपनी प्रकृतिके अनुसार चेष्टा करता है। फिर इसमें किसीका हठ क्या करेगा?",
+    "english_translation": "Even a wise man acts in accordance with his own nature; beings will follow their nature; what can restraint do?",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Reactivity (pull and push) lives in the senses themselves; treat both attachment and aversion as obstacles, not just one.",
+    "themes": [
+      "self-mastery",
+      "restraint",
+      "desire"
+    ],
+    "applies_when": [
+      "temptation",
+      "anger-spike"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "self-harm",
+      "active-harm",
+      "retaliatory-speech"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_3_34",
+    "verse_ref": "3.34",
+    "chapter": 3,
+    "verse_start": 34,
+    "verse_end": 34,
+    "sanskrit_devanagari": "इन्द्रियस्येन्द्रियस्यार्थे रागद्वेषौ व्यवस्थितौ। तयोर्न वशमागच्छेत्तौ ह्यस्य परिपन्थिनौ।।3.34।।",
+    "sanskrit_iast": "indriyasyendriyasyārthe rāga-dveṣhau vyavasthitau tayor na vaśham āgachchhet tau hyasya paripanthinau",
+    "hindi_translation": "।।3.34।। इन्द्रिय-इन्द्रियके अर्थमें (प्रत्येक इन्द्रियके प्रत्येक विषयमें) मनुष्यके राग और द्वेष व्यवस्थासे (अनुकूलता और प्रतिकूलताको लेकर) स्थित हैं। मनुष्यको उन दोनोंके वशमें नहीं होना चाहिये; क्योंकि वे दोनों ही इसके (पारमार्थिक मार्गमें विघ्न डालनेवाले) शत्रु हैं।",
+    "english_translation": "Attachment and aversion for the objects of the senses abide in the senses; let no one come under their sway; for, they are his enemies.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Craving operates at three levels — body, thought, decision — so a single-layer fix usually fails.",
+    "themes": [
+      "desire",
+      "self-mastery",
+      "discernment"
+    ],
+    "applies_when": [
+      "temptation",
+      "self-sabotage"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_3_40",
+    "verse_ref": "3.40",
+    "chapter": 3,
+    "verse_start": 40,
+    "verse_end": 40,
+    "sanskrit_devanagari": "इन्द्रियाणि मनो बुद्धिरस्याधिष्ठानमुच्यते। एतैर्विमोहयत्येष ज्ञानमावृत्य देहिनम्।।3.40।।",
+    "sanskrit_iast": "indriyāṇi mano buddhir asyādhiṣhṭhānam uchyate etair vimohayatyeṣha jñānam āvṛitya dehinam",
+    "hindi_translation": "।।3.40।। इन्द्रियाँ, मन और बुद्धि इस कामके वास-स्थान कहे गये हैं। यह काम इन- (इन्द्रियाँ, मन और बुद्धि-) के द्वारा ज्ञानको ढककर देहाभिमानी मनुष्यको मोहित करता है।",
+    "english_translation": "The senses, the mind, and the intellect are said to be its seat; through these, it deludes the embodied one, veiling their wisdom.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Address the input layer (the senses) before trying to fix deeper layers; without that, willpower at the top is overrun.",
+    "themes": [
+      "restraint",
+      "self-mastery",
+      "desire"
+    ],
+    "applies_when": [
+      "temptation",
+      "self-sabotage",
+      "anger-spike"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "self-harm",
+      "active-harm",
+      "retaliatory-speech"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_3_41",
+    "verse_ref": "3.41",
+    "chapter": 3,
+    "verse_start": 41,
+    "verse_end": 41,
+    "sanskrit_devanagari": "तस्मात्त्वमिन्द्रियाण्यादौ नियम्य भरतर्षभ। पाप्मानं प्रजहि ह्येनं ज्ञानविज्ञाननाशनम्।।3.41।।",
+    "sanskrit_iast": "tasmāt tvam indriyāṇyādau niyamya bharatarṣhabha pāpmānaṁ prajahi hyenaṁ jñāna-vijñāna-nāśhanam",
+    "hindi_translation": "।।3.41।। इसलिये हे भरतवंशियोंमें श्रेष्ठ अर्जुन ! तू सबसे पहले इन्द्रियोंको वशमें करके इस ज्ञान और विज्ञानका नाश करनेवाले महान् पापी कामको अवश्य ही बलपूर्वक मार डाल।",
+    "english_translation": "Therefore, O best of the Bharatas, control your senses first and then kill this sinful thing, which destroys knowledge and realization.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Three signature poisons — attachment, fear, anger — fall away under sustained, knowledge-driven inner orientation.",
+    "themes": [
+      "detachment",
+      "self-mastery",
+      "anger"
+    ],
+    "applies_when": [
+      "anger-spike",
+      "outcome-anxiety"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_4_10",
+    "verse_ref": "4.10",
+    "chapter": 4,
+    "verse_start": 10,
+    "verse_end": 10,
+    "sanskrit_devanagari": "वीतरागभयक्रोधा मन्मया मामुपाश्रिताः। बहवो ज्ञानतपसा पूता मद्भावमागताः।।4.10।।",
+    "sanskrit_iast": "vīta-rāga-bhaya-krodhā man-mayā mām upāśhritāḥ bahavo jñāna-tapasā pūtā mad-bhāvam āgatāḥ",
+    "hindi_translation": "।।4.10।। राग, भय और क्रोधसे सर्वथा रहित, मेरेमें ही तल्लीन, मेरे ही आश्रित तथा ज्ञानरूप तपसे पवित्र हुए बहुत-से भक्त मेरे भाव- (स्वरूप-) को प्राप्त हो चुके हैं।",
+    "english_translation": "Freed from attachment, fear, and anger, absorbed in Me, taking refuge in Me, purified by the fire of knowledge, many have attained My Being.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Confusion about what counts as 'doing' versus 'not doing' is normal even for thoughtful people; the question deserves explicit scrutiny.",
+    "themes": [
+      "action",
+      "discernment"
+    ],
+    "applies_when": [
+      "duty-conflict",
+      "career-crossroads"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_4_16",
+    "verse_ref": "4.16",
+    "chapter": 4,
+    "verse_start": 16,
+    "verse_end": 16,
+    "sanskrit_devanagari": "किं कर्म किमकर्मेति कवयोऽप्यत्र मोहिताः। तत्ते कर्म प्रवक्ष्यामि यज्ज्ञात्वा मोक्ष्यसेऽशुभात्।।4.16।।",
+    "sanskrit_iast": "kiṁ karma kim akarmeti kavayo ’pyatra mohitāḥ tat te karma pravakṣhyāmi yaj jñātvā mokṣhyase ’śhubhāt",
+    "hindi_translation": "।।4.16।। कर्म क्या है और अकर्म क्या है -- इस प्रकार इस विषयमें विद्वान् भी मोहित हो जाते हैं। अतः वह कर्म-तत्त्व मैं तुम्हें भलीभाँति कहूँगा, जिसको जानकर तू अशुभ- (संसार-बन्धन-) से मुक्त हो जायगा।",
+    "english_translation": "What is action? What is inaction? Even the wise are confused about this. Therefore, I shall teach you the nature of action and inaction, by knowing which you will be liberated from the evil of Samsara, the wheel of birth and death.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Doing without being driven, and standing still without abdication, are both real moves; surface activity is not the measure.",
+    "themes": [
+      "action",
+      "discernment",
+      "detachment"
+    ],
+    "applies_when": [
+      "duty-conflict",
+      "career-vs-calling"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "criminal-intent",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_4_18",
+    "verse_ref": "4.18",
+    "chapter": 4,
+    "verse_start": 18,
+    "verse_end": 18,
+    "sanskrit_devanagari": "कर्मण्यकर्म यः पश्येदकर्मणि च कर्म यः। स बुद्धिमान् मनुष्येषु स युक्तः कृत्स्नकर्मकृत्।।4.18।।",
+    "sanskrit_iast": "karmaṇyakarma yaḥ paśhyed akarmaṇi cha karma yaḥ sa buddhimān manuṣhyeṣhu sa yuktaḥ kṛitsna-karma-kṛit",
+    "hindi_translation": "।।4.18।। जो मनुष्य कर्ममें अकर्म देखता है और जो अकर्ममें कर्म देखता है, वह मनुष्योंमें बुद्धिमान् है, योगी है और सम्पूर्ण कर्मोंको करनेवाला है।",
+    "english_translation": "He who sees inaction in action and action in inaction, he is wise among men; he is a yogi and performer of all actions.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "When action is performed without grasping at outcomes, it leaves no inner residue; the doer is free even while busy.",
+    "themes": [
+      "detachment",
+      "equanimity",
+      "action"
+    ],
+    "applies_when": [
+      "outcome-anxiety",
+      "service-without-return"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "criminal-intent",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_4_20",
+    "verse_ref": "4.20",
+    "chapter": 4,
+    "verse_start": 20,
+    "verse_end": 20,
+    "sanskrit_devanagari": "त्यक्त्वा कर्मफलासङ्गं नित्यतृप्तो निराश्रयः। कर्मण्यभिप्रवृत्तोऽपि नैव किञ्चित्करोति सः।।4.20।।",
+    "sanskrit_iast": "tyaktvā karma-phalāsaṅgaṁ nitya-tṛipto nirāśhrayaḥ karmaṇyabhipravṛitto ’pi naiva kiñchit karoti saḥ",
+    "hindi_translation": "।।4.20।। जो कर्म और फलकी आसक्तिका त्याग करके आश्रयसे रहित और सदा तृप्त है, वह कर्मोंमें अच्छी तरह लगा हुआ भी वास्तवमें कुछ भी नहीं करता।",
+    "english_translation": "Having abandoned attachment to the fruits of the action, ever content, depending on nothing, he does not do anything even while being engaged in activity.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Acting without grasping for what is not yours, and only doing what the role requires, keeps the action clean.",
+    "themes": [
+      "detachment",
+      "restraint",
+      "greed"
+    ],
+    "applies_when": [
+      "temptation",
+      "outcome-anxiety"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "self-harm",
+      "active-harm",
+      "criminal-intent"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_4_21",
+    "verse_ref": "4.21",
+    "chapter": 4,
+    "verse_start": 21,
+    "verse_end": 21,
+    "sanskrit_devanagari": "निराशीर्यतचित्तात्मा त्यक्तसर्वपरिग्रहः। शारीरं केवलं कर्म कुर्वन्नाप्नोति किल्बिषम्।।4.21।।",
+    "sanskrit_iast": "nirāśhīr yata-chittātmā tyakta-sarva-parigrahaḥ śhārīraṁ kevalaṁ karma kurvan nāpnoti kilbiṣham",
+    "hindi_translation": "।।4.21।। जिसका शरीर और अन्तःकरण अच्छी तरहसे वशमें किया हुआ है, जिसने सब प्रकारके संग्रहका परित्याग कर दिया है, ऐसा आशारहित कर्मयोगी केवल शरीर-सम्बन्धी कर्म करता हुआ भी पापको प्राप्त नहीं होता।",
+    "english_translation": "Without hope, controlling the mind and the self, having abandoned all covetousness, and performing only bodily actions, one incurs no sin.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Sustained equanimity across praise and blame, gain and loss, frees the actor from being bound by the action's outcomes.",
+    "themes": [
+      "equanimity",
+      "detachment",
+      "action"
+    ],
+    "applies_when": [
+      "outcome-anxiety",
+      "service-without-return",
+      "career-crossroads"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_4_22",
+    "verse_ref": "4.22",
+    "chapter": 4,
+    "verse_start": 22,
+    "verse_end": 22,
+    "sanskrit_devanagari": "यदृच्छालाभसन्तुष्टो द्वन्द्वातीतो विमत्सरः। समः सिद्धावसिद्धौ च कृत्वापि न निबध्यते।।4.22।।",
+    "sanskrit_iast": "yadṛichchhā-lābha-santuṣhṭo dvandvātīto vimatsaraḥ samaḥ siddhāvasiddhau cha kṛitvāpi na nibadhyate",
+    "hindi_translation": "।।4.22।। जो (कर्मयोगी) फल की इच्छा के बिना, अपने-आप जो कुछ मिल जाय, उसमें सन्तुष्ट रहता है और जो ईर्ष्यासे रहित, द्वन्द्वोंसे अतीत तथा सिद्धि और असिद्धिमें सम है, वह कर्म करते हुए भी उससे नहीं बँधता।",
+    "english_translation": "Content with what comes to him without effort, free from the pairs of opposites and envy, even-minded in success and failure, he acts yet is not bound.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Real knowledge transfers through humility, persistent inquiry, and concrete service — not through demanding or transactional study.",
+    "themes": [
+      "discernment"
+    ],
+    "applies_when": [
+      "duty-conflict",
+      "career-vs-calling"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "scripture-as-weapon",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_4_34",
+    "verse_ref": "4.34",
+    "chapter": 4,
+    "verse_start": 34,
+    "verse_end": 34,
+    "sanskrit_devanagari": "तद्विद्धि प्रणिपातेन परिप्रश्नेन सेवया। उपदेक्ष्यन्ति ते ज्ञानं ज्ञानिनस्तत्त्वदर्शिनः।।4.34।।",
+    "sanskrit_iast": "tad viddhi praṇipātena paripraśhnena sevayā upadekṣhyanti te jñānaṁ jñāninas tattva-darśhinaḥ",
+    "hindi_translation": "।।4.34।। उस- (तत्त्वज्ञान-) को (तत्त्वदर्शी ज्ञानी महापुरुषोंके पास जाकर) समझ। उनको साष्टाङ्ग दण्डवत् प्रणाम करनेसे, उनकी सेवा करनेसे और सरलतापूर्वक प्रश्न करनेसे वे तत्त्वदर्शी ज्ञानी महापुरुष तुझे उस तत्त्वज्ञानका उपदेश देंगे।",
+    "english_translation": "Know that the wise who have realized the truth will instruct thee in that knowledge through long prostration, supplication, and service.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "No past wrong is final; clear understanding of one's situation is the way across, not endless self-condemnation.",
+    "themes": [
+      "discernment",
+      "self-mastery"
+    ],
+    "applies_when": [
+      "self-sabotage"
+    ],
+    "does_not_apply_when": [
+      "scripture-as-weapon",
+      "active-harm",
+      "criminal-intent",
+      "self-harm",
+      "abuse-context"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_4_36",
+    "verse_ref": "4.36",
+    "chapter": 4,
+    "verse_start": 36,
+    "verse_end": 36,
+    "sanskrit_devanagari": "अपि चेदसि पापेभ्यः सर्वेभ्यः पापकृत्तमः। सर्वं ज्ञानप्लवेनैव वृजिनं सन्तरिष्यसि।।4.36।।",
+    "sanskrit_iast": "api ched asi pāpebhyaḥ sarvebhyaḥ pāpa-kṛit-tamaḥ sarvaṁ jñāna-plavenaiva vṛijinaṁ santariṣhyasi",
+    "hindi_translation": "।।4.36।। अगर तू सब पापियोंसे भी अधिक पापी है, तो भी तू ज्ञानरूपी नौकाके द्वारा निःसन्देह सम्पूर्ण पापसमुद्रसे अच्छी तरह तर जायगा।",
+    "english_translation": "Even if thou art the most sinful of all sinners, yet thou shalt surely cross over all sins by the raft of knowledge.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Chronic, paralyzing doubt — neither acting nor letting go — costs the most over time.",
+    "themes": [
+      "discernment",
+      "action"
+    ],
+    "applies_when": [
+      "self-sabotage",
+      "career-crossroads"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "scripture-as-weapon",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_4_40",
+    "verse_ref": "4.40",
+    "chapter": 4,
+    "verse_start": 40,
+    "verse_end": 40,
+    "sanskrit_devanagari": "अज्ञश्चाश्रद्दधानश्च संशयात्मा विनश्यति। नायं लोकोऽस्ति न परो न सुखं संशयात्मनः।।4.40।।",
+    "sanskrit_iast": "ajñaśh chāśhraddadhānaśh cha sanśhayātmā vinaśhyati nāyaṁ loko ’sti na paro na sukhaṁ sanśhayātmanaḥ",
+    "hindi_translation": "।।4.40।। विवेकहीन और श्रद्धारहित संशयात्मा मनुष्यका पतन हो जाता है। ऐसे संशयात्मा मनुष्यके लिये न यह लोक है न परलोक है और न सुख ही है।",
+    "english_translation": "The ignorant, the faithless, and the doubting self go to destruction; there is neither this world nor the other, nor happiness for the doubting one.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Cut through paralysis with clear discernment and then act; doubt is to be resolved by movement, not more deliberation.",
+    "themes": [
+      "action",
+      "discernment",
+      "self-mastery"
+    ],
+    "applies_when": [
+      "self-sabotage",
+      "career-crossroads",
+      "duty-conflict"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "criminal-intent",
+      "scripture-as-weapon",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 5,
+    "status": "draft",
+    "verse_id": "BG_4_42",
+    "verse_ref": "4.42",
+    "chapter": 4,
+    "verse_start": 42,
+    "verse_end": 42,
+    "sanskrit_devanagari": "तस्मादज्ञानसंभूतं हृत्स्थं ज्ञानासिनाऽऽत्मनः। छित्त्वैनं संशयं योगमातिष्ठोत्तिष्ठ भारत।।4.42।।",
+    "sanskrit_iast": "tasmād ajñāna-sambhūtaṁ hṛit-sthaṁ jñānāsinātmanaḥ chhittvainaṁ sanśhayaṁ yogam ātiṣhṭhottiṣhṭha bhārata",
+    "hindi_translation": "।।4.42।। इसलिये हे भरतवंशी अर्जुन ! हृदयमें स्थित इस अज्ञानसे उत्पन्न अपने संशयका ज्ञानरूप तलवारसे छेदन करके योग -(समता-) में स्थित हो जा, (और युद्धके लिये) खड़ा हो जा।",
+    "english_translation": "Therefore, with the sword of knowledge (of the Self), cut asunder the doubt of the self, born of ignorance, residing in your heart, and take refuge in Yoga. Arise, O Arjuna!",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Act fully, but offer the doing — and don't claim the fruit. A lotus leaf sits in water without absorbing it. The trick is participation without saturation.",
+    "themes": [
+      "action",
+      "detachment",
+      "self-mastery"
+    ],
+    "applies_when": [
+      "outcome-anxiety",
+      "career-vs-calling",
+      "service-without-return"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "active-harm",
+      "deception",
+      "criminal-intent",
+      "scripture-as-weapon",
+      "self-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_5_10",
+    "verse_ref": "5.10",
+    "chapter": 5,
+    "verse_start": 10,
+    "verse_end": 10,
+    "sanskrit_devanagari": "ब्रह्मण्याधाय कर्माणि सङ्गं त्यक्त्वा करोति यः। लिप्यते न स पापेन पद्मपत्रमिवाम्भसा।।5.10।।",
+    "sanskrit_iast": "brahmaṇyādhāya karmāṇi saṅgaṁ tyaktvā karoti yaḥ lipyate na sa pāpena padma-patram ivāmbhasā",
+    "hindi_translation": "।।5.10।। जो (भक्तियोगी) सम्पूर्ण कर्मोंको भगवान् में अर्पण करके और आसक्तिका त्याग करके कर्म करता है, वह जलसे कमलके पत्तेकी तरह पापसे लिप्त नहीं होता।",
+    "english_translation": "He who does actions, offering them to Brahman and abandoning attachment, is not tainted by sin, just as a lotus leaf is not tainted by water.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Pleasures from contact with objects begin and end — that is the shape of pain, not happiness. The wise don't refuse them; they refuse to mistake them for what they're not.",
+    "themes": [
+      "detachment",
+      "discernment",
+      "restraint"
+    ],
+    "applies_when": [
+      "temptation",
+      "private-conduct-test"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "self-harm",
+      "scripture-as-weapon",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_5_22",
+    "verse_ref": "5.22",
+    "chapter": 5,
+    "verse_start": 22,
+    "verse_end": 22,
+    "sanskrit_devanagari": "ये हि संस्पर्शजा भोगा दुःखयोनय एव ते। आद्यन्तवन्तः कौन्तेय न तेषु रमते बुधः।।5.22।।",
+    "sanskrit_iast": "ye hi sansparśha-jā bhogā duḥkha-yonaya eva te ādyantavantaḥ kaunteya na teṣhu ramate budhaḥ",
+    "hindi_translation": "।।5.22।। क्योंकि हे कुन्तीनन्दन ! जो इन्द्रियों और विषयोंके संयोगसे पैदा होनेवाले भोग (सुख) हैं, वे आदि-अन्तवाले और दुःखके ही कारण हैं। अतः विवेकशील मनुष्य उनमें रमण नहीं करता।",
+    "english_translation": "The enjoyments that arise from contact are only sources of pain, for they have a beginning and an end, O Arjuna; the wise do not rejoice in them.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "If you can hold the line against the impulse of desire and anger — here, in this body, before any larger liberation — you are already practicing the thing the scriptures point at.",
+    "themes": [
+      "self-mastery",
+      "anger",
+      "restraint"
+    ],
+    "applies_when": [
+      "anger-spike",
+      "temptation",
+      "public-humiliation-impulse",
+      "private-conduct-test"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "retaliatory-speech",
+      "scripture-as-weapon",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_5_23",
+    "verse_ref": "5.23",
+    "chapter": 5,
+    "verse_start": 23,
+    "verse_end": 23,
+    "sanskrit_devanagari": "शक्नोतीहैव यः सोढुं प्राक्शरीरविमोक्षणात्। कामक्रोधोद्भवं वेगं स युक्तः स सुखी नरः।।5.23।।",
+    "sanskrit_iast": "śhaknotīhaiva yaḥ soḍhuṁ prāk śharīra-vimokṣhaṇāt kāma-krodhodbhavaṁ vegaṁ sa yuktaḥ sa sukhī naraḥ",
+    "hindi_translation": "।।5.23।। इस मनुष्य-शरीरमें जो कोई (मनुष्य) शरीर छूटनेसे पहले ही काम-क्रोधसे उत्पन्न होनेवाले वेगको सहन करनेमें समर्थ होता है, वह नर योगी है और वही सुखी है।",
+    "english_translation": "He who is able, while still here in this world, to withstand the impulse born out of desire and anger before the liberation from the body, he is a Yogi, and he is a happy man.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Liberation is not won in private. It belongs to those who are self-controlled and intent on the welfare of all beings — the inner and outer movement happen together.",
+    "themes": [
+      "welfare-of-all",
+      "self-mastery",
+      "compassion"
+    ],
+    "applies_when": [
+      "service-without-return",
+      "duty-conflict",
+      "career-vs-calling"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "scripture-as-weapon",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_5_25",
+    "verse_ref": "5.25",
+    "chapter": 5,
+    "verse_start": 25,
+    "verse_end": 25,
+    "sanskrit_devanagari": "लभन्ते ब्रह्मनिर्वाणमृषयः क्षीणकल्मषाः। छिन्नद्वैधा यतात्मानः सर्वभूतहिते रताः।।5.25।।",
+    "sanskrit_iast": "labhante brahma-nirvāṇam ṛiṣhayaḥ kṣhīṇa-kalmaṣhāḥ chhinna-dvaidhā yatātmānaḥ sarva-bhūta-hite ratāḥ",
+    "hindi_translation": "।।5.25।। जिनका शरीर मन-बुद्धि-इन्द्रियोंसहित वशमें है, जो सम्पूर्ण प्राणियोंके हितमें रत हैं, जिनके सम्पूर्ण संशय मिट गये हैं, जिनके सम्पूर्ण कल्मष (दोष) नष्ट हो गये हैं, वे विवेकी साधक निर्वाण ब्रह्मको प्राप्त होते हैं।",
+    "english_translation": "The sages obtain absolute freedom or Moksha when their sins have been destroyed, their dualities have been torn asunder, they are self-controlled, and they are intent on the welfare of all beings.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "When the self is conquered, it acts as a friend; when it isn't, it stands in opposition like an outside enemy. The first relationship to fix is the one inside.",
+    "themes": [
+      "self-mastery",
+      "discernment"
+    ],
+    "applies_when": [
+      "self-sabotage",
+      "private-conduct-test"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "public-shaming-intent",
+      "self-harm",
+      "scripture-as-weapon",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_6_6",
+    "verse_ref": "6.6",
+    "chapter": 6,
+    "verse_start": 6,
+    "verse_end": 6,
+    "sanskrit_devanagari": "बन्धुरात्माऽऽत्मनस्तस्य येनात्मैवात्मना जितः। अनात्मनस्तु शत्रुत्वे वर्तेतात्मैव शत्रुवत्।।6.6।।",
+    "sanskrit_iast": "bandhur ātmātmanas tasya yenātmaivātmanā jitaḥ anātmanas tu śhatrutve vartetātmaiva śhatru-vat",
+    "hindi_translation": "।।6.6।। जिसने अपने-आपसे अपने-आपको जीत लिया है, उसके लिये आप ही अपना बन्धु है और जिसने अपने-आपको नहीं जीता है, ऐसे अनात्माका आत्मा ही शत्रुतामें शत्रुकी तरह बर्ताव करता है।",
+    "english_translation": "The Self is the friend of the self of him by whom the Self has been conquered; but to the unconquered self, this Self stands in the position of an enemy, like an external foe.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "The composed mind stays level in cold and heat, pleasure and pain — and, crucially, in honor and dishonor. The last pair is the one most people fail.",
+    "themes": [
+      "equanimity",
+      "self-mastery"
+    ],
+    "applies_when": [
+      "public-humiliation-impulse",
+      "outcome-anxiety",
+      "private-conduct-test"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "public-shaming-intent",
+      "scripture-as-weapon",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_6_7",
+    "verse_ref": "6.7",
+    "chapter": 6,
+    "verse_start": 7,
+    "verse_end": 7,
+    "sanskrit_devanagari": "जितात्मनः प्रशान्तस्य परमात्मा समाहितः। शीतोष्णसुखदुःखेषु तथा मानापमानयोः।।6.7।।",
+    "sanskrit_iast": "jitātmanaḥ praśhāntasya paramātmā samāhitaḥ śhītoṣhṇa-sukha-duḥkheṣhu tathā mānāpamānayoḥ",
+    "hindi_translation": "।।6.7।। जिसने अपने-आपपर अपनी विजय कर ली है, उस शीत-उष्ण (अनुकूलता-प्रतिकूलता) सुख-दुःख तथा मान-अपमानमें निर्विकार मनुष्यको परमात्मा नित्यप्राप्त हैं।",
+    "english_translation": "The Supreme Self of him who is self-controlled and peaceful remains balanced in cold and heat, pleasure and pain, as well as in honor and dishonor.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "The one who keeps the same regard toward friend and enemy, neutral and hostile, righteous and unrighteous — that one has stopped sorting people by what they do for him.",
+    "themes": [
+      "equality",
+      "equanimity",
+      "compassion"
+    ],
+    "applies_when": [
+      "anger-spike",
+      "family-disapproval",
+      "public-humiliation-impulse"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "active-harm",
+      "scripture-as-weapon",
+      "self-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_6_9",
+    "verse_ref": "6.9",
+    "chapter": 6,
+    "verse_start": 9,
+    "verse_end": 9,
+    "sanskrit_devanagari": "सुहृन्मित्रार्युदासीनमध्यस्थद्वेष्यबन्धुषु। साधुष्वपि च पापेषु समबुद्धिर्विशिष्यते।।6.9।।",
+    "sanskrit_iast": "suhṛin-mitrāryudāsīna-madhyastha-dveṣhya-bandhuṣhu sādhuṣhvapi cha pāpeṣhu sama-buddhir viśhiṣhyate",
+    "hindi_translation": "।।6.9।। सुहृद्, मित्र, वैरी, उदासीन, मध्यस्थ, द्वेष्य और सम्बन्धियोंमें तथा साधु-आचरण करनेवालोंमें और पाप-आचरण करनेवालोंमें भी समबुद्धिवाला मनुष्य श्रेष्ठ है।",
+    "english_translation": "He who is of the same mind towards the good-hearted, friends, enemies, the indifferent, the neutral, the hateful, the relatives, the righteous, and the unrighteous, excels.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Yoga isn't won by overdoing or underdoing — not by eating too much or starving, not by oversleeping or staying up. The middle is the discipline; the extremes are the avoidance.",
+    "themes": [
+      "restraint",
+      "self-mastery",
+      "discernment"
+    ],
+    "applies_when": [
+      "self-sabotage",
+      "private-conduct-test"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "self-harm",
+      "scripture-as-weapon",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_6_17",
+    "verse_ref": "6.17",
+    "chapter": 6,
+    "verse_start": 17,
+    "verse_end": 17,
+    "sanskrit_devanagari": "युक्ताहारविहारस्य युक्तचेष्टस्य कर्मसु। युक्तस्वप्नावबोधस्य योगो भवति दुःखहा।।6.17।।",
+    "sanskrit_iast": "yuktāhāra-vihārasya yukta-cheṣhṭasya karmasu yukta-svapnāvabodhasya yogo bhavati duḥkha-hā",
+    "hindi_translation": "।।6.17।। दुःखोंका नाश करनेवाला योग तो यथायोग्य आहार और विहार करनेवालेका, कर्मोंमें यथायोग्य चेष्टा करनेवालेका तथा यथायोग्य सोने और जागनेवालेका ही सिद्ध होता है।",
+    "english_translation": "Yoga becomes the destroyer of pain for him who is moderate in eating and recreation (such as walking, etc.), who exercises moderation in action, and who is moderate in sleep and wakefulness.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Yes, the mind is restless and hard to hold — Krishna agrees. And the answer is not despair but two specific moves: practice (abhyasa) and dispassion (vairagya), repeated.",
+    "themes": [
+      "self-mastery",
+      "restraint",
+      "discernment"
+    ],
+    "applies_when": [
+      "self-sabotage",
+      "private-conduct-test",
+      "anger-spike"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "self-harm",
+      "scripture-as-weapon",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_6_35",
+    "verse_ref": "6.35",
+    "chapter": 6,
+    "verse_start": 35,
+    "verse_end": 35,
+    "sanskrit_devanagari": "श्री भगवानुवाच असंशयं महाबाहो मनो दुर्निग्रहं चलं। अभ्यासेन तु कौन्तेय वैराग्येण च गृह्यते।।6.35।।",
+    "sanskrit_iast": "śhrī bhagavān uvācha asanśhayaṁ mahā-bāho mano durnigrahaṁ chalam abhyāsena tu kaunteya vairāgyeṇa cha gṛihyate",
+    "hindi_translation": "।।6.35।। श्रीभगवान् बोले -- हे महाबाहो ! यह मन बड़ा चञ्चल है और इसका निग्रह करना भी बड़ा कठिन है -- यह तुम्हारा कहना बिलकुल ठीक है। परन्तु हे कुन्तीनन्दन ! अभ्यास और वैराग्यके द्वारा इसका निग्रह किया जाता है।",
+    "english_translation": "The Blessed Lord said, \"Undoubtedly, O mighty-armed Arjuna, the mind is difficult to control and restless; but with practice and dispassion, it can be restrained.\"",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Effort spent on becoming better is never wasted, even if the goal isn't reached in this life. No one who does the good comes to grief by the doing of it.",
+    "themes": [
+      "action",
+      "self-mastery"
+    ],
+    "applies_when": [
+      "service-without-return",
+      "self-sabotage",
+      "outcome-anxiety"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "self-harm",
+      "scripture-as-weapon",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_6_40",
+    "verse_ref": "6.40",
+    "chapter": 6,
+    "verse_start": 40,
+    "verse_end": 40,
+    "sanskrit_devanagari": "श्री भगवानुवाच पार्थ नैवेह नामुत्र विनाशस्तस्य विद्यते। नहि कल्याणकृत्कश्िचद्दुर्गतिं तात गच्छति।।6.40।।",
+    "sanskrit_iast": "śhrī bhagavān uvācha pārtha naiveha nāmutra vināśhas tasya vidyate na hi kalyāṇa-kṛit kaśhchid durgatiṁ tāta gachchhati",
+    "hindi_translation": "।।6.40।। श्रीभगवान् बोले -- हे पृथानन्दन ! उसका न तो इस लोकमें और न परलोकमें ही विनाश होता है; क्योंकि हे प्यारे ! कल्याणकारी काम करनेवाला कोई भी मनुष्य दुर्गतिको प्राप्त नहीं जाता।",
+    "english_translation": "The Blessed Lord said, \"O Arjuna, neither in this world nor in the next will there be destruction for him; none, indeed, who does good, O my son, ever comes to grief.\"",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Strength uncolored by craving, and desire that aligns with one's duty, are different in kind from greedy strength and selfish wanting.",
+    "themes": [
+      "self-mastery",
+      "desire",
+      "discernment"
+    ],
+    "applies_when": [
+      "temptation",
+      "private-conduct-test"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "criminal-intent",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_7_11",
+    "verse_ref": "7.11",
+    "chapter": 7,
+    "verse_start": 11,
+    "verse_end": 11,
+    "sanskrit_devanagari": "बलं बलवतां चाहं कामरागविवर्जितम्। धर्माविरुद्धो भूतेषु कामोऽस्मि भरतर्षभ।।7.11।।",
+    "sanskrit_iast": "balaṁ balavatāṁ chāhaṁ kāma-rāga-vivarjitam dharmāviruddho bhūteṣhu kāmo ’smi bharatarṣhabha",
+    "hindi_translation": "।।7.11।। हे भरतवंशियोंमें श्रेष्ठ अर्जुन ! बलवालोंमें काम और रागसे रहित बल मैं हूँ। मनुषयोंमें धर्मसे अविरुद्ध (धर्मयुक्त) काम मैं हूँ।",
+    "english_translation": "Of the strong, I am the strength devoid of desire and attachment, and in all beings, I am the desire in accordance with Dharma, O Arjuna.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "When craving overrides discernment, people drift toward whichever quick fix matches their conditioning, mistaking it for genuine choice.",
+    "themes": [
+      "desire",
+      "discernment"
+    ],
+    "applies_when": [
+      "temptation",
+      "self-sabotage"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "scripture-as-weapon",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 2,
+    "status": "draft",
+    "verse_id": "BG_7_20",
+    "verse_ref": "7.20",
+    "chapter": 7,
+    "verse_start": 20,
+    "verse_end": 20,
+    "sanskrit_devanagari": "कामैस्तैस्तैर्हृतज्ञानाः प्रपद्यन्तेऽन्यदेवताः। तं तं नियममास्थाय प्रकृत्या नियताः स्वया।।7.20।।",
+    "sanskrit_iast": "kāmais tais tair hṛita-jñānāḥ prapadyante ’nya-devatāḥ taṁ taṁ niyamam āsthāya prakṛityā niyatāḥ svayā",
+    "hindi_translation": "।।7.20।। उन-उन कामनाओंसे जिनका ज्ञान अपहृत हो गया है, ऐसे वे मनुष्य अपनी-अपनी प्रकृतिसे नियन्त्रित होकर (देवताओंके) उन-उन नियमोंको धारण करते हुए उन-उन देवताओंके शरण हो जाते हैं।",
+    "english_translation": "Those whose wisdom has been taken away by this or that desire, go to other gods, following this or that rite, led by their own nature.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Polarized perception (this-good vs that-bad) is not reading reality; it is desire and aversion projecting their own structure onto it.",
+    "themes": [
+      "discernment",
+      "desire",
+      "self-mastery"
+    ],
+    "applies_when": [
+      "anger-spike",
+      "outcome-anxiety",
+      "temptation"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "scripture-as-weapon",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_7_27",
+    "verse_ref": "7.27",
+    "chapter": 7,
+    "verse_start": 27,
+    "verse_end": 27,
+    "sanskrit_devanagari": "इच्छाद्वेषसमुत्थेन द्वन्द्वमोहेन भारत। सर्वभूतानि संमोहं सर्गे यान्ति परन्तप।।7.27।।",
+    "sanskrit_iast": "ichchhā-dveṣha-samutthena dvandva-mohena bhārata sarva-bhūtāni sammohaṁ sarge yānti parantapa",
+    "hindi_translation": "।।7.27।। हे भरतवंशमें उत्पन्न परंतप ! इच्छा (राग) और द्वेषसे उत्पन्न होनेवाले द्वन्द्व-मोहसे मोहित सम्पूर्ण प्राणी संसारमें मूढ़ताको अर्थात् जन्म-मरणको प्राप्त हो रहे हैं।",
+    "english_translation": "O Bharata, all beings are subject to delusion at birth due to the delusion of the pairs of opposites arising from desire and aversion, O Parantapa.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Do the work the situation demands without abandoning the larger orientation; outer engagement and inner anchoring are not in conflict.",
+    "themes": [
+      "action",
+      "duty",
+      "self-mastery"
+    ],
+    "applies_when": [
+      "duty-conflict",
+      "outcome-anxiety"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "criminal-intent",
+      "scripture-as-weapon",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_8_7",
+    "verse_ref": "8.7",
+    "chapter": 8,
+    "verse_start": 7,
+    "verse_end": 7,
+    "sanskrit_devanagari": "तस्मात्सर्वेषु कालेषु मामनुस्मर युध्य च। मय्यर्पितमनोबुद्धिर्मामेवैष्यस्यसंशयम्।।8.7।।",
+    "sanskrit_iast": "tasmāt sarveṣhu kāleṣhu mām anusmara yudhya cha mayyarpita-mano-buddhir mām evaiṣhyasyasanśhayam",
+    "hindi_translation": "।।8.7।। इसलिये तू सब समयमें मेरा स्मरण कर और युद्ध भी कर। मेरेमें मन और बुद्धि अर्पित करनेवाला तू निःसन्देह मेरेको ही प्राप्त होगा।",
+    "english_translation": "Therefore, at all times, remember Me only and fight. With your mind and intellect fixed on Me, you will undoubtedly come to Me alone.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "What gives an offering its weight is the sincerity behind it, not its scale; small things given cleanly outweigh grand things given for show.",
+    "themes": [
+      "charity",
+      "discernment"
+    ],
+    "applies_when": [
+      "service-without-return",
+      "private-conduct-test"
+    ],
+    "does_not_apply_when": [
+      "scripture-as-weapon",
+      "abuse-context",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_9_26",
+    "verse_ref": "9.26",
+    "chapter": 9,
+    "verse_start": 26,
+    "verse_end": 26,
+    "sanskrit_devanagari": "पत्रं पुष्पं फलं तोयं यो मे भक्त्या प्रयच्छति। तदहं भक्त्युपहृतमश्नामि प्रयतात्मनः।।9.26।।",
+    "sanskrit_iast": "patraṁ puṣhpaṁ phalaṁ toyaṁ yo me bhaktyā prayachchhati tadahaṁ bhaktyupahṛitam aśhnāmi prayatātmanaḥ",
+    "hindi_translation": "।।9.26।।जो भक्त पत्र, पुष्प, फल, जल आदि (यथासाध्य प्राप्त वस्तु) को भक्तिपूर्वक मेरे अर्पण करता है, उस मेरेमें तल्लीन हुए अन्तःकरणवाले भक्तके द्वारा भक्तिपूर्वक दिये हुए उपहार-(भेंट-) को मैं खा लेता हूँ।",
+    "english_translation": "Whoever offers Me with devotion a leaf, a flower, a fruit, or a little water, that, so offered devotedly by the pure-minded, I accept.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Act decisively when the situation requires it, but as a participant in something larger — not as the sole author of the outcome you are claiming.",
+    "themes": [
+      "action",
+      "duty",
+      "detachment"
+    ],
+    "applies_when": [
+      "duty-conflict",
+      "outcome-anxiety"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "active-harm",
+      "criminal-intent",
+      "scripture-as-weapon",
+      "self-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_11_33",
+    "verse_ref": "11.33",
+    "chapter": 11,
+    "verse_start": 33,
+    "verse_end": 33,
+    "sanskrit_devanagari": "तस्मात्त्वमुत्तिष्ठ यशो लभस्व जित्वा शत्रून् भुङ्क्ष्व राज्यं समृद्धम्। मयैवैते निहताः पूर्वमेव निमित्तमात्रं भव सव्यसाचिन्।।11.33।।",
+    "sanskrit_iast": "tasmāt tvam uttiṣhṭha yaśho labhasva jitvā śhatrūn bhuṅkṣhva rājyaṁ samṛiddham mayaivaite nihatāḥ pūrvam eva nimitta-mātraṁ bhava savya-sāchin",
+    "hindi_translation": "।।11.33।। इसलिये तुम युद्धके लिये खड़े हो जाओ और यशको प्राप्त करो तथा शत्रुओंको जीतकर धन-धान्यसे सम्पन्न राज्यको भोगो। ये सभी मेरे द्वारा पहलेसे ही मारे हुए हैं। हे सव्यसाचिन् ! तुम निमित्तमात्र बन जाओ।",
+    "english_translation": "Therefore, stand up and obtain fame. Conquer the enemies and enjoy the unparalleled kingdom. Verily, by Me they have already been slain; be thou a mere instrument, O Arjuna.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Mature practice has five marks together: action dedicated to a higher principle, that principle held as supreme, sustained devotion, freedom from grasping at outcomes, and absence of hostility toward any being.",
+    "themes": [
+      "action",
+      "detachment",
+      "nonharm",
+      "duty"
+    ],
+    "applies_when": [
+      "anger-spike",
+      "outcome-anxiety",
+      "duty-conflict"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "scripture-as-weapon",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_11_55",
+    "verse_ref": "11.55",
+    "chapter": 11,
+    "verse_start": 55,
+    "verse_end": 55,
+    "sanskrit_devanagari": "मत्कर्मकृन्मत्परमो मद्भक्तः सङ्गवर्जितः। निर्वैरः सर्वभूतेषु यः स मामेति पाण्डव।।11.55।।",
+    "sanskrit_iast": "mat-karma-kṛin mat-paramo mad-bhaktaḥ saṅga-varjitaḥ nirvairaḥ sarva-bhūteṣhu yaḥ sa mām eti pāṇḍava",
+    "hindi_translation": "।।11.55।। हे पाण्डवन ! जो मेरे लिये ही कर्म करनेवाला, मेरे ही परायण और मेरा ही भक्त है तथा सर्वथा आसक्तिरहित और प्राणिमात्रके साथ निर्वैर है, वह भक्त मेरेको प्राप्त होता है।",
+    "english_translation": "He who does all actions for Me, who regards Me as the Supreme, who is devoted to Me, who is free from attachment, who bears no enmity towards any creature, he comes to Me, O Arjuna.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "When higher disciplines feel out of reach, simply giving up grasping at outcomes, while continuing to act, is itself a complete entry point.",
+    "themes": [
+      "detachment",
+      "self-mastery",
+      "action"
+    ],
+    "applies_when": [
+      "outcome-anxiety",
+      "service-without-return",
+      "self-sabotage"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "criminal-intent",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_12_11",
+    "verse_ref": "12.11",
+    "chapter": 12,
+    "verse_start": 11,
+    "verse_end": 11,
+    "sanskrit_devanagari": "अथैतदप्यशक्तोऽसि कर्तुं मद्योगमाश्रितः।सर्वकर्मफलत्यागं ततः कुरु यतात्मवान्।।12.11।।",
+    "sanskrit_iast": "athaitad apy aśhakto ’si kartuṁ mad-yogam āśhritaḥ sarva-karma-phala-tyāgaṁ tataḥ kuru yatātmavān",
+    "hindi_translation": "।।12.11।।अगर मेरे योग-(समता-) के आश्रित हुआ तू इस(पूर्वश्लोकमें कहे गये साधन-) को भी करनेमें असमर्थ है, तो मन-इन्द्रियोंको वशमें करके सम्पूर्ण कर्मोंके फलका त्याग कर।",
+    "english_translation": "If you are unable to do even this, then, resort to union with Me and renounce the fruits of all actions with self-control.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Ranking in ascending order: study, meditation, and renunciation of outcome — and only the last produces peace as an immediate result.",
+    "themes": [
+      "detachment",
+      "equanimity",
+      "discernment"
+    ],
+    "applies_when": [
+      "outcome-anxiety",
+      "service-without-return"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "criminal-intent",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_12_12",
+    "verse_ref": "12.12",
+    "chapter": 12,
+    "verse_start": 12,
+    "verse_end": 12,
+    "sanskrit_devanagari": "श्रेयो हि ज्ञानमभ्यासाज्ज्ञानाद्ध्यानं विशिष्यते।ध्यानात्कर्मफलत्यागस्त्यागाच्छान्तिरनन्तरम्।।12.12।।",
+    "sanskrit_iast": "śhreyo hi jñānam abhyāsāj jñānād dhyānaṁ viśhiṣhyate dhyānāt karma-phala-tyāgas tyāgāch chhāntir anantaram",
+    "hindi_translation": "।।12.12।।अभ्याससे शास्त्रज्ञान श्रेष्ठ है, शास्त्रज्ञानसे ध्यान श्रेष्ठ है और ध्यानसे भी सब कर्मोंके फलका त्याग श्रेष्ठ है। कर्मफलत्यागसे तत्काल ही परमशान्ति प्राप्त हो जाती है।",
+    "english_translation": "Better indeed is knowledge than practice; better than knowledge is meditation; better than meditation is the renunciation of the fruits of actions: peace immediately follows renunciation.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "The mature character holds five marks together: no enmity toward any being, active friendliness and compassion, absence of grasping ego, evenness across pleasure and pain, and a forgiving disposition.",
+    "themes": [
+      "compassion",
+      "nonharm",
+      "detachment",
+      "equanimity"
+    ],
+    "applies_when": [
+      "anger-spike",
+      "public-humiliation-impulse",
+      "duty-conflict"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "scripture-as-weapon",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_12_13",
+    "verse_ref": "12.13",
+    "chapter": 12,
+    "verse_start": 13,
+    "verse_end": 13,
+    "sanskrit_devanagari": "अद्वेष्टा सर्वभूतानां मैत्रः करुण एव च।निर्ममो निरहङ्कारः समदुःखसुखः क्षमी।।12.13।।",
+    "sanskrit_iast": "adveṣhṭā sarva-bhūtānāṁ maitraḥ karuṇa eva cha nirmamo nirahankāraḥ sama-duḥkha-sukhaḥ kṣhamī",
+    "hindi_translation": "।।12.13।।सब प्राणियोंमें द्वेषभावसे रहित, सबका मित्र (प्रेमी) और दयालु, ममतारहित, अहंकाररहित, सुखदुःखकी प्राप्तिमें सम, क्षमाशील, निरन्तर सन्तुष्ट, योगी, शरीरको वशमें किये हुए, दृढ़ निश्चयवाला? मेरेमें अर्पित मनबुद्धिवाला जो मेरा भक्त है, वह मेरेको प्रिय है।",
+    "english_translation": "He who hates no creature, is friendly and compassionate to all, is free from attachment and egoism, is balanced in pleasure and pain, and is forgiving.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "The settled person neither destabilizes others nor is destabilized by them; the inner state is not at the mercy of every external swing.",
+    "themes": [
+      "equanimity",
+      "self-mastery",
+      "anger"
+    ],
+    "applies_when": [
+      "anger-spike",
+      "outcome-anxiety",
+      "public-humiliation-impulse"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_12_15",
+    "verse_ref": "12.15",
+    "chapter": 12,
+    "verse_start": 15,
+    "verse_end": 15,
+    "sanskrit_devanagari": "यस्मान्नोद्विजते लोको लोकान्नोद्विजते च यः।हर्षामर्षभयोद्वेगैर्मुक्तो यः स च मे प्रियः।।12.15।।",
+    "sanskrit_iast": "yasmān nodvijate loko lokān nodvijate cha yaḥ harṣhāmarṣha-bhayodvegair mukto yaḥ sa cha me priyaḥ",
+    "hindi_translation": "।।12.15।।जिससे किसी प्राणीको उद्वेग नहीं होता और जिसको खुद भी किसी प्राणीसे उद्वेग नहीं होता तथा जो हर्ष, अमर्ष (ईर्ष्या), भय और उद्वेगसे रहित है, वह मुझे प्रिय है।",
+    "english_translation": "He whom the world does not agitate, and who cannot be agitated by the world, and who is freed from joy, anger, fear, and anxiety—he is dear to Me.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Treating allies and adversaries — and one's own moments of acclaim and humiliation — with the same baseline regard is the practical test of equanimity.",
+    "themes": [
+      "equanimity",
+      "equality",
+      "detachment"
+    ],
+    "applies_when": [
+      "anger-spike",
+      "public-humiliation-impulse",
+      "credit-theft"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_12_18",
+    "verse_ref": "12.18",
+    "chapter": 12,
+    "verse_start": 18,
+    "verse_end": 18,
+    "sanskrit_devanagari": "समः शत्रौ च मित्रे च तथा मानापमानयोः।शीतोष्णसुखदुःखेषु समः सङ्गविवर्जितः।।12.18।।",
+    "sanskrit_iast": "samaḥ śhatrau cha mitre cha tathā mānāpamānayoḥ śhītoṣhṇa-sukha-duḥkheṣhu samaḥ saṅga-vivarjitaḥ",
+    "hindi_translation": "।।12.18।।जो शत्रु और मित्रमें तथा मान-अपमानमें सम है और शीत-उष्ण (अनुकूलता-प्रतिकूलता) तथा सुख-दुःखमें सम है एवं आसक्तिसे रहित है, और जो निन्दास्तुतिको समान समझनेवाला, मननशील, जिस-किसी प्रकारसे भी (शरीरका निर्वाह होनेमें) संतुष्ट, रहनेके स्थान तथा शरीरमें ममता-आसक्तिसे रहित और स्थिर बुद्धिवाला है, वह भक्तिमान् मनुष्य मुझे प्रिय है।",
+    "english_translation": "He who is the same to foe and friend, and also in honor and dishonor, who is the same in cold and heat, in pleasure and pain, and who is free from attachment.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Receiving praise and criticism with the same baseline weight, and not chasing further commentary on either, keeps the mind steady.",
+    "themes": [
+      "equanimity",
+      "speech",
+      "self-mastery"
+    ],
+    "applies_when": [
+      "public-humiliation-impulse",
+      "credit-theft",
+      "ethical-speech"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_12_19",
+    "verse_ref": "12.19",
+    "chapter": 12,
+    "verse_start": 19,
+    "verse_end": 19,
+    "sanskrit_devanagari": "तुल्यनिन्दास्तुतिर्मौनी सन्तुष्टो येनकेनचित्।अनिकेतः स्थिरमतिर्भक्ितमान्मे प्रियो नरः।।12.19।।",
+    "sanskrit_iast": "tulya-nindā-stutir maunī santuṣhṭo yena kenachit aniketaḥ sthira-matir bhaktimān me priyo naraḥ",
+    "hindi_translation": "।।12.19।।जो शत्रु और मित्रमें तथा मान-अपमानमें सम है और शीतउष्ण (अनुकूलता-प्रतिकूलता) तथा सुख-दुःखमें सम है एवं आसक्तिसे रहित है, और जो निन्दा-स्तुतिको समान समझनेवाला, मननशील, जिस-किसी प्रकारसे भी (शरीरका निर्वाह होनेमें) संतुष्ट, रहनेके स्थान तथा शरीरमें ममता-आसक्तिसे रहित और स्थिर बुद्धिवाला है, वह भक्तिमान् मनुष्य मुझे प्रिय है।",
+    "english_translation": "He to whom censure and praise are equal, who is silent, content with anything, homeless, of a steady mind, and full of devotion; that man is dear to me.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "A foundation of concrete virtues — humility, unpretentiousness, non-injury, forgiveness, honesty, purity, steadfastness, and self-control — is what the tradition calls 'knowledge'; intellectual study without these is not knowledge.",
+    "themes": [
+      "nonharm",
+      "self-mastery",
+      "truth",
+      "discernment"
+    ],
+    "applies_when": [
+      "private-conduct-test",
+      "ethical-speech"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "scripture-as-weapon",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_13_8",
+    "verse_ref": "13.8",
+    "chapter": 13,
+    "verse_start": 8,
+    "verse_end": 8,
+    "sanskrit_devanagari": "अमानित्वमदम्भित्वमहिंसा क्षान्तिरार्जवम्।आचार्योपासनं शौचं स्थैर्यमात्मविनिग्रहः।।13.8।।",
+    "sanskrit_iast": "amānitvam adambhitvam ahinsā kṣhāntir ārjavam āchāryopāsanaṁ śhauchaṁ sthairyam ātma-vinigrahaḥ",
+    "hindi_translation": "।।13.8।।मानित्व-(अपनेमें श्रेष्ठताके भाव-) का न होना, दम्भित्व-(दिखावटीपन-) का न होना, अहिंसा, क्षमा, सरलता, गुरुकी सेवा, बाहर-भीतरकी शुद्धि, स्थिरता और मनका वशमें होना।",
+    "english_translation": "Humility, unpretentiousness, non-injury, forgiveness, uprightness, service to the teacher, purity, steadfastness, and self-control.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Loving one's family without believing one's identity is wholly defined by those roles; the relationship continues, but the inner attachment that distorts judgment loosens.",
+    "themes": [
+      "detachment",
+      "equanimity",
+      "discernment"
+    ],
+    "applies_when": [
+      "family-disapproval",
+      "career-vs-calling",
+      "outcome-anxiety"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "active-harm",
+      "scripture-as-weapon",
+      "self-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_13_10",
+    "verse_ref": "13.10",
+    "chapter": 13,
+    "verse_start": 10,
+    "verse_end": 10,
+    "sanskrit_devanagari": "असक्ितरनभिष्वङ्गः पुत्रदारगृहादिषु।नित्यं च समचित्तत्वमिष्टानिष्टोपपत्तिषु।।13.10।।",
+    "sanskrit_iast": "asaktir anabhiṣhvaṅgaḥ putra-dāra-gṛihādiṣhu nityaṁ cha sama-chittatvam iṣhṭāniṣhṭopapattiṣhu",
+    "hindi_translation": "।।13.10।।आसक्तिरहित होना; पुत्र, स्त्री, घर आदिमें एकात्मता (घनिष्ठ सम्बन्ध) न होना और अनुकूलता-प्रतिकूलताकी प्राप्तिमें चित्तका नित्य सम रहना।",
+    "english_translation": "Non-attachment, non-identification of the Self with son, wife, home, and the rest, and constant even-mindedness in the face of the attainment of both desirable and undesirable.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Seeing the same enduring presence in every being — beyond surface differences — is what 'really seeing' means.",
+    "themes": [
+      "equality",
+      "discernment",
+      "compassion"
+    ],
+    "applies_when": [
+      "caste-or-identity-boundary",
+      "class-bias"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "scripture-as-weapon",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_13_28",
+    "verse_ref": "13.28",
+    "chapter": 13,
+    "verse_start": 28,
+    "verse_end": 28,
+    "sanskrit_devanagari": "समं सर्वेषु भूतेषु तिष्ठन्तं परमेश्वरम्।विनश्यत्स्वविनश्यन्तं यः पश्यति स पश्यति।।13.28।।",
+    "sanskrit_iast": "samaṁ sarveṣhu bhūteṣhu tiṣhṭhantaṁ parameśhvaram vinaśhyatsv avinaśhyantaṁ yaḥ paśhyati sa paśhyati",
+    "hindi_translation": "।।13.28।।जो नष्ट होते हुए सम्पूर्ण प्राणियोंमें परमात्माको नाशरहित और समरूपसे स्थित देखता है, वही वास्तवमें सही देखता है।",
+    "english_translation": "He who sees the Supreme Lord existing truly in all beings, the imperishable within the perishable, sees indeed.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Seeing the same essential Self in another is the inner block against harming them; injury to others becomes self-evidently injury to oneself.",
+    "themes": [
+      "nonharm",
+      "equality",
+      "compassion"
+    ],
+    "applies_when": [
+      "anger-spike",
+      "public-humiliation-impulse",
+      "class-bias"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "scripture-as-weapon",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_13_29",
+    "verse_ref": "13.29",
+    "chapter": 13,
+    "verse_start": 29,
+    "verse_end": 29,
+    "sanskrit_devanagari": "समं पश्यन्हि सर्वत्र समवस्थितमीश्वरम्।न हिनस्त्यात्मनाऽऽत्मानं ततो याति परां गतिम्।।13.29।।",
+    "sanskrit_iast": "samaṁ paśhyan hi sarvatra samavasthitam īśhvaram na hinasty ātmanātmānaṁ tato yāti parāṁ gatim",
+    "hindi_translation": "।।13.29।।क्योंकि सब जगह समरूपसे स्थित ईश्वरको समरूपसे देखनेवाला मनुष्य अपने-आपसे अपनी हिंसा नहीं करता, इसलिये वह परमगतिको प्राप्त हो जाता है।",
+    "english_translation": "For he who truly sees the same Lord dwelling everywhere does not destroy the Self by the self; rather, he attains the highest goal.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Compulsive activity, restless craving, and chasing after new ventures are signs that the mind is in a rajasic phase, not signs of high productivity.",
+    "themes": [
+      "desire",
+      "self-mastery",
+      "discernment"
+    ],
+    "applies_when": [
+      "temptation",
+      "outcome-anxiety",
+      "self-sabotage"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_14_12",
+    "verse_ref": "14.12",
+    "chapter": 14,
+    "verse_start": 12,
+    "verse_end": 12,
+    "sanskrit_devanagari": "लोभः प्रवृत्तिरारम्भः कर्मणामशमः स्पृहा।रजस्येतानि जायन्ते विवृद्धे भरतर्षभ।।14.12।।",
+    "sanskrit_iast": "lobhaḥ pravṛittir ārambhaḥ karmaṇām aśhamaḥ spṛihā rajasy etāni jāyante vivṛiddhe bharatarṣhabha",
+    "hindi_translation": "।।14.12।।हे भरतवंशमें श्रेष्ठ अर्जुन ! रजोगुणके बढ़नेपर लोभ, प्रवृत्ति, कर्मोंका आरम्भ, अशान्ति और स्पृहा -- ये वृत्तियाँ पैदा होती हैं।",
+    "english_translation": "Greed, activity, the undertaking of actions, restlessness, and longing—these arise when Rajas is predominant, O Arjuna.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Mental fog, inertia, and chronic carelessness are signs of a tamasic phase; the way out is not willpower at the symptom level but recognizing the state and shifting the conditions that produced it.",
+    "themes": [
+      "self-mastery",
+      "discernment"
+    ],
+    "applies_when": [
+      "self-sabotage"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_14_13",
+    "verse_ref": "14.13",
+    "chapter": 14,
+    "verse_start": 13,
+    "verse_end": 13,
+    "sanskrit_devanagari": "अप्रकाशोऽप्रवृत्तिश्च प्रमादो मोह एव च।तमस्येतानि जायन्ते विवृद्धे कुरुनन्दन।।14.13।।",
+    "sanskrit_iast": "aprakāśho ’pravṛittiśh cha pramādo moha eva cha tamasy etāni jāyante vivṛiddhe kuru-nandana",
+    "hindi_translation": "।।14.13।।हे कुरुनन्दन ! तमोगुणके बढ़नेपर अप्रकाश, अप्रवृत्ति, प्रमाद और मोह -- ये वृत्तियाँ भी पैदा होती हैं।",
+    "english_translation": "Darkness, inertia, carelessness, and delusion—these arise when Tamas is predominant, O Arjuna.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Action driven by craving and restlessness reliably produces suffering as its fruit — the pain is structural to the motivation, not bad luck.",
+    "themes": [
+      "action",
+      "discernment",
+      "desire"
+    ],
+    "applies_when": [
+      "outcome-anxiety",
+      "self-sabotage",
+      "career-vs-calling"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_14_16",
+    "verse_ref": "14.16",
+    "chapter": 14,
+    "verse_start": 16,
+    "verse_end": 16,
+    "sanskrit_devanagari": "कर्मणः सुकृतस्याहुः सात्त्विकं निर्मलं फलम्।रजसस्तु फलं दुःखमज्ञानं तमसः फलम्।।14.16।।",
+    "sanskrit_iast": "karmaṇaḥ sukṛitasyāhuḥ sāttvikaṁ nirmalaṁ phalam rajasas tu phalaṁ duḥkham ajñānaṁ tamasaḥ phalam",
+    "hindi_translation": "।।14.16।।(विवेकी पुरुषोंने) शुभ-कर्मका तो सात्त्विक निर्मल फल कहा है, राजस कर्मका फल दुःख कहा है और तामस कर्मका फल अज्ञान (मूढ़ता) कहा है।",
+    "english_translation": "They say that the fruit of good action is Sattvic and pure; indeed, the fruit of Rajas is pain, and the fruit of Tamas is ignorance.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Inner states (clarity, restlessness, dullness) cycle through the mind on their own; resisting the unwanted ones or grasping the pleasant ones is itself the bondage, not the states.",
+    "themes": [
+      "equanimity",
+      "self-mastery",
+      "detachment"
+    ],
+    "applies_when": [
+      "anger-spike",
+      "outcome-anxiety",
+      "self-sabotage"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_14_22",
+    "verse_ref": "14.22",
+    "chapter": 14,
+    "verse_start": 22,
+    "verse_end": 22,
+    "sanskrit_devanagari": "श्री भगवानुवाचप्रकाशं च प्रवृत्तिं च मोहमेव च पाण्डव।न द्वेष्टि सम्प्रवृत्तानि न निवृत्तानि काङ्क्षति।।14.22।।",
+    "sanskrit_iast": "śhrī-bhagavān uvācha prakāśhaṁ cha pravṛittiṁ cha moham eva cha pāṇḍava na dveṣhṭi sampravṛittāni na nivṛittāni kāṅkṣhati",
+    "hindi_translation": "।।14.22।।श्रीभगवान् बोले -- हे पाण्डव ! प्रकाश, प्रवृत्ति तथा मोह -- ये सभी अच्छी तरहसे प्रवृत्त हो जायँ तो भी गुणातीत मनुष्य इनसे द्वेष नहीं करता, और ये सभी निवृत्त हो जायँ तो इनकी इच्छा नहीं करता।",
+    "english_translation": "The Blessed Lord said, \"When light, activity, and delusion are present, he does not hate them, nor does he long for them when they are absent.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Five marks together — absence of pride, freedom from grasping, steady inner anchoring, desire turned away from compulsive seeking, and evenness across pleasure and pain — characterize sustained progress on the path.",
+    "themes": [
+      "detachment",
+      "equanimity",
+      "self-mastery",
+      "discernment"
+    ],
+    "applies_when": [
+      "outcome-anxiety",
+      "private-conduct-test",
+      "career-vs-calling"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "scripture-as-weapon",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_15_5",
+    "verse_ref": "15.5",
+    "chapter": 15,
+    "verse_start": 5,
+    "verse_end": 5,
+    "sanskrit_devanagari": "निर्मानमोहा जितसङ्गदोषा अध्यात्मनित्या विनिवृत्तकामाः।द्वन्द्वैर्विमुक्ताः सुखदुःखसंज्ञै र्गच्छन्त्यमूढाः पदमव्ययं तत्।।15.5।।",
+    "sanskrit_iast": "nirmāna-mohā jita-saṅga-doṣhā adhyātma-nityā vinivṛitta-kāmāḥ dvandvair vimuktāḥ sukha-duḥkha-sanjñair gachchhanty amūḍhāḥ padam avyayaṁ tat",
+    "hindi_translation": "।।15.5।।जो मान और मोहसे रहित हो गये हैं, जिन्होंने आसक्तिसे होनेवाले दोषोंको जीत लिया है, जो नित्य-निरन्तर परमात्मामें ही लगे हुए हैं, जो (अपनी दृष्टिसे) सम्पूर्ण कामनाओंसे रहित हो गये हैं, जो सुख-दुःखरूप द्वन्द्वोंसे मुक्त हो गये हैं, ऐसे (ऊँची स्थितिवाले) मोहरहित साधक भक्त उस अविनाशी परमपद-(परमात्मा-) को प्राप्त होते हैं।",
+    "english_translation": "Free from pride and delusion, victorious over the evil of attachment, dwelling constantly in the Self, their desires having completely turned away, freed from the pairs of opposites known as pleasure and pain, they, the undeluded, reach the eternal goal.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "A working list of dharmic qualities to cultivate — harmlessness, truthfulness, absence of anger, peacefulness, compassion, non-covetousness, gentleness, modesty, and stability of mind.",
+    "themes": [
+      "nonharm",
+      "truth",
+      "compassion",
+      "self-mastery"
+    ],
+    "applies_when": [
+      "private-conduct-test",
+      "anger-spike",
+      "ethical-speech"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "scripture-as-weapon",
+      "self-harm",
+      "active-harm",
+      "retaliatory-speech"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_16_2",
+    "verse_ref": "16.2",
+    "chapter": 16,
+    "verse_start": 2,
+    "verse_end": 2,
+    "sanskrit_devanagari": "अहिंसा सत्यमक्रोधस्त्यागः शान्तिरपैशुनम्।दया भूतेष्वलोलुप्त्वं मार्दवं ह्रीरचापलम्।।16.2।।",
+    "sanskrit_iast": "ahinsā satyam akrodhas tyāgaḥ śhāntir apaiśhunam dayā bhūteṣhv aloluptvaṁ mārdavaṁ hrīr achāpalam",
+    "hindi_translation": "।।16.2।।अहिंसा, सत्यभाषण; क्रोध न करना; संसारकी कामनाका त्याग; अन्तःकरणमें राग-द्वेषजनित हलचलका न होना; चुगली न करना; प्राणियोंपर दया करना सांसारिक विषयोंमें न ललचाना; अन्तःकरणकी कोमलता; अकर्तव्य करनेमें लज्जा; चपलताका अभाव।",
+    "english_translation": "Harmlessness, truth, absence of anger, renunciation, peacefulness, absence of crookedness, compassion for beings, non-covetousness, gentleness, modesty, and absence of fickleness.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "When the inner voice is mostly an inventory of what's been gained, what's still wanted, and what's coming next, the mind is operating in acquisitive ego, not in clear seeing.",
+    "themes": [
+      "greed",
+      "desire",
+      "discernment"
+    ],
+    "applies_when": [
+      "temptation",
+      "outcome-anxiety",
+      "private-conduct-test"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "scripture-as-weapon",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_16_13",
+    "verse_ref": "16.13",
+    "chapter": 16,
+    "verse_start": 13,
+    "verse_end": 13,
+    "sanskrit_devanagari": "इदमद्य मया लब्धमिमं प्राप्स्ये मनोरथम्।इदमस्तीदमपि मे भविष्यति पुनर्धनम्।।16.13।।",
+    "sanskrit_iast": "idam adya mayā labdham imaṁ prāpsye manoratham idam astīdam api me bhaviṣhyati punar dhanam",
+    "hindi_translation": "।।16.13।।इतनी वस्तुएँ तो हमने आज प्राप्त कर लीं और अब इस मनोरथको प्राप्त (पूरा) कर लेंगे।,इतना धन तो हमारे पास है ही, इतना धन फिर हो जायगा।",
+    "english_translation": "\"I have gained this today; I will fulfill this desire of mine; this is mine, and this wealth will be mine in the future.\"",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Acts of virtue performed primarily to be seen — for status or display — are missing what makes them virtue in the first place; the inner motive determines the value.",
+    "themes": [
+      "discernment",
+      "truth",
+      "charity"
+    ],
+    "applies_when": [
+      "private-conduct-test",
+      "credit-theft"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "scripture-as-weapon",
+      "public-shaming-intent",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_16_17",
+    "verse_ref": "16.17",
+    "chapter": 16,
+    "verse_start": 17,
+    "verse_end": 17,
+    "sanskrit_devanagari": "आत्मसम्भाविताः स्तब्धा धनमानमदान्विताः।यजन्ते नामयज्ञैस्ते दम्भेनाविधिपूर्वकम्।।16.17।।",
+    "sanskrit_iast": "ātma-sambhāvitāḥ stabdhā dhana-māna-madānvitāḥ yajante nāma-yajñais te dambhenāvidhi-pūrvakam",
+    "hindi_translation": "।।16.17।।अपनेको सबसे अधिक पूज्य माननेवाले, अकड़ रखनेवाले तथा धन और मानके मदमें चूर रहनेवाले वे मनुष्य दम्भसे अविधिपूर्वक नाममात्रके यज्ञोंसे यजन करते हैं।",
+    "english_translation": "Self-conceited, stubborn, filled with pride and intoxication of wealth, they perform sacrifices in name only for ostentation, contrary to scriptural ordinances.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Action driven purely by impulse and craving — without any stabilizing reference to a tested ethical framework — does not produce sustained happiness.",
+    "themes": [
+      "restraint",
+      "discernment",
+      "desire"
+    ],
+    "applies_when": [
+      "temptation",
+      "self-sabotage",
+      "anger-spike"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "scripture-as-weapon",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_16_23",
+    "verse_ref": "16.23",
+    "chapter": 16,
+    "verse_start": 23,
+    "verse_end": 23,
+    "sanskrit_devanagari": "यः शास्त्रविधिमुत्सृज्य वर्तते कामकारतः।न स सिद्धिमवाप्नोति न सुखं न परां गतिम्।।16.23।।",
+    "sanskrit_iast": "yaḥ śhāstra-vidhim utsṛijya vartate kāma-kārataḥ na sa siddhim avāpnoti na sukhaṁ na parāṁ gatim",
+    "hindi_translation": "।।16.23।। जो मनुष्य शास्त्रविधिको छोड़कर अपनी इच्छासे मनमाना आचरण करता है, वह न सिद्धि-(अन्तःकरणकी शुद्धि-) को, न सुखको और न परमगतिको ही प्राप्त होता है।",
+    "english_translation": "He who, having cast aside the ordinances of the scriptures, acts under the impulse of desire, does not attain perfection, nor happiness, nor the Supreme Goal.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "The deep convictions a person holds about what is real and what matters end up shaping who they become; faith is not a side opinion but a constitutive force.",
+    "themes": [
+      "discernment",
+      "self-mastery"
+    ],
+    "applies_when": [
+      "career-vs-calling",
+      "private-conduct-test"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "scripture-as-weapon",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_17_3",
+    "verse_ref": "17.3",
+    "chapter": 17,
+    "verse_start": 3,
+    "verse_end": 3,
+    "sanskrit_devanagari": "सत्त्वानुरूपा सर्वस्य श्रद्धा भवति भारत।श्रद्धामयोऽयं पुरुषो यो यच्छ्रद्धः स एव सः।।17.3।।",
+    "sanskrit_iast": "sattvānurūpā sarvasya śhraddhā bhavati bhārata śhraddhā-mayo ‘yaṁ puruṣho yo yach-chhraddhaḥ sa eva saḥ",
+    "hindi_translation": "।।17.3।।हे भारत ! सभी मनुष्योंकी श्रद्धा अन्तःकरणके अनुरूप होती है। यह मनुष्य श्रद्धामय है। इसलिये जो जैसी श्रद्धावाला है, वही उसका स्वरूप है अर्थात् वही उसकी निष्ठा -- स्थिति है।",
+    "english_translation": "The faith of each is in accordance with their nature, O Arjuna. People consist of their faith; as a person's faith is, so are they.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "A practice undertaken because it is one's duty to do it, without bargaining for results, holds together; the same outward practice done for reward dissolves under stress.",
+    "themes": [
+      "duty",
+      "detachment",
+      "action"
+    ],
+    "applies_when": [
+      "service-without-return",
+      "outcome-anxiety",
+      "duty-conflict"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "scripture-as-weapon",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_17_11",
+    "verse_ref": "17.11",
+    "chapter": 17,
+    "verse_start": 11,
+    "verse_end": 11,
+    "sanskrit_devanagari": "अफलाकाङ्क्षिभिर्यज्ञो विधिदृष्टो य इज्यते।यष्टव्यमेवेति मनः समाधाय स सात्त्विकः।।17.11।।",
+    "sanskrit_iast": "aphalākāṅkṣhibhir yajño vidhi-driṣhṭo ya ijyate yaṣhṭavyam eveti manaḥ samādhāya sa sāttvikaḥ",
+    "hindi_translation": "।।17.11।।यज्ञ करना कर्तव्य है -- इस तरह मनको समाधान करके फलेच्छारहित मनुष्योंद्वारा जो शास्त्रविधिसे नियत यज्ञ किया जाता है, वह सात्त्विक है।",
+    "english_translation": "That sacrifice which is offered by men without desire for reward, as enjoined by the ordinance (scripture), with a firm faith that doing so is their duty, is Sattvic or pure.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "A spiritual or ethical practice undertaken primarily for visible reward or audience is partially defeated by its own motive — the form survives but the substance does not.",
+    "themes": [
+      "discernment",
+      "desire"
+    ],
+    "applies_when": [
+      "credit-theft",
+      "private-conduct-test",
+      "outcome-anxiety"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "scripture-as-weapon",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_17_12",
+    "verse_ref": "17.12",
+    "chapter": 17,
+    "verse_start": 12,
+    "verse_end": 12,
+    "sanskrit_devanagari": "अभिसंधाय तु फलं दम्भार्थमपि चैव यत्।इज्यते भरतश्रेष्ठ तं यज्ञं विद्धि राजसम्।।17.12।।",
+    "sanskrit_iast": "abhisandhāya tu phalaṁ dambhārtham api chaiva yat ijyate bharata-śhreṣhṭha taṁ yajñaṁ viddhi rājasam",
+    "hindi_translation": "।।17.12।।परन्तु हे भरतश्रेष्ठ अर्जुन ! जो यज्ञ फलकी इच्छाको लेकर अथवा दम्भ-(दिखावटीपन-) के लिये भी किया जाता है, उसको तुम राजस समझो।",
+    "english_translation": "The sacrifice that is offered, O Arjuna, seeking a reward and for show, know that to be a Rajasic Yajna.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Mental practice has four concrete components — settled mind, kindness toward others, self-control, and clean motivation — not just sitting quietly.",
+    "themes": [
+      "self-mastery",
+      "equanimity",
+      "compassion"
+    ],
+    "applies_when": [
+      "anger-spike",
+      "outcome-anxiety",
+      "private-conduct-test"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "self-harm",
+      "active-harm",
+      "scripture-as-weapon"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_17_16",
+    "verse_ref": "17.16",
+    "chapter": 17,
+    "verse_start": 16,
+    "verse_end": 16,
+    "sanskrit_devanagari": "मनःप्रसादः सौम्यत्वं मौनमात्मविनिग्रहः।भावसंशुद्धिरित्येतत्तपो मानसमुच्यते।।17.16।।",
+    "sanskrit_iast": "manaḥ-prasādaḥ saumyatvaṁ maunam ātma-vinigrahaḥ bhāva-sanśhuddhir ity etat tapo mānasam uchyate",
+    "hindi_translation": "।।17.16।।मनकी प्रसन्नता, सौम्य भाव, मननशीलता, मनका निग्रह और भावोंकी शुद्धि -- इस तरह यह मन-सम्बन्धी तप कहा जाता है।",
+    "english_translation": "Serenity of mind, good-heartedness, self-control, and purity of nature—this is called mental austerity.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Discipline practiced to be admired collapses under boredom or absence of audience; without an inner reason for it, it does not last.",
+    "themes": [
+      "discernment",
+      "self-mastery"
+    ],
+    "applies_when": [
+      "private-conduct-test",
+      "credit-theft"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "scripture-as-weapon",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_17_18",
+    "verse_ref": "17.18",
+    "chapter": 17,
+    "verse_start": 18,
+    "verse_end": 18,
+    "sanskrit_devanagari": "सत्कारमानपूजार्थं तपो दम्भेन चैव यत्।क्रियते तदिह प्रोक्तं राजसं चलमध्रुवम्।।17.18।।",
+    "sanskrit_iast": "satkāra-māna-pūjārthaṁ tapo dambhena chaiva yat kriyate tad iha proktaṁ rājasaṁ chalam adhruvam",
+    "hindi_translation": "।।17.18।।जो तप सत्कार, मान और पूजाके लिये तथा दिखानेके भावसे किया जाता है, वह इस लोकमें अनिश्चित और नाशवान् फल देनेवाला तप राजस कहा गया है।",
+    "english_translation": "The austerity that is practiced with the aim of gaining good reception, honor, and worship, and with hypocrisy, is said to be Rajasic, unstable, and transient.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "A gift given with implicit expectation of reciprocity, or given grudgingly under social pressure, contaminates the act; the giver carries the resentment, the receiver senses the strings.",
+    "themes": [
+      "charity",
+      "discernment",
+      "detachment"
+    ],
+    "applies_when": [
+      "service-without-return",
+      "private-conduct-test"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "self-harm",
+      "active-harm",
+      "scripture-as-weapon"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_17_21",
+    "verse_ref": "17.21",
+    "chapter": 17,
+    "verse_start": 21,
+    "verse_end": 21,
+    "sanskrit_devanagari": "यत्तु प्रत्युपकारार्थं फलमुद्दिश्य वा पुनः।दीयते च परिक्लिष्टं तद्दानं राजसं स्मृतम्।।17.21।।",
+    "sanskrit_iast": "yat tu pratyupakārārthaṁ phalam uddiśhya vā punaḥ dīyate cha parikliṣhṭaṁ tad dānaṁ rājasaṁ smṛitam",
+    "hindi_translation": "।।17.21।।किन्तु जो दान प्रत्युपकारके लिये अथवा फलप्राप्तिका उद्देश्य बनाकर फिर क्लेशपूर्वक दिया जाता है, वह दान राजस कहा जाता है।",
+    "english_translation": "And, that gift which is given with the intention of receiving something in return, or expecting a reward, or begrudgingly, is considered to be Rajasic.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Action without inner conviction behind it has no real weight; going through correct motions without sincerity is closer to nothing than to merit.",
+    "themes": [
+      "truth",
+      "discernment",
+      "action"
+    ],
+    "applies_when": [
+      "private-conduct-test",
+      "self-sabotage"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "scripture-as-weapon",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_17_28",
+    "verse_ref": "17.28",
+    "chapter": 17,
+    "verse_start": 28,
+    "verse_end": 28,
+    "sanskrit_devanagari": "अश्रद्धया हुतं दत्तं तपस्तप्तं कृतं च यत्।असदित्युच्यते पार्थ न च तत्प्रेत्य नो इह।।17.28।।",
+    "sanskrit_iast": "aśhraddhayā hutaṁ dattaṁ tapas taptaṁ kṛitaṁ cha yat asad ity uchyate pārtha na cha tat pretya no iha",
+    "hindi_translation": "।।17.28।।हे पार्थ ! अश्रद्धासे किया हुआ हवन, दिया हुआ दान और तपा हुआ तप तथा और भी जो,कुछ किया जाय, वह सब 'असत्' -- ऐसा कहा जाता है। उसका फल न यहाँ होता है, न मरनेके बाद ही होता है अर्थात् उसका कहीं भी सत् फल नहीं होता।",
+    "english_translation": "Whatever is sacrificed, given, or performed, and whatever austerity is practiced without faith, it is called 'Asat', O Arjuna; it is of no value here or hereafter (after death).",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Walking away from duties one is obliged to perform — done out of confusion or evasion — is not renunciation; it's failure to discriminate.",
+    "themes": [
+      "duty",
+      "discernment"
+    ],
+    "applies_when": [
+      "self-sabotage",
+      "duty-conflict",
+      "career-vs-calling"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "scripture-as-weapon",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_18_7",
+    "verse_ref": "18.7",
+    "chapter": 18,
+    "verse_start": 7,
+    "verse_end": 7,
+    "sanskrit_devanagari": "नियतस्य तु संन्यासः कर्मणो नोपपद्यते।मोहात्तस्य परित्यागस्तामसः परिकीर्तितः।।18.7।।",
+    "sanskrit_iast": "niyatasya tu sannyāsaḥ karmaṇo nopapadyate mohāt tasya parityāgas tāmasaḥ parikīrtitaḥ",
+    "hindi_translation": "।।18.7।।नियत कर्मका तो त्याग करना उचित नहीं है। उसका मोहपूर्वक त्याग करना तामस कहा गया है।",
+    "english_translation": "Verily, the renunciation of obligatory action is not proper; the abandonment of the same out of delusion is declared to be Tamasic.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Mature work means engaging both the boring or distasteful parts of one's role and the enjoyable parts with the same baseline; aversion to one and attachment to the other are signs of unfinished discernment.",
+    "themes": [
+      "equanimity",
+      "duty",
+      "detachment"
+    ],
+    "applies_when": [
+      "duty-conflict",
+      "career-vs-calling",
+      "self-sabotage"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "self-harm",
+      "active-harm",
+      "scripture-as-weapon"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_18_10",
+    "verse_ref": "18.10",
+    "chapter": 18,
+    "verse_start": 10,
+    "verse_end": 10,
+    "sanskrit_devanagari": "न द्वेष्ट्यकुशलं कर्म कुशले नानुषज्जते।त्यागी सत्त्वसमाविष्टो मेधावी छिन्नसंशयः।।18.10।।",
+    "sanskrit_iast": "na dveṣhṭy akuśhalaṁ karma kuśhale nānuṣhajjate tyāgī sattva-samāviṣhṭo medhāvī chhinna-sanśhayaḥ",
+    "hindi_translation": "।।18.10।।जो अकुशल कर्मसे द्वेष नहीं करता और कुशल कर्ममें आसक्त नहीं होता, वह त्यागी, बुद्धिमान्, सन्देहरहित और अपने स्वरूपमें स्थित है।",
+    "english_translation": "The man of renunciation, pervaded by purity, intelligent, and with his doubts cut asunder, does not hate an unpleasant task nor is he attached to a pleasant one.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Clean action satisfies four conditions together: it is what the situation calls for, performed without attachment, without affect-distortion (love or hate), and without grasping for what comes after.",
+    "themes": [
+      "action",
+      "detachment",
+      "duty"
+    ],
+    "applies_when": [
+      "duty-conflict",
+      "outcome-anxiety",
+      "service-without-return"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "criminal-intent",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_18_23",
+    "verse_ref": "18.23",
+    "chapter": 18,
+    "verse_start": 23,
+    "verse_end": 23,
+    "sanskrit_devanagari": "नियतं सङ्गरहितमरागद्वेषतः कृतम्।अफलप्रेप्सुना कर्म यत्तत्सात्त्विकमुच्यते।।18.23।।",
+    "sanskrit_iast": "niyataṁ saṅga-rahitam arāga-dveṣhataḥ kṛitam aphala-prepsunā karma yat tat sāttvikam uchyate",
+    "hindi_translation": "।।18.23।।जो कर्म शास्त्रविधिसे नियत किया हुआ और कर्तृत्वाभिमानसे रहित हो तथा फलेच्छारहित मनुष्यके द्वारा बिना राग-द्वेषके किया हुआ हो, वह सात्त्विक कहा जाता है।",
+    "english_translation": "An action that is ordained, free from attachment, done without love or hatred, and without desire for reward is declared to be Sattvic.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Action initiated without thinking through consequences, possible harm, or one's own actual capacity to deliver is the kind that produces lasting damage; the cost of skipping that step is structural, not incidental.",
+    "themes": [
+      "discernment",
+      "action",
+      "nonharm"
+    ],
+    "applies_when": [
+      "self-sabotage",
+      "anger-spike",
+      "temptation"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "self-harm",
+      "active-harm",
+      "scripture-as-weapon"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_18_25",
+    "verse_ref": "18.25",
+    "chapter": 18,
+    "verse_start": 25,
+    "verse_end": 25,
+    "sanskrit_devanagari": "अनुबन्धं क्षयं हिंसामनपेक्ष्य च पौरुषम्।मोहादारभ्यते कर्म यत्तत्तामसमुच्यते।।18.25।।",
+    "sanskrit_iast": "anubandhaṁ kṣhayaṁ hinsām anapekṣhya cha pauruṣham mohād ārabhyate karma yat tat tāmasam uchyate",
+    "hindi_translation": "।।18.25।।जो कर्म परिणाम, हानि, हिंसा और सामर्थ्यको न देखकर मोहपूर्वक आरम्भ किया जाता है, वह तामस कहा जाता है।",
+    "english_translation": "That action which is undertaken from delusion, without regard for the consequences, loss, injury, and one's own ability, is declared to be Tamasic (dark).",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "The reliable doer combines five marks: no grasping, no ego-claim of doership, steady commitment, energetic engagement, and equanimity across success and failure.",
+    "themes": [
+      "action",
+      "equanimity",
+      "detachment"
+    ],
+    "applies_when": [
+      "outcome-anxiety",
+      "career-crossroads",
+      "service-without-return"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "self-harm",
+      "active-harm",
+      "scripture-as-weapon"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_18_26",
+    "verse_ref": "18.26",
+    "chapter": 18,
+    "verse_start": 26,
+    "verse_end": 26,
+    "sanskrit_devanagari": "मुक्तसङ्गोऽनहंवादी धृत्युत्साहसमन्वितः।सिद्ध्यसिद्ध्योर्निर्विकारः कर्ता सात्त्विक उच्यते।।18.26।।",
+    "sanskrit_iast": "mukta-saṅgo ‘nahaṁ-vādī dhṛity-utsāha-samanvitaḥ siddhy-asiddhyor nirvikāraḥ kartā sāttvika uchyate",
+    "hindi_translation": "।।18.26।।जो कर्ता रागरहित, अनहंवादी, धैर्य और उत्साहयुक्त तथा सिद्धि और असिद्धिमें निर्विकार है, वह सात्त्विक कहा जाता है।",
+    "english_translation": "An agent who is free from attachment, non-egoistic, endowed with firmness and enthusiasm, and unaffected by success or failure, is considered to be of a Sattvic (pure) nature.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Discernment is the capacity to distinguish four pairs: action from inaction, what is to be done from what isn't, real fear from imagined fear, and what binds from what frees.",
+    "themes": [
+      "discernment",
+      "duty"
+    ],
+    "applies_when": [
+      "duty-conflict",
+      "career-crossroads",
+      "self-sabotage"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "scripture-as-weapon",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_18_30",
+    "verse_ref": "18.30",
+    "chapter": 18,
+    "verse_start": 30,
+    "verse_end": 30,
+    "sanskrit_devanagari": "प्रवृत्तिं च निवृत्तिं च कार्याकार्ये भयाभये।बन्धं मोक्षं च या वेत्ति बुद्धिः सा पार्थ सात्त्विकी।।18.30।।",
+    "sanskrit_iast": "pravṛittiṁ cha nivṛittiṁ cha kāryākārye bhayābhaye bandhaṁ mokṣhaṁ cha yā vetti buddhiḥ sā pārtha sāttvikī",
+    "hindi_translation": "।।18.30।।हे पृथानन्दन ! जो बुद्धि प्रवृत्ति और निवृत्तिको, कर्तव्य और अकर्तव्यको, भय और अभयको तथा बन्धन और मोक्षको जानती है, वह बुद्धि सात्त्विकी है।",
+    "english_translation": "The intellect which knows the path of work and renunciation, what should be done and what should not be done, fear and fearlessness, bondage and liberation—that intellect is Sattvic (pure), O Arjuna.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Real firmness is the kind that holds the mind, breath, and senses steady from within — not stubbornness about external positions.",
+    "themes": [
+      "self-mastery",
+      "restraint"
+    ],
+    "applies_when": [
+      "temptation",
+      "anger-spike"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "self-harm",
+      "active-harm",
+      "scripture-as-weapon"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_18_33",
+    "verse_ref": "18.33",
+    "chapter": 18,
+    "verse_start": 33,
+    "verse_end": 33,
+    "sanskrit_devanagari": "धृत्या यया धारयते मनःप्राणेन्द्रियक्रियाः।योगेनाव्यभिचारिण्या धृतिः सा पार्थ सात्त्विकी।।18.33।।",
+    "sanskrit_iast": "dhṛityā yayā dhārayate manaḥ-prāṇendriya-kriyāḥ yogenāvyabhichāriṇyā dhṛitiḥ sā pārtha sāttvikī",
+    "hindi_translation": "।।18.33।।हे पार्थ ! समतासे युक्त जिस अव्यभिचारिणी धृतिके द्वारा मनुष्य मन, प्राण और इन्द्रियोंकी क्रियाओंको धारण करता है, वह धृति सात्त्विकी है।",
+    "english_translation": "The unwavering firmness, through which Yoga restrains the functions of the mind, life-force, and senses—that firmness, O Arjuna, is Sattvic (pure).",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Worthwhile satisfaction often feels like effort or even discomfort at the start; the lasting reward shows up only after sustained engagement, not at the entry point.",
+    "themes": [
+      "discernment",
+      "self-mastery",
+      "equanimity"
+    ],
+    "applies_when": [
+      "temptation",
+      "outcome-anxiety",
+      "career-vs-calling",
+      "self-sabotage"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_18_37",
+    "verse_ref": "18.37",
+    "chapter": 18,
+    "verse_start": 37,
+    "verse_end": 37,
+    "sanskrit_devanagari": "यत्तदग्रे विषमिव परिणामेऽमृतोपमम्।तत्सुखं सात्त्विकं प्रोक्तमात्मबुद्धिप्रसादजम्।।18.37।।",
+    "sanskrit_iast": "yat tad agre viṣam iva pariṇāme 'mṛtopamam tat sukhaṁ sāttvikaṁ proktam ātma-buddhi-prasāda-jam",
+    "hindi_translation": "।।18.37।।हे भरतवंशियोंमें श्रेष्ठ अर्जुन ! अब तीन प्रकारके सुखको भी तुम मेरेसे सुनो। जिसमें अभ्याससे रमण होता है और जिससे दुःखोंका अन्त हो जाता है, ऐसा वह परमात्मविषयक बुद्धिकी प्रसन्नतासे पैदा होनेवाला जो सुख (सांसारिक आसक्तिके कारण) आरम्भमें विषकी तरह और परिणाममें अमृतकी तरह होता है, वह सुख सात्त्विक कहा गया है।",
+    "english_translation": "That which is like poison at first but in the end like nectar—that happiness is declared to be sattvic, born of the purity of one's own mind due to self-realization.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Pleasure that feels delicious in the moment but produces residue afterward is the predictable structure of sense-driven satisfaction — the bill comes later, but it always comes.",
+    "themes": [
+      "desire",
+      "discernment",
+      "self-mastery"
+    ],
+    "applies_when": [
+      "temptation",
+      "self-sabotage"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_18_38",
+    "verse_ref": "18.38",
+    "chapter": 18,
+    "verse_start": 38,
+    "verse_end": 38,
+    "sanskrit_devanagari": "विषयेन्द्रियसंयोगाद्यत्तदग्रेऽमृतोपमम्।परिणामे विषमिव तत्सुखं राजसं स्मृतम्।।18.38।।",
+    "sanskrit_iast": "viṣhayendriya-sanyogād yat tad agre ’mṛitopamam pariṇāme viṣham iva tat sukhaṁ rājasaṁ smṛitam",
+    "hindi_translation": "।।18.38।।जो सुख इन्द्रियों और विषयोंके संयोगसे आरम्भमें अमृतकी तरह और परिणाममें विषकी तरह होता है, वह सुख राजस कहा गया है।",
+    "english_translation": "That happiness which arises from the contact of the senses with the objects, which is initially like nectar but eventually like poison, is said to be Rajasic.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "No real-world duty comes free of imperfection; refusing to act until you find a flawless path is itself a way of avoiding action.",
+    "themes": [
+      "duty",
+      "action",
+      "discernment"
+    ],
+    "applies_when": [
+      "self-sabotage",
+      "career-crossroads",
+      "duty-conflict"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "criminal-intent",
+      "scripture-as-weapon",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_18_48",
+    "verse_ref": "18.48",
+    "chapter": 18,
+    "verse_start": 48,
+    "verse_end": 48,
+    "sanskrit_devanagari": "सहजं कर्म कौन्तेय सदोषमपि न त्यजेत्।सर्वारम्भा हि दोषेण धूमेनाग्निरिवावृताः।।18.48।।",
+    "sanskrit_iast": "saha-jaṁ karma kaunteya sa-doṣham api na tyajet sarvārambhā hi doṣheṇa dhūmenāgnir ivāvṛitāḥ",
+    "hindi_translation": "।।18.48।।हे कुन्तीनन्दन ! दोषयुक्त होनेपर भी सहज कर्मका त्याग नहीं करना चाहिये; क्योंकि सम्पूर्ण कर्म धुएँसे अग्निकी तरह किसी-न-किसी दोषसे युक्त हैं।",
+    "english_translation": "One should not, O Arjuna, abandon the duty to which one is born, though it may be faulty; for, all undertakings are enveloped by evil, just as fire is by smoke.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "The internal conditions for steady inner peace include letting go of ego-display, force, arrogance, craving, anger, greed, and possessive identification.",
+    "themes": [
+      "self-mastery",
+      "detachment",
+      "anger"
+    ],
+    "applies_when": [
+      "anger-spike",
+      "temptation",
+      "credit-theft"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "scripture-as-weapon",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 4,
+    "status": "draft",
+    "verse_id": "BG_18_53",
+    "verse_ref": "18.53",
+    "chapter": 18,
+    "verse_start": 53,
+    "verse_end": 53,
+    "sanskrit_devanagari": "अहङ्कारं बलं दर्पं कामं क्रोधं परिग्रहम्।विमुच्य निर्ममः शान्तो ब्रह्मभूयाय कल्पते।।18.53।।",
+    "sanskrit_iast": "ahankāraṁ balaṁ darpaṁ kāmaṁ krodhaṁ parigraham vimuchya nirmamaḥ śhānto brahma-bhūyāya kalpate",
+    "hindi_translation": "।।18.53।।जो विशुद्ध (सात्त्विकी) बुद्धिसे युक्त, वैराग्यके आश्रित, एकान्तका सेवन करनेवाला और नियमित भोजन करनेवाला साधक धैर्यपूर्वक इन्द्रियोंका नियमन करके, शरीर-वाणी-मनको वशमें करके, शब्दादि विषयोंका त्याग करके और राग-द्वेषको छोड़कर निरन्तर ध्यानयोगके परायण हो जाता है, वह अहंकार, बल, दर्प, काम, क्रोध और परिग्रहका त्याग करके एवं निर्मम तथा शान्त होकर ब्रह्मप्राप्तिका पात्र हो जाता है।",
+    "english_translation": "Having abandoned egoism, strength, arrogance, desire, anger, and covetousness, and being free from the notion of 'mine' and peaceful, he is fit for becoming Brahman.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "An ego-driven refusal to do what one's deep nature is going to push toward anyway is not freedom; it's just delayed engagement, often on worse terms.",
+    "themes": [
+      "action",
+      "discernment",
+      "self-mastery"
+    ],
+    "applies_when": [
+      "self-sabotage",
+      "career-vs-calling",
+      "duty-conflict"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "active-harm",
+      "criminal-intent",
+      "scripture-as-weapon",
+      "self-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 3,
+    "status": "draft",
+    "verse_id": "BG_18_59",
+    "verse_ref": "18.59",
+    "chapter": 18,
+    "verse_start": 59,
+    "verse_end": 59,
+    "sanskrit_devanagari": "यदहङ्कारमाश्रित्य न योत्स्य इति मन्यसे।मिथ्यैष व्यवसायस्ते प्रकृतिस्त्वां नियोक्ष्यति।।18.59।।",
+    "sanskrit_iast": "yad ahankāram āśhritya na yotsya iti manyase mithyaiṣha vyavasāyas te prakṛitis tvāṁ niyokṣhyati",
+    "hindi_translation": "।।18.59।।अहंकारका आश्रय लेकर तू जो ऐसा मान रहा है कि मैं युद्ध नहीं करूँगा, तेरा यह निश्चय मिथ्या (झूठा) है; क्योंकि तेरी क्षात्र-प्रकृति तेरेको युद्धमें लगा देगी।",
+    "english_translation": "If, filled with egoism, thou thinkest, \"I will not fight,\" then thy resolve is vain; nature will compel thee.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
+  },
+  {
+    "core_teaching": "Even after all the teaching, the choice belongs to the person; the wisdom is offered for reflection and free decision, not as command from authority.",
+    "themes": [
+      "discernment",
+      "action"
+    ],
+    "applies_when": [
+      "duty-conflict",
+      "career-crossroads",
+      "private-conduct-test"
+    ],
+    "does_not_apply_when": [
+      "abuse-context",
+      "scripture-as-weapon",
+      "self-harm",
+      "active-harm"
+    ],
+    "dimension_affinity": {},
+    "priority": 5,
+    "status": "draft",
+    "verse_id": "BG_18_63",
+    "verse_ref": "18.63",
+    "chapter": 18,
+    "verse_start": 63,
+    "verse_end": 63,
+    "sanskrit_devanagari": "इति ते ज्ञानमाख्यातं गुह्याद्गुह्यतरं मया।विमृश्यैतदशेषेण यथेच्छसि तथा कुरु।।18.63।।",
+    "sanskrit_iast": "iti te jñānam ākhyātaṁ guhyād guhyataraṁ mayā vimṛiśhyaitad aśheṣheṇa yathechchhasi tathā kuru",
+    "hindi_translation": "।।18.63।।यह गुह्यसे भी गुह्यतर (शरणागतिरूप) ज्ञान मैंने तुझे कह दिया। अब तू इसपर अच्छी तरहसे विचार करके जैसा चाहता है, वैसा कर।",
+    "english_translation": "Thus, wisdom more secret than secrecy itself has been declared to you by me. Reflect on it fully, then act as you wish.",
+    "source": {
+      "hindi": "Swami Ramsukhdas — BhagavadGita.io (gita/gita) translation.json",
+      "english": "Swami Sivananda — BhagavadGita.io (gita/gita) translation.json"
+    }
   }
 ]

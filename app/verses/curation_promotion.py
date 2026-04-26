@@ -15,7 +15,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Literal
 
-from pydantic import BaseModel, ConfigDict, Field, ValidationError
+from pydantic import BaseModel, ConfigDict, Field, ValidationError, model_validator
 
 from app.verses.curation_prep import (
     CURATION_PREP_DATA_DIR,
@@ -68,6 +68,15 @@ class PromotionReviewArtifact(BaseModel):
     promotion_requested_count: int = Field(ge=0)
     promoted_entry_count: int = Field(ge=0)
     promoted_entries: list[dict[str, Any]] = Field(min_length=0)
+
+    @model_validator(mode="after")
+    def _counts_match(self) -> "PromotionReviewArtifact":
+        if self.promoted_entry_count != len(self.promoted_entries):
+            raise ValueError(
+                f"promoted_entry_count ({self.promoted_entry_count}) must equal "
+                f"len(promoted_entries) ({len(self.promoted_entries)})."
+            )
+        return self
 
 
 def _placeholder_issues_for_promotion(p: CurationPrepPlaceholders) -> list[str]:
@@ -273,6 +282,27 @@ def validate_promotion_review_payload(payload: Any) -> PromotionReviewArtifact:
         return PromotionReviewArtifact.model_validate(payload)
     except ValidationError as exc:
         raise ValueError(f"Promotion review artifact failed validation: {exc}") from exc
+
+
+def load_promotion_review_artifact(path: Path) -> PromotionReviewArtifact:
+    """Load and validate a promotion review artifact from disk."""
+    if not path.is_file():
+        raise FileNotFoundError(f"Promotion review artifact not found: {path}")
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    return validate_promotion_review_payload(payload)
+
+
+def promoted_entries_from_review(review: PromotionReviewArtifact) -> list[CuratedVerseEntry]:
+    """Convert review payload entries into typed ``CuratedVerseEntry`` models."""
+    promoted: list[CuratedVerseEntry] = []
+    for idx, raw in enumerate(review.promoted_entries):
+        try:
+            promoted.append(CuratedVerseEntry.model_validate(raw))
+        except ValidationError as exc:
+            raise ValueError(
+                f"promoted_entries[{idx}] failed CuratedVerseEntry validation: {exc}"
+            ) from exc
+    return promoted
 
 
 def merge_promoted_into_seed_json(

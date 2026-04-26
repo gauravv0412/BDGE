@@ -36,6 +36,10 @@ The default output file is gitignored (large JSON); run the command locally or i
 - Placeholders are **not** validated against theme / applies_when vocabularies until an entry is promoted into `verses_seed.json` and passes `validate_curated_entry`.
 - Promotion is a separate, explicit step (manual or future tooling), not automatic.
 
+## Full-corpus batching (Step 25)
+
+For disciplined full-corpus drafting, use the deterministic 10-batch workflow in **`docs/curation_10_batch_workflow.md`** and CLI `app.scripts.curation_batches` (export/validate/import).
+
 ## Promotion (Step 22)
 
 After editors set `promotion_requested` and fill placeholders, use **`app/verses/curation_promotion.py`** to plan promotion, emit a **review** JSON, and optionally merge into a seed file with explicit flags. See **`docs/curation_promotion_workflow.md`**.
