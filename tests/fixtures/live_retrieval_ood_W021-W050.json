@@ -1,0 +1,246 @@
+{
+  "fixture_version": "live-retrieval-ood-v1",
+  "description": "Sparse user-style OOD retrieval audit cases. This is not a full engine output benchmark.",
+  "cases": [
+    {
+      "dilemma_id": "W021",
+      "dilemma": "I found extra cash in the ATM tray after the person before me left. No one saw it. Should I keep it?",
+      "expected_shape": "verse",
+      "expected_allowed_verses": ["6.5"],
+      "expected_signal_hints": { "themes": ["self-mastery", "restraint"], "applies": ["found-property"], "blockers": [] },
+      "notes": "Money temptation with found property should resemble private integrity."
+    },
+    {
+      "dilemma_id": "W022",
+      "dilemma": "A senior coworker is quietly blocking my promotion. Should I expose his mistakes in front of leadership?",
+      "expected_shape": "verse",
+      "expected_allowed_verses": ["17.15"],
+      "expected_signal_hints": { "themes": ["speech", "truth"], "applies": ["ethical-speech"], "blockers": [] },
+      "notes": "Workplace politics framed as public speech harm."
+    },
+    {
+      "dilemma_id": "W023",
+      "dilemma": "My closest friend shared a private secret I told them. Should I tell everyone what they did so people stop trusting them?",
+      "expected_shape": "fallback",
+      "expected_allowed_verses": [],
+      "expected_signal_hints": { "themes": ["speech", "truth"], "applies": ["ethical-speech"], "blockers": ["retaliatory-speech"] },
+      "notes": "Friendship betrayal with retaliatory disclosure should not force a verse."
+    },
+    {
+      "dilemma_id": "W024",
+      "dilemma": "My partner is friendly with an ex and I feel jealous. Should I secretly check their phone to be sure?",
+      "expected_shape": "fallback",
+      "expected_allowed_verses": [],
+      "expected_signal_hints": { "themes": ["desire", "self-mastery"], "applies": ["temptation"], "blockers": [] },
+      "notes": "Romantic jealousy and privacy violation is likely ambiguous/closest teaching."
+    },
+    {
+      "dilemma_id": "W025",
+      "dilemma": "I'm attracted to a married colleague who flirts with me. Should I keep meeting them alone after work?",
+      "expected_shape": "verse",
+      "expected_allowed_verses": ["3.37"],
+      "expected_signal_hints": { "themes": ["desire", "restraint"], "applies": ["temptation"], "blockers": [] },
+      "notes": "Sexual temptation and restraint should map to desire/restraint."
+    },
+    {
+      "dilemma_id": "W026",
+      "dilemma": "My parents want me to become a doctor, but I want to study design. Should I follow their plan to avoid disappointing them?",
+      "expected_shape": "fallback",
+      "expected_allowed_verses": [],
+      "expected_signal_hints": { "themes": ["duty", "discernment"], "applies": ["career-vs-calling"], "blockers": [] },
+      "notes": "Family pressure and vocation conflict is not necessarily a direct verse match."
+    },
+    {
+      "dilemma_id": "W027",
+      "dilemma": "My child failed an exam because I was too busy to help. Should I blame the teacher to protect my child?",
+      "expected_shape": "fallback",
+      "expected_allowed_verses": [],
+      "expected_signal_hints": { "themes": ["duty", "truth"], "applies": [], "blockers": [] },
+      "notes": "Parent duty plus honesty, but no obvious curated verse should be forced."
+    },
+    {
+      "dilemma_id": "W028",
+      "dilemma": "My mother refuses dialysis and says she is tired. The doctors say it may extend her life. Should I force treatment?",
+      "expected_shape": "verse",
+      "expected_allowed_verses": ["2.27"],
+      "expected_signal_hints": { "themes": ["death", "grief"], "applies": ["bereavement"], "blockers": [] },
+      "notes": "End-of-life autonomy and grief should resemble W020."
+    },
+    {
+      "dilemma_id": "W029",
+      "dilemma": "Everyone in my class is sharing answers for the online exam. Should I use them too so my rank does not fall?",
+      "expected_shape": "fallback",
+      "expected_allowed_verses": [],
+      "expected_signal_hints": { "themes": ["truth", "self-mastery"], "applies": ["private-conduct-test"], "blockers": [] },
+      "notes": "Education cheating is private integrity; closest teaching likely safer."
+    },
+    {
+      "dilemma_id": "W030",
+      "dilemma": "I know my resume leaves out the six months I was fired for misconduct. Is that omission okay if no one asks?",
+      "expected_shape": "fallback",
+      "expected_allowed_verses": [],
+      "expected_signal_hints": { "themes": ["truth"], "applies": [], "blockers": ["deception"] },
+      "notes": "Lying by omission with employment context should surface truth/deception without forced verse."
+    },
+    {
+      "dilemma_id": "W031",
+      "dilemma": "My family owns a legal gambling shop that pays our bills. Is continuing it adharmic if customers come willingly?",
+      "expected_shape": "verse",
+      "expected_allowed_verses": ["18.47"],
+      "expected_signal_hints": { "themes": ["right-livelihood", "duty"], "applies": ["livelihood-harm-tradeoff"], "blockers": [] },
+      "notes": "Legal-but-harmful business resembles livelihood harm tradeoff."
+    },
+    {
+      "dilemma_id": "W032",
+      "dilemma": "My brother is addicted to alcohol and keeps asking me for money. Should I give it so he does not get angry?",
+      "expected_shape": "fallback",
+      "expected_allowed_verses": [],
+      "expected_signal_hints": { "themes": ["nonharm", "discernment"], "applies": [], "blockers": [] },
+      "notes": "Addiction enablement needs careful closest teaching, not generic verse forcing."
+    },
+    {
+      "dilemma_id": "W033",
+      "dilemma": "A creator copied my work. Should I make a viral thread humiliating them with screenshots?",
+      "expected_shape": "fallback",
+      "expected_allowed_verses": [],
+      "expected_signal_hints": { "themes": ["speech", "truth"], "applies": ["ethical-speech"], "blockers": ["public-shaming-intent"] },
+      "notes": "Online shaming has truth plus public harm blocker."
+    },
+    {
+      "dilemma_id": "W034",
+      "dilemma": "I can make a funny AI deepfake of my boss saying embarrassing things. Is it okay if everyone knows it is a joke?",
+      "expected_shape": "fallback",
+      "expected_allowed_verses": [],
+      "expected_signal_hints": { "themes": ["speech", "truth"], "applies": ["ethical-speech"], "blockers": ["deception"] },
+      "notes": "AI/deepfake misuse should flag deception and speech harm."
+    },
+    {
+      "dilemma_id": "W035",
+      "dilemma": "My videos about other people's breakups get millions of views. Should I keep monetizing their pain if I use public posts?",
+      "expected_shape": "fallback",
+      "expected_allowed_verses": [],
+      "expected_signal_hints": { "themes": ["nonharm", "speech"], "applies": [], "blockers": [] },
+      "notes": "Content monetization ethics may be harmful but not direct verse retrieval."
+    },
+    {
+      "dilemma_id": "W036",
+      "dilemma": "Stray dogs keep entering our apartment compound. Should we poison them quietly before someone gets bitten?",
+      "expected_shape": "fallback",
+      "expected_allowed_verses": [],
+      "expected_signal_hints": { "themes": ["nonharm"], "applies": [], "blockers": ["active-harm"] },
+      "notes": "Animal harm with active harm blocker must not retrieve a verse."
+    },
+    {
+      "dilemma_id": "W037",
+      "dilemma": "My factory dumps untreated water at night. If I report it, my cousins may lose jobs. Should I stay quiet?",
+      "expected_shape": "verse",
+      "expected_allowed_verses": ["2.47"],
+      "expected_signal_hints": { "themes": ["duty", "welfare-of-all"], "applies": ["whistleblowing-risk", "duty-conflict"], "blockers": [] },
+      "notes": "Environmental harm and whistleblowing risk resembles public harm duty."
+    },
+    {
+      "dilemma_id": "W038",
+      "dilemma": "My relatives say marrying outside our religion will shame the family. Should I end the relationship to keep social peace?",
+      "expected_shape": "fallback",
+      "expected_allowed_verses": [],
+      "expected_signal_hints": { "themes": ["equality", "compassion"], "applies": ["family-disapproval"], "blockers": [] },
+      "notes": "Religious/social pressure is close to identity boundary but not necessarily same verse."
+    },
+    {
+      "dilemma_id": "W039",
+      "dilemma": "My sibling constantly insults me and borrows money without returning it. Is it wrong to stop taking their calls?",
+      "expected_shape": "fallback",
+      "expected_allowed_verses": [],
+      "expected_signal_hints": { "themes": ["nonharm", "restraint"], "applies": [], "blockers": ["abuse-context"] },
+      "notes": "Self-protection boundaries should surface abuse/boundary context without forced verse."
+    },
+    {
+      "dilemma_id": "W040",
+      "dilemma": "Something feels off about a business deal, but I cannot explain why. Should I walk away or am I overthinking?",
+      "expected_shape": "fallback",
+      "expected_allowed_verses": [],
+      "expected_signal_hints": { "themes": ["discernment"], "applies": [], "blockers": [] },
+      "notes": "Ambiguous low-info discernment case should not force verse."
+    },
+    {
+      "dilemma_id": "W041",
+      "dilemma": "A cashier forgot to scan an expensive item and I noticed after reaching home. Should I go back and pay?",
+      "expected_shape": "verse",
+      "expected_allowed_verses": ["6.5"],
+      "expected_signal_hints": { "themes": ["self-mastery", "truth"], "applies": ["private-conduct-test"], "blockers": [] },
+      "notes": "Money temptation and private integrity should retrieve self-mastery if signals exist."
+    },
+    {
+      "dilemma_id": "W042",
+      "dilemma": "My manager asked me to present my teammate's idea as mine because it will help the team win budget. Should I do it?",
+      "expected_shape": "fallback",
+      "expected_allowed_verses": [],
+      "expected_signal_hints": { "themes": ["truth", "duty"], "applies": ["credit-theft"], "blockers": ["deception"] },
+      "notes": "Workplace politics and credit theft should not be sanitized by team benefit."
+    },
+    {
+      "dilemma_id": "W043",
+      "dilemma": "A friend betrayed me and now wants help moving apartments. Should I refuse just to make them feel abandoned?",
+      "expected_shape": "fallback",
+      "expected_allowed_verses": [],
+      "expected_signal_hints": { "themes": ["anger", "restraint"], "applies": ["anger-spike"], "blockers": [] },
+      "notes": "Friendship betrayal with punitive motive should surface anger/restraint."
+    },
+    {
+      "dilemma_id": "W044",
+      "dilemma": "I keep comparing my partner to someone more successful and attractive. Should I end the relationship because of this restlessness?",
+      "expected_shape": "fallback",
+      "expected_allowed_verses": [],
+      "expected_signal_hints": { "themes": ["desire", "discernment"], "applies": ["temptation"], "blockers": [] },
+      "notes": "Romantic jealousy/restlessness should not force a desire verse."
+    },
+    {
+      "dilemma_id": "W045",
+      "dilemma": "I'm married and someone from the gym is clearly interested in me. Should I keep texting them privately?",
+      "expected_shape": "verse",
+      "expected_allowed_verses": ["3.37"],
+      "expected_signal_hints": { "themes": ["desire", "restraint"], "applies": ["temptation"], "blockers": [] },
+      "notes": "Sexual temptation and secrecy should fit desire/restraint."
+    },
+    {
+      "dilemma_id": "W046",
+      "dilemma": "My father wants me to take over the family shop, but I have a stable job I like. Am I selfish for refusing?",
+      "expected_shape": "fallback",
+      "expected_allowed_verses": [],
+      "expected_signal_hints": { "themes": ["duty", "discernment"], "applies": ["career-crossroads"], "blockers": [] },
+      "notes": "Family pressure and parent duty are context-dependent."
+    },
+    {
+      "dilemma_id": "W047",
+      "dilemma": "My elderly aunt cannot manage medicine alone. I am exhausted. Is it wrong to arrange paid care instead of doing it myself?",
+      "expected_shape": "fallback",
+      "expected_allowed_verses": [],
+      "expected_signal_hints": { "themes": ["duty", "nonharm"], "applies": [], "blockers": [] },
+      "notes": "Care duty needs nuance and likely closest teaching."
+    },
+    {
+      "dilemma_id": "W048",
+      "dilemma": "The patient asked me directly about the biopsy result, but the family asked me to wait until tomorrow. Should I delay?",
+      "expected_shape": "verse",
+      "expected_allowed_verses": ["16.1-3", "17.15"],
+      "expected_signal_hints": { "themes": ["truth", "compassion", "nonharm"], "applies": ["truth-compassion-conflict"], "blockers": [] },
+      "notes": "Medical autonomy and truth-compassion conflict can allow either close verse."
+    },
+    {
+      "dilemma_id": "W049",
+      "dilemma": "I wrote an assignment using AI and my professor banned AI. Should I submit it anyway if I edited it heavily?",
+      "expected_shape": "fallback",
+      "expected_allowed_verses": [],
+      "expected_signal_hints": { "themes": ["truth", "self-mastery"], "applies": ["private-conduct-test"], "blockers": ["deception"] },
+      "notes": "Education cheating and policy deception should be audited without forced verse."
+    },
+    {
+      "dilemma_id": "W050",
+      "dilemma": "I promised to tell my spouse about big purchases, but I bought something expensive and want to keep quiet unless asked.",
+      "expected_shape": "fallback",
+      "expected_allowed_verses": [],
+      "expected_signal_hints": { "themes": ["truth"], "applies": [], "blockers": ["deception"] },
+      "notes": "Lying by omission in marriage should surface truth/deception but likely fallback."
+    }
+  ]
+}

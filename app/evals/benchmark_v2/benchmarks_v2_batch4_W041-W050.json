@@ -1,0 +1,703 @@
+{
+  "benchmark_version": "wisdomize-v2.0-batch4-of-3",
+  "schema_version": "2.0",
+  "batch": "Final batch (W041–W050)",
+  "tone_directive": "Slightly sharper / more viral edge — declarative verdict sentences, tweet-sized card quotes, 'overheard' share titles. Anti-preachy rules still apply: observe, don't command.",
+  "dilemmas": [
+    {
+      "dilemma_id": "W041",
+      "dilemma": "I feel nothing when my distant grandfather dies. Should I fake grief at the funeral for family?",
+
+      "verdict_sentence": "You don't owe tears — you owe presence, and presence doesn't require performance.",
+      "classification": "Mixed",
+      "alignment_score": 55,
+      "confidence": 0.6,
+
+      "internal_driver": {
+        "primary": "Authenticity colliding with social ritual",
+        "hidden_risk": "Confusing 'I feel nothing' with 'I owe nothing'"
+      },
+
+      "core_reading": "The question presents two options — fake grief or stay away. There's a third that the question didn't imagine: show up, be genuinely respectful, skip the performance. Funerals aren't primarily about the deceased; they're about the living. Your presence there is already the thing.",
+
+      "gita_analysis": "Krishna would not ask you to manufacture feelings you don't have. But he would separate the inner state from the outer action — the first is yours alone; the second is a small, specific offering to people who did love him.",
+
+      "verse_match": null,
+      "closest_teaching": "The Gita (2.48) distinguishes the inner state of the actor from the outer form of the action — 'equanimity is yoga.' This doesn't mean performing emotion; it means acting from stability regardless of feeling. A respectful, composed attendance is karma; forced weeping is performance that satisfies no one and degrades both actor and audience. 2.38's related principle — act without being crushed by outcome or expectation — applies directly to the social pressure here.",
+
+      "if_you_continue": {
+        "short_term": "You attend. Nothing is manufactured. The family notices whatever they notice.",
+        "long_term": "The people who loved him have a memory of you being there in a simple, respectful way — more valuable than a dramatic performance they'd privately find odd from a distant grandchild."
+      },
+
+      "counterfactuals": {
+        "clearly_adharmic_version": {
+          "assumed_context": "You skip entirely, send no message, and tell yourself 'I'm not going to fake it' as if that were the only alternative to attendance.",
+          "decision": "Absence framed as integrity.",
+          "why": "The 'authenticity' frame becomes cover for not showing up for family members who needed the small gesture. Satya to self ≠ ignoring relational dharma."
+        },
+        "clearly_dharmic_version": {
+          "assumed_context": "You attend quietly, help with practical tasks, express genuine condolences to the people who are grieving (not about the deceased you didn't know, but about their loss of him), and leave without needing to have performed anything.",
+          "decision": "Presence without performance; warmth for the grieving.",
+          "why": "This threads the needle — satya intact (no fake grief), karma delivered (showing up), ahimsa respected (you don't make the grieving explain your absence)."
+        }
+      },
+
+      "higher_path": "Go. Don't fake tears. Do help with logistics if you can. Say something genuine to the people who are actually grieving — not about your relationship with him (which wasn't there), but about theirs (which was). The funeral isn't about your feelings; it's about theirs.",
+
+      "ethical_dimensions": {
+        "dharma_duty":          { "score": 1,  "note": "Small duty to extended family still real." },
+        "satya_truth":          { "score": 1,  "note": "Not faking is satya; not attending isn't the only form of it." },
+        "ahimsa_nonharm":       { "score": 1,  "note": "Low harm either way, but presence reduces some." },
+        "nishkama_detachment":  { "score": 1,  "note": "Not attached to being seen as a particular kind of grandchild." },
+        "shaucha_intent":       { "score": 2,  "note": "Motive is what matters — showing up for the living." },
+        "sanyama_restraint":    { "score": 1,  "note": "Restraint from performance is itself integrity." },
+        "lokasangraha_welfare": { "score": 1,  "note": "Family cohesion served by quiet presence." },
+        "viveka_discernment":   { "score": 2,  "note": "Seeing the third option is the core move." }
+      },
+
+      "missing_facts": [
+        "Will your absence hurt people you actually care about (parents, aunts, etc.)?",
+        "Can you be useful logistically even without emotional investment?"
+      ],
+
+      "share_layer": {
+        "anonymous_share_title": "The app said the funeral wasn't about my feelings. It was about theirs.",
+        "card_quote": "You don't owe tears. You owe presence.",
+        "reflective_question": "If you skipped, how would you explain it to your mother — and would you be comfortable with the explanation?"
+      }
+    },
+
+    {
+      "dilemma_id": "W042",
+      "dilemma": "I want to be a stay-at-home parent. My spouse earns enough. Society expects me to work.",
+
+      "verdict_sentence": "Society's expectation isn't your dharma — the life you actually live is.",
+      "classification": "Dharmic",
+      "alignment_score": 72,
+      "confidence": 0.72,
+
+      "internal_driver": {
+        "primary": "Calling over optics",
+        "hidden_risk": "Using 'my calling' to dress up what's actually fear of the workplace"
+      },
+
+      "core_reading": "Stay-at-home parenting is legitimate work and legitimate dharma — but the question here is whether you're choosing it or defaulting to it. Both look identical from outside. The difference matters, mostly to you, over ten years.",
+
+      "gita_analysis": "Krishna would not rank parenthood against career. He would ask whether the choice is from clarity (you've considered the alternative and want this) or from avoidance (the workplace feels hard and this feels easier) — because the same decision, from each motive, ages differently.",
+
+      "verse_match": {
+        "verse_ref": "18.47",
+        "sanskrit_devanagari": "श्रेयान्स्वधर्मो विगुणः परधर्मात्स्वनुष्ठितात्। स्वभावनियतं कर्म कुर्वन्नाप्नोति किल्बिषम्॥",
+        "sanskrit_iast": "śreyān sva-dharmo viguṇaḥ para-dharmāt svanuṣṭhitāt | svabhāva-niyataṁ karma kurvan nāpnoti kilbiṣam ||",
+        "hindi_translation": "अपना धर्म गुणरहित भी दूसरे के अच्छी तरह आचरण किए हुए धर्म से श्रेष्ठ है। स्वभाव से नियत कर्म करता हुआ मनुष्य पाप को प्राप्त नहीं होता।",
+        "english_translation": "Better one's own dharma imperfect than another's well performed. Performing work suited to one's nature, one incurs no sin.",
+        "source": "Gita Press Gorakhpur (Hindi) / Edwin Arnold (English, public domain)",
+        "why_it_applies": "The verse is almost purpose-built for this question. The 'expected' path (paid employment) is often invoked as the real svadharma for modern adults, but the verse refuses that. Your own dharma, imperfect and less visible, beats a well-executed version of someone else's expectation.",
+        "match_confidence": 0.85
+      },
+      "closest_teaching": null,
+
+      "if_you_continue": {
+        "short_term": "Family adjustments. Financial conversation. Social awkwardness at parties when the question 'and what do you do?' lands.",
+        "long_term": "Either a life you chose, raising children who remember a present parent — or, if the choice wasn't actually yours but defaulted to, a slow accumulation of small regrets that come out sideways."
+      },
+
+      "counterfactuals": {
+        "clearly_adharmic_version": {
+          "assumed_context": "You stay home because your spouse pressured you or because the workplace felt too hard, you never examine it, and ten years in you resent your children for the life you 'gave up' without them asking you to.",
+          "decision": "Default passed off as choice.",
+          "why": "The verse honors svadharma chosen honestly — not svadharma drifted into because alternatives felt harder. The resentment is the tell."
+        },
+        "clearly_dharmic_version": {
+          "assumed_context": "You talk honestly with your spouse about it — including contingencies (what if the marriage ends, what if your re-entry to work is hard later). You keep some professional skill current. You choose it explicitly, revisit the choice yearly, and treat the parenting as the serious work it is.",
+          "decision": "Explicit choice + built-in protections + taking the work seriously.",
+          "why": "This is 18.47 handled well. The dharma is yours; you haven't abdicated the long-term planning that dharma requires."
+        }
+      },
+
+      "higher_path": "Do it. Talk with your spouse about protections — financial access in your name, some continued professional activity, shared decision-making. Revisit the choice each year. Treat the parenting as serious work, not downtime. Most regret in this role comes from drift, not from the choice itself.",
+
+      "ethical_dimensions": {
+        "dharma_duty":          { "score": 3,  "note": "Parenting well is dharma; no Gita verse elevates paid work over it." },
+        "satya_truth":          { "score": 3,  "note": "Honest self-knowledge about motive matters here." },
+        "ahimsa_nonharm":       { "score": 2,  "note": "Present parenting reduces a specific kind of harm to children." },
+        "nishkama_detachment":  { "score": 1,  "note": "Detach from the social gaze that shaped the question." },
+        "shaucha_intent":       { "score": 3,  "note": "Motive — calling or avoidance — is the core axis." },
+        "sanyama_restraint":    { "score": 2,  "note": "Restraint from performing the expected role." },
+        "lokasangraha_welfare": { "score": 2,  "note": "Societies with present parents function differently." },
+        "viveka_discernment":   { "score": 3,  "note": "Recognizing the question belongs to you, not society, is the work." }
+      },
+
+      "missing_facts": [
+        "Are you choosing this, or running from something else?",
+        "What happens financially if the marriage ends?",
+        "Will you keep some professional skill current?"
+      ],
+
+      "share_layer": {
+        "anonymous_share_title": "The app said the social question wasn't mine to answer.",
+        "card_quote": "Society's expectation is not your dharma. Your life is.",
+        "reflective_question": "In ten years, which regret would be worse — the career you didn't build, or the presence your kids didn't have?"
+      }
+    },
+
+    {
+      "dilemma_id": "W043",
+      "dilemma": "Is it adharmic to not want children?",
+
+      "verdict_sentence": "Choosing not to have children you don't want is more dharmic than having children you'd resent.",
+      "classification": "Dharmic",
+      "alignment_score": 68,
+      "confidence": 0.72,
+
+      "internal_driver": {
+        "primary": "Self-knowledge pressing against inherited scripts",
+        "hidden_risk": "Confusing 'dharmic' with 'socially approved'"
+      },
+
+      "core_reading": "The question was shaped by the people who asked it first — family, culture, inherited expectation. But the Gita's test isn't 'what does the village want?' — it's 'what does honest self-examination reveal?' Those are sometimes the same and often not.",
+
+      "gita_analysis": "Krishna would not prescribe parenthood. He would ask whether you're choosing from clarity or from avoidance — because the same decision, made from each, is a different decision.",
+
+      "verse_match": null,
+      "closest_teaching": "The Gita honors both the householder (gṛhastha) and the renunciate (sannyasin) paths — 4.13 and 6.1 make clear that multiple valid roles exist. There is no verse prescribing procreation as dharma; there are verses on raising well any children one has. The text's silence on 'you must reproduce' is itself significant — later Dharmashastra commentary added that emphasis; the Gita itself did not.",
+
+      "if_you_continue": {
+        "short_term": "Family pressure. Social friction. Occasional second-guessing when you see a parent-child moment land.",
+        "long_term": "A life shaped around what you do want. Freedom. And the specific grief, if it comes, of a road not taken — which is the cost of any honest choice."
+      },
+
+      "counterfactuals": {
+        "clearly_adharmic_version": {
+          "assumed_context": "You have children because your parents pressured you, you resent them quietly, and you parent on autopilot while the children feel it.",
+          "decision": "Procreation as obedience to others, not readiness of your own.",
+          "why": "This is the actually adharmic path — a child raised by someone who didn't choose them. The Gita's emphasis on intent (shaucha) lands hardest here."
+        },
+        "clearly_dharmic_version": {
+          "assumed_context": "You examine honestly whether the 'no' is fear of responsibility or genuine clarity. You communicate with a partner if you have one. You make the choice explicitly, not by default.",
+          "decision": "Choose with self-knowledge, not inherited script.",
+          "why": "Dharma here isn't the content of the answer — it's the quality of the asking."
+        }
+      },
+
+      "higher_path": "Separate the social pressure from the actual question. Ask: if no one would ever judge you, what would you choose? That answer is the one worth examining.",
+
+      "ethical_dimensions": {
+        "dharma_duty":          { "score": 2,  "note": "No Gita verse makes procreation a universal duty." },
+        "satya_truth":          { "score": 4,  "note": "Choosing honestly is the whole point." },
+        "ahimsa_nonharm":       { "score": 3,  "note": "Unwanted children suffer; prevented suffering counts." },
+        "nishkama_detachment":  { "score": 2,  "note": "Not attached to producing a particular future." },
+        "shaucha_intent":       { "score": 4,  "note": "Motive is self-knowledge, not avoidance." },
+        "sanyama_restraint":    { "score": 2,  "note": "Restraint of social pressure is its own discipline." },
+        "lokasangraha_welfare": { "score": 1,  "note": "Choosing parents raise better kids." },
+        "viveka_discernment":   { "score": 4,  "note": "Recognizing the question belongs to you is the work." }
+      },
+
+      "missing_facts": [
+        "Is this a settled knowing or a season?",
+        "Is a partner involved and aligned?",
+        "Is the resistance about children specifically or about life-change generally?"
+      ],
+
+      "share_layer": {
+        "anonymous_share_title": "The app said my choice was my dharma, not my mother's.",
+        "card_quote": "Having children badly is worse than not having them.",
+        "reflective_question": "If no one would ever ask you about it again, would you still be debating it?"
+      }
+    },
+
+    {
+      "dilemma_id": "W044",
+      "dilemma": "My friend made a business mistake that cost me money. They apologized. Do I forgive and continue?",
+
+      "verdict_sentence": "Forgiveness is a gift you can give freely — trust is a loan that has to be earned back.",
+      "classification": "Context-dependent",
+      "alignment_score": 58,
+      "confidence": 0.6,
+
+      "internal_driver": {
+        "primary": "Competing wishes — preserve the friendship and protect yourself",
+        "hidden_risk": "Conflating emotional forgiveness with automatic business re-engagement"
+      },
+
+      "core_reading": "Two separate questions are hiding inside one. Do you forgive them as a friend? That's available whenever you're ready — it's your peace, not theirs. Do you do business with them again? That's a different question with different evidence requirements. You can say yes to one and no to the other without contradiction.",
+
+      "gita_analysis": "Krishna would not ask you to refuse business re-engagement out of principle, nor to resume it out of sentiment. He would ask what the mistake actually was — judgment, character, or circumstance — because the three require very different responses.",
+
+      "verse_match": {
+        "verse_ref": "16.3",
+        "sanskrit_devanagari": "तेजः क्षमा धृतिः शौचमद्रोहो नातिमानिता। भवन्ति संपदं दैवीमभिजातस्य भारत॥",
+        "sanskrit_iast": "tejaḥ kṣamā dhṛtiḥ śaucam adroho nāti-mānitā | bhavanti saṁpadaṁ daivīm abhijātasya bhārata ||",
+        "hindi_translation": "तेज, क्षमा, धैर्य, शुद्धि, अद्रोह और अभिमान का अभाव — हे भारत! ये दैवी संपदा के लक्षण हैं।",
+        "english_translation": "Vigor, forgiveness, fortitude, purity, freedom from malice, and absence of pride — these, O Bharata, are the qualities of one born to divine estate.",
+        "source": "Gita Press Gorakhpur (Hindi) / Edwin Arnold (English, public domain)",
+        "why_it_applies": "The verse lists kshama — forgiveness — among the divine qualities, but notably also lists dhriti (fortitude/judgment). Forgiveness is a divine quality. So is the judgment that protects you from repeat exposure. The verse doesn't require one to cancel the other — it lists them together.",
+        "match_confidence": 0.78
+      },
+      "closest_teaching": null,
+
+      "if_you_continue": {
+        "short_term": "Either you split the two questions cleanly and both the friendship and your finances stay intact — or you conflate them and one of the two quietly fails.",
+        "long_term": "Clean separation: friendship deepens because it survived a hard moment. Conflation: either resentment in the friendship or another financial hit, depending on which you sacrificed."
+      },
+
+      "counterfactuals": {
+        "clearly_adharmic_version": {
+          "assumed_context": "You stay angry, cut the friendship, and spend the next year telling the story with embellishment — or, alternatively, you forgive publicly and re-engage in business with no change in structure, and lose money again.",
+          "decision": "Either extreme: total cut or uncritical renewal.",
+          "why": "Both versions fail because they don't separate the two questions. The Gita's listing of kshama *and* dhriti together is precisely to prevent either collapse."
+        },
+        "clearly_dharmic_version": {
+          "assumed_context": "You accept the apology, let the friendship continue at normal weight, and you do not re-engage in business with them until they've demonstrated — through smaller, bounded interactions — that the specific failure won't repeat. You say this honestly, not punitively.",
+          "decision": "Forgive as friend; rebuild as partner only with evidence.",
+          "why": "Both qualities from 16.3 get exercised. The friend gets forgiveness (which they need as a friend); the business relationship gets dhriti (which protects you and the friendship from a second rupture)."
+        }
+      },
+
+      "higher_path": "Tell them directly — you forgive them, and the friendship is intact, and you're not ready to do business again yet. Don't dress this up as anything other than what it is. If the mistake was judgment, take time. If it was character, reconsider the friendship too. If it was circumstance, rebuild with caution. Let the evidence accumulate on its own schedule.",
+
+      "ethical_dimensions": {
+        "dharma_duty":          { "score": 1,  "note": "Friendship-duty is to forgive what can be forgiven." },
+        "satya_truth":          { "score": 2,  "note": "Naming what you can and can't do honestly is satya." },
+        "ahimsa_nonharm":       { "score": 1,  "note": "Non-harm to yourself includes not repeating exposure." },
+        "nishkama_detachment":  { "score": 1,  "note": "Detach from the lost money without faking the detachment." },
+        "shaucha_intent":       { "score": 2,  "note": "Motive is preserving what matters — friendship without financial self-harm." },
+        "sanyama_restraint":    { "score": 2,  "note": "Restraint from either extreme." },
+        "lokasangraha_welfare": { "score": 0,  "note": "Small scale; affects this dyad." },
+        "viveka_discernment":   { "score": 3,  "note": "Seeing that friendship and business are separate questions is the insight." }
+      },
+
+      "missing_facts": [
+        "Was the mistake judgment, character, or circumstance?",
+        "Was the apology specific or generic?",
+        "How significant is the loss relative to your financial position?"
+      ],
+
+      "share_layer": {
+        "anonymous_share_title": "The app said forgiveness and trust were two different ledgers.",
+        "card_quote": "Forgiveness is free. Trust is earned back.",
+        "reflective_question": "If the same mistake happened tomorrow, would you forgive them a second time — and if not, what does that tell you about now?"
+      }
+    },
+
+    {
+      "dilemma_id": "W045",
+      "dilemma": "I'm considering moving my elderly parent to a care home. They don't want to go.",
+
+      "verdict_sentence": "Dharma here isn't the answer you choose — it's how many alternatives you exhausted before choosing it.",
+      "classification": "Context-dependent",
+      "alignment_score": 50,
+      "confidence": 0.5,
+
+      "internal_driver": {
+        "primary": "Capacity pressing against wish",
+        "hidden_risk": "Confusing 'I can't do this' with 'I haven't tried the alternatives'"
+      },
+
+      "core_reading": "This question rarely has a clean answer — and the ones that feel cleanest (both 'never move them' and 'you have your own life to live') are usually both wrong. The dharmic version lives in the middle, specifically in how honestly you mapped the alternatives before defaulting to the hard choice.",
+
+      "gita_analysis": "Krishna would not absolve you of the decision. He would ask whether you've actually considered in-home care, part-time support, shared responsibility with siblings, or whether you've skipped to the dramatic move because it feels more like a decision.",
+
+      "verse_match": null,
+      "closest_teaching": "The Gita's duty of care to elders (implicit in its emphasis on role-based dharma) doesn't specify geography or arrangement. What it does specify is that compassion (dayā, 16.2) and clear seeing (viveka) apply together. Forcing a move without exhausting alternatives fails the first. Refusing to move when you genuinely can't provide adequate care fails the second. The question is always both/and.",
+
+      "if_you_continue": {
+        "short_term": "A hard decision made. Your parent unhappy. You second-guessing.",
+        "long_term": "Depends entirely on whether the decision was the least bad option or the most convenient one dressed up. You'll know, over time, which one it was — and so will they."
+      },
+
+      "counterfactuals": {
+        "clearly_adharmic_version": {
+          "assumed_context": "You move them to a care home without seriously trying in-home care, without involving siblings in the decision, without visiting the home regularly after, and without honestly accounting for whether 'can't care for them' means can't or won't.",
+          "decision": "Offloading dressed as necessity.",
+          "why": "The Gita's emphasis on exhausting the alternatives before the hard action applies. Dayā requires you actually try the less-dramatic options first."
+        },
+        "clearly_dharmic_version": {
+          "assumed_context": "You try in-home care, part-time support, shared arrangements with siblings. You talk to your parent about their real fears (most parents' refusal isn't about the building — it's about being forgotten). If it comes to the care home, you choose a good one, visit often, and don't pretend the move is what they wanted.",
+          "decision": "Exhaust alternatives; if you move, stay present.",
+          "why": "This is viveka and dayā held together. The outcome might look the same, but the ethical content — and your parent's experience — is entirely different."
+        }
+      },
+
+      "higher_path": "Before deciding, actually try: in-home care (full-time, part-time, live-in), rotating family help, a geriatric care manager. Ask your parent what specifically they're afraid of — usually it isn't the facility, it's being left. If the care home becomes necessary, visit often. Don't confuse the physical move with the emotional abandonment; they can be separated, but only by your behavior afterward.",
+
+      "ethical_dimensions": {
+        "dharma_duty":          { "score": 1,  "note": "Elder care is real duty; its form is context-dependent." },
+        "satya_truth":          { "score": 1,  "note": "Honesty about what you actually can and can't provide matters." },
+        "ahimsa_nonharm":       { "score": 0,  "note": "Harm exists in multiple directions — to them, to you, to dependents." },
+        "nishkama_detachment":  { "score": 1,  "note": "Detach from the outcome they'll be happy with the decision." },
+        "shaucha_intent":       { "score": 2,  "note": "Motive is the whole axis — love, convenience, resentment, capacity?" },
+        "sanyama_restraint":    { "score": 1,  "note": "Restraint from rushing the decision." },
+        "lokasangraha_welfare": { "score": 1,  "note": "How societies treat elders is shaped one family at a time." },
+        "viveka_discernment":   { "score": 2,  "note": "Seeing the question as multi-step, not binary, is the work." }
+      },
+
+      "missing_facts": [
+        "Have you tried in-home care seriously?",
+        "Is their refusal about the home or about fear of being forgotten?",
+        "Are siblings available and unequally contributing?",
+        "What's their medical/safety situation — is this urgency or preference?"
+      ],
+
+      "share_layer": {
+        "anonymous_share_title": "The app asked how many alternatives I'd tried before the hard move.",
+        "card_quote": "Dharma here is the question you keep asking, not the answer you rush to.",
+        "reflective_question": "If you moved them tomorrow and they died in the facility six months later, which choice would you wish you'd made?"
+      }
+    },
+
+    {
+      "dilemma_id": "W046",
+      "dilemma": "Should I stay in a job I hate because it pays my EMI?",
+
+      "verdict_sentence": "Staying isn't the failure — staying without a plan is.",
+      "classification": "Context-dependent",
+      "alignment_score": 52,
+      "confidence": 0.55,
+
+      "internal_driver": {
+        "primary": "Financial commitment colliding with daily suffering",
+        "hidden_risk": "Treating 'I have to' as a permanent sentence instead of a current fact"
+      },
+
+      "core_reading": "You have two real things: a real obligation and a real suffering. Neither cancels the other. The dharmic question isn't 'stay or leave' — it's 'am I using the stay to work toward a leave, or am I just enduring?'",
+
+      "gita_analysis": "Krishna would not tell you the hatred doesn't matter. He would ask whether you're performing the work or performing resentment — because the same desk holds both, and only one is karma yoga.",
+
+      "verse_match": {
+        "verse_ref": "2.47",
+        "sanskrit_devanagari": "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन। मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥",
+        "sanskrit_iast": "karmaṇy-evādhikāras te mā phaleṣu kadāchana | mā karma-phala-hetur bhūr mā te saṅgo'stv akarmaṇi ||",
+        "hindi_translation": "तेरा अधिकार केवल कर्म करने में है, उसके फलों में कभी नहीं। तू कर्मफल का हेतु मत बन, और अकर्म में भी तेरी आसक्ति न हो।",
+        "english_translation": "You have the right to action alone, never to its fruits. Let not the fruit of action be your motive, nor let your attachment be to inaction.",
+        "source": "Gita Press Gorakhpur (Hindi) / Edwin Arnold (English, public domain)",
+        "why_it_applies": "The verse cuts both ways here, deliberately. 'Do the work without clinging to fruit' can mean stay and work honestly. 'Don't be attached to inaction' can mean stop using the job as an excuse not to plan. The verse invites reflection, not an escape hatch.",
+        "match_confidence": 0.75
+      },
+      "closest_teaching": null,
+
+      "if_you_continue": {
+        "short_term": "EMI paid. Stability. The weight you know.",
+        "long_term": "Depends entirely on whether you're using the time. Two years of the same job with a plan is a springboard. Five years of the same job without one is a trap you've rented."
+      },
+
+      "counterfactuals": {
+        "clearly_adharmic_version": {
+          "assumed_context": "You stay in the job, resent it daily, take it out on your family and colleagues, and do nothing to build a path out for the next five years.",
+          "decision": "Endurance as lifestyle.",
+          "why": "This is exactly what 2.47's second half warns about — attachment to inaction. You're not being patient; you're being stuck."
+        },
+        "clearly_dharmic_version": {
+          "assumed_context": "You stay for now, reduce expenses to build a 6-month runway, skill up evenings and weekends toward what you'd rather do, and give yourself a concrete exit date.",
+          "decision": "Use the stay as fuel for the leave.",
+          "why": "This is karma yoga applied to career — work the current work fully, while building toward what's next, without dramatizing either."
+        }
+      },
+
+      "higher_path": "Decide the exit date before you decide the exit. Work backwards from it: what savings, skills, applications do you need by then? Make the hated job the thing that funds its own replacement.",
+
+      "ethical_dimensions": {
+        "dharma_duty":          { "score": 1,  "note": "Financial obligation is a real duty." },
+        "satya_truth":          { "score": 0,  "note": "Depends on honesty with self about whether you're planning or coping." },
+        "ahimsa_nonharm":       { "score": 0,  "note": "Watch the harm you do others when you bring the hate home." },
+        "nishkama_detachment":  { "score": 0,  "note": "Mixed — EMI is outcome-thinking but also just reality." },
+        "shaucha_intent":       { "score": 1,  "note": "Motive matters most — responsibility or avoidance?" },
+        "sanyama_restraint":    { "score": 1,  "note": "Staying itself can be a discipline." },
+        "lokasangraha_welfare": { "score": 0,  "note": "Your family benefits from the income and suffers from the mood." },
+        "viveka_discernment":   { "score": 0,  "note": "Depends on whether you're seeing clearly or just coping." }
+      },
+
+      "missing_facts": [
+        "How long is the EMI horizon — 2 years or 15?",
+        "Is the hatred about the work, the environment, or the identity?",
+        "What would 'less hated' look like — different role, different company, different field?"
+      ],
+
+      "share_layer": {
+        "anonymous_share_title": "The app didn't tell me to stay or leave. It asked what I was doing with the stay.",
+        "card_quote": "Your EMI is a fact. Your hatred is a signal. Neither is the whole answer.",
+        "reflective_question": "A year from today, will you have built an exit — or just collected another year?"
+      }
+    },
+
+    {
+      "dilemma_id": "W047",
+      "dilemma": "I want to call out a celebrity's hypocrisy online. They preach one thing and do another.",
+
+      "verdict_sentence": "The truth is true whether or not you tweet it — the question is whose hunger you'd be feeding.",
+      "classification": "Mixed",
+      "alignment_score": 45,
+      "confidence": 0.6,
+
+      "internal_driver": {
+        "primary": "Truth pressing against the mob energy that would amplify it",
+        "hidden_risk": "Mistaking 'I would be right' for 'I should post'"
+      },
+
+      "core_reading": "Your observation might be accurate. Your post might be true. And yet the thing you're about to participate in is rarely about accountability at the celebrity's level — it's about audience-stacking and small dopamine hits for you. The truth survives without your contribution; the question is what your contribution does to you.",
+
+      "gita_analysis": "Krishna would not suggest celebrities are above critique. He would ask whether your speech is aimed at the person who can change their behavior, or at people who already agree with you and would click the like button.",
+
+      "verse_match": {
+        "verse_ref": "17.15",
+        "sanskrit_devanagari": "अनुद्वेगकरं वाक्यं सत्यं प्रियहितं च यत्। स्वाध्यायाभ्यसनं चैव वाङ्मयं तप उच्यते॥",
+        "sanskrit_iast": "anudvega-karaṁ vākyaṁ satyaṁ priya-hitaṁ cha yat | svādhyāyābhyasanaṁ chaiva vāṅ-mayaṁ tapa uchyate ||",
+        "hindi_translation": "जो वचन उद्वेग न करने वाला, सत्य, प्रिय और हितकारक हो, तथा स्वाध्याय और अभ्यास रूप हो — वही वाणी का तप कहा जाता है।",
+        "english_translation": "Speech that causes no agitation, that is truthful, agreeable, and beneficial, and the practice of sacred study — this is called the austerity of speech.",
+        "source": "Gita Press Gorakhpur (Hindi) / Edwin Arnold (English, public domain)",
+        "why_it_applies": "The four-part test is brutal here. Truthful — likely yes. Beneficial — to whom? Non-injurious — pile-ons are the opposite. Non-agitating — the engagement mechanics of the platform reward the opposite of this. The post might pass one test and fail three.",
+        "match_confidence": 0.84
+      },
+      "closest_teaching": null,
+
+      "if_you_continue": {
+        "short_term": "Likes. Some engagement. A small hit of being-on-the-right-side.",
+        "long_term": "You become slightly more the kind of person who posts things. The celebrity absorbs the critique as white noise. Nothing else changes."
+      },
+
+      "counterfactuals": {
+        "clearly_adharmic_version": {
+          "assumed_context": "You post maximum heat, add fuel to every reply, screenshot the celebrity's response and dunk on it, and spend three days in the thread.",
+          "decision": "Full participation in the pile-on economy.",
+          "why": "This is 17.15 failed on three of four tests, with satya as the single cover. The Gita's suspicion of speech made for agitation's sake is precisely this pattern."
+        },
+        "clearly_dharmic_version": {
+          "assumed_context": "You write down what you noticed, privately. If the issue matters, you redirect the energy into supporting people whose work corrects the hypocrisy, or you stop consuming the celebrity's content.",
+          "decision": "Truth held privately; energy redirected to upstream remedy.",
+          "why": "You don't owe the celebrity your silence — but you also don't owe the platform your attention-labor. Both are true."
+        }
+      },
+
+      "higher_path": "Write it down in your notes. Sit with it. If it still feels urgent in 24 hours, write the most accurate version — and then decide whether to post, unfollow, or do neither. Most callout posts are evaporating by hour 48; the real tell is whether the anger is still there after the algorithm stops rewarding it.",
+
+      "ethical_dimensions": {
+        "dharma_duty":          { "score": 0,  "note": "No duty requires this; none forbids it either." },
+        "satya_truth":          { "score": 2,  "note": "Truth is satisfied; the other 17.15 conditions are the question." },
+        "ahimsa_nonharm":       { "score": -1, "note": "Pile-ons harm targets disproportionately to their crime." },
+        "nishkama_detachment":  { "score": -2, "note": "The like-count is the fruit you're after." },
+        "shaucha_intent":       { "score": -1, "note": "Motive is usually partly tribal, whatever the surface framing." },
+        "sanyama_restraint":    { "score": -1, "note": "The 24-hour test is the restraint." },
+        "lokasangraha_welfare": { "score": -1, "note": "Callout culture has a mixed record; rarely produces the claimed accountability." },
+        "viveka_discernment":   { "score": 1,  "note": "Noticing that you're noticing is one step toward clarity." }
+      },
+
+      "missing_facts": [
+        "Is the celebrity's hypocrisy causing specific, tangible harm — or is it just annoying?",
+        "Have you written callout posts before, and how did they age?",
+        "Is there anyone whose work on this same issue you could support instead?"
+      ],
+
+      "share_layer": {
+        "anonymous_share_title": "The app said the truth didn't need my tweet to be true.",
+        "card_quote": "The truth is true even if you don't tweet it.",
+        "reflective_question": "If the post got zero engagement, would you still write it?"
+      }
+    },
+
+    {
+      "dilemma_id": "W048",
+      "dilemma": "My teenager asks me if I ever used drugs. I did. Do I tell the truth?",
+
+      "verdict_sentence": "Truth with context is still truth — but so is the decision of how much context to give, and when.",
+      "classification": "Context-dependent",
+      "alignment_score": 58,
+      "confidence": 0.58,
+
+      "internal_driver": {
+        "primary": "Honesty colliding with parental modeling concern",
+        "hidden_risk": "Treating 'lie or confess' as the only two options"
+      },
+
+      "core_reading": "Between 'I never did' and a full account there's a calibrated truth that's honest and appropriate. What the teenager is usually asking isn't 'what did you do?' but 'are you a hypocrite?' and 'are you trustworthy?' A direct, measured answer addresses both without requiring a confessional.",
+
+      "gita_analysis": "Krishna would not ask you to lie to your child. He would remind you that satya includes timing and measure — and that 17.15's test applies as much to parents as to anyone else.",
+
+      "verse_match": null,
+      "closest_teaching": "The Gita's 17.15 test (truthful, beneficial, non-injurious, non-agitating) applies specifically here. The first is non-negotiable: don't lie. The other three shape the form: what level of detail serves this specific child at this specific age with their specific context. A 14-year-old asking casually and a 17-year-old struggling with a friend's addiction are different conversations. One principle, different applications.",
+
+      "if_you_continue": {
+        "short_term": "A conversation that will feel big to them regardless of what you say. Either you give them information they can use, or you lie and they eventually find out you lied.",
+        "long_term": "A relationship in which hard questions can be asked and get real answers. Or one in which they learned not to ask you the real questions because they already know what they'll get."
+      },
+
+      "counterfactuals": {
+        "clearly_adharmic_version": {
+          "assumed_context": "You flatly deny, they find out at 22 through an old friend, and the lie becomes the story — not the drug use, the lie. Trust recalibrates permanently downward.",
+          "decision": "Denial for comfort now.",
+          "why": "The Gita's satya is not absolute disclosure, but it is the prohibition of direct lies. 'I never did' crosses that line and usually gets caught."
+        },
+        "clearly_dharmic_version": {
+          "assumed_context": "You say yes, tell them when (briefly), tell them what you learned (specifically, not preachingly), and invite them to ask more if they want. You don't embellish; you don't glamorize; you don't lie.",
+          "decision": "Honest, measured, without sermon.",
+          "why": "This threads 17.15 cleanly. Truthful ✓. Beneficial — it models honesty and gives them real information. Non-injurious — doesn't expose more than is useful. Non-agitating — delivered calmly, not as event."
+        }
+      },
+
+      "higher_path": "Say yes. Tell them what you used and roughly when. Tell them what you actually learned — not what you'd rehearsed. Skip the sermon. Ask why they're asking; the answer is usually the more important conversation. Your teenager will remember that you told them the truth. That's worth more than any anti-drug lecture.",
+
+      "ethical_dimensions": {
+        "dharma_duty":          { "score": 2,  "note": "Parent-as-truth-teller is part of the dharma of the role." },
+        "satya_truth":          { "score": 3,  "note": "Direct lies would be a failure; full confession isn't required." },
+        "ahimsa_nonharm":       { "score": 1,  "note": "The honest answer typically reduces harm long-term." },
+        "nishkama_detachment":  { "score": 1,  "note": "Detach from the 'perfect parent' image you might be protecting." },
+        "shaucha_intent":       { "score": 2,  "note": "Motive is trust-building, not performance of purity." },
+        "sanyama_restraint":    { "score": 2,  "note": "Restraint on oversharing is the discipline." },
+        "lokasangraha_welfare": { "score": 1,  "note": "Honest parenting scales up to healthier discourse around substances." },
+        "viveka_discernment":   { "score": 3,  "note": "Calibrating to the specific child and moment is where the work is." }
+      },
+
+      "missing_facts": [
+        "What's the child's age and current context? (14 vs. 17 are different conversations.)",
+        "Why are they asking — casual, or related to something in their own life?",
+        "Did your use cause harm you need to be honest about?"
+      ],
+
+      "share_layer": {
+        "anonymous_share_title": "The app said my kid wasn't asking about drugs. They were asking if I'd lie to them.",
+        "card_quote": "Truth with context is still truth.",
+        "reflective_question": "Twenty years from now, what do you want your kid to remember about how you answered hard questions?"
+      }
+    },
+
+    {
+      "dilemma_id": "W049",
+      "dilemma": "Should I end a long friendship that has become one-sided?",
+
+      "verdict_sentence": "Friendships don't always need funerals — sometimes they just need less oxygen.",
+      "classification": "Mixed",
+      "alignment_score": 52,
+      "confidence": 0.55,
+
+      "internal_driver": {
+        "primary": "Depletion pressing against history",
+        "hidden_risk": "Mistaking the dramatic cut for the mature exit"
+      },
+
+      "core_reading": "'End' is one option, and usually the loudest. There's a quieter one: the friendship continues at lower volume, at the weight it can actually bear. Not every relationship needs a verdict; some just need accurate calibration. The question is which this one is.",
+
+      "gita_analysis": "Krishna would not require you to stay in a relationship that depletes you. He also wouldn't hand you permission to sever for minor reasons. He would ask what the friendship gives when it's working, and whether that's worth the current imbalance — honestly, not sentimentally.",
+
+      "verse_match": null,
+      "closest_teaching": "The Gita's concept of yajna (3.10–12) — mutual giving as the basis of sustainable relationship — applies. One-way relationships violate yajna; they're closer to extraction. But the text also values loyalty and doesn't require you to turn every imbalance into a severance. The middle move — lower the volume, accept what the relationship actually is rather than what it was — is often the dharmic one.",
+
+      "if_you_continue": {
+        "short_term": "Either the dramatic cut (closure, initial relief, occasional regret) or the gradual fade (no event, slow recalibration, ongoing low-level contact).",
+        "long_term": "The cut is clean and feels decisive but sometimes produces phantom-limb grief for years. The fade preserves the possibility of future reconnection if circumstances change. Neither is wrong; they fit different friendships."
+      },
+
+      "counterfactuals": {
+        "clearly_adharmic_version": {
+          "assumed_context": "You send a long confrontational message about every imbalance you've noticed over years, cut contact abruptly, and spend the next two years explaining the cut to mutual friends.",
+          "decision": "Severance as performance.",
+          "why": "This fails both yajna (no real repair attempt) and satya (the real issue was depletion; the message dressed it as their specific failures). It also usually means you weren't actually ready to end it."
+        },
+        "clearly_dharmic_version": {
+          "assumed_context": "You reduce contact gradually, respond warmly when they reach out but stop initiating, let the friendship settle into whatever size it can actually sustain, and don't require a funeral for the version that used to be.",
+          "decision": "Recalibrate without announcement.",
+          "why": "This respects the history without pretending the current reality isn't what it is. Yajna restored at the level the friendship can now support, rather than forced back to its peak shape."
+        }
+      },
+
+      "higher_path": "Before ending, try reducing. Stop initiating. See what survives. Some friendships shrink to their natural size and continue there for decades. Others fade entirely — but that fade is often less violent and less public than a cut. You don't owe the friendship a funeral; you don't owe it life support either. Most long friendships need accurate calibration more than they need verdicts.",
+
+      "ethical_dimensions": {
+        "dharma_duty":          { "score": 1,  "note": "Friendship carries duties of mutual care; the duty evolves, not ends." },
+        "satya_truth":          { "score": 1,  "note": "Honest recalibration beats dramatic messaging." },
+        "ahimsa_nonharm":       { "score": 1,  "note": "Less harm through gradual shift than through severance for most cases." },
+        "nishkama_detachment":  { "score": 1,  "note": "Detach from the idea of what it was or what it should be." },
+        "shaucha_intent":       { "score": 1,  "note": "Motive — self-care or punishment? Different ethics." },
+        "sanyama_restraint":    { "score": 2,  "note": "Restraint from the dramatic gesture is itself wisdom." },
+        "lokasangraha_welfare": { "score": 0,  "note": "Small scale; affects friendship network mildly." },
+        "viveka_discernment":   { "score": 2,  "note": "Seeing that 'end' isn't the only option is the insight." }
+      },
+
+      "missing_facts": [
+        "Have you tried reducing contact before considering ending?",
+        "Is there a specific recent rupture, or accumulated depletion?",
+        "Would you be at peace if they died tomorrow with current contact level?"
+      ],
+
+      "share_layer": {
+        "anonymous_share_title": "The app said friendships didn't always need funerals.",
+        "card_quote": "Friendships don't always need funerals. Sometimes they just need less oxygen.",
+        "reflective_question": "If you simply stopped initiating for 6 months, what would be left — and would that be enough?"
+      }
+    },
+
+    {
+      "dilemma_id": "W050",
+      "dilemma": "I feel my life is meaningless. I go through motions. Is this adharmic?",
+
+      "verdict_sentence": "This isn't an ethics question yet — it's the question underneath ethics, and you deserve a human to help you with it.",
+      "classification": "Insufficient information",
+      "alignment_score": 50,
+      "confidence": 0.4,
+
+      "internal_driver": {
+        "primary": "A collapse of meaning — which can be many things",
+        "hidden_risk": "Pathologizing a real signal, or treating a real illness as philosophy"
+      },
+
+      "core_reading": "What you're describing could be three very different things: clinical depression (which wants medical help), a life-situation mismatch (which wants change), or a spiritual emptiness (which wants a path). The app can't tell you which — but the difference matters enormously.",
+
+      "gita_analysis": "Krishna would not diagnose you. What the Gita models is this: Arjuna arrives at the battlefield exactly here — collapsed, immobilized, asking questions that precede ethics. The text's first move is not to answer his questions. It's to let him ask them, honestly, and then begin slowly. That's worth borrowing.",
+
+      "verse_match": {
+        "verse_ref": "2.7",
+        "sanskrit_devanagari": "कार्पण्यदोषोपहतस्वभावः पृच्छामि त्वां धर्मसम्मूढचेताः। यच्छ्रेयः स्यान्निश्चितं ब्रूहि तन्मे शिष्यस्तेऽहं शाधि मां त्वां प्रपन्नम्॥",
+        "sanskrit_iast": "kārpaṇya-doṣopahata-svabhāvaḥ pṛchchhāmi tvāṁ dharma-sammūḍha-chetāḥ | yach-chhreyaḥ syān niśchitaṁ brūhi tan me śiṣyas te'haṁ śādhi māṁ tvāṁ prapannam ||",
+        "hindi_translation": "कायरता के दोष से मेरा स्वभाव आहत हो गया है, और धर्म के विषय में मेरा चित्त मोहित है — मैं आपसे पूछता हूँ: जो निश्चित रूप से मेरा कल्याण हो, वह मुझे बताइए। मैं आपका शिष्य हूँ; मुझे शरण में आए हुए को शिक्षा दीजिए।",
+        "english_translation": "My nature is overcome by the flaw of weakness, and my mind is confused about dharma. I ask you: tell me with certainty what is good for me. I am your student; teach one who has taken refuge in you.",
+        "source": "Gita Press Gorakhpur (Hindi) / Edwin Arnold (English, public domain)",
+        "why_it_applies": "This is the Gita's actual beginning — Arjuna admits he doesn't know what he should do, and asks for help. The verse dignifies exactly the state you're in. It does not skip to answers.",
+        "match_confidence": 0.8
+      },
+      "closest_teaching": null,
+
+      "if_you_continue": {
+        "short_term": "The motions continue. You function. People around you may not notice.",
+        "long_term": "If it's depression, it deepens without help. If it's situational, the mismatch compounds. If it's spiritual, it calcifies into a kind of flat resignation. None of these resolve on their own."
+      },
+
+      "counterfactuals": {
+        "clearly_adharmic_version": {
+          "assumed_context": "You keep going through motions, dismiss the feeling as philosophy, avoid talking to anyone about it, and six months later it's worse and you're further from help.",
+          "decision": "Private endurance of something that needs witnesses.",
+          "why": "The Gita's method is dialogue — Arjuna doesn't find clarity alone. Isolation with this particular feeling is where it gets most dangerous."
+        },
+        "clearly_dharmic_version": {
+          "assumed_context": "You speak to a therapist or trusted person this week — not to be fixed, but to start distinguishing what this actually is. You treat the question seriously enough to get help locating it.",
+          "decision": "Seek qualified company for a question you can't sort alone.",
+          "why": "This is the 2.7 posture — admitting the confusion and asking someone equipped to help. That's not weakness; it's where the Gita itself begins."
+        }
+      },
+
+      "higher_path": "Please consider talking to a mental health professional this week. If that feels too big, start with one trusted person. You don't have to know what this is before you ask for help sorting it out. You deserve that help.",
+
+      "ethical_dimensions": {
+        "dharma_duty":          { "score": 0,  "note": "Too early to score." },
+        "satya_truth":          { "score": 4,  "note": "Naming this honestly is already a dharmic act." },
+        "ahimsa_nonharm":       { "score": 0,  "note": "Non-harm to self is the most relevant — seek help." },
+        "nishkama_detachment":  { "score": 0,  "note": "Not the frame for this." },
+        "shaucha_intent":       { "score": 0,  "note": "Intent is to understand, which is clean." },
+        "sanyama_restraint":    { "score": 0,  "note": "Not the relevant axis." },
+        "lokasangraha_welfare": { "score": 0,  "note": "Starts with you being well." },
+        "viveka_discernment":   { "score": 1,  "note": "Recognizing the confusion is the first discernment." }
+      },
+
+      "missing_facts": [
+        "Is this persistent and accompanied by sleep, appetite, or energy changes? (If yes, please see a mental health professional.)",
+        "Is there a specific life situation you're avoiding changing?",
+        "Have you felt this way before, and what shifted it?",
+        "Do you have someone in your life you could say this exact sentence to?"
+      ],
+
+      "share_layer": {
+        "anonymous_share_title": "The app said Arjuna started here too — and the first dharmic step was asking for help.",
+        "card_quote": "The first honest step is saying: I don't know what I should do.",
+        "reflective_question": "If a friend said exactly what you just said, what would you tell them to do this week?"
+      }
+    }
+  ]
+}
