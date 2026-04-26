@@ -1,0 +1,691 @@
+{
+  "benchmark_version": "wisdomize-v2.0-batch3-of-3",
+  "schema_version": "2.0",
+  "batch": "3 of 3 (W031–W040)",
+  "tone_directive": "Slightly sharper / more viral edge — declarative verdict sentences, tweet-sized card quotes, 'overheard' share titles. Anti-preachy rules still apply: observe, don't command.",
+  "dilemmas": [
+    {
+      "dilemma_id": "W031",
+      "dilemma": "I over-ordered at a restaurant and there's a lot of waste. Should I finish eating even though I'm full?",
+
+      "verdict_sentence": "Overeating doesn't un-waste food — it just adds a second harm to the first.",
+      "classification": "Adharmic",
+      "alignment_score": 38,
+      "confidence": 0.65,
+
+      "internal_driver": {
+        "primary": "Guilt expressed as further harm",
+        "hidden_risk": "Using your body to pay a debt you already owe your next order"
+      },
+
+      "core_reading": "The waste happened at the order. Stuffing yourself now doesn't reverse it — it just performs atonement while actually damaging your body, which is a separate thing you were stewarding. Two wrongs here, neither making a right.",
+
+      "gita_analysis": "Krishna wouldn't call overeating evil. He would ask why your first instinct is to punish the body for a decision the mind made earlier — and whether the real lesson sits upstream of the plate.",
+
+      "verse_match": {
+        "verse_ref": "6.16",
+        "sanskrit_devanagari": "नात्यश्नतस्तु योगोऽस्ति न चैकान्तमनश्नतः। न चातिस्वप्नशीलस्य जाग्रतो नैव चार्जुन॥",
+        "sanskrit_iast": "nāty-aśnatas tu yogo'sti na chaikāntam anaśnataḥ | na chāti-svapna-śīlasya jāgrato naiva chārjuna ||",
+        "hindi_translation": "हे अर्जुन! यह योग न अधिक खाने वाले का सिद्ध होता है, न बिल्कुल न खाने वाले का, न अधिक सोने वाले का, और न सदा जागने वाले का।",
+        "english_translation": "Yoga is not for one who eats too much, nor for one who fasts excessively; not for one who sleeps too much, nor for one who keeps awake too long, O Arjuna.",
+        "source": "Gita Press Gorakhpur (Hindi) / Edwin Arnold (English, public domain)",
+        "why_it_applies": "The verse directly names measured eating as part of the discipline. Overeating to clear a plate is a break with the body's signal — and the verse treats that signal as ethically relevant, not just medically.",
+        "match_confidence": 0.84
+      },
+      "closest_teaching": null,
+
+      "if_you_continue": {
+        "short_term": "A heavy stomach, a small moral rush that fades in an hour.",
+        "long_term": "The pattern trains you to treat discomfort as virtue and your own body as the accounting ledger for bad decisions it didn't make."
+      },
+
+      "counterfactuals": {
+        "clearly_adharmic_version": {
+          "assumed_context": "You over-order regularly, always 'clean the plate' as penance, and build a relationship with food that confuses punishment with responsibility.",
+          "decision": "Guilt-eating as lifestyle.",
+          "why": "The Gita's emphasis on moderation isn't aesthetic — it's because extremes on either side corrupt judgment. This is that exactly."
+        },
+        "clearly_dharmic_version": {
+          "assumed_context": "You stop when full, pack the leftovers, give them to someone who needs them or eat them tomorrow, and calibrate your next order smaller.",
+          "decision": "Address the waste upstream; stop the harm downstream.",
+          "why": "This is sanyama — recognizing that the right correction happens at the cause, not the body that didn't cause it."
+        }
+      },
+
+      "higher_path": "Stop when full. Take it home — leftover bag, share with someone outside, whatever. The real correction is the next order, not this plate. Punishing your body for the ordering is not a dharma; it's just a second mistake.",
+
+      "ethical_dimensions": {
+        "dharma_duty":          { "score": 0,  "note": "No formal duty either way." },
+        "satya_truth":          { "score": 0,  "note": "Not the axis." },
+        "ahimsa_nonharm":       { "score": -2, "note": "Harm to your own body as 'solution' to harm elsewhere." },
+        "nishkama_detachment":  { "score": -1, "note": "Attached to feeling the plate was paid for." },
+        "shaucha_intent":       { "score": -1, "note": "Motive is guilt management, not care." },
+        "sanyama_restraint":    { "score": -3, "note": "Direct failure of restraint — the plate makes the decision, not you." },
+        "lokasangraha_welfare": { "score": -1, "note": "Taking home benefits someone; forcing it down benefits no one." },
+        "viveka_discernment":   { "score": -2, "note": "Mistakes the second harm for the correction of the first." }
+      },
+
+      "missing_facts": [
+        "Is this a one-time scenario or a pattern?",
+        "Was 'clean plate' culture part of your childhood training?",
+        "Is takeaway actually possible at this venue?"
+      ],
+
+      "share_layer": {
+        "anonymous_share_title": "The app said overeating wasn't penance. It was a second mistake.",
+        "card_quote": "The waste happened at the order. Overeating doesn't un-waste it.",
+        "reflective_question": "If the food had been stolen instead of thrown out, would you still have eaten past full to 'pay for it'?"
+      }
+    },
+
+    {
+      "dilemma_id": "W032",
+      "dilemma": "I want to block a toxic family member on all channels. Family says this breaks family unity.",
+
+      "verdict_sentence": "Unity built on your suffering isn't unity — it's hostage-keeping with a family photo.",
+      "classification": "Dharmic",
+      "alignment_score": 74,
+      "confidence": 0.75,
+
+      "internal_driver": {
+        "primary": "Self-preservation pressing against group coercion",
+        "hidden_risk": "Internalizing 'family unity' as a rule you didn't write and can't critique"
+      },
+
+      "core_reading": "The family isn't defending unity. They're defending the appearance of it — and they're using your continued exposure as the price for that appearance. Those are different things. You don't owe your peace to their image.",
+
+      "gita_analysis": "Krishna would not preach family obligation at you. He would ask whose interests the 'unity' claim actually serves — and whether a unity that requires one member's ongoing harm is the thing the word is supposed to mean.",
+
+      "verse_match": null,
+      "closest_teaching": "The Gita's ahimsa — non-harm — includes non-harm to oneself. Its emphasis on svadharma is about each person's own right action, not about the group's preferred fiction of harmony. 'Family' as an abstraction doesn't outrank a person's specific, lived experience of harm. Texts in the Dharmashastra tradition that address family cohesion assume functional relationships; they do not prescribe endurance of abuse.",
+
+      "if_you_continue": {
+        "short_term": "Silence from the channels. Pressure from other family members. Possibly a reduction in invites.",
+        "long_term": "A life where 'family' includes only the members who treat you like one. The ones who chose the group fiction over your wellbeing reveal themselves clearly — which is information you needed anyway."
+      },
+
+      "counterfactuals": {
+        "clearly_adharmic_version": {
+          "assumed_context": "You keep channels open, absorb the contact, spend holidays performing composure, and watch the resentment slowly rearrange how you show up in your marriage, your parenting, your work.",
+          "decision": "Endurance for the group's comfort.",
+          "why": "The harm doesn't stay with you; it transmits outward. This is the version the Gita's ahimsa teaching directly argues against — non-harm that stops with you isn't really non-harm."
+        },
+        "clearly_dharmic_version": {
+          "assumed_context": "You block cleanly, communicate the decision once (to the specific channel it affects — not the whole family WhatsApp), don't negotiate the reasons, and let the family react however they react.",
+          "decision": "Limit + no debate.",
+          "why": "This respects both parties — the toxic member gets a clear signal, you get your life back. The family's reaction is their work, not yours to manage."
+        }
+      },
+
+      "higher_path": "Block them. Tell the specific person once, briefly, in writing. Don't argue the reasons. Expect the family to frame it as your failure; you don't owe them the rebuttal they're demanding. Get a therapist for the aftermath — the family pressure is usually where the real test is.",
+
+      "ethical_dimensions": {
+        "dharma_duty":          { "score": 2,  "note": "Duty to self is real; filial duty is not unconditional." },
+        "satya_truth":          { "score": 3,  "note": "Naming the situation accurately, to yourself first." },
+        "ahimsa_nonharm":       { "score": 4,  "note": "Non-harm to yourself and anyone downstream of you." },
+        "nishkama_detachment":  { "score": 2,  "note": "Letting go of the reconciliation fantasy is a detachment." },
+        "shaucha_intent":       { "score": 3,  "note": "Motive is protection, not punishment." },
+        "sanyama_restraint":    { "score": 3,  "note": "The careful, non-dramatic exit is the restraint." },
+        "lokasangraha_welfare": { "score": 2,  "note": "Breaking transmission lines of harm serves the wider system." },
+        "viveka_discernment":   { "score": 3,  "note": "Seeing that 'unity' is a rhetorical device is clarity." }
+      },
+
+      "missing_facts": [
+        "Have you tried lower-contact before full-block?",
+        "Is there a safety issue (finances, kids, shared obligations)?",
+        "Do you have one family member who'd back you?"
+      ],
+
+      "share_layer": {
+        "anonymous_share_title": "The app said unity built on my silence wasn't unity.",
+        "card_quote": "Unity built on your suffering isn't unity. It's hostage-keeping.",
+        "reflective_question": "If your own child were being treated by someone the way you're being treated, would you tell them to stay for unity?"
+      }
+    },
+
+    {
+      "dilemma_id": "W033",
+      "dilemma": "I make more money than my spouse and sometimes use it to 'win' arguments. I know it's wrong.",
+
+      "verdict_sentence": "You already named it — the question now is whether naming is going to be the whole action.",
+      "classification": "Adharmic",
+      "alignment_score": 20,
+      "confidence": 0.82,
+
+      "internal_driver": {
+        "primary": "Economic power weaponized in intimate space",
+        "hidden_risk": "Treating the confession as the repair"
+      },
+
+      "core_reading": "You wrote 'I know it's wrong.' That sentence is doing a lot of work — it's meant to sound like accountability but it's also meant to close the topic without requiring you to change. The Gita's framework doesn't let that sentence function as absolution.",
+
+      "gita_analysis": "Krishna would not moralize about money. He would read the pattern as ego in costume — the same dynamic that produces all domestic cruelty, just with a different lever. The money didn't corrupt the argument; the argument exposed what the money gave you permission to do.",
+
+      "verse_match": {
+        "verse_ref": "16.14",
+        "sanskrit_devanagari": "असौ मया हतः शत्रुर्हनिष्ये चापरानपि। ईश्वरोऽहमहं भोगी सिद्धोऽहं बलवान्सुखी॥",
+        "sanskrit_iast": "asau mayā hataḥ śatrur haniṣye chāparān api | īśvaro'ham ahaṁ bhogī siddho'haṁ balavān sukhī ||",
+        "hindi_translation": "यह शत्रु मेरे द्वारा मारा गया, और दूसरों को भी मैं मार डालूँगा। मैं ईश्वर हूँ, भोगने वाला हूँ, सिद्ध हूँ, बलवान हूँ, सुखी हूँ।",
+        "english_translation": "This enemy has been slain by me; the other also I will slay. I am the lord, I am the enjoyer, I am successful, powerful, and happy.",
+        "source": "Gita Press Gorakhpur (Hindi) / Edwin Arnold (English, public domain)",
+        "why_it_applies": "The verse is Krishna's description of the demoniac mind's internal monologue — the moment when power starts thinking of itself as proof of superiority. You'd recognize it in a villain; the Gita's sharper move is asking you to recognize it in yourself when you 'win' arguments because you pay more of the bills.",
+        "match_confidence": 0.86
+      },
+      "closest_teaching": null,
+
+      "if_you_continue": {
+        "short_term": "You win arguments. Your spouse stops starting them. The house gets quieter.",
+        "long_term": "One of two endings. Either they leave, eventually, because something in them understood the math. Or they stay and become smaller — and you realize at some point that you're living with someone you shrank."
+      },
+
+      "counterfactuals": {
+        "clearly_adharmic_version": {
+          "assumed_context": "You keep doing it, tell yourself they 'provoke' you, rationalize the salary math as reality, and watch the marriage contract quietly into something neither of you recognizes.",
+          "decision": "Continuation with self-justification.",
+          "why": "This is 16.14 in long form. The ego has found a tool, and the tool is winning. Everything else about the marriage gets sacrificed to the tool's ongoing use."
+        },
+        "clearly_dharmic_version": {
+          "assumed_context": "You apologize directly — not generically — naming the specific thing you do and the specific harm. You invite a couples therapist. You structure finances as shared (joint accounts, mutual decisions) to remove the lever. You do this without requiring your spouse to 'get past it.'",
+          "decision": "Name, repair, restructure the power.",
+          "why": "Knowing is not repair. Repair is concrete — disarming the lever you've been using, not promising to use it less. The Gita treats intent and action as inseparable."
+        }
+      },
+
+      "higher_path": "Apologize specifically, not generically. Name the exact thing you do. Don't require them to forgive immediately. Restructure finances so the lever is gone — joint accounts, shared decisions. Get a couples therapist. You can't 'know it's wrong' your way out of this; you can only change the machinery.",
+
+      "ethical_dimensions": {
+        "dharma_duty":          { "score": -3, "note": "Partnership duty is directly violated." },
+        "satya_truth":          { "score": 1,  "note": "You're telling yourself the truth — that's a starting floor, not a ceiling." },
+        "ahimsa_nonharm":       { "score": -4, "note": "Ongoing harm to someone you chose to protect." },
+        "nishkama_detachment":  { "score": -3, "note": "Attached to winning, defined by winning." },
+        "shaucha_intent":       { "score": -4, "note": "Motive is domination with economic cover." },
+        "sanyama_restraint":    { "score": -4, "note": "Money-as-weapon is restraint's opposite." },
+        "lokasangraha_welfare": { "score": -2, "note": "Children absorb the dynamic; it teaches them something." },
+        "viveka_discernment":   { "score": 1,  "note": "You see it clearly — credit for that, and only that." }
+      },
+
+      "missing_facts": [],
+
+      "share_layer": {
+        "anonymous_share_title": "The app said knowing it was wrong wasn't the same as stopping.",
+        "card_quote": "If your point needs your salary to land, it wasn't a point.",
+        "reflective_question": "If your spouse out-earned you by the same margin tomorrow, would you still think the argument was about the argument?"
+      }
+    },
+
+    {
+      "dilemma_id": "W034",
+      "dilemma": "I run a successful business. Employees ask for raises. Profit is good but not great. Do I give?",
+
+      "verdict_sentence": "Profit that never reaches the people who made it isn't profit — it's hoarding with better branding.",
+      "classification": "Context-dependent",
+      "alignment_score": 55,
+      "confidence": 0.55,
+
+      "internal_driver": {
+        "primary": "Fair sharing vs. business sustainability — both real",
+        "hidden_risk": "Using 'sustainability' to mean 'my comfortable margin'"
+      },
+
+      "core_reading": "Two things can be true. The business has to survive. And the employees made the profit. The dharmic question is whether 'not great' means 'genuinely tight' or means 'my take-home is still excellent and I'd rather not reduce it.' One of these justifies holding; the other doesn't.",
+
+      "gita_analysis": "Krishna would not tell you to run an unsustainable business. He would ask what percentage of the improvement the labor captured versus what the capital captured — and whether the current split would embarrass you if it were public.",
+
+      "verse_match": null,
+      "closest_teaching": "The Gita's concept of yajna (3.10–12) is usually translated as 'sacrifice' but its operative meaning is circulation — the principle that what one receives must be returned to the cycle or it becomes theft. Applied to business: profit generated by labor that isn't shared with that labor is closer to yajna's idea of theft than to its idea of enterprise. The text doesn't specify percentages; it specifies the principle that one-way extraction is not sustainable, ethically or otherwise.",
+
+      "if_you_continue": {
+        "short_term": "No raise. Short-term margin preserved. Some goodwill loss, some quiet resume updates in the ranks.",
+        "long_term": "Your best people leave to companies that will pay them. You replace them, pay the replacements market rate anyway, and learn that you gained nothing by holding — except the message that you would if you could."
+      },
+
+      "counterfactuals": {
+        "clearly_adharmic_version": {
+          "assumed_context": "You hold all raises, keep your own take-home steady or growing, and tell yourself it's about 'runway' while using that runway to expand your personal lifestyle.",
+          "decision": "Extraction with a sustainability story.",
+          "why": "This is yajna violated — circulation broken in one direction while continuing in the other. The Gita's warning about the demoniac mind in 16.14 ('I am the enjoyer') applies directly."
+        },
+        "clearly_dharmic_version": {
+          "assumed_context": "You open the books to your senior team, look at the actual math together, give a structured raise tied to inflation and specific performance, and freeze your own comp if the margin is truly tight. You make the 'tight' claim verifiable.",
+          "decision": "Transparency + shared sacrifice + structural raise.",
+          "why": "This is yajna in practice. Both sides see the real picture; the sacrifice is shared; the circulation is preserved. The Gita treats this kind of openness as a feature of dharmic leadership, not a weakness."
+        }
+      },
+
+      "higher_path": "Open the books to a few trusted people. Look at the math honestly. If it's truly tight, cut your own comp before you deny theirs — and show them you did. If the margin allows raises, give them without making people beg. Pay for loyalty before you need to replace it; it's cheaper and more dharmic than the alternative.",
+
+      "ethical_dimensions": {
+        "dharma_duty":          { "score": 1,  "note": "Duty of the employer role includes the circulation principle." },
+        "satya_truth":          { "score": 1,  "note": "Transparency on the books changes the ethics materially." },
+        "ahimsa_nonharm":       { "score": 0,  "note": "Harm of holding vs. harm of overpaying to unsustainability." },
+        "nishkama_detachment":  { "score": 1,  "note": "Not being attached to your specific take-home is the test." },
+        "shaucha_intent":       { "score": 1,  "note": "Motive — survival or comfort — is the whole question." },
+        "sanyama_restraint":    { "score": 1,  "note": "Restraint from personal consumption in tight times." },
+        "lokasangraha_welfare": { "score": 2,  "note": "How capital treats labor scales up to how societies function." },
+        "viveka_discernment":   { "score": 1,  "note": "Distinguishing real tightness from comfortable margin is the work." }
+      },
+
+      "missing_facts": [
+        "What's the raise ask vs. inflation?",
+        "What's your personal comp relative to average employee comp — ratio?",
+        "What's actual runway in months?",
+        "Have you opened any of this to senior team?"
+      ],
+
+      "share_layer": {
+        "anonymous_share_title": "The app asked what percentage of my margin the labor saw.",
+        "card_quote": "Profit that never reaches the people who made it isn't profit. It's hoarding.",
+        "reflective_question": "If your employees could see your take-home next to theirs, what would the conversation be?"
+      }
+    },
+
+    {
+      "dilemma_id": "W035",
+      "dilemma": "I'm thinking about having an affair because my marriage is sexless but we're otherwise good partners and parents.",
+
+      "verdict_sentence": "You found courage for the affair you haven't had for the conversation — and the conversation is the real test.",
+      "classification": "Adharmic",
+      "alignment_score": 22,
+      "confidence": 0.8,
+
+      "internal_driver": {
+        "primary": "Unspoken problem converted into hidden action",
+        "hidden_risk": "Telling yourself 'we're otherwise good' to avoid the 'otherwise'"
+      },
+
+      "core_reading": "A sexless marriage is a real, specific, addressable problem. An affair is not an addressing of it — it's a workaround that creates two problems in place of one. The affair is the story you tell yourself so you don't have to risk the conversation.",
+
+      "gita_analysis": "Krishna would not lecture you about marriage. He would ask why the courage you don't have for one conversation with your spouse is the courage you're finding for months of secrecy with someone else.",
+
+      "verse_match": {
+        "verse_ref": "3.37",
+        "sanskrit_devanagari": "काम एष क्रोध एष रजोगुणसमुद्भवः। महाशनो महापाप्मा विद्ध्येनमिह वैरिणम्॥",
+        "sanskrit_iast": "kāma eṣa krodha eṣa rajo-guṇa-samudbhavaḥ | mahāśano mahā-pāpmā viddhy enam iha vairiṇam ||",
+        "hindi_translation": "यह काम ही, यह क्रोध ही — रजोगुण से उत्पन्न — महाभक्षक और महापापी है। इसे ही तू यहाँ शत्रु जान।",
+        "english_translation": "It is desire, it is anger, born of the rajas-guṇa — devouring and highly sinful. Know this to be the enemy here.",
+        "source": "Gita Press Gorakhpur (Hindi) / Edwin Arnold (English, public domain)",
+        "why_it_applies": "The verse names the dynamic directly. Desire that isn't examined doesn't stay desire — it becomes the thing you organize your life around. The 'otherwise good' framing is already the desire editing your view of your marriage.",
+        "match_confidence": 0.86
+      },
+      "closest_teaching": null,
+
+      "if_you_continue": {
+        "short_term": "Energy. Aliveness. A reason to check your phone. The feeling of being chosen again.",
+        "long_term": "One of three endings: they find out, you find out you can't sustain the split, or the affair dies and you're back where you started with more debt on the ledger."
+      },
+
+      "counterfactuals": {
+        "clearly_adharmic_version": {
+          "assumed_context": "You start the affair, hide it for years, let your spouse continue parenting you while you emotionally leave, and only address it when you're caught.",
+          "decision": "Full double life, maintained indefinitely.",
+          "why": "This is the exact arc 3.37 warns about — desire unexamined becomes the organizing principle of your life, and the self you started as is no longer visible."
+        },
+        "clearly_dharmic_version": {
+          "assumed_context": "You tell your spouse you want to talk about the sexlessness, name your loneliness directly, and either rebuild with them or end the marriage honestly before starting anything new.",
+          "decision": "Have the conversation. Accept the outcome, even if it's separation.",
+          "why": "Satya — truth — is the whole test here. A marriage that can't survive the conversation was already over. But you owe both of you the attempt."
+        }
+      },
+
+      "higher_path": "Tell your spouse what you told yourself when you framed the question. Not the affair — the loneliness. See what happens when the real problem gets real air.",
+
+      "ethical_dimensions": {
+        "dharma_duty":          { "score": -3, "note": "Direct violation of the partnership vow." },
+        "satya_truth":          { "score": -4, "note": "Built entirely on concealment." },
+        "ahimsa_nonharm":       { "score": -3, "note": "Eventual harm to spouse, children, the other person." },
+        "nishkama_detachment":  { "score": -3, "note": "Defined by craving a specific feeling." },
+        "shaucha_intent":       { "score": -2, "note": "Motive is flight, not examination." },
+        "sanyama_restraint":    { "score": -3, "note": "Restraint is exactly what hasn't happened." },
+        "lokasangraha_welfare": { "score": -2, "note": "Children absorb what parents hide." },
+        "viveka_discernment":   { "score": -2, "note": "'Otherwise good' is the rationalization talking." }
+      },
+
+      "missing_facts": [],
+
+      "share_layer": {
+        "anonymous_share_title": "The app asked why I had courage for the affair but not the conversation.",
+        "card_quote": "The conversation you're avoiding is cheaper than the affair you're planning.",
+        "reflective_question": "If your spouse read this exact message, what would they most want you to say to them instead?"
+      }
+    },
+
+    {
+      "dilemma_id": "W036",
+      "dilemma": "Is it adharmic to be rich?",
+
+      "verdict_sentence": "Wealth isn't adharmic — being owned by it is.",
+      "classification": "Context-dependent",
+      "alignment_score": 55,
+      "confidence": 0.7,
+
+      "internal_driver": {
+        "primary": "The question itself — usually asked by those near wealth, not in it",
+        "hidden_risk": "Treating the word 'rich' as the ethical unit, instead of the specific relationship"
+      },
+
+      "core_reading": "The Gita is not a poverty cult. Krishna himself is described as regal, adorned, wealthy. What the text cares about is your relationship to what you have — whether you're moved by it, attached to it, defined by its presence or absence. Same net worth, different internal state, different ethics.",
+
+      "gita_analysis": "Krishna would not tell you to give it all away. He would ask whether you would still recognize yourself if it vanished tomorrow — and whether your decisions are shaped by the money's ongoing safety or by something that would survive its loss.",
+
+      "verse_match": {
+        "verse_ref": "2.70",
+        "sanskrit_devanagari": "आपूर्यमाणमचलप्रतिष्ठं समुद्रमापः प्रविशन्ति यद्वत्। तद्वत्कामा यं प्रविशन्ति सर्वे स शान्तिमाप्नोति न कामकामी॥",
+        "sanskrit_iast": "āpūryamāṇam achala-pratiṣṭhaṁ samudram āpaḥ praviśanti yadvat | tadvat kāmā yaṁ praviśanti sarve sa śāntim āpnoti na kāma-kāmī ||",
+        "hindi_translation": "जैसे सब ओर से परिपूर्ण, अचल प्रतिष्ठित समुद्र में जल प्रवेश करते हैं, वैसे ही सब कामनाएँ जिस पुरुष में प्रविष्ट होती हैं — वह शांति को प्राप्त होता है, न कि कामनाओं का कामना करने वाला।",
+        "english_translation": "As waters enter the ocean — which, though full on all sides, remains unmoved — so the person whom all desires enter attains peace, not the one who craves desires.",
+        "source": "Gita Press Gorakhpur (Hindi) / Edwin Arnold (English, public domain)",
+        "why_it_applies": "The verse gives the exact test. It isn't 'empty your ocean.' It's 'be the ocean — desires can enter without moving you.' Money can be present without being the thing that organizes your every motion. That's the dharmic relationship, and it's compatible with wealth.",
+        "match_confidence": 0.84
+      },
+      "closest_teaching": null,
+
+      "if_you_continue": {
+        "short_term": "Wealth accumulates, or doesn't. Either way, the ethical question doesn't move much based on the balance.",
+        "long_term": "Two very different lives produce very similar-looking bank statements. The one where you remained recognizable, or the one where the money slowly took over your calendar, your friendships, your self."
+      },
+
+      "counterfactuals": {
+        "clearly_adharmic_version": {
+          "assumed_context": "You organize your whole life around wealth preservation and growth, measure other people by their net worth, and can't sleep when markets move against you.",
+          "decision": "Money as the organizing principle of identity and relationships.",
+          "why": "Not the wealth — the absorption into it. This is exactly what 2.70 warns against: being moved by what enters, rather than remaining the ocean."
+        },
+        "clearly_dharmic_version": {
+          "assumed_context": "You earn, steward, spend deliberately, give systematically, treat money as a tool you use rather than a shield you hide behind, and could describe yourself without referring to the bank balance.",
+          "decision": "Wealth present, not in charge.",
+          "why": "This is the ocean posture. 2.70 is a functional instruction, not a metaphor — and it's available at any net worth."
+        }
+      },
+
+      "higher_path": "Ask three questions periodically: (1) Could I live at half of this and still be me? (2) Do my closest people know my real life, or do they know my surface? (3) Does what I give reflect what I have, or does it reflect what would embarrass me if it were known? Your answers change with seasons — keep checking.",
+
+      "ethical_dimensions": {
+        "dharma_duty":          { "score": 1,  "note": "Wealth carries specific duties — stewardship, giving, fair labor." },
+        "satya_truth":          { "score": 1,  "note": "Honesty about what you have and what it's for." },
+        "ahimsa_nonharm":       { "score": 1,  "note": "How you earn and how you spend are where harm lives or doesn't." },
+        "nishkama_detachment":  { "score": 2,  "note": "The whole 2.70 test." },
+        "shaucha_intent":       { "score": 1,  "note": "Motive is the axis — craving or stewardship?" },
+        "sanyama_restraint":    { "score": 1,  "note": "Restraint on lifestyle creep is a direct discipline." },
+        "lokasangraha_welfare": { "score": 1,  "note": "What flows back to the world from you?" },
+        "viveka_discernment":   { "score": 2,  "note": "Seeing the question as relational not quantitative is clarity." }
+      },
+
+      "missing_facts": [
+        "Are you actually rich, or near-rich and asking whether to want it?",
+        "Is the question being asked because someone is making you feel guilty, or because something in you is asking?",
+        "Do you give — in time, money, or both?"
+      ],
+
+      "share_layer": {
+        "anonymous_share_title": "The app said the Gita didn't hate money. It hated being owned by it.",
+        "card_quote": "The Gita doesn't hate money. It hates being owned by it.",
+        "reflective_question": "If your net worth halved tomorrow, who would leave your life — and what would that tell you?"
+      }
+    },
+
+    {
+      "dilemma_id": "W037",
+      "dilemma": "I hit my child once in anger. I'm horrified at myself. What now?",
+
+      "verdict_sentence": "The horror is the start of the repair — now don't let it become the whole repair.",
+      "classification": "Dharmic",
+      "alignment_score": 58,
+      "confidence": 0.62,
+
+      "internal_driver": {
+        "primary": "Recognition — which is where real change begins, if it continues",
+        "hidden_risk": "Drowning in self-condemnation instead of doing the specific work"
+      },
+
+      "core_reading": "The horror you feel is doing two things. It's naming what happened honestly, which is necessary. It can also become a performance of suffering that replaces the actual repair. The Gita's emphasis on right action over feeling applies — the kid doesn't need your guilt; they need your changed behavior and a specific apology.",
+
+      "gita_analysis": "Krishna would not ask you to stop feeling this. He would ask you not to let the feeling become its own kind of hiding — because self-condemnation, fully felt, can be a way of avoiding the smaller, harder work of repair.",
+
+      "verse_match": null,
+      "closest_teaching": "The Gita doesn't have a specific verse on child-striking — that situation is outside the text's explicit concerns. Its closest relevant teaching is 2.38's principle of acting without being crushed by outcomes, combined with its emphasis in 16.1–3 on the divine qualities including self-restraint and non-violence. The text's usable structure here: acknowledge honestly, apologize specifically, change the conditions that led to it, and don't confuse self-flagellation with growth.",
+
+      "if_you_continue": {
+        "short_term": "Either genuine repair begins or the guilt becomes a recurring feature of your internal life with no behavioral change.",
+        "long_term": "Children remember the apology as vividly as the act — sometimes more. The work now determines which memory dominates."
+      },
+
+      "counterfactuals": {
+        "clearly_adharmic_version": {
+          "assumed_context": "You say a generic 'sorry,' tell yourself 'I'm not that kind of parent' without examining what conditions led here, and it happens again in 18 months — at which point the child has learned not only what you did but that you didn't know how to stop yourself.",
+          "decision": "Soft apology + no structural change.",
+          "why": "The Gita's warning about inaction applies here — inaction at the level of structure, even when the surface looks remorseful. The child reads both."
+        },
+        "clearly_dharmic_version": {
+          "assumed_context": "You apologize to the child directly, specifically, in words they understand. You get to a therapist — not your partner's, not a book — to understand what led here. You identify the triggers. You tell your partner honestly. You don't ask the child to comfort you about your guilt.",
+          "decision": "Full specific repair + structural change + no guilt-harvesting from the victim.",
+          "why": "This is how satya and ahimsa meet in this specific situation. Honest acknowledgment, concrete prevention, no making the child responsible for your emotional recovery."
+        }
+      },
+
+      "higher_path": "Apologize to your child specifically, in words they understand, without making them comfort you. Get a therapist — not a book, not your partner. Identify what precedes the anger. Change those conditions. Tell your partner honestly. Do not ask the child to reassure you that you're a good parent. You are the adult in the repair.",
+
+      "ethical_dimensions": {
+        "dharma_duty":          { "score": 2,  "note": "Duty of the parent role is where this sits entirely." },
+        "satya_truth":          { "score": 4,  "note": "Naming it honestly is the floor." },
+        "ahimsa_nonharm":       { "score": 3,  "note": "Preventing recurrence is the whole dharmic work." },
+        "nishkama_detachment":  { "score": 1,  "note": "Detach from the self-image of 'not that kind of parent.'" },
+        "shaucha_intent":       { "score": 3,  "note": "Motive now — genuine repair or comfort-seeking?" },
+        "sanyama_restraint":    { "score": 3,  "note": "Building the restraint you didn't have is the practical work." },
+        "lokasangraha_welfare": { "score": 2,  "note": "The child's future relationships carry what they learned here." },
+        "viveka_discernment":   { "score": 3,  "note": "Seeing that guilt isn't repair is the core insight." }
+      },
+
+      "missing_facts": [
+        "Was this the first time or something you weren't ready to call a pattern?",
+        "Are you getting enough sleep, and are your own triggers identified?",
+        "Have you ever been hit in the same way as a child?"
+      ],
+
+      "share_layer": {
+        "anonymous_share_title": "The app said the horror wasn't the repair. It was the start of it.",
+        "card_quote": "Apologize to your child. In words they understand. Then change.",
+        "reflective_question": "What do you need to change in your week so this doesn't become a twice-a-year thing?"
+      }
+    },
+
+    {
+      "dilemma_id": "W038",
+      "dilemma": "My sibling refuses to contribute to our aging parents' care. I'm doing it all. Should I stop?",
+
+      "verdict_sentence": "Your duty to your parents doesn't cancel with their non-participation — but your silence about it makes the exploitation stable.",
+      "classification": "Mixed",
+      "alignment_score": 45,
+      "confidence": 0.58,
+
+      "internal_driver": {
+        "primary": "Fairness pressing against abandonment risk",
+        "hidden_risk": "Letting 'I'm the responsible one' become an identity that excuses your sibling forever"
+      },
+
+      "core_reading": "Two separate things are happening. Your parents need care — that duty is yours regardless of who else shows up. Your sibling is exploiting the fact that you'll cover it — that's a different conversation, and silence about it is how it stays permanent. 'Stop' isn't the answer; 'address' is.",
+
+      "gita_analysis": "Krishna would not tell you to walk away from your parents to prove a point. He would ask why you've been willing to carry the whole weight without ever naming the imbalance — and whether the silence is about keeping peace or about becoming the martyr the family has trained you to be.",
+
+      "verse_match": null,
+      "closest_teaching": "The Gita's principle of svadharma (3.35, 18.47) is individual — your duty to your parents is yours regardless of your sibling's behavior. But 3.20's principle (action for loka-sangraha) doesn't require silent absorption either. The text's general architecture supports a both/and: continue the care; name the imbalance; stop pretending it isn't happening. Silence about exploitation isn't restraint — it's complicity in your own erasure.",
+
+      "if_you_continue": {
+        "short_term": "Parents cared for. Sibling continues doing nothing. You continue the quiet resentment.",
+        "long_term": "Your parents die eventually, at which point the resentment becomes the only surviving feature of the sibling relationship. The years of silence don't get refunded."
+      },
+
+      "counterfactuals": {
+        "clearly_adharmic_version": {
+          "assumed_context": "You dramatically stop, withdraw from parent care to punish your sibling, and your parents suffer while you and your sibling fight.",
+          "decision": "Using the parents as leverage against the sibling.",
+          "why": "Your duty to your parents is independent of your sibling's behavior. Using one against the other is a category error — and 3.35 treats svadharma as your own path regardless of others'."
+        },
+        "clearly_dharmic_version": {
+          "assumed_context": "You keep doing the care. You also schedule one hard conversation with your sibling — specific, calm, with numbers. You ask for a specific contribution (money or time). If they refuse, you document it and stop protecting the reputation. You don't cover for them with extended family anymore.",
+          "decision": "Continue the duty; stop protecting the exploiter.",
+          "why": "This is both/and. Svadharma honored to parents; satya honored about the sibling. You don't use the parents as weapons, but you also don't conspire in your own invisibility."
+        }
+      },
+
+      "higher_path": "Keep showing up for your parents — that's yours. And have the one direct conversation with your sibling you've been avoiding. Ask for something specific and concrete, not 'more involvement.' If they refuse, you don't threaten — you just stop covering. Other family members find out the truth the next time they ask who's doing what. Stop lying for someone who isn't paying you.",
+
+      "ethical_dimensions": {
+        "dharma_duty":          { "score": 3,  "note": "Parent-care duty is unambiguous." },
+        "satya_truth":          { "score": 2,  "note": "Silence about the imbalance is a form of ongoing untruth." },
+        "ahimsa_nonharm":       { "score": 1,  "note": "Harm to yourself through unacknowledged overload." },
+        "nishkama_detachment":  { "score": 1,  "note": "Detach from being the 'responsible one' identity." },
+        "shaucha_intent":       { "score": 2,  "note": "Motive for the care is clean; the silence about the sibling is where it muddies." },
+        "sanyama_restraint":    { "score": 1,  "note": "Restraint from weaponizing the situation." },
+        "lokasangraha_welfare": { "score": 2,  "note": "Families function better when imbalances are named." },
+        "viveka_discernment":   { "score": 2,  "note": "Seeing the two threads are separate is the work." }
+      },
+
+      "missing_facts": [
+        "Has your sibling ever been asked explicitly and specifically?",
+        "What would 'fair share' actually look like — money, visits, decisions?",
+        "Are there extended family members invested in the fiction of equal involvement?"
+      ],
+
+      "share_layer": {
+        "anonymous_share_title": "The app said I couldn't abandon my parents to punish my sibling.",
+        "card_quote": "Your duty to your parents isn't canceled by your sibling. Your silence helps no one.",
+        "reflective_question": "If a friend described your situation to you, would you tell them to keep covering — or to stop the invisibility?"
+      }
+    },
+
+    {
+      "dilemma_id": "W039",
+      "dilemma": "I'm a student. I found the answer key leaked online before my exam. I haven't opened it yet.",
+
+      "verdict_sentence": "You haven't opened it, but you've spent an hour asking whether to — the tab is already doing the damage.",
+      "classification": "Adharmic",
+      "alignment_score": 15,
+      "confidence": 0.9,
+
+      "internal_driver": {
+        "primary": "Temptation rationalized as 'just looking'",
+        "hidden_risk": "The self-argument is already the slip"
+      },
+
+      "core_reading": "You're not asking whether cheating is wrong. You're asking whether cheating counts if the framing is passive enough. 'I found it' is the story. 'I'm choosing' is the fact.",
+
+      "gita_analysis": "Krishna would not give you a speech on honesty. He would ask whether, if you sat the exam honestly and did poorly, you would still think of yourself as the person you want to be — and whether the version of you that uses the key is someone you can live with after the marks come in.",
+
+      "verse_match": {
+        "verse_ref": "6.5",
+        "sanskrit_devanagari": "उद्धरेदात्मनात्मानं नात्मानमवसादयेत्। आत्मैव ह्यात्मनो बन्धुरात्मैव रिपुरात्मनः॥",
+        "sanskrit_iast": "uddhared ātmanātmānaṁ nātmānam avasādayet | ātmaiva hy ātmano bandhur ātmaiva ripur ātmanaḥ ||",
+        "hindi_translation": "अपने द्वारा अपने आप का उद्धार करे, अपने को गिराए नहीं। क्योंकि आत्मा ही आत्मा का मित्र है, और आत्मा ही आत्मा का शत्रु है।",
+        "english_translation": "Let one lift oneself by oneself; let one not degrade oneself. For the self alone is the friend of the self, and the self alone is the enemy of the self.",
+        "source": "Gita Press Gorakhpur (Hindi) / Edwin Arnold (English, public domain)",
+        "why_it_applies": "No external test matters here. The verse locates the real exam — whether you act as your own friend or your own enemy in private moments no one will audit.",
+        "match_confidence": 0.9
+      },
+      "closest_teaching": null,
+
+      "if_you_continue": {
+        "short_term": "Better marks. Relief. Possibly no one ever knows.",
+        "long_term": "You graduate with a credential you didn't earn and a small deposit of self-contempt that pays interest for years. You also learn that this kind of shortcut works, which is the worse lesson."
+      },
+
+      "counterfactuals": {
+        "clearly_adharmic_version": {
+          "assumed_context": "You open the key, memorize it, share it with a friend group, score top of the class, and internalize that 'everyone does this.'",
+          "decision": "Full cheating plus distribution.",
+          "why": "Each step compounds — from private shortcut to shared norm. The Gita's warning about the self being its own enemy is precisely this multiplication."
+        },
+        "clearly_dharmic_version": {
+          "assumed_context": "You close the tab, report the leak to the institution (anonymously if needed), sit the exam on your own prep, and accept whatever mark you earn.",
+          "decision": "Protect your own integrity and the exam's.",
+          "why": "Reporting is optional; not using it is the dharmic minimum. The harder choice is the one that preserves who you are."
+        }
+      },
+
+      "higher_path": "Close the tab. Report the leak — the exam is rigged for others too. Study what you can in the time you have. Sit the test as yourself.",
+
+      "ethical_dimensions": {
+        "dharma_duty":          { "score": -4, "note": "Duty of the student role is core to the role itself." },
+        "satya_truth":          { "score": -4, "note": "Using the key is an ongoing lie about what you know." },
+        "ahimsa_nonharm":       { "score": -3, "note": "Harm to classmates whose ranks are affected." },
+        "nishkama_detachment":  { "score": -4, "note": "Fixation on the fruit — the mark." },
+        "shaucha_intent":       { "score": -4, "note": "Motive is advantage by deception." },
+        "sanyama_restraint":    { "score": -4, "note": "Entire question is whether you can restrain yourself." },
+        "lokasangraha_welfare": { "score": -3, "note": "Erodes trust in the testing system." },
+        "viveka_discernment":   { "score": -3, "note": "Pretending the framing is passive is a failure of seeing." }
+      },
+
+      "missing_facts": [],
+
+      "share_layer": {
+        "anonymous_share_title": "The app said the moment I opened the tab, the test was already over.",
+        "card_quote": "Opening the file is the choice. Not using it is already too late.",
+        "reflective_question": "If the mark came back and your parent asked 'did you earn this?' — what would the pause before answering feel like?"
+      }
+    },
+
+    {
+      "dilemma_id": "W040",
+      "dilemma": "My friend is clearly in an emotionally abusive relationship but keeps defending the partner. Do I keep bringing it up?",
+
+      "verdict_sentence": "You can't rescue someone who isn't ready — but you can stay reachable for the day they are.",
+      "classification": "Context-dependent",
+      "alignment_score": 52,
+      "confidence": 0.55,
+
+      "internal_driver": {
+        "primary": "Loyalty colliding with intervention fatigue",
+        "hidden_risk": "Making your concern into pressure that pushes them closer to the abuser"
+      },
+
+      "core_reading": "People in emotionally abusive relationships don't leave on your timeline — they leave on theirs, which is a function of dozens of things you don't control. Repeated confrontation usually backfires; it isolates them from you specifically, which is what the partner wants. The dharma here is harder than you want it to be: stay close, stay honest, stop the campaign.",
+
+      "gita_analysis": "Krishna speaks hard truths to Arjuna, but only after Arjuna has asked. He doesn't lecture a collapsed man. The timing of honest speech matters as much as the content — and this text knows it in a way your concern for your friend might not yet.",
+
+      "verse_match": null,
+      "closest_teaching": "The Gita models a specific pattern: Krishna waits for Arjuna's readiness before teaching; he doesn't interrupt Arjuna's collapse with a sermon. 2.7 — Arjuna saying 'teach me, I am your student' — is what unlocks the teaching. Applied here: your friend hasn't said that yet. Forcing the lesson before the ask tends to destroy the channel through which the teaching would eventually flow. Stay reachable; the invitation, if it comes, will come.",
+
+      "if_you_continue": {
+        "short_term": "They defend. You push. They defend harder. Some variation of this conversation three more times.",
+        "long_term": "Either they leave the relationship eventually — and remember who stayed warm without pressuring — or they don't, and your relationship with them survives because you stopped making it contingent on their decision."
+      },
+
+      "counterfactuals": {
+        "clearly_adharmic_version": {
+          "assumed_context": "You increase pressure, give ultimatums ('me or them'), document the abuse publicly, and force a confrontation they aren't ready for — which drives them closer to the partner and cuts off your access as a safe harbor.",
+          "decision": "Rescue fantasy executed over their stated wishes.",
+          "why": "This is care without viveka — reading the situation wrong and acting anyway. The Gita's emphasis on timing (when Arjuna can hear) is exactly what's being violated."
+        },
+        "clearly_dharmic_version": {
+          "assumed_context": "You name it once, clearly and without ultimatum. You let them know you see it. You stay in regular contact, keep conversations warm, ask about other parts of their life so the relationship isn't only about the abuse. You become the place they can come when they're ready.",
+          "decision": "One clear naming + ongoing warmth + no recurring campaign.",
+          "why": "This respects them as an adult with their own timeline. It also doesn't abandon them. Both halves matter."
+        }
+      },
+
+      "higher_path": "Name it once, clearly, without ultimatum. Then stop bringing it up. Stay close. Keep conversations warm on other topics. Make sure they know you're reachable without having to leave first. Most people who leave abusive relationships leave toward someone who kept the door open — not toward someone who was interrogating them about whether they'd leave yet.",
+
+      "ethical_dimensions": {
+        "dharma_duty":          { "score": 2,  "note": "Friendship-duty is to stay available, not to override autonomy." },
+        "satya_truth":          { "score": 2,  "note": "Truth once, honestly, is dharmic. Repetition becomes harassment." },
+        "ahimsa_nonharm":       { "score": 1,  "note": "Less harm by staying warm than by escalating." },
+        "nishkama_detachment":  { "score": 2,  "note": "Detach from the outcome you want for them." },
+        "shaucha_intent":       { "score": 2,  "note": "Motive is care, but watch for savior-narrative." },
+        "sanyama_restraint":    { "score": 3,  "note": "Restraint from the repeated confrontation is the discipline." },
+        "lokasangraha_welfare": { "score": 1,  "note": "Supports the friend's eventual capacity to decide." },
+        "viveka_discernment":   { "score": 2,  "note": "Reading the timing correctly is the core work." }
+      },
+
+      "missing_facts": [
+        "Is there imminent physical danger? (Changes the calculus entirely.)",
+        "Are there children involved?",
+        "Have you named it clearly even once, or have you been hinting?"
+      ],
+
+      "share_layer": {
+        "anonymous_share_title": "The app said I couldn't rescue them. I could stay reachable.",
+        "card_quote": "You cannot rescue someone who isn't ready. You can stay reachable.",
+        "reflective_question": "When they eventually leave — will the version of you they remember be someone they can call, or someone they'd avoid?"
+      }
+    }
+  ]
+}

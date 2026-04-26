@@ -1,0 +1,621 @@
+{
+  "benchmark_version": "wisdomize-v2-reference-derived-retrieval-eval",
+  "source": "benchmarks_v2_complete_W001-W050.json",
+  "policy": {
+    "benchmark_is_reference_not_gold": true,
+    "verse_null_is_not_strict": true,
+    "different_valid_verse_allowed": true,
+    "higher_verse_coverage_allowed": true
+  },
+  "cases": [
+    {
+      "dilemma_id": "W001",
+      "dilemma": "My manager takes credit for my work in front of leadership. Should I publicly correct him in the next meeting?",
+      "reference_classification": "Mixed",
+      "reference_shape": "verse",
+      "reference_verse_ref": "17.15",
+      "allowed_verse_refs": [
+        "17.15"
+      ],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W002",
+      "dilemma": "I found a wallet with ₹20,000 cash and an ID card on the metro. No one saw me pick it up.",
+      "reference_classification": "Adharmic",
+      "reference_shape": "verse",
+      "reference_verse_ref": "6.5",
+      "allowed_verse_refs": [
+        "6.5"
+      ],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W003",
+      "dilemma": "I want to quit my stable corporate job to pursue music full-time. I have two kids.",
+      "reference_classification": "Context-dependent",
+      "reference_shape": "verse",
+      "reference_verse_ref": "3.35",
+      "allowed_verse_refs": [
+        "3.35"
+      ],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W004",
+      "dilemma": "Should I lie to my dying grandmother and tell her my cousin (whom she loves) is doing well, when he's actually in jail?",
+      "reference_classification": "Mixed",
+      "reference_shape": "verse",
+      "reference_verse_ref": "17.15",
+      "allowed_verse_refs": [
+        "17.15"
+      ],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W005",
+      "dilemma": "I run a legal alcohol shop. My income supports my family. Is this adharmic?",
+      "reference_classification": "Mixed",
+      "reference_shape": "verse",
+      "reference_verse_ref": "18.47",
+      "allowed_verse_refs": [
+        "18.47"
+      ],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W006",
+      "dilemma": "A classmate is spreading false rumors about me. Should I spread true but embarrassing information about her in return?",
+      "reference_classification": "Adharmic",
+      "reference_shape": "verse",
+      "reference_verse_ref": "16.21",
+      "allowed_verse_refs": [
+        "16.21"
+      ],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W007",
+      "dilemma": "My elderly parent is abusive and controlling. I want to cut contact. Is this adharmic?",
+      "reference_classification": "Context-dependent",
+      "reference_shape": "fallback",
+      "reference_verse_ref": null,
+      "allowed_verse_refs": [],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W008",
+      "dilemma": "I'm considering marrying someone my parents strongly disapprove of because they are from a different caste.",
+      "reference_classification": "Dharmic",
+      "reference_shape": "verse",
+      "reference_verse_ref": "5.18",
+      "allowed_verse_refs": [
+        "5.18"
+      ],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W009",
+      "dilemma": "I'm a doctor. A patient's family asks me to hide a terminal diagnosis from the patient. Should I?",
+      "reference_classification": "Adharmic",
+      "reference_shape": "verse",
+      "reference_verse_ref": "16.1-3",
+      "allowed_verse_refs": [
+        "16.1-3"
+      ],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W010",
+      "dilemma": "Should I pay a bribe to get a legitimate government document I'm already entitled to, because the process is stuck otherwise?",
+      "reference_classification": "Mixed",
+      "reference_shape": "fallback",
+      "reference_verse_ref": null,
+      "allowed_verse_refs": [],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W011",
+      "dilemma": "I want to eat meat occasionally but my family is strictly vegetarian. Should I hide it from them?",
+      "reference_classification": "Mixed",
+      "reference_shape": "fallback",
+      "reference_verse_ref": null,
+      "allowed_verse_refs": [],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W012",
+      "dilemma": "My company is quietly polluting a river. I'm junior. Do I become a whistleblower and lose my job?",
+      "reference_classification": "Dharmic",
+      "reference_shape": "verse",
+      "reference_verse_ref": "2.47",
+      "allowed_verse_refs": [
+        "2.47"
+      ],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W013",
+      "dilemma": "I'm deeply in love with my best friend's partner. They seem unhappy together. Should I say something?",
+      "reference_classification": "Adharmic",
+      "reference_shape": "verse",
+      "reference_verse_ref": "3.37",
+      "allowed_verse_refs": [
+        "3.37"
+      ],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W014",
+      "dilemma": "Should I donate a kidney to a stranger on a donation list?",
+      "reference_classification": "Dharmic",
+      "reference_shape": "verse",
+      "reference_verse_ref": "17.20",
+      "allowed_verse_refs": [
+        "17.20"
+      ],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W015",
+      "dilemma": "I'm tempted to leave a scathing anonymous review of a restaurant where the service was bad. Real experience, harsh words.",
+      "reference_classification": "Mixed",
+      "reference_shape": "fallback",
+      "reference_verse_ref": null,
+      "allowed_verse_refs": [],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W016",
+      "dilemma": "I caught my teenage son smoking. Should I tell his mother (we're divorced and don't communicate well)?",
+      "reference_classification": "Dharmic",
+      "reference_shape": "fallback",
+      "reference_verse_ref": null,
+      "allowed_verse_refs": [],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W017",
+      "dilemma": "A close friend is cheating on their spouse. The spouse is also a friend of mine. Do I tell?",
+      "reference_classification": "Context-dependent",
+      "reference_shape": "fallback",
+      "reference_verse_ref": null,
+      "allowed_verse_refs": [],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W018",
+      "dilemma": "I want to get cosmetic surgery because I hate my nose. My partner is supportive. Is this adharmic?",
+      "reference_classification": "Dharmic",
+      "reference_shape": "fallback",
+      "reference_verse_ref": null,
+      "allowed_verse_refs": [],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W019",
+      "dilemma": "Should I use my company laptop to do freelance work on weekends?",
+      "reference_classification": "Adharmic",
+      "reference_shape": "fallback",
+      "reference_verse_ref": null,
+      "allowed_verse_refs": [],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W020",
+      "dilemma": "My aging father refuses medical treatment and wants to die at home. Should I force hospitalization?",
+      "reference_classification": "Adharmic",
+      "reference_shape": "verse",
+      "reference_verse_ref": "2.27",
+      "allowed_verse_refs": [
+        "2.27"
+      ],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W021",
+      "dilemma": "I'm considering not voting in the next election because I dislike all candidates.",
+      "reference_classification": "Mixed",
+      "reference_shape": "verse",
+      "reference_verse_ref": "3.20",
+      "allowed_verse_refs": [
+        "3.20"
+      ],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W022",
+      "dilemma": "A beggar at the signal — should I give money, or does it perpetuate the cycle?",
+      "reference_classification": "Context-dependent",
+      "reference_shape": "verse",
+      "reference_verse_ref": "17.20",
+      "allowed_verse_refs": [
+        "17.20"
+      ],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W023",
+      "dilemma": "My startup is failing. Investors gave me money. Should I shut down and return what's left, or pivot aggressively?",
+      "reference_classification": "Context-dependent",
+      "reference_shape": "verse",
+      "reference_verse_ref": "2.47",
+      "allowed_verse_refs": [
+        "2.47"
+      ],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W024",
+      "dilemma": "Is killing in self-defense adharmic?",
+      "reference_classification": "Context-dependent",
+      "reference_shape": "verse",
+      "reference_verse_ref": "2.31",
+      "allowed_verse_refs": [
+        "2.31"
+      ],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W025",
+      "dilemma": "Should I break a promise to a friend to attend a work emergency?",
+      "reference_classification": "Context-dependent",
+      "reference_shape": "fallback",
+      "reference_verse_ref": null,
+      "allowed_verse_refs": [],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W026",
+      "dilemma": "My company's product is addictive by design (gambling-adjacent app). I'm well paid. Should I quit?",
+      "reference_classification": "Dharmic",
+      "reference_shape": "verse",
+      "reference_verse_ref": "18.47",
+      "allowed_verse_refs": [
+        "18.47"
+      ],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W027",
+      "dilemma": "I want to post a political opinion online but fear losing clients. Should I stay silent?",
+      "reference_classification": "Context-dependent",
+      "reference_shape": "fallback",
+      "reference_verse_ref": null,
+      "allowed_verse_refs": [],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W028",
+      "dilemma": "I'm jealous of my best friend's success. I notice I root against her quietly. What do I do?",
+      "reference_classification": "Adharmic",
+      "reference_shape": "verse",
+      "reference_verse_ref": "6.32",
+      "allowed_verse_refs": [
+        "6.32"
+      ],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W029",
+      "dilemma": "I'm an atheist. Is following the Gita hypocritical?",
+      "reference_classification": "Dharmic",
+      "reference_shape": "verse",
+      "reference_verse_ref": "4.11",
+      "allowed_verse_refs": [
+        "4.11"
+      ],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W030",
+      "dilemma": "I want to confront my childhood abuser publicly. They're elderly now and possibly harmless.",
+      "reference_classification": "Context-dependent",
+      "reference_shape": "fallback",
+      "reference_verse_ref": null,
+      "allowed_verse_refs": [],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W031",
+      "dilemma": "I over-ordered at a restaurant and there's a lot of waste. Should I finish eating even though I'm full?",
+      "reference_classification": "Adharmic",
+      "reference_shape": "verse",
+      "reference_verse_ref": "6.16",
+      "allowed_verse_refs": [
+        "6.16"
+      ],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W032",
+      "dilemma": "I want to block a toxic family member on all channels. Family says this breaks family unity.",
+      "reference_classification": "Dharmic",
+      "reference_shape": "fallback",
+      "reference_verse_ref": null,
+      "allowed_verse_refs": [],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W033",
+      "dilemma": "I make more money than my spouse and sometimes use it to 'win' arguments. I know it's wrong.",
+      "reference_classification": "Adharmic",
+      "reference_shape": "verse",
+      "reference_verse_ref": "16.14",
+      "allowed_verse_refs": [
+        "16.14"
+      ],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W034",
+      "dilemma": "I run a successful business. Employees ask for raises. Profit is good but not great. Do I give?",
+      "reference_classification": "Context-dependent",
+      "reference_shape": "fallback",
+      "reference_verse_ref": null,
+      "allowed_verse_refs": [],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W035",
+      "dilemma": "I'm thinking about having an affair because my marriage is sexless but we're otherwise good partners and parents.",
+      "reference_classification": "Adharmic",
+      "reference_shape": "verse",
+      "reference_verse_ref": "3.37",
+      "allowed_verse_refs": [
+        "3.37"
+      ],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W036",
+      "dilemma": "Is it adharmic to be rich?",
+      "reference_classification": "Context-dependent",
+      "reference_shape": "verse",
+      "reference_verse_ref": "2.70",
+      "allowed_verse_refs": [
+        "2.70"
+      ],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W037",
+      "dilemma": "I hit my child once in anger. I'm horrified at myself. What now?",
+      "reference_classification": "Dharmic",
+      "reference_shape": "fallback",
+      "reference_verse_ref": null,
+      "allowed_verse_refs": [],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W038",
+      "dilemma": "My sibling refuses to contribute to our aging parents' care. I'm doing it all. Should I stop?",
+      "reference_classification": "Mixed",
+      "reference_shape": "fallback",
+      "reference_verse_ref": null,
+      "allowed_verse_refs": [],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W039",
+      "dilemma": "I'm a student. I found the answer key leaked online before my exam. I haven't opened it yet.",
+      "reference_classification": "Adharmic",
+      "reference_shape": "verse",
+      "reference_verse_ref": "6.5",
+      "allowed_verse_refs": [
+        "6.5"
+      ],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W040",
+      "dilemma": "My friend is clearly in an emotionally abusive relationship but keeps defending the partner. Do I keep bringing it up?",
+      "reference_classification": "Context-dependent",
+      "reference_shape": "fallback",
+      "reference_verse_ref": null,
+      "allowed_verse_refs": [],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W041",
+      "dilemma": "I feel nothing when my distant grandfather dies. Should I fake grief at the funeral for family?",
+      "reference_classification": "Mixed",
+      "reference_shape": "fallback",
+      "reference_verse_ref": null,
+      "allowed_verse_refs": [],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W042",
+      "dilemma": "I want to be a stay-at-home parent. My spouse earns enough. Society expects me to work.",
+      "reference_classification": "Dharmic",
+      "reference_shape": "verse",
+      "reference_verse_ref": "18.47",
+      "allowed_verse_refs": [
+        "18.47"
+      ],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W043",
+      "dilemma": "Is it adharmic to not want children?",
+      "reference_classification": "Dharmic",
+      "reference_shape": "fallback",
+      "reference_verse_ref": null,
+      "allowed_verse_refs": [],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W044",
+      "dilemma": "My friend made a business mistake that cost me money. They apologized. Do I forgive and continue?",
+      "reference_classification": "Context-dependent",
+      "reference_shape": "verse",
+      "reference_verse_ref": "16.3",
+      "allowed_verse_refs": [
+        "16.3",
+        "16.1-3"
+      ],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold. Active seed uses range 16.1-3, which contains 16.3."
+    },
+    {
+      "dilemma_id": "W045",
+      "dilemma": "I'm considering moving my elderly parent to a care home. They don't want to go.",
+      "reference_classification": "Context-dependent",
+      "reference_shape": "fallback",
+      "reference_verse_ref": null,
+      "allowed_verse_refs": [],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W046",
+      "dilemma": "Should I stay in a job I hate because it pays my EMI?",
+      "reference_classification": "Context-dependent",
+      "reference_shape": "verse",
+      "reference_verse_ref": "2.47",
+      "allowed_verse_refs": [
+        "2.47"
+      ],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W047",
+      "dilemma": "I want to call out a celebrity's hypocrisy online. They preach one thing and do another.",
+      "reference_classification": "Mixed",
+      "reference_shape": "verse",
+      "reference_verse_ref": "17.15",
+      "allowed_verse_refs": [
+        "17.15"
+      ],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W048",
+      "dilemma": "My teenager asks me if I ever used drugs. I did. Do I tell the truth?",
+      "reference_classification": "Context-dependent",
+      "reference_shape": "fallback",
+      "reference_verse_ref": null,
+      "allowed_verse_refs": [],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W049",
+      "dilemma": "Should I end a long friendship that has become one-sided?",
+      "reference_classification": "Mixed",
+      "reference_shape": "fallback",
+      "reference_verse_ref": null,
+      "allowed_verse_refs": [],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    },
+    {
+      "dilemma_id": "W050",
+      "dilemma": "I feel my life is meaningless. I go through motions. Is this adharmic?",
+      "reference_classification": "Insufficient information",
+      "reference_shape": "verse",
+      "reference_verse_ref": "2.7",
+      "allowed_verse_refs": [
+        "2.7"
+      ],
+      "allow_different_valid_verse": true,
+      "allow_fallback": true,
+      "notes": "Reference verse/fallback is advisory, not gold."
+    }
+  ]
+}
