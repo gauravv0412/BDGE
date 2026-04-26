@@ -94,9 +94,45 @@ def _domestic_parenting_disclosure_without_career_frame(text: str) -> bool:
     return parenting and disclosure and not career_frame
 
 
+def _role_has_duty_context(text: str) -> bool:
+    if not _contains_any(text, ("role", "roles")):
+        return False
+    return _contains_any(
+        text,
+        (
+            "responsibility",
+            "obligation",
+            "duty",
+            "parent",
+            "doctor",
+            "teacher",
+            "manager",
+            "employee",
+            "job",
+            "work",
+            "family",
+            "professional",
+            "caregiver",
+        ),
+    )
+
+
+def _review_has_speech_harm_context(text: str) -> bool:
+    if "review" not in text:
+        return False
+    if _contains_any(text, ("anonymous review", "scathing review", "harsh review", "public review")):
+        return True
+    if _contains_any(text, ("scathing anonymous review", "bad review")) and _contains_any(
+        text,
+        ("tempt", "post", "write", "leave", "retaliat", "revenge", "vent"),
+    ):
+        return True
+    return _contains_any(text, ("review as retaliation", "review to vent", "review to hurt"))
+
+
 def _infer_theme_tags(text: str) -> list[str]:
     tags: set[str] = set()
-    if _contains_any(text, ("duty", "responsibility", "obligation", "role")):
+    if _contains_any(text, ("duty", "responsibility", "obligation")) or _role_has_duty_context(text):
         tags.add("duty")
     if _contains_any(
         text,
@@ -132,20 +168,39 @@ def _infer_theme_tags(text: str) -> list[str]:
         tags.update({"detachment", "action"})
     if _contains_any(text, ("tempt", "desire", "craving", "in love", "obsess")):
         tags.add("desire")
+        if _contains_any(text, ("best friend's partner", "best friend partner")):
+            tags.update({"restraint", "self-mastery"})
     if _contains_any(text, ("angry", "anger", "rage")):
         tags.add("anger")
     if _contains_any(text, ("greed", "greedy", "hoard", "revenge")):
         tags.add("greed")
     if (
         _word_boundary_any(text, ("lie",))
-        or _contains_any(text, ("speak", "speech", "rumor", "disclose", "review"))
+        or _contains_any(
+            text,
+            (
+                "speak",
+                "speech",
+                "rumor",
+                "disclose",
+            ),
+        )
         or _word_boundary_any(text, ("truth",))
+        or _review_has_speech_harm_context(text)
     ):
         tags.update({"truth", "speech"})
+    if _contains_any(text, ("hide it", "hiding", "concealment", "omission")):
+        tags.add("truth")
+    if _contains_any(text, ("do i tell", "whether to tell", "tell the spouse")):
+        tags.add("speech")
+    if _contains_any(text, ("bribe", "extortion", "corruption")):
+        tags.update({"truth", "welfare-of-all"})
     if _contains_any(text, ("donate", "donation", "gift", "kidney")):
         tags.update({"charity", "detachment", "duty"})
     if _contains_any(text, ("grief", "death", "dying", "bereav", "terminal")):
         tags.update({"grief", "death"})
+    if _contains_any(text, ("cosmetic surgery", "body autonomy", "self-image")):
+        tags.update({"discernment", "self-mastery"})
     # HEURISTIC: medical disclosure / autonomy (clinical phrasing).
     if _contains_any(
         text,
@@ -164,6 +219,8 @@ def _infer_theme_tags(text: str) -> list[str]:
             tags.add("speech")
     if _contains_any(text, ("equal", "caste", "bias", "discrimination")):
         tags.add("equality")
+        if _contains_any(text, ("love", "marrying", "marriage", "partner")):
+            tags.add("compassion")
     if _contains_any(text, ("discipline", "self-control", "impulse", "restrain")):
         tags.add("restraint")
     if _contains_any(text, ("wallet", "picked it up")) and _contains_any(
@@ -182,6 +239,8 @@ def _infer_applies_signals(text: str) -> list[str]:
     if _contains_any(text, ("duty", "responsibility", "role conflict")):
         if not _domestic_parenting_disclosure_without_career_frame(text):
             tags.add("duty-conflict")
+    if _contains_any(text, ("anger", "angry", "rage", "revenge", "retaliat")):
+        tags.add("anger-spike")
     if _contains_any(text, ("tempt", "desire", "craving")):
         tags.add("temptation")
     if _contains_any(text, ("donate", "donation", "kidney")):
@@ -224,6 +283,18 @@ def _infer_applies_signals(text: str) -> list[str]:
     if _contains_any(
         text,
         (
+            "refuses medical treatment",
+            "wants to die at home",
+            "die at home",
+            "aging father",
+            "palliative",
+            "good death",
+        ),
+    ):
+        tags.add("bereavement")
+    if _contains_any(
+        text,
+        (
             "terminal diagnosis",
             "withhold",
             "hide from the patient",
@@ -253,7 +324,7 @@ def _infer_applies_signals(text: str) -> list[str]:
         ),
     ):
         tags.add("truth-compassion-conflict")
-    if _contains_any(text, ("speech", "rumor", "disclose", "publicly correct", "review")):
+    if _contains_any(text, ("speech", "rumor", "disclose", "publicly correct")) or _review_has_speech_harm_context(text):
         tags.add("ethical-speech")
     if _contains_any(text, ("credit", "my work", "manager")):
         tags.add("credit-theft")

@@ -8,6 +8,7 @@ from app.core.benchmark_loader import load_dilemmas
 from app.core.models import DimensionScore, EthicalDimensions
 from app.engine.analyzer import analyze_dilemma
 from app.evals.run_verse_retrieval_benchmarks import _build_context
+from app.verses.catalog import VerseCatalog
 from app.verses.loader import load_curated_verses
 from app.verses.retriever import (
     _infer_applies_signals,
@@ -310,6 +311,28 @@ def test_lie_substring_inside_relieving_does_not_trigger_truth_speech_themes() -
     assert "speech" not in got
 
 
+def test_neutral_role_does_not_add_duty_theme() -> None:
+    themes = set(_infer_theme_tags("we discussed a role in the school play"))
+    assert "duty" not in themes
+
+
+def test_duty_like_role_phrase_adds_duty_theme() -> None:
+    themes = set(_infer_theme_tags("my role as a manager carries responsibility"))
+    assert "duty" in themes
+
+
+def test_neutral_review_does_not_add_ethical_speech_context() -> None:
+    text = "the quarterly business review is scheduled for friday"
+    assert "speech" not in set(_infer_theme_tags(text))
+    assert "ethical-speech" not in set(_infer_applies_signals(text))
+
+
+def test_harmful_review_phrase_adds_ethical_speech_context() -> None:
+    text = "i am tempted to leave a scathing anonymous review"
+    assert {"truth", "speech"}.issubset(set(_infer_theme_tags(text)))
+    assert "ethical-speech" in set(_infer_applies_signals(text))
+
+
 def test_w005_alcohol_shop_retrieves_1847() -> None:
     w005: dict[str, Any] | None = None
     for item in load_dilemmas():
@@ -370,4 +393,128 @@ def test_w011_combined_text_does_not_retrieve_1715() -> None:
         context_override=_build_context(w011),
     )
     assert out["verse_match"] is None
+
+
+def test_w001_w020_expected_retrieval_shape_remains_locked() -> None:
+    expected = {
+        "W001": "17.15",
+        "W002": "6.5",
+        "W003": "3.35",
+        "W004": "17.15",
+        "W005": "18.47",
+        "W006": "16.21",
+        "W007": "fallback",
+        "W008": "5.18",
+        "W009": "16.1-3",
+        "W010": "fallback",
+        "W011": "fallback",
+        "W012": "2.47",
+        "W013": "3.37",
+        "W014": "17.20",
+        "W015": "fallback",
+        "W016": "fallback",
+        "W017": "fallback",
+        "W018": "fallback",
+        "W019": "fallback",
+        "W020": "2.27",
+    }
+    actual: dict[str, str] = {}
+    for item in load_dilemmas():
+        dilemma_id = str(item.get("dilemma_id"))
+        out = retrieve_verse(
+            str(item["dilemma"]),
+            EthicalDimensions.model_validate(item["ethical_dimensions"]),
+            context_override=_build_context(item),
+        )
+        actual[dilemma_id] = out["verse_match"].verse_ref if out["verse_match"] else "fallback"
+
+    assert actual == expected
+
+
+def test_full_activation_dry_run_preserves_w001_w020_blocker_shapes(monkeypatch: Any) -> None:
+    dry_run_entries = load_curated_verses(dry_run_all_active=True)
+    monkeypatch.setattr("app.verses.retriever.load_curated_verses", lambda: dry_run_entries)
+    expected = {
+        "W012": "2.47",
+        "W018": "fallback",
+    }
+    rows = {
+        str(item["dilemma_id"]): item
+        for item in load_dilemmas()
+        if item.get("dilemma_id") in expected
+    }
+
+    actual: dict[str, str] = {}
+    for dilemma_id, item in rows.items():
+        out = retrieve_verse(
+            str(item["dilemma"]),
+            EthicalDimensions.model_validate(item["ethical_dimensions"]),
+            context_override=_build_context(item),
+        )
+        actual[dilemma_id] = out["verse_match"].verse_ref if out["verse_match"] else "fallback"
+
+    assert actual == expected
+
+
+def test_step_28e_approved_reference_verses_are_active_with_expected_metadata() -> None:
+    active_by_ref = {
+        entry.verse_ref: entry
+        for entry in VerseCatalog(load_curated_verses()).list_active()
+    }
+
+    assert active_by_ref["3.20"].themes == ["duty", "welfare-of-all", "action"]
+    assert active_by_ref["3.20"].applies_when == ["duty-conflict"]
+    assert "provider-duty" not in active_by_ref["3.20"].applies_when
+    assert active_by_ref["3.20"].priority == 4
+
+    assert active_by_ref["6.16"].themes == ["restraint", "self-mastery", "equanimity"]
+    assert active_by_ref["6.16"].applies_when == ["self-sabotage", "private-conduct-test"]
+    assert active_by_ref["6.16"].does_not_apply_when == [
+        "abuse-context",
+        "active-harm",
+        "self-harm",
+        "scripture-as-weapon",
+    ]
+    assert active_by_ref["6.16"].priority == 3
+
+    assert "2.70" in active_by_ref
+    assert {"equanimity", "detachment", "self-mastery"}.issubset(active_by_ref["2.70"].themes)
+
+
+def test_step_28e_rejected_or_add_later_verses_are_not_active() -> None:
+    active_refs = {entry.verse_ref for entry in VerseCatalog(load_curated_verses()).list_active()}
+
+    assert "6.32" not in active_refs
+    assert "4.11" not in active_refs
+    assert "16.14" not in active_refs
+
+
+def test_revenge_language_adds_anger_spike_signal() -> None:
+    signals = set(_infer_applies_signals("revenge disguised as justice and anger"))
+    assert "anger-spike" in signals
+
+
+def test_best_friend_partner_desire_adds_restraint_themes() -> None:
+    themes = set(_infer_theme_tags("deeply in love with my best friend's partner"))
+    assert {"desire", "restraint", "self-mastery"}.issubset(themes)
+
+
+def test_caste_marriage_adds_compassion_context() -> None:
+    themes = set(_infer_theme_tags("marrying someone from a different caste for love"))
+    assert {"equality", "compassion"}.issubset(themes)
+
+
+def test_end_of_life_medical_choice_adds_bereavement_signal() -> None:
+    signals = set(_infer_applies_signals("aging father refuses medical treatment and wants to die at home"))
+    assert "bereavement" in signals
+
+
+def test_fallback_context_cases_no_longer_have_empty_signals() -> None:
+    target_ids = {"W010", "W011", "W017", "W018"}
+    rows = {str(item.get("dilemma_id")): item for item in load_dilemmas() if item.get("dilemma_id") in target_ids}
+
+    assert set(rows) == target_ids
+    for item in rows.values():
+        context = _build_context(item)
+        assert context.theme_tags or context.applies_signals or context.blocker_signals
 

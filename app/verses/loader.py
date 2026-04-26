@@ -111,9 +111,24 @@ def validate_curated_seed_payload(payload: Any) -> list[CuratedVerseEntry]:
     return entries
 
 
-def load_curated_verses(path: Path | None = None) -> list[CuratedVerseEntry]:
+def _with_all_entries_active(payload: Any) -> Any:
+    if not isinstance(payload, list):
+        return payload
+    return [
+        {**entry, "status": "active"} if isinstance(entry, dict) else entry
+        for entry in payload
+    ]
+
+
+def load_curated_verses(
+    path: Path | None = None,
+    *,
+    dry_run_all_active: bool = False,
+) -> list[CuratedVerseEntry]:
     """Load validated curated verse entries from the seed file."""
     target_path = path or _VERSES_SEED_PATH
     payload = _load_json(target_path)
+    if dry_run_all_active:
+        payload = _with_all_entries_active(payload)
     return validate_curated_seed_payload(payload)
 

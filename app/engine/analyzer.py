@@ -46,6 +46,7 @@ from app.semantic.scorer import load_semantic_config, semantic_scorer
 from app.narrative.deterministic import build_refined_higher_path, build_refined_if_you_continue
 from app.share.deterministic import build_refined_share_layer
 from app.verdict.aggregator import aggregate_verdict
+from app.verses.context_extractor import extract_live_retrieval_context_signals
 from app.verses.retriever import retrieve_verse
 from app.verses.scorer import RetrievalContext
 from app.verses.types import DimensionKey
@@ -275,6 +276,13 @@ def _as_str_list(value: object) -> list[str]:
     return [str(item).strip() for item in value if str(item).strip()]
 
 
+def _merge_str_lists(*values: list[str]) -> list[str]:
+    merged: set[str] = set()
+    for value in values:
+        merged.update(item for item in value if item)
+    return sorted(merged)
+
+
 def _build_retrieval_context_override(
     *,
     dilemma_id: str,
@@ -290,15 +298,32 @@ def _build_retrieval_context_override(
     if isinstance(internal_driver, dict):
         primary_driver = str(internal_driver.get("primary", "")).strip()
         hidden_risk = str(internal_driver.get("hidden_risk", "")).strip()
+    deterministic = extract_live_retrieval_context_signals(dilemma)
+    semantic_theme_tags = _as_str_list(semantic.get("theme_tags"))
+    semantic_applies_signals = _as_str_list(semantic.get("applies_signals"))
+    semantic_blocker_signals = _as_str_list(semantic.get("blocker_signals"))
+    semantic_dominant_dimensions = _top_dominant_dimensions(dimensions)
 
     return RetrievalContext(
         dilemma_id=dilemma_id,
         classification=verdict_classification,
         primary_driver=primary_driver,
         hidden_risk=hidden_risk,
-        dominant_dimensions=_top_dominant_dimensions(dimensions),
-        theme_tags=_as_str_list(semantic.get("theme_tags")) or [],
-        applies_signals=_as_str_list(semantic.get("applies_signals")) or [],
-        blocker_signals=_as_str_list(semantic.get("blocker_signals")) or [],
+        dominant_dimensions=_merge_str_lists(
+            semantic_dominant_dimensions,
+            _as_str_list(deterministic.get("dominant_dimensions")),
+        ),
+        theme_tags=_merge_str_lists(
+            semantic_theme_tags,
+            _as_str_list(deterministic.get("theme_tags")),
+        ),
+        applies_signals=_merge_str_lists(
+            semantic_applies_signals,
+            _as_str_list(deterministic.get("applies_signals")),
+        ),
+        blocker_signals=_merge_str_lists(
+            semantic_blocker_signals,
+            _as_str_list(deterministic.get("blocker_signals")),
+        ),
         missing_facts=missing_facts,
     )
