@@ -1,0 +1,1250 @@
+{
+  "artifact_version": "full-activation-blockers-review-v1",
+  "scope": "Step 29B metadata repair for full curated catalog activation dry-run blockers",
+  "source_paths": {
+    "dry_run_report": "/home/gaurav/Documents/BDGE/artifacts/full_activation_dry_run_W001-W050.json",
+    "verses_seed": "/home/gaurav/Documents/BDGE/app/verses/data/curated/verses_seed.json"
+  },
+  "policy": {
+    "full_activation_direction_preserved": true,
+    "active_seed_not_globally_mutated": true,
+    "retrieval_scoring_unchanged": true,
+    "semantic_scorer_unchanged": true,
+    "context_extractor_unchanged": true,
+    "prefer_metadata_narrowing_over_exclusion": true
+  },
+  "summary": {
+    "reviewed_verse_refs": [
+      "18.26",
+      "2.63",
+      "2.58",
+      "16.2",
+      "4.22",
+      "4.42",
+      "6.35",
+      "12.13",
+      "13.8",
+      "2.50",
+      "6.17",
+      "13.29",
+      "3.6",
+      "17.16",
+      "6.6",
+      "7.27",
+      "17.3",
+      "18.37",
+      "18.38",
+      "2.41",
+      "3.27",
+      "3.33",
+      "3.40",
+      "4.36",
+      "7.11",
+      "14.12",
+      "14.13",
+      "15.5",
+      "17.18",
+      "18.59"
+    ],
+    "repair_metadata_count": 30,
+    "quarantine_for_now_count": 0,
+    "keep_as_is_count": 0,
+    "follow_on_repair_count": 26,
+    "metadata_before_unavailable_count": 26,
+    "all_curated_entries_active_after_step_29c": true,
+    "step_29d_retrieval_behavior_changed": false
+  },
+  "decisions": [
+    {
+      "verse_ref": "18.26",
+      "decision": "REPAIR_METADATA",
+      "dry_run_problem_cases": [
+        "W012"
+      ],
+      "problem": "Overtook 2.47 in whistleblowing/civic-duty context by sharing broad action, detachment, outcome-anxiety, and career-crossroads signals.",
+      "metadata_before": {
+        "themes": [
+          "action",
+          "equanimity",
+          "detachment"
+        ],
+        "applies_when": [
+          "outcome-anxiety",
+          "career-crossroads",
+          "service-without-return"
+        ]
+      },
+      "metadata_after": {
+        "themes": [
+          "action",
+          "equanimity",
+          "detachment"
+        ],
+        "applies_when": [
+          "service-without-return"
+        ]
+      },
+      "rationale": "18.26 is about the qualities of a sattvic doer, not the whistleblowing/outcome-fear cluster where 2.47 is the sharper karma-yoga match. Removing broad career and outcome triggers keeps it available for service-without-return contexts."
+    },
+    {
+      "verse_ref": "2.63",
+      "decision": "REPAIR_METADATA",
+      "dry_run_problem_cases": [
+        "W018"
+      ],
+      "problem": "Attached to cosmetic surgery/body insecurity with only generic discernment plus self-mastery and no applies_when hit.",
+      "metadata_before": {
+        "themes": [
+          "anger",
+          "discernment",
+          "self-mastery"
+        ],
+        "applies_when": [
+          "anger-spike",
+          "public-humiliation-impulse",
+          "private-conduct-test"
+        ]
+      },
+      "metadata_after": {
+        "themes": [
+          "anger",
+          "desire"
+        ],
+        "applies_when": [
+          "anger-spike",
+          "public-humiliation-impulse"
+        ]
+      },
+      "rationale": "2.63 is specifically the anger-delusion collapse after attachment, not a generic self-image discernment verse. Narrowing to anger/desire signals prevents weak body-image forced matches."
+    },
+    {
+      "verse_ref": "2.58",
+      "decision": "REPAIR_METADATA",
+      "dry_run_problem_cases": [
+        "W031"
+      ],
+      "problem": "Beat the more specific eating-moderation verse 6.16 through broad restraint, self-mastery, discernment, private-conduct-test, and self-sabotage overlap.",
+      "metadata_before": {
+        "themes": [
+          "restraint",
+          "self-mastery",
+          "discernment"
+        ],
+        "applies_when": [
+          "temptation",
+          "private-conduct-test",
+          "self-sabotage"
+        ]
+      },
+      "metadata_after": {
+        "themes": [
+          "restraint"
+        ],
+        "applies_when": [
+          "temptation"
+        ]
+      },
+      "rationale": "2.58 should describe deliberate sensory withdrawal under temptation. It should not outrank 6.16 for food moderation, where overdoing/underdoing is the direct teaching."
+    },
+    {
+      "verse_ref": "16.2",
+      "decision": "REPAIR_METADATA",
+      "dry_run_problem_cases": [
+        "W019",
+        "W044"
+      ],
+      "problem": "Overtook 16.1-3 in forgiveness/compassion and forced a verse for workplace resource misuse through broad truth, self-mastery, private-conduct-test, and anger-spike overlap.",
+      "metadata_before": {
+        "themes": [
+          "nonharm",
+          "truth",
+          "compassion",
+          "self-mastery"
+        ],
+        "applies_when": [
+          "private-conduct-test",
+          "anger-spike",
+          "ethical-speech"
+        ]
+      },
+      "metadata_after": {
+        "themes": [
+          "nonharm",
+          "truth",
+          "compassion"
+        ],
+        "applies_when": [
+          "ethical-speech"
+        ]
+      },
+      "rationale": "16.2 is a compact virtue-list verse. Removing generic self-mastery/private-conduct triggers stops it from becoming a broad fallback replacement while preserving speech/virtue relevance."
+    }
+  ],
+  "follow_on_repairs": [
+    {
+      "verse_ref": "4.22",
+      "decision": "REPAIR_METADATA",
+      "repair_type": "follow_on_metadata_narrowing",
+      "metadata_before": "not captured during original run",
+      "metadata_after": {
+        "themes": [
+          "equanimity",
+          "detachment",
+          "action"
+        ],
+        "applies_when": [
+          "service-without-return"
+        ],
+        "does_not_apply_when": [
+          "abuse-context",
+          "self-harm",
+          "active-harm"
+        ],
+        "priority": 3,
+        "status": "active"
+      },
+      "narrowed_fields": [
+        "applies_when"
+      ],
+      "rationale": "W012 follow-on candidate: broad outcome-anxiety/career-crossroads applies made this equanimity/action verse compete with the canonical 2.47 whistleblowing match.",
+      "risk_prevented": "shape_lock_regression",
+      "behavior_status": "verified_clean_after_step_29c",
+      "evidence": {
+        "full_activation_dry_run": {
+          "shape_lock_regressions_count": 0,
+          "blocker_failure_count": 0,
+          "forced_match_warning_count": 0,
+          "overtrigger_warning_count": 0,
+          "changed_winner_count": 0,
+          "should_block_full_activation": false
+        }
+      }
+    },
+    {
+      "verse_ref": "4.42",
+      "decision": "REPAIR_METADATA",
+      "repair_type": "follow_on_metadata_narrowing",
+      "metadata_before": "not captured during original run",
+      "metadata_after": {
+        "themes": [
+          "action",
+          "discernment"
+        ],
+        "applies_when": [
+          "duty-conflict"
+        ],
+        "does_not_apply_when": [
+          "abuse-context",
+          "criminal-intent",
+          "scripture-as-weapon",
+          "self-harm",
+          "active-harm"
+        ],
+        "priority": 5,
+        "status": "active"
+      },
+      "narrowed_fields": [
+        "themes",
+        "applies_when"
+      ],
+      "rationale": "W018 follow-on candidate: generic action/discernment/self-mastery and career breadth attached to body-image context without a specific applies_when hit.",
+      "risk_prevented": "weak_match",
+      "behavior_status": "verified_clean_after_step_29c",
+      "evidence": {
+        "full_activation_dry_run": {
+          "shape_lock_regressions_count": 0,
+          "blocker_failure_count": 0,
+          "forced_match_warning_count": 0,
+          "overtrigger_warning_count": 0,
+          "changed_winner_count": 0,
+          "should_block_full_activation": false
+        }
+      }
+    },
+    {
+      "verse_ref": "6.35",
+      "decision": "REPAIR_METADATA",
+      "repair_type": "follow_on_metadata_narrowing",
+      "metadata_before": "not captured during original run",
+      "metadata_after": {
+        "themes": [
+          "self-mastery"
+        ],
+        "applies_when": [
+          "anger-spike"
+        ],
+        "does_not_apply_when": [
+          "abuse-context",
+          "self-harm",
+          "scripture-as-weapon",
+          "active-harm"
+        ],
+        "priority": 4,
+        "status": "active"
+      },
+      "narrowed_fields": [
+        "themes",
+        "applies_when"
+      ],
+      "rationale": "W031 follow-on candidate: broad self-mastery/restraint/private-conduct overlap could outrank the specific 6.16 eating-moderation verse.",
+      "risk_prevented": "forced_match",
+      "behavior_status": "verified_clean_after_step_29c",
+      "evidence": {
+        "full_activation_dry_run": {
+          "shape_lock_regressions_count": 0,
+          "blocker_failure_count": 0,
+          "forced_match_warning_count": 0,
+          "overtrigger_warning_count": 0,
+          "changed_winner_count": 0,
+          "should_block_full_activation": false
+        }
+      }
+    },
+    {
+      "verse_ref": "12.13",
+      "decision": "REPAIR_METADATA",
+      "repair_type": "follow_on_metadata_narrowing",
+      "metadata_before": "not captured during original run",
+      "metadata_after": {
+        "themes": [
+          "compassion",
+          "nonharm",
+          "detachment",
+          "equanimity"
+        ],
+        "applies_when": [
+          "public-humiliation-impulse"
+        ],
+        "does_not_apply_when": [
+          "abuse-context",
+          "scripture-as-weapon",
+          "self-harm",
+          "active-harm"
+        ],
+        "priority": 4,
+        "status": "active"
+      },
+      "narrowed_fields": [
+        "applies_when"
+      ],
+      "rationale": "W044 follow-on candidate: broad compassion/nonharm plus anger/duty applies competed with the approved 16.1-3 forgiveness/compassion range.",
+      "risk_prevented": "cluster_saturation",
+      "behavior_status": "verified_clean_after_step_29c",
+      "evidence": {
+        "full_activation_dry_run": {
+          "shape_lock_regressions_count": 0,
+          "blocker_failure_count": 0,
+          "forced_match_warning_count": 0,
+          "overtrigger_warning_count": 0,
+          "changed_winner_count": 0,
+          "should_block_full_activation": false
+        }
+      }
+    },
+    {
+      "verse_ref": "13.8",
+      "decision": "REPAIR_METADATA",
+      "repair_type": "follow_on_metadata_narrowing",
+      "metadata_before": "not captured during original run",
+      "metadata_after": {
+        "themes": [
+          "truth",
+          "discernment"
+        ],
+        "applies_when": [
+          "ethical-speech"
+        ],
+        "does_not_apply_when": [
+          "abuse-context",
+          "scripture-as-weapon",
+          "self-harm",
+          "active-harm",
+          "deception-intent"
+        ],
+        "priority": 3,
+        "status": "active"
+      },
+      "narrowed_fields": [
+        "themes",
+        "applies_when",
+        "does_not_apply_when"
+      ],
+      "rationale": "W019/W032 follow-on candidate: virtue-list truth/nonharm/private-conduct overlap forced fallback cases and later needed deception-intent blocking once active.",
+      "risk_prevented": "overtrigger",
+      "behavior_status": "verified_clean_after_step_29c",
+      "evidence": {
+        "full_activation_dry_run": {
+          "shape_lock_regressions_count": 0,
+          "blocker_failure_count": 0,
+          "forced_match_warning_count": 0,
+          "overtrigger_warning_count": 0,
+          "changed_winner_count": 0,
+          "should_block_full_activation": false
+        }
+      }
+    },
+    {
+      "verse_ref": "2.50",
+      "decision": "REPAIR_METADATA",
+      "repair_type": "follow_on_metadata_narrowing",
+      "metadata_before": "not captured during original run",
+      "metadata_after": {
+        "themes": [
+          "action",
+          "discernment"
+        ],
+        "applies_when": [
+          "duty-conflict"
+        ],
+        "does_not_apply_when": [
+          "abuse-context",
+          "active-harm",
+          "deception",
+          "criminal-intent",
+          "scripture-as-weapon",
+          "self-harm"
+        ],
+        "priority": 4,
+        "status": "active"
+      },
+      "narrowed_fields": [
+        "themes",
+        "applies_when"
+      ],
+      "rationale": "W018 follow-on candidate: generic self-mastery/action/discernment and career breadth attached to body-image context without a specific applies_when hit.",
+      "risk_prevented": "weak_match",
+      "behavior_status": "verified_clean_after_step_29c",
+      "evidence": {
+        "full_activation_dry_run": {
+          "shape_lock_regressions_count": 0,
+          "blocker_failure_count": 0,
+          "forced_match_warning_count": 0,
+          "overtrigger_warning_count": 0,
+          "changed_winner_count": 0,
+          "should_block_full_activation": false
+        }
+      }
+    },
+    {
+      "verse_ref": "6.17",
+      "decision": "REPAIR_METADATA",
+      "repair_type": "follow_on_metadata_narrowing",
+      "metadata_before": "not captured during original run",
+      "metadata_after": {
+        "themes": [
+          "restraint",
+          "self-mastery"
+        ],
+        "applies_when": [
+          "self-sabotage",
+          "private-conduct-test"
+        ],
+        "does_not_apply_when": [
+          "abuse-context",
+          "self-harm",
+          "scripture-as-weapon",
+          "active-harm"
+        ],
+        "priority": 3,
+        "status": "active"
+      },
+      "narrowed_fields": [
+        "themes"
+      ],
+      "rationale": "W031 follow-on candidate: food-moderation-adjacent metadata could compete with the active canonical 6.16 match, so it was kept narrower.",
+      "risk_prevented": "forced_match",
+      "behavior_status": "verified_clean_after_step_29c",
+      "evidence": {
+        "full_activation_dry_run": {
+          "shape_lock_regressions_count": 0,
+          "blocker_failure_count": 0,
+          "forced_match_warning_count": 0,
+          "overtrigger_warning_count": 0,
+          "changed_winner_count": 0,
+          "should_block_full_activation": false
+        }
+      }
+    },
+    {
+      "verse_ref": "13.29",
+      "decision": "REPAIR_METADATA",
+      "repair_type": "follow_on_metadata_narrowing",
+      "metadata_before": "not captured during original run",
+      "metadata_after": {
+        "themes": [
+          "nonharm",
+          "equality",
+          "compassion"
+        ],
+        "applies_when": [
+          "public-humiliation-impulse",
+          "class-bias"
+        ],
+        "does_not_apply_when": [
+          "abuse-context",
+          "scripture-as-weapon",
+          "self-harm",
+          "active-harm"
+        ],
+        "priority": 3,
+        "status": "active"
+      },
+      "narrowed_fields": [
+        "applies_when"
+      ],
+      "rationale": "W044 follow-on candidate: broad nonharm/compassion with anger-spike overlap could overtake 16.1-3 in forgiveness/compassion contexts.",
+      "risk_prevented": "cluster_saturation",
+      "behavior_status": "verified_clean_after_step_29c",
+      "evidence": {
+        "full_activation_dry_run": {
+          "shape_lock_regressions_count": 0,
+          "blocker_failure_count": 0,
+          "forced_match_warning_count": 0,
+          "overtrigger_warning_count": 0,
+          "changed_winner_count": 0,
+          "should_block_full_activation": false
+        }
+      }
+    },
+    {
+      "verse_ref": "3.6",
+      "decision": "REPAIR_METADATA",
+      "repair_type": "follow_on_metadata_narrowing",
+      "metadata_before": "not captured during original run",
+      "metadata_after": {
+        "themes": [
+          "desire",
+          "restraint"
+        ],
+        "applies_when": [
+          "temptation"
+        ],
+        "does_not_apply_when": [
+          "abuse-context",
+          "self-harm",
+          "active-harm",
+          "retaliatory-speech"
+        ],
+        "priority": 4,
+        "status": "active"
+      },
+      "narrowed_fields": [
+        "themes",
+        "applies_when"
+      ],
+      "rationale": "W031/W018 follow-on candidate: broad self-mastery/restraint/discernment and private-conduct overlap caused weak matches outside explicit temptation.",
+      "risk_prevented": "forced_match",
+      "behavior_status": "verified_clean_after_step_29c",
+      "evidence": {
+        "full_activation_dry_run": {
+          "shape_lock_regressions_count": 0,
+          "blocker_failure_count": 0,
+          "forced_match_warning_count": 0,
+          "overtrigger_warning_count": 0,
+          "changed_winner_count": 0,
+          "should_block_full_activation": false
+        }
+      }
+    },
+    {
+      "verse_ref": "17.16",
+      "decision": "REPAIR_METADATA",
+      "repair_type": "follow_on_metadata_narrowing",
+      "metadata_before": "not captured during original run",
+      "metadata_after": {
+        "themes": [
+          "equanimity",
+          "compassion"
+        ],
+        "applies_when": [
+          "anger-spike"
+        ],
+        "does_not_apply_when": [
+          "abuse-context",
+          "self-harm",
+          "active-harm",
+          "scripture-as-weapon"
+        ],
+        "priority": 3,
+        "status": "active"
+      },
+      "narrowed_fields": [
+        "themes",
+        "applies_when"
+      ],
+      "rationale": "W044 follow-on candidate: broad compassion/self-mastery plus private-conduct/outcome overlap competed with the approved compassion range.",
+      "risk_prevented": "cluster_saturation",
+      "behavior_status": "verified_clean_after_step_29c",
+      "evidence": {
+        "full_activation_dry_run": {
+          "shape_lock_regressions_count": 0,
+          "blocker_failure_count": 0,
+          "forced_match_warning_count": 0,
+          "overtrigger_warning_count": 0,
+          "changed_winner_count": 0,
+          "should_block_full_activation": false
+        }
+      }
+    },
+    {
+      "verse_ref": "6.6",
+      "decision": "REPAIR_METADATA",
+      "repair_type": "follow_on_metadata_narrowing",
+      "metadata_before": "not captured during original run",
+      "metadata_after": {
+        "themes": [
+          "self-mastery"
+        ],
+        "applies_when": [
+          "temptation"
+        ],
+        "does_not_apply_when": [
+          "abuse-context",
+          "public-shaming-intent",
+          "self-harm",
+          "scripture-as-weapon",
+          "active-harm"
+        ],
+        "priority": 3,
+        "status": "active"
+      },
+      "narrowed_fields": [
+        "themes",
+        "applies_when"
+      ],
+      "rationale": "W031 follow-on candidate: broad self-mastery/discernment plus self-sabotage/private-conduct overlap competed with 6.16 on food moderation.",
+      "risk_prevented": "forced_match",
+      "behavior_status": "verified_clean_after_step_29c",
+      "evidence": {
+        "full_activation_dry_run": {
+          "shape_lock_regressions_count": 0,
+          "blocker_failure_count": 0,
+          "forced_match_warning_count": 0,
+          "overtrigger_warning_count": 0,
+          "changed_winner_count": 0,
+          "should_block_full_activation": false
+        }
+      }
+    },
+    {
+      "verse_ref": "7.27",
+      "decision": "REPAIR_METADATA",
+      "repair_type": "follow_on_metadata_narrowing",
+      "metadata_before": "not captured during original run",
+      "metadata_after": {
+        "themes": [
+          "desire"
+        ],
+        "applies_when": [
+          "anger-spike",
+          "outcome-anxiety",
+          "temptation"
+        ],
+        "does_not_apply_when": [
+          "abuse-context",
+          "scripture-as-weapon",
+          "self-harm",
+          "active-harm"
+        ],
+        "priority": 4,
+        "status": "active"
+      },
+      "narrowed_fields": [
+        "themes"
+      ],
+      "rationale": "W018 follow-on candidate: generic discernment+self-mastery threshold pattern attached to body-image context with no applies_when hit.",
+      "risk_prevented": "generic_overlap_noise",
+      "behavior_status": "verified_clean_after_step_29c",
+      "evidence": {
+        "full_activation_dry_run": {
+          "shape_lock_regressions_count": 0,
+          "blocker_failure_count": 0,
+          "forced_match_warning_count": 0,
+          "overtrigger_warning_count": 0,
+          "changed_winner_count": 0,
+          "should_block_full_activation": false
+        }
+      }
+    },
+    {
+      "verse_ref": "17.3",
+      "decision": "REPAIR_METADATA",
+      "repair_type": "follow_on_metadata_narrowing",
+      "metadata_before": "not captured during original run",
+      "metadata_after": {
+        "themes": [
+          "discernment"
+        ],
+        "applies_when": [
+          "career-vs-calling"
+        ],
+        "does_not_apply_when": [
+          "abuse-context",
+          "scripture-as-weapon",
+          "self-harm",
+          "active-harm"
+        ],
+        "priority": 4,
+        "status": "active"
+      },
+      "narrowed_fields": [
+        "themes",
+        "applies_when"
+      ],
+      "rationale": "W018 follow-on candidate: broad discernment+self-mastery/private-conduct overlap attached to body-image context with no applies_when hit.",
+      "risk_prevented": "generic_overlap_noise",
+      "behavior_status": "verified_clean_after_step_29c",
+      "evidence": {
+        "full_activation_dry_run": {
+          "shape_lock_regressions_count": 0,
+          "blocker_failure_count": 0,
+          "forced_match_warning_count": 0,
+          "overtrigger_warning_count": 0,
+          "changed_winner_count": 0,
+          "should_block_full_activation": false
+        }
+      }
+    },
+    {
+      "verse_ref": "18.37",
+      "decision": "REPAIR_METADATA",
+      "repair_type": "follow_on_metadata_narrowing",
+      "metadata_before": "not captured during original run",
+      "metadata_after": {
+        "themes": [
+          "discernment",
+          "equanimity"
+        ],
+        "applies_when": [
+          "temptation",
+          "outcome-anxiety",
+          "career-vs-calling",
+          "self-sabotage"
+        ],
+        "does_not_apply_when": [
+          "abuse-context",
+          "self-harm",
+          "active-harm"
+        ],
+        "priority": 4,
+        "status": "active"
+      },
+      "narrowed_fields": [
+        "themes"
+      ],
+      "rationale": "W018 follow-on candidate: generic discernment+self-mastery threshold pattern attached to body-image context with no applies_when hit.",
+      "risk_prevented": "generic_overlap_noise",
+      "behavior_status": "verified_clean_after_step_29c",
+      "evidence": {
+        "full_activation_dry_run": {
+          "shape_lock_regressions_count": 0,
+          "blocker_failure_count": 0,
+          "forced_match_warning_count": 0,
+          "overtrigger_warning_count": 0,
+          "changed_winner_count": 0,
+          "should_block_full_activation": false
+        }
+      }
+    },
+    {
+      "verse_ref": "18.38",
+      "decision": "REPAIR_METADATA",
+      "repair_type": "follow_on_metadata_narrowing",
+      "metadata_before": "not captured during original run",
+      "metadata_after": {
+        "themes": [
+          "desire",
+          "discernment"
+        ],
+        "applies_when": [
+          "temptation",
+          "self-sabotage"
+        ],
+        "does_not_apply_when": [
+          "abuse-context",
+          "self-harm",
+          "active-harm"
+        ],
+        "priority": 4,
+        "status": "active"
+      },
+      "narrowed_fields": [
+        "themes"
+      ],
+      "rationale": "W018 follow-on candidate: generic discernment+self-mastery threshold pattern attached to body-image context with no applies_when hit.",
+      "risk_prevented": "generic_overlap_noise",
+      "behavior_status": "verified_clean_after_step_29c",
+      "evidence": {
+        "full_activation_dry_run": {
+          "shape_lock_regressions_count": 0,
+          "blocker_failure_count": 0,
+          "forced_match_warning_count": 0,
+          "overtrigger_warning_count": 0,
+          "changed_winner_count": 0,
+          "should_block_full_activation": false
+        }
+      }
+    },
+    {
+      "verse_ref": "2.41",
+      "decision": "REPAIR_METADATA",
+      "repair_type": "follow_on_metadata_narrowing",
+      "metadata_before": "not captured during original run",
+      "metadata_after": {
+        "themes": [
+          "discernment",
+          "action"
+        ],
+        "applies_when": [
+          "career-crossroads",
+          "self-sabotage",
+          "duty-conflict"
+        ],
+        "does_not_apply_when": [
+          "abuse-context",
+          "active-harm",
+          "scripture-as-weapon",
+          "self-harm",
+          "criminal-intent"
+        ],
+        "priority": 3,
+        "status": "active"
+      },
+      "narrowed_fields": [
+        "themes"
+      ],
+      "rationale": "W018 follow-on candidate: generic discernment+self-mastery threshold pattern attached to body-image context with no applies_when hit.",
+      "risk_prevented": "generic_overlap_noise",
+      "behavior_status": "verified_clean_after_step_29c",
+      "evidence": {
+        "full_activation_dry_run": {
+          "shape_lock_regressions_count": 0,
+          "blocker_failure_count": 0,
+          "forced_match_warning_count": 0,
+          "overtrigger_warning_count": 0,
+          "changed_winner_count": 0,
+          "should_block_full_activation": false
+        }
+      }
+    },
+    {
+      "verse_ref": "3.27",
+      "decision": "REPAIR_METADATA",
+      "repair_type": "follow_on_metadata_narrowing",
+      "metadata_before": "not captured during original run",
+      "metadata_after": {
+        "themes": [
+          "discernment"
+        ],
+        "applies_when": [
+          "credit-theft",
+          "outcome-anxiety"
+        ],
+        "does_not_apply_when": [
+          "scripture-as-weapon",
+          "criminal-intent",
+          "self-harm",
+          "active-harm",
+          "abuse-context"
+        ],
+        "priority": 3,
+        "status": "active"
+      },
+      "narrowed_fields": [
+        "themes"
+      ],
+      "rationale": "W018 follow-on candidate: generic discernment+self-mastery threshold pattern attached to body-image context with no applies_when hit.",
+      "risk_prevented": "generic_overlap_noise",
+      "behavior_status": "verified_clean_after_step_29c",
+      "evidence": {
+        "full_activation_dry_run": {
+          "shape_lock_regressions_count": 0,
+          "blocker_failure_count": 0,
+          "forced_match_warning_count": 0,
+          "overtrigger_warning_count": 0,
+          "changed_winner_count": 0,
+          "should_block_full_activation": false
+        }
+      }
+    },
+    {
+      "verse_ref": "3.33",
+      "decision": "REPAIR_METADATA",
+      "repair_type": "follow_on_metadata_narrowing",
+      "metadata_before": "not captured during original run",
+      "metadata_after": {
+        "themes": [
+          "discernment"
+        ],
+        "applies_when": [
+          "career-vs-calling",
+          "self-sabotage"
+        ],
+        "does_not_apply_when": [
+          "criminal-intent",
+          "abuse-context",
+          "self-harm",
+          "active-harm"
+        ],
+        "priority": 3,
+        "status": "active"
+      },
+      "narrowed_fields": [
+        "themes"
+      ],
+      "rationale": "W018 follow-on candidate: generic discernment+self-mastery threshold pattern attached to body-image context with no applies_when hit.",
+      "risk_prevented": "generic_overlap_noise",
+      "behavior_status": "verified_clean_after_step_29c",
+      "evidence": {
+        "full_activation_dry_run": {
+          "shape_lock_regressions_count": 0,
+          "blocker_failure_count": 0,
+          "forced_match_warning_count": 0,
+          "overtrigger_warning_count": 0,
+          "changed_winner_count": 0,
+          "should_block_full_activation": false
+        }
+      }
+    },
+    {
+      "verse_ref": "3.40",
+      "decision": "REPAIR_METADATA",
+      "repair_type": "follow_on_metadata_narrowing",
+      "metadata_before": "not captured during original run",
+      "metadata_after": {
+        "themes": [
+          "desire",
+          "discernment"
+        ],
+        "applies_when": [
+          "temptation",
+          "self-sabotage"
+        ],
+        "does_not_apply_when": [
+          "abuse-context",
+          "self-harm",
+          "active-harm"
+        ],
+        "priority": 3,
+        "status": "active"
+      },
+      "narrowed_fields": [
+        "themes"
+      ],
+      "rationale": "W018 follow-on candidate: generic discernment+self-mastery threshold pattern attached to body-image context with no applies_when hit.",
+      "risk_prevented": "generic_overlap_noise",
+      "behavior_status": "verified_clean_after_step_29c",
+      "evidence": {
+        "full_activation_dry_run": {
+          "shape_lock_regressions_count": 0,
+          "blocker_failure_count": 0,
+          "forced_match_warning_count": 0,
+          "overtrigger_warning_count": 0,
+          "changed_winner_count": 0,
+          "should_block_full_activation": false
+        }
+      }
+    },
+    {
+      "verse_ref": "4.36",
+      "decision": "REPAIR_METADATA",
+      "repair_type": "follow_on_metadata_narrowing",
+      "metadata_before": "not captured during original run",
+      "metadata_after": {
+        "themes": [
+          "discernment"
+        ],
+        "applies_when": [
+          "self-sabotage"
+        ],
+        "does_not_apply_when": [
+          "scripture-as-weapon",
+          "active-harm",
+          "criminal-intent",
+          "self-harm",
+          "abuse-context"
+        ],
+        "priority": 3,
+        "status": "active"
+      },
+      "narrowed_fields": [
+        "themes"
+      ],
+      "rationale": "W018 follow-on candidate: generic discernment+self-mastery threshold pattern attached to body-image context with no applies_when hit.",
+      "risk_prevented": "generic_overlap_noise",
+      "behavior_status": "verified_clean_after_step_29c",
+      "evidence": {
+        "full_activation_dry_run": {
+          "shape_lock_regressions_count": 0,
+          "blocker_failure_count": 0,
+          "forced_match_warning_count": 0,
+          "overtrigger_warning_count": 0,
+          "changed_winner_count": 0,
+          "should_block_full_activation": false
+        }
+      }
+    },
+    {
+      "verse_ref": "7.11",
+      "decision": "REPAIR_METADATA",
+      "repair_type": "follow_on_metadata_narrowing",
+      "metadata_before": "not captured during original run",
+      "metadata_after": {
+        "themes": [
+          "desire",
+          "discernment"
+        ],
+        "applies_when": [
+          "temptation",
+          "private-conduct-test"
+        ],
+        "does_not_apply_when": [
+          "abuse-context",
+          "criminal-intent",
+          "self-harm",
+          "active-harm"
+        ],
+        "priority": 3,
+        "status": "active"
+      },
+      "narrowed_fields": [
+        "themes"
+      ],
+      "rationale": "W018 follow-on candidate: generic discernment+self-mastery threshold pattern attached to body-image context with no applies_when hit.",
+      "risk_prevented": "generic_overlap_noise",
+      "behavior_status": "verified_clean_after_step_29c",
+      "evidence": {
+        "full_activation_dry_run": {
+          "shape_lock_regressions_count": 0,
+          "blocker_failure_count": 0,
+          "forced_match_warning_count": 0,
+          "overtrigger_warning_count": 0,
+          "changed_winner_count": 0,
+          "should_block_full_activation": false
+        }
+      }
+    },
+    {
+      "verse_ref": "14.12",
+      "decision": "REPAIR_METADATA",
+      "repair_type": "follow_on_metadata_narrowing",
+      "metadata_before": "not captured during original run",
+      "metadata_after": {
+        "themes": [
+          "desire",
+          "discernment"
+        ],
+        "applies_when": [
+          "temptation",
+          "outcome-anxiety",
+          "self-sabotage"
+        ],
+        "does_not_apply_when": [
+          "abuse-context",
+          "self-harm",
+          "active-harm"
+        ],
+        "priority": 3,
+        "status": "active"
+      },
+      "narrowed_fields": [
+        "themes"
+      ],
+      "rationale": "W018 follow-on candidate: generic discernment+self-mastery threshold pattern attached to body-image context with no applies_when hit.",
+      "risk_prevented": "generic_overlap_noise",
+      "behavior_status": "verified_clean_after_step_29c",
+      "evidence": {
+        "full_activation_dry_run": {
+          "shape_lock_regressions_count": 0,
+          "blocker_failure_count": 0,
+          "forced_match_warning_count": 0,
+          "overtrigger_warning_count": 0,
+          "changed_winner_count": 0,
+          "should_block_full_activation": false
+        }
+      }
+    },
+    {
+      "verse_ref": "14.13",
+      "decision": "REPAIR_METADATA",
+      "repair_type": "follow_on_metadata_narrowing",
+      "metadata_before": "not captured during original run",
+      "metadata_after": {
+        "themes": [
+          "discernment"
+        ],
+        "applies_when": [
+          "self-sabotage"
+        ],
+        "does_not_apply_when": [
+          "abuse-context",
+          "self-harm",
+          "active-harm"
+        ],
+        "priority": 3,
+        "status": "active"
+      },
+      "narrowed_fields": [
+        "themes"
+      ],
+      "rationale": "W018 follow-on candidate: generic discernment+self-mastery threshold pattern attached to body-image context with no applies_when hit.",
+      "risk_prevented": "generic_overlap_noise",
+      "behavior_status": "verified_clean_after_step_29c",
+      "evidence": {
+        "full_activation_dry_run": {
+          "shape_lock_regressions_count": 0,
+          "blocker_failure_count": 0,
+          "forced_match_warning_count": 0,
+          "overtrigger_warning_count": 0,
+          "changed_winner_count": 0,
+          "should_block_full_activation": false
+        }
+      }
+    },
+    {
+      "verse_ref": "15.5",
+      "decision": "REPAIR_METADATA",
+      "repair_type": "follow_on_metadata_narrowing",
+      "metadata_before": "not captured during original run",
+      "metadata_after": {
+        "themes": [
+          "detachment",
+          "equanimity",
+          "discernment"
+        ],
+        "applies_when": [
+          "outcome-anxiety",
+          "private-conduct-test",
+          "career-vs-calling"
+        ],
+        "does_not_apply_when": [
+          "abuse-context",
+          "scripture-as-weapon",
+          "self-harm",
+          "active-harm"
+        ],
+        "priority": 3,
+        "status": "active"
+      },
+      "narrowed_fields": [
+        "themes"
+      ],
+      "rationale": "W018 follow-on candidate: generic discernment+self-mastery threshold pattern attached to body-image context with no applies_when hit.",
+      "risk_prevented": "generic_overlap_noise",
+      "behavior_status": "verified_clean_after_step_29c",
+      "evidence": {
+        "full_activation_dry_run": {
+          "shape_lock_regressions_count": 0,
+          "blocker_failure_count": 0,
+          "forced_match_warning_count": 0,
+          "overtrigger_warning_count": 0,
+          "changed_winner_count": 0,
+          "should_block_full_activation": false
+        }
+      }
+    },
+    {
+      "verse_ref": "17.18",
+      "decision": "REPAIR_METADATA",
+      "repair_type": "follow_on_metadata_narrowing",
+      "metadata_before": "not captured during original run",
+      "metadata_after": {
+        "themes": [
+          "discernment"
+        ],
+        "applies_when": [
+          "private-conduct-test",
+          "credit-theft"
+        ],
+        "does_not_apply_when": [
+          "abuse-context",
+          "scripture-as-weapon",
+          "self-harm",
+          "active-harm"
+        ],
+        "priority": 3,
+        "status": "active"
+      },
+      "narrowed_fields": [
+        "themes"
+      ],
+      "rationale": "W018 follow-on candidate: generic discernment+self-mastery threshold pattern attached to body-image context with no applies_when hit.",
+      "risk_prevented": "generic_overlap_noise",
+      "behavior_status": "verified_clean_after_step_29c",
+      "evidence": {
+        "full_activation_dry_run": {
+          "shape_lock_regressions_count": 0,
+          "blocker_failure_count": 0,
+          "forced_match_warning_count": 0,
+          "overtrigger_warning_count": 0,
+          "changed_winner_count": 0,
+          "should_block_full_activation": false
+        }
+      }
+    },
+    {
+      "verse_ref": "18.59",
+      "decision": "REPAIR_METADATA",
+      "repair_type": "follow_on_metadata_narrowing",
+      "metadata_before": "not captured during original run",
+      "metadata_after": {
+        "themes": [
+          "action",
+          "discernment"
+        ],
+        "applies_when": [
+          "self-sabotage",
+          "career-vs-calling",
+          "duty-conflict"
+        ],
+        "does_not_apply_when": [
+          "abuse-context",
+          "active-harm",
+          "criminal-intent",
+          "scripture-as-weapon",
+          "self-harm"
+        ],
+        "priority": 3,
+        "status": "active"
+      },
+      "narrowed_fields": [
+        "themes"
+      ],
+      "rationale": "W018 follow-on candidate: generic discernment+self-mastery threshold pattern attached to body-image context with no applies_when hit.",
+      "risk_prevented": "generic_overlap_noise",
+      "behavior_status": "verified_clean_after_step_29c",
+      "evidence": {
+        "full_activation_dry_run": {
+          "shape_lock_regressions_count": 0,
+          "blocker_failure_count": 0,
+          "forced_match_warning_count": 0,
+          "overtrigger_warning_count": 0,
+          "changed_winner_count": 0,
+          "should_block_full_activation": false
+        }
+      }
+    }
+  ],
+  "activation_time_repairs": [
+    {
+      "verse_ref": "16.2",
+      "decision": "REPAIR_METADATA",
+      "rationale": "After full activation, existing deception-intent retriever test showed this virtue-list verse needed the same deception-intent blocker as related speech/truth entries."
+    },
+    {
+      "verse_ref": "13.8",
+      "decision": "REPAIR_METADATA",
+      "rationale": "After full activation, this virtue-list verse needed deception-intent blocking and narrower nonharm metadata to avoid deception and addiction-enablement overtriggers."
+    },
+    {
+      "verse_ref": "18.25",
+      "decision": "REPAIR_METADATA",
+      "rationale": "After full activation, live OOD W032 showed weak nonharm/discernment overtrigger on addiction-enablement; nonharm was removed so an applies_when signal is needed for attachment."
+    },
+    {
+      "verse_ref": "11.55",
+      "decision": "REPAIR_METADATA",
+      "rationale": "After full activation, live OOD W047 showed weak duty/nonharm overtrigger on caregiver burnout; duty was removed so it no longer forces nuanced care-duty fallbacks."
+    }
+  ]
+}

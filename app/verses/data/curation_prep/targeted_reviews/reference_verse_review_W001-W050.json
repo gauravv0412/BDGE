@@ -1,0 +1,843 @@
+{
+  "artifact_version": "targeted-reference-verse-review-v1",
+  "scope": "W001-W050 metadata/scoring review cases from reference benchmark comparison",
+  "source_paths": {
+    "comparison": "/home/gaurav/Documents/BDGE/artifacts/benchmark_comparison_W001-W050.json",
+    "reference_benchmark": "/home/gaurav/Documents/BDGE/tests/fixtures/benchmarks/reference/benchmarks_v2_complete_W001-W050.json",
+    "verses_seed": "/home/gaurav/Documents/BDGE/app/verses/data/curated/verses_seed.json"
+  },
+  "policy": {
+    "benchmark_is_reference_not_gold": true,
+    "do_not_promote_blindly": true,
+    "active_seed_unchanged": true,
+    "accepted_disagreements_excluded": [
+      "W024",
+      "W050"
+    ]
+  },
+  "summary": {
+    "total_cases": 7,
+    "fixture_precision_cases": [
+      "W044"
+    ],
+    "curated_addition_candidates": [
+      "W028"
+    ],
+    "current_actual_may_be_acceptable": [
+      "W021",
+      "W029",
+      "W031",
+      "W033",
+      "W036"
+    ]
+  },
+  "cases": [
+    {
+      "dilemma_id": "W021",
+      "dilemma": "I'm considering not voting in the next election because I dislike all candidates.",
+      "reference_verse_ref": "3.20",
+      "current_actual_verse_or_fallback": "3.20",
+      "current_category": "same_reference_verse",
+      "reference_verse_active_in_seed": true,
+      "reference_verse_seed_statuses": [
+        "active"
+      ],
+      "equivalent_active_range_exists": false,
+      "equivalent_active_range_ref": null,
+      "current_top_5_candidates": [
+        {
+          "rank": 1,
+          "verse_ref": "3.20",
+          "total_score": 11,
+          "theme_overlap": [
+            "action",
+            "duty",
+            "welfare-of-all"
+          ],
+          "theme_overlap_count": 3,
+          "applies_when_hits": [
+            "duty-conflict"
+          ],
+          "applies_when_hits_count": 1,
+          "blocker_hits": [],
+          "blocker_hits_count": 0,
+          "dominant_dimension_alignment": false,
+          "priority_used": 4,
+          "rejected": false,
+          "rejection_reason": null
+        },
+        {
+          "rank": 2,
+          "verse_ref": "2.47",
+          "total_score": 9,
+          "theme_overlap": [
+            "action",
+            "duty"
+          ],
+          "theme_overlap_count": 2,
+          "applies_when_hits": [
+            "duty-conflict"
+          ],
+          "applies_when_hits_count": 1,
+          "blocker_hits": [],
+          "blocker_hits_count": 0,
+          "dominant_dimension_alignment": true,
+          "priority_used": 5,
+          "rejected": false,
+          "rejection_reason": null
+        },
+        {
+          "rank": 3,
+          "verse_ref": "18.47",
+          "total_score": 9,
+          "theme_overlap": [
+            "action",
+            "duty"
+          ],
+          "theme_overlap_count": 2,
+          "applies_when_hits": [
+            "duty-conflict"
+          ],
+          "applies_when_hits_count": 1,
+          "blocker_hits": [],
+          "blocker_hits_count": 0,
+          "dominant_dimension_alignment": true,
+          "priority_used": 5,
+          "rejected": false,
+          "rejection_reason": null
+        },
+        {
+          "rank": 4,
+          "verse_ref": "3.35",
+          "total_score": 9,
+          "theme_overlap": [
+            "action",
+            "duty"
+          ],
+          "theme_overlap_count": 2,
+          "applies_when_hits": [
+            "duty-conflict"
+          ],
+          "applies_when_hits_count": 1,
+          "blocker_hits": [],
+          "blocker_hits_count": 0,
+          "dominant_dimension_alignment": true,
+          "priority_used": 4,
+          "rejected": false,
+          "rejection_reason": null
+        },
+        {
+          "rank": 5,
+          "verse_ref": "6.5",
+          "total_score": 4,
+          "theme_overlap": [
+            "action"
+          ],
+          "theme_overlap_count": 1,
+          "applies_when_hits": [],
+          "applies_when_hits_count": 0,
+          "blocker_hits": [],
+          "blocker_hits_count": 0,
+          "dominant_dimension_alignment": true,
+          "priority_used": 5,
+          "rejected": false,
+          "rejection_reason": null
+        }
+      ],
+      "diagnosis": "current_actual_acceptable",
+      "recommended_action": "keep_current_actual",
+      "rationale": "Approved reference 3.20 is now active and current retrieval matches it.",
+      "reference_verse_match": {
+        "verse_ref": "3.20",
+        "sanskrit_devanagari": "कर्मणैव हि संसिद्धिमास्थिता जनकादयः। लोकसंग्रहमेवापि संपश्यन्कर्तुमर्हसि॥",
+        "sanskrit_iast": "karmaṇaiva hi saṁsiddhim āsthitā janakādayaḥ | loka-saṅgraham evāpi sampaśyan kartum arhasi ||",
+        "hindi_translation": "जनक आदि ज्ञानी भी कर्म के द्वारा ही परम सिद्धि को प्राप्त हुए थे। इसलिए लोक-कल्याण को देखते हुए भी तुम्हें कर्म करना चाहिए।",
+        "english_translation": "Janaka and others attained perfection through action alone. Therefore, seeing the welfare of the world, you should act.",
+        "source": "Gita Press Gorakhpur (Hindi) / Edwin Arnold (English, public domain)",
+        "why_it_applies": "The verse is explicit: withdrawal from the work of the shared world is not the wise man's path, even for those who think they've transcended it. Voting is a small version of the same principle — participation in flawed systems is part of the dharma, not a compromise of it.",
+        "match_confidence": 0.78
+      }
+    },
+    {
+      "dilemma_id": "W028",
+      "dilemma": "I'm jealous of my best friend's success. I notice I root against her quietly. What do I do?",
+      "reference_verse_ref": "6.32",
+      "current_actual_verse_or_fallback": "fallback",
+      "current_category": "needs_review_metadata_or_scoring",
+      "reference_verse_active_in_seed": false,
+      "reference_verse_seed_statuses": [],
+      "equivalent_active_range_exists": false,
+      "equivalent_active_range_ref": null,
+      "current_top_5_candidates": [
+        {
+          "rank": 1,
+          "verse_ref": "3.37",
+          "total_score": 4,
+          "theme_overlap": [
+            "desire"
+          ],
+          "theme_overlap_count": 1,
+          "applies_when_hits": [],
+          "applies_when_hits_count": 0,
+          "blocker_hits": [],
+          "blocker_hits_count": 0,
+          "dominant_dimension_alignment": true,
+          "priority_used": 5,
+          "rejected": false,
+          "rejection_reason": null
+        },
+        {
+          "rank": 2,
+          "verse_ref": "16.21",
+          "total_score": 4,
+          "theme_overlap": [
+            "desire"
+          ],
+          "theme_overlap_count": 1,
+          "applies_when_hits": [],
+          "applies_when_hits_count": 0,
+          "blocker_hits": [],
+          "blocker_hits_count": 0,
+          "dominant_dimension_alignment": true,
+          "priority_used": 3,
+          "rejected": false,
+          "rejection_reason": null
+        },
+        {
+          "rank": 3,
+          "verse_ref": "6.5",
+          "total_score": 1,
+          "theme_overlap": [],
+          "theme_overlap_count": 0,
+          "applies_when_hits": [],
+          "applies_when_hits_count": 0,
+          "blocker_hits": [],
+          "blocker_hits_count": 0,
+          "dominant_dimension_alignment": true,
+          "priority_used": 5,
+          "rejected": false,
+          "rejection_reason": null
+        },
+        {
+          "rank": 4,
+          "verse_ref": "17.15",
+          "total_score": 1,
+          "theme_overlap": [],
+          "theme_overlap_count": 0,
+          "applies_when_hits": [],
+          "applies_when_hits_count": 0,
+          "blocker_hits": [],
+          "blocker_hits_count": 0,
+          "dominant_dimension_alignment": true,
+          "priority_used": 5,
+          "rejected": false,
+          "rejection_reason": null
+        },
+        {
+          "rank": 5,
+          "verse_ref": "16.1-3",
+          "total_score": 1,
+          "theme_overlap": [],
+          "theme_overlap_count": 0,
+          "applies_when_hits": [],
+          "applies_when_hits_count": 0,
+          "blocker_hits": [],
+          "blocker_hits_count": 0,
+          "dominant_dimension_alignment": true,
+          "priority_used": 4,
+          "rejected": false,
+          "rejection_reason": null
+        }
+      ],
+      "diagnosis": "inactive_reference_verse_candidate",
+      "recommended_action": "consider_curated_addition",
+      "rationale": "Reference 6.32 remains inactive and is marked add-later for a future curation batch.",
+      "reference_verse_match": {
+        "verse_ref": "6.32",
+        "sanskrit_devanagari": "आत्मौपम्येन सर्वत्र समं पश्यति योऽर्जुन। सुखं वा यदि वा दुःखं स योगी परमो मतः॥",
+        "sanskrit_iast": "ātmaupamyena sarvatra samaṁ paśyati yo'rjuna | sukhaṁ vā yadi vā duḥkhaṁ sa yogī paramo mataḥ ||",
+        "hindi_translation": "हे अर्जुन! जो योगी अपनी तरह सब प्राणियों में समान देखता है — चाहे सुख हो या दुःख — वही सर्वश्रेष्ठ माना गया है।",
+        "english_translation": "He who sees every being as his own self, and who regards their joy and sorrow as his own — that yogi, O Arjuna, is held to be supreme.",
+        "source": "Gita Press Gorakhpur (Hindi) / Edwin Arnold (English, public domain)",
+        "why_it_applies": "Envy's root is the belief that her gain is your loss. The verse offers the opposite posture — not as a moral command, but as the actual exit from the feeling. Her win, genuinely felt as yours, ends the math the envy is trying to solve.",
+        "match_confidence": 0.85
+      }
+    },
+    {
+      "dilemma_id": "W029",
+      "dilemma": "I'm an atheist. Is following the Gita hypocritical?",
+      "reference_verse_ref": "4.11",
+      "current_actual_verse_or_fallback": "fallback",
+      "current_category": "needs_review_metadata_or_scoring",
+      "reference_verse_active_in_seed": false,
+      "reference_verse_seed_statuses": [],
+      "equivalent_active_range_exists": false,
+      "equivalent_active_range_ref": null,
+      "current_top_5_candidates": [
+        {
+          "rank": 1,
+          "verse_ref": "3.37",
+          "total_score": 1,
+          "theme_overlap": [],
+          "theme_overlap_count": 0,
+          "applies_when_hits": [],
+          "applies_when_hits_count": 0,
+          "blocker_hits": [],
+          "blocker_hits_count": 0,
+          "dominant_dimension_alignment": true,
+          "priority_used": 5,
+          "rejected": false,
+          "rejection_reason": null
+        },
+        {
+          "rank": 2,
+          "verse_ref": "6.5",
+          "total_score": 1,
+          "theme_overlap": [],
+          "theme_overlap_count": 0,
+          "applies_when_hits": [],
+          "applies_when_hits_count": 0,
+          "blocker_hits": [],
+          "blocker_hits_count": 0,
+          "dominant_dimension_alignment": true,
+          "priority_used": 5,
+          "rejected": false,
+          "rejection_reason": null
+        },
+        {
+          "rank": 3,
+          "verse_ref": "17.15",
+          "total_score": 1,
+          "theme_overlap": [],
+          "theme_overlap_count": 0,
+          "applies_when_hits": [],
+          "applies_when_hits_count": 0,
+          "blocker_hits": [],
+          "blocker_hits_count": 0,
+          "dominant_dimension_alignment": true,
+          "priority_used": 5,
+          "rejected": false,
+          "rejection_reason": null
+        },
+        {
+          "rank": 4,
+          "verse_ref": "16.1-3",
+          "total_score": 1,
+          "theme_overlap": [],
+          "theme_overlap_count": 0,
+          "applies_when_hits": [],
+          "applies_when_hits_count": 0,
+          "blocker_hits": [],
+          "blocker_hits_count": 0,
+          "dominant_dimension_alignment": true,
+          "priority_used": 4,
+          "rejected": false,
+          "rejection_reason": null
+        },
+        {
+          "rank": 5,
+          "verse_ref": "16.21",
+          "total_score": 1,
+          "theme_overlap": [],
+          "theme_overlap_count": 0,
+          "applies_when_hits": [],
+          "applies_when_hits_count": 0,
+          "blocker_hits": [],
+          "blocker_hits_count": 0,
+          "dominant_dimension_alignment": true,
+          "priority_used": 3,
+          "rejected": false,
+          "rejection_reason": null
+        }
+      ],
+      "diagnosis": "current_actual_acceptable",
+      "recommended_action": "keep_current_actual",
+      "rationale": "Reference 4.11 remains inactive by review decision; keep the current fallback.",
+      "reference_verse_match": {
+        "verse_ref": "4.11",
+        "sanskrit_devanagari": "ये यथा मां प्रपद्यन्ते तांस्तथैव भजाम्यहम्। मम वर्त्मानुवर्तन्ते मनुष्याः पार्थ सर्वशः॥",
+        "sanskrit_iast": "ye yathā māṁ prapadyante tāṁs tathaiva bhajāmy aham | mama vartmānuvartante manuṣyāḥ pārtha sarvaśaḥ ||",
+        "hindi_translation": "हे पार्थ! जो जैसे मेरे प्रति आते हैं, मैं उन्हें वैसे ही मिलता हूँ। सब मनुष्य सब प्रकार से मेरे ही मार्ग का अनुसरण करते हैं।",
+        "english_translation": "As people approach me, so I receive them. All men, O Partha, follow my path in every way.",
+        "source": "Gita Press Gorakhpur (Hindi) / Edwin Arnold (English, public domain)",
+        "why_it_applies": "The verse is the text's own answer to your question. The Gita's metaphysics doesn't require the reader's belief to be operational for them. Its ethical architecture — duty, detachment, discernment — works whether the reader reads Krishna as god, symbol, or literary device.",
+        "match_confidence": 0.84
+      }
+    },
+    {
+      "dilemma_id": "W031",
+      "dilemma": "I over-ordered at a restaurant and there's a lot of waste. Should I finish eating even though I'm full?",
+      "reference_verse_ref": "6.16",
+      "current_actual_verse_or_fallback": "6.16",
+      "current_category": "same_reference_verse",
+      "reference_verse_active_in_seed": true,
+      "reference_verse_seed_statuses": [
+        "active"
+      ],
+      "equivalent_active_range_exists": false,
+      "equivalent_active_range_ref": null,
+      "current_top_5_candidates": [
+        {
+          "rank": 1,
+          "verse_ref": "6.16",
+          "total_score": 10,
+          "theme_overlap": [
+            "restraint",
+            "self-mastery"
+          ],
+          "theme_overlap_count": 2,
+          "applies_when_hits": [
+            "private-conduct-test",
+            "self-sabotage"
+          ],
+          "applies_when_hits_count": 2,
+          "blocker_hits": [],
+          "blocker_hits_count": 0,
+          "dominant_dimension_alignment": false,
+          "priority_used": 3,
+          "rejected": false,
+          "rejection_reason": null
+        },
+        {
+          "rank": 2,
+          "verse_ref": "6.5",
+          "total_score": 9,
+          "theme_overlap": [
+            "restraint",
+            "self-mastery"
+          ],
+          "theme_overlap_count": 2,
+          "applies_when_hits": [
+            "self-sabotage"
+          ],
+          "applies_when_hits_count": 1,
+          "blocker_hits": [],
+          "blocker_hits_count": 0,
+          "dominant_dimension_alignment": true,
+          "priority_used": 5,
+          "rejected": false,
+          "rejection_reason": null
+        },
+        {
+          "rank": 3,
+          "verse_ref": "3.37",
+          "total_score": 7,
+          "theme_overlap": [
+            "restraint",
+            "self-mastery"
+          ],
+          "theme_overlap_count": 2,
+          "applies_when_hits": [],
+          "applies_when_hits_count": 0,
+          "blocker_hits": [],
+          "blocker_hits_count": 0,
+          "dominant_dimension_alignment": true,
+          "priority_used": 5,
+          "rejected": false,
+          "rejection_reason": null
+        },
+        {
+          "rank": 4,
+          "verse_ref": "2.70",
+          "total_score": 5,
+          "theme_overlap": [
+            "self-mastery"
+          ],
+          "theme_overlap_count": 1,
+          "applies_when_hits": [
+            "private-conduct-test"
+          ],
+          "applies_when_hits_count": 1,
+          "blocker_hits": [],
+          "blocker_hits_count": 0,
+          "dominant_dimension_alignment": false,
+          "priority_used": 4,
+          "rejected": false,
+          "rejection_reason": null
+        },
+        {
+          "rank": 5,
+          "verse_ref": "18.47",
+          "total_score": 4,
+          "theme_overlap": [
+            "discernment"
+          ],
+          "theme_overlap_count": 1,
+          "applies_when_hits": [],
+          "applies_when_hits_count": 0,
+          "blocker_hits": [],
+          "blocker_hits_count": 0,
+          "dominant_dimension_alignment": true,
+          "priority_used": 5,
+          "rejected": false,
+          "rejection_reason": null
+        }
+      ],
+      "diagnosis": "current_actual_acceptable",
+      "recommended_action": "keep_current_actual",
+      "rationale": "Approved reference 6.16 is now active and current retrieval matches it.",
+      "reference_verse_match": {
+        "verse_ref": "6.16",
+        "sanskrit_devanagari": "नात्यश्नतस्तु योगोऽस्ति न चैकान्तमनश्नतः। न चातिस्वप्नशीलस्य जाग्रतो नैव चार्जुन॥",
+        "sanskrit_iast": "nāty-aśnatas tu yogo'sti na chaikāntam anaśnataḥ | na chāti-svapna-śīlasya jāgrato naiva chārjuna ||",
+        "hindi_translation": "हे अर्जुन! यह योग न अधिक खाने वाले का सिद्ध होता है, न बिल्कुल न खाने वाले का, न अधिक सोने वाले का, और न सदा जागने वाले का।",
+        "english_translation": "Yoga is not for one who eats too much, nor for one who fasts excessively; not for one who sleeps too much, nor for one who keeps awake too long, O Arjuna.",
+        "source": "Gita Press Gorakhpur (Hindi) / Edwin Arnold (English, public domain)",
+        "why_it_applies": "The verse directly names measured eating as part of the discipline. Overeating to clear a plate is a break with the body's signal — and the verse treats that signal as ethically relevant, not just medically.",
+        "match_confidence": 0.84
+      }
+    },
+    {
+      "dilemma_id": "W033",
+      "dilemma": "I make more money than my spouse and sometimes use it to 'win' arguments. I know it's wrong.",
+      "reference_verse_ref": "16.14",
+      "current_actual_verse_or_fallback": "16.21",
+      "current_category": "needs_review_metadata_or_scoring",
+      "reference_verse_active_in_seed": false,
+      "reference_verse_seed_statuses": [],
+      "equivalent_active_range_exists": false,
+      "equivalent_active_range_ref": null,
+      "current_top_5_candidates": [
+        {
+          "rank": 1,
+          "verse_ref": "16.21",
+          "total_score": 12,
+          "theme_overlap": [
+            "anger",
+            "desire",
+            "greed"
+          ],
+          "theme_overlap_count": 3,
+          "applies_when_hits": [
+            "anger-spike"
+          ],
+          "applies_when_hits_count": 1,
+          "blocker_hits": [],
+          "blocker_hits_count": 0,
+          "dominant_dimension_alignment": true,
+          "priority_used": 3,
+          "rejected": false,
+          "rejection_reason": null
+        },
+        {
+          "rank": 2,
+          "verse_ref": "3.37",
+          "total_score": 9,
+          "theme_overlap": [
+            "anger",
+            "desire"
+          ],
+          "theme_overlap_count": 2,
+          "applies_when_hits": [
+            "anger-spike"
+          ],
+          "applies_when_hits_count": 1,
+          "blocker_hits": [],
+          "blocker_hits_count": 0,
+          "dominant_dimension_alignment": true,
+          "priority_used": 5,
+          "rejected": false,
+          "rejection_reason": null
+        },
+        {
+          "rank": 3,
+          "verse_ref": "18.47",
+          "total_score": 4,
+          "theme_overlap": [
+            "discernment"
+          ],
+          "theme_overlap_count": 1,
+          "applies_when_hits": [],
+          "applies_when_hits_count": 0,
+          "blocker_hits": [],
+          "blocker_hits_count": 0,
+          "dominant_dimension_alignment": true,
+          "priority_used": 5,
+          "rejected": false,
+          "rejection_reason": null
+        },
+        {
+          "rank": 4,
+          "verse_ref": "3.35",
+          "total_score": 4,
+          "theme_overlap": [
+            "discernment"
+          ],
+          "theme_overlap_count": 1,
+          "applies_when_hits": [],
+          "applies_when_hits_count": 0,
+          "blocker_hits": [],
+          "blocker_hits_count": 0,
+          "dominant_dimension_alignment": true,
+          "priority_used": 4,
+          "rejected": false,
+          "rejection_reason": null
+        },
+        {
+          "rank": 5,
+          "verse_ref": "2.70",
+          "total_score": 2,
+          "theme_overlap": [],
+          "theme_overlap_count": 0,
+          "applies_when_hits": [
+            "private-conduct-test"
+          ],
+          "applies_when_hits_count": 1,
+          "blocker_hits": [],
+          "blocker_hits_count": 0,
+          "dominant_dimension_alignment": false,
+          "priority_used": 4,
+          "rejected": false,
+          "rejection_reason": null
+        }
+      ],
+      "diagnosis": "current_actual_acceptable",
+      "recommended_action": "keep_current_actual",
+      "rationale": "Reference 16.14 remains inactive; current 16.21 was approved as the better active match.",
+      "reference_verse_match": {
+        "verse_ref": "16.14",
+        "sanskrit_devanagari": "असौ मया हतः शत्रुर्हनिष्ये चापरानपि। ईश्वरोऽहमहं भोगी सिद्धोऽहं बलवान्सुखी॥",
+        "sanskrit_iast": "asau mayā hataḥ śatrur haniṣye chāparān api | īśvaro'ham ahaṁ bhogī siddho'haṁ balavān sukhī ||",
+        "hindi_translation": "यह शत्रु मेरे द्वारा मारा गया, और दूसरों को भी मैं मार डालूँगा। मैं ईश्वर हूँ, भोगने वाला हूँ, सिद्ध हूँ, बलवान हूँ, सुखी हूँ।",
+        "english_translation": "This enemy has been slain by me; the other also I will slay. I am the lord, I am the enjoyer, I am successful, powerful, and happy.",
+        "source": "Gita Press Gorakhpur (Hindi) / Edwin Arnold (English, public domain)",
+        "why_it_applies": "The verse is Krishna's description of the demoniac mind's internal monologue — the moment when power starts thinking of itself as proof of superiority. You'd recognize it in a villain; the Gita's sharper move is asking you to recognize it in yourself when you 'win' arguments because you pay more of the bills.",
+        "match_confidence": 0.86
+      }
+    },
+    {
+      "dilemma_id": "W036",
+      "dilemma": "Is it adharmic to be rich?",
+      "reference_verse_ref": "2.70",
+      "current_actual_verse_or_fallback": "2.70",
+      "current_category": "same_reference_verse",
+      "reference_verse_active_in_seed": true,
+      "reference_verse_seed_statuses": [
+        "active"
+      ],
+      "equivalent_active_range_exists": false,
+      "equivalent_active_range_ref": null,
+      "current_top_5_candidates": [
+        {
+          "rank": 1,
+          "verse_ref": "2.70",
+          "total_score": 11,
+          "theme_overlap": [
+            "detachment",
+            "equanimity",
+            "self-mastery"
+          ],
+          "theme_overlap_count": 3,
+          "applies_when_hits": [
+            "private-conduct-test"
+          ],
+          "applies_when_hits_count": 1,
+          "blocker_hits": [],
+          "blocker_hits_count": 0,
+          "dominant_dimension_alignment": false,
+          "priority_used": 4,
+          "rejected": false,
+          "rejection_reason": null
+        },
+        {
+          "rank": 2,
+          "verse_ref": "6.16",
+          "total_score": 8,
+          "theme_overlap": [
+            "equanimity",
+            "self-mastery"
+          ],
+          "theme_overlap_count": 2,
+          "applies_when_hits": [
+            "private-conduct-test"
+          ],
+          "applies_when_hits_count": 1,
+          "blocker_hits": [],
+          "blocker_hits_count": 0,
+          "dominant_dimension_alignment": false,
+          "priority_used": 3,
+          "rejected": false,
+          "rejection_reason": null
+        },
+        {
+          "rank": 3,
+          "verse_ref": "2.47",
+          "total_score": 4,
+          "theme_overlap": [
+            "detachment"
+          ],
+          "theme_overlap_count": 1,
+          "applies_when_hits": [],
+          "applies_when_hits_count": 0,
+          "blocker_hits": [],
+          "blocker_hits_count": 0,
+          "dominant_dimension_alignment": true,
+          "priority_used": 5,
+          "rejected": false,
+          "rejection_reason": null
+        },
+        {
+          "rank": 4,
+          "verse_ref": "3.37",
+          "total_score": 4,
+          "theme_overlap": [
+            "self-mastery"
+          ],
+          "theme_overlap_count": 1,
+          "applies_when_hits": [],
+          "applies_when_hits_count": 0,
+          "blocker_hits": [],
+          "blocker_hits_count": 0,
+          "dominant_dimension_alignment": true,
+          "priority_used": 5,
+          "rejected": false,
+          "rejection_reason": null
+        },
+        {
+          "rank": 5,
+          "verse_ref": "6.5",
+          "total_score": 4,
+          "theme_overlap": [
+            "self-mastery"
+          ],
+          "theme_overlap_count": 1,
+          "applies_when_hits": [],
+          "applies_when_hits_count": 0,
+          "blocker_hits": [],
+          "blocker_hits_count": 0,
+          "dominant_dimension_alignment": true,
+          "priority_used": 5,
+          "rejected": false,
+          "rejection_reason": null
+        }
+      ],
+      "diagnosis": "current_actual_acceptable",
+      "recommended_action": "keep_current_actual",
+      "rationale": "Approved reference 2.70 is now active and current retrieval matches it.",
+      "reference_verse_match": {
+        "verse_ref": "2.70",
+        "sanskrit_devanagari": "आपूर्यमाणमचलप्रतिष्ठं समुद्रमापः प्रविशन्ति यद्वत्। तद्वत्कामा यं प्रविशन्ति सर्वे स शान्तिमाप्नोति न कामकामी॥",
+        "sanskrit_iast": "āpūryamāṇam achala-pratiṣṭhaṁ samudram āpaḥ praviśanti yadvat | tadvat kāmā yaṁ praviśanti sarve sa śāntim āpnoti na kāma-kāmī ||",
+        "hindi_translation": "जैसे सब ओर से परिपूर्ण, अचल प्रतिष्ठित समुद्र में जल प्रवेश करते हैं, वैसे ही सब कामनाएँ जिस पुरुष में प्रविष्ट होती हैं — वह शांति को प्राप्त होता है, न कि कामनाओं का कामना करने वाला।",
+        "english_translation": "As waters enter the ocean — which, though full on all sides, remains unmoved — so the person whom all desires enter attains peace, not the one who craves desires.",
+        "source": "Gita Press Gorakhpur (Hindi) / Edwin Arnold (English, public domain)",
+        "why_it_applies": "The verse gives the exact test. It isn't 'empty your ocean.' It's 'be the ocean — desires can enter without moving you.' Money can be present without being the thing that organizes your every motion. That's the dharmic relationship, and it's compatible with wealth.",
+        "match_confidence": 0.84
+      }
+    },
+    {
+      "dilemma_id": "W044",
+      "dilemma": "My friend made a business mistake that cost me money. They apologized. Do I forgive and continue?",
+      "reference_verse_ref": "16.3",
+      "current_actual_verse_or_fallback": "16.1-3",
+      "current_category": "same_reference_verse",
+      "reference_verse_active_in_seed": false,
+      "reference_verse_seed_statuses": [],
+      "equivalent_active_range_exists": true,
+      "equivalent_active_range_ref": "16.1-3",
+      "current_top_5_candidates": [
+        {
+          "rank": 1,
+          "verse_ref": "16.1-3",
+          "total_score": 7,
+          "theme_overlap": [
+            "compassion",
+            "nonharm"
+          ],
+          "theme_overlap_count": 2,
+          "applies_when_hits": [],
+          "applies_when_hits_count": 0,
+          "blocker_hits": [],
+          "blocker_hits_count": 0,
+          "dominant_dimension_alignment": true,
+          "priority_used": 4,
+          "rejected": false,
+          "rejection_reason": null
+        },
+        {
+          "rank": 2,
+          "verse_ref": "3.37",
+          "total_score": 6,
+          "theme_overlap": [
+            "self-mastery"
+          ],
+          "theme_overlap_count": 1,
+          "applies_when_hits": [
+            "anger-spike"
+          ],
+          "applies_when_hits_count": 1,
+          "blocker_hits": [],
+          "blocker_hits_count": 0,
+          "dominant_dimension_alignment": true,
+          "priority_used": 5,
+          "rejected": false,
+          "rejection_reason": null
+        },
+        {
+          "rank": 3,
+          "verse_ref": "6.5",
+          "total_score": 4,
+          "theme_overlap": [
+            "self-mastery"
+          ],
+          "theme_overlap_count": 1,
+          "applies_when_hits": [],
+          "applies_when_hits_count": 0,
+          "blocker_hits": [],
+          "blocker_hits_count": 0,
+          "dominant_dimension_alignment": true,
+          "priority_used": 5,
+          "rejected": false,
+          "rejection_reason": null
+        },
+        {
+          "rank": 4,
+          "verse_ref": "17.15",
+          "total_score": 4,
+          "theme_overlap": [
+            "nonharm"
+          ],
+          "theme_overlap_count": 1,
+          "applies_when_hits": [],
+          "applies_when_hits_count": 0,
+          "blocker_hits": [],
+          "blocker_hits_count": 0,
+          "dominant_dimension_alignment": true,
+          "priority_used": 5,
+          "rejected": false,
+          "rejection_reason": null
+        },
+        {
+          "rank": 5,
+          "verse_ref": "5.18",
+          "total_score": 4,
+          "theme_overlap": [
+            "compassion"
+          ],
+          "theme_overlap_count": 1,
+          "applies_when_hits": [],
+          "applies_when_hits_count": 0,
+          "blocker_hits": [],
+          "blocker_hits_count": 0,
+          "dominant_dimension_alignment": true,
+          "priority_used": 4,
+          "rejected": false,
+          "rejection_reason": null
+        }
+      ],
+      "diagnosis": "fixture_precision",
+      "recommended_action": "update_allowed_verse_refs",
+      "rationale": "Reference 16.3 is contained in active range 16.1-3; update eval allowance before metadata work.",
+      "reference_verse_match": {
+        "verse_ref": "16.3",
+        "sanskrit_devanagari": "तेजः क्षमा धृतिः शौचमद्रोहो नातिमानिता। भवन्ति संपदं दैवीमभिजातस्य भारत॥",
+        "sanskrit_iast": "tejaḥ kṣamā dhṛtiḥ śaucam adroho nāti-mānitā | bhavanti saṁpadaṁ daivīm abhijātasya bhārata ||",
+        "hindi_translation": "तेज, क्षमा, धैर्य, शुद्धि, अद्रोह और अभिमान का अभाव — हे भारत! ये दैवी संपदा के लक्षण हैं।",
+        "english_translation": "Vigor, forgiveness, fortitude, purity, freedom from malice, and absence of pride — these, O Bharata, are the qualities of one born to divine estate.",
+        "source": "Gita Press Gorakhpur (Hindi) / Edwin Arnold (English, public domain)",
+        "why_it_applies": "The verse lists kshama — forgiveness — among the divine qualities, but notably also lists dhriti (fortitude/judgment). Forgiveness is a divine quality. So is the judgment that protects you from repeat exposure. The verse doesn't require one to cancel the other — it lists them together.",
+        "match_confidence": 0.78
+      }
+    }
+  ]
+}
