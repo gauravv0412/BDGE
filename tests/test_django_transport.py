@@ -164,6 +164,30 @@ def test_django_analyze_success_snapshot_200(monkeypatch) -> None:
     EngineAnalyzeResponse.model_validate(body)
 
 
+def test_django_analyze_presentation_success_adds_internal_view_model(monkeypatch) -> None:
+    monkeypatch.setattr("app.transport.django_api.handle_engine_request", lambda payload: _sample_success_response())
+    client = Client()
+    response = client.post(
+        "/api/v1/analyze/presentation",
+        data=json.dumps(_success_request_payload()),
+        content_type="application/json",
+    )
+    assert response.status_code == 200
+    assert response["X-Request-ID"]
+    body = response.json()
+    _assert_key_order(body, ["meta", "output", "presentation"])
+    assert body["output"]["dilemma_id"] == "dj-transport-01"
+    assert body["presentation"]["meta"]["public_schema_changed"] is False
+    assert body["presentation"]["presentation_mode"] == "standard"
+    assert body["presentation"]["verdict_card"]["primary_text"] == body["output"]["verdict_sentence"]
+    assert body["presentation"]["guidance_card"]["title"] == "Closest Gita Lens"
+    assert body["presentation"]["share_card"]["needs_copy_refinement"] is False
+
+    output_ok, output_errors = validate_against_output_schema(body["output"])
+    assert output_ok, output_errors
+    EngineAnalyzeResponse.model_validate({"meta": body["meta"], "output": body["output"]})
+
+
 def test_django_analyze_invalid_request_snapshot_400() -> None:
     client = Client()
     response = client.post(

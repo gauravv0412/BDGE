@@ -81,6 +81,12 @@ def shell_view(request: HttpRequest) -> HttpResponse:
     .hero-grid {{ display:grid; grid-template-columns: 1.3fr 1fr; gap: 14px; align-items: stretch; }}
     .empty-hint {{ color:#5f6b86; }}
     .safety-note {{ font-size: 13px; color: #4a5672; background: #f4f6fb; border: 1px solid #e0e6f2; border-radius: 10px; padding: 10px 12px; margin: 8px 0 12px; line-height: 1.45; }}
+    .presentation-section {{ margin-top: 10px; border: 1px solid #dfe6f3; border-radius: 10px; background: #fbfcff; overflow: hidden; }}
+    .presentation-section summary {{ cursor: pointer; padding: 10px 12px; font-weight: 700; color: #213252; list-style-position: inside; }}
+    .presentation-section[open] summary {{ border-bottom: 1px solid #e2e8f4; background: #f4f7fc; }}
+    .presentation-section p {{ margin: 0; padding: 10px 12px 12px; white-space: pre-wrap; color: #34415c; }}
+    .presentation-primary {{ white-space: pre-wrap; }}
+    .safety-card {{ border-left: 5px solid #c2410c; background: #fff7ed; }}
     .global-foot {{ margin-top: 28px; padding: 16px 20px 28px; border-top: 1px solid #dde3f0; background: #eef2fb; color: #3d4a63; font-size: 13px; line-height: 1.55; max-width: 1040px; margin-left: auto; margin-right: auto; }}
     .global-foot strong {{ color: #243047; }}
     @media (max-width: 860px) {{
@@ -148,6 +154,20 @@ def shell_view(request: HttpRequest) -> HttpResponse:
         p.appendChild(strong);
         p.appendChild(document.createTextNode(text(value)));
         parent.appendChild(p);
+      }}
+      function sectionText(card, label) {{
+        const sections = card && Array.isArray(card.sections) ? card.sections : [];
+        const hit = sections.find((s) => text(s && s.label) === label);
+        return text(hit && hit.text);
+      }}
+      function humanizeClosestTeaching(raw) {{
+        const value = text(raw).trim();
+        if (!value) return "Pause, clarify intention, and choose the cleanest next action.";
+        const forbidden = ["engine", "threshold", "fallback", "verse_match", "selected", "retrieval", "schema"];
+        const parts = value.split(/[.?!]+/).map((p) => p.trim()).filter(Boolean);
+        const kept = parts.filter((part) => !forbidden.some((w) => part.toLowerCase().includes(w)));
+        if (!kept.length) return "Pause, clarify intention, and choose the cleanest next action.";
+        return kept.join(". ");
       }}
       function summaryTone(classification) {{
         const c = text(classification).toLowerCase();
@@ -223,25 +243,202 @@ def shell_view(request: HttpRequest) -> HttpResponse:
         }});
         return ul;
       }}
+      function renderExpandableSection(section) {{
+        const details = make("details", "presentation-section");
+        details.dataset.sectionLabel = text(section && section.label);
+        if (section && section.default_open) details.open = true;
+        const summary = make("summary", "", text(section && section.label));
+        summary.dataset.sectionLabel = text(section && section.label);
+        const sectionText = make("p", "", text(section && section.text));
+        sectionText.dataset.sectionText = "true";
+        details.appendChild(summary);
+        details.appendChild(sectionText);
+        return details;
+      }}
+      function renderPresentationCard(card, className, cardKey) {{
+        const node = make("section", "card " + (className || ""));
+        if (cardKey) node.dataset.card = cardKey;
+        node.appendChild(make("h3", "", text(card && card.title)));
+        const primary = make("p", "presentation-primary", text(card && card.primary_text));
+        primary.dataset.cardPrimary = "true";
+        node.appendChild(primary);
+        (card && Array.isArray(card.sections) ? card.sections : []).forEach((section) => {{
+          if (text(section && section.text)) node.appendChild(renderExpandableSection(section));
+        }});
+        return node;
+      }}
+      function buildClientPresentation(output, meta) {{
+        const crisisText = [output.dilemma, output.verdict_sentence, output.core_reading, output.gita_analysis, output.higher_path].map(text).join(" ").toLowerCase();
+        const hasSafety = ["self-harm", "self harm", "suicide", "kill myself", "end my life", "hurt myself", "harm myself", "better without me", "do anything harmful"].some((term) => crisisText.includes(term));
+        if (hasSafety) {{
+          const sShort = "In the near term, focus on being physically safe: stay with someone you trust, or contact local crisis or emergency support if you might act on these thoughts.";
+          const sLong = "Over time, steady support can make intense pain feel less absolute. You do not have to plan the rest of your life in this hour.";
+          return {{
+            presentation_mode: "crisis_safe",
+            verdict_card: {{
+              title: "Verdict",
+              primary_text: text(output.verdict_sentence),
+              sections: [{{ label: "Explain simply", text: "Pausing to reach out is a signal of care for yourself, not a final judgment of your character.", default_open: false }}]
+            }},
+            guidance_card: {{
+              title: "Support first",
+              primary_text: "Right now, the priority is safety and human connection—not a detailed moral score of your thoughts.",
+              sections: [{{ label: "Explain simply", text: "If you are afraid you might hurt yourself, please reach out to someone who can be with you in real time.", default_open: false }}]
+            }},
+            if_you_continue_card: {{
+              title: "If You Continue",
+              primary_text: "Short-term: " + sShort + "\\nLong-term: " + sLong,
+              sections: [
+                {{ label: "Short-term - Explain simply", text: sShort, default_open: false }},
+                {{ label: "Long-term - Explain simply", text: sLong, default_open: false }},
+                {{ label: "What helps now", text: "A small, concrete next step is enough: one message, one call, or one visit to a safe place.", default_open: false }}
+              ]
+            }},
+            counterfactuals_card: {{
+              title: "Counterfactuals",
+              primary_text: "Alternative storylines are not shown in this safety-focused view.",
+              sections: [{{ label: "Explain simply", text: "Comparing paths is de-emphasized so the page does not ask you to rehearse a crisis as a thought experiment. The focus is your immediate safety.", default_open: false }}]
+            }},
+            higher_path_card: {{
+              title: "Immediate Next Step",
+              primary_text: "Before interpreting this as a moral decision, treat it as a safety moment. Please contact someone who can stay with you or help you right now.",
+              sections: [
+                {{ label: "Explain simply", text: "This is not the moment to judge yourself. The cleanest next step is to create distance from harm and involve a real person immediately.", default_open: false }},
+                {{ label: "What to do now", text: "Move away from anything you could use to hurt yourself, contact a trusted person, and use local emergency or crisis support if you might act on these thoughts.", default_open: false }}
+              ]
+            }},
+            ethical_dimensions_card: {{
+              title: "Ethical Dimensions",
+              primary_text: "Dimension scores and detailed reasons are not shown in this safety-focused view.",
+              sections: []
+            }},
+            share_card: {{ title: "Share Layer", primary_text: "", sections: [], needs_copy_refinement: false }},
+            safety_card: {{
+              title: "Safety Note",
+              primary_text: "This may need immediate human support, not only ethical reflection.",
+              sections: [{{ label: "Explain simply", text: "If this situation involves self-harm, acute crisis, or immediate danger, qualified human support should come before product guidance.", default_open: true }}]
+            }},
+            meta: {{ presentation_version: "client-fallback", public_schema_changed: false, contract_version: meta && meta.contract_version, presentation_mode: "crisis_safe" }}
+          }};
+        }}
+        const verse = output && output.verse_match;
+        const closest = output && output.closest_teaching;
+        const closestLens = humanizeClosestTeaching(closest);
+        const guidance = verse ? {{
+          title: "Gita Verse",
+          primary_text: text(verse.why_it_applies || verse.english_translation),
+          sections: [
+            {{ label: "Explain simply", text: text(verse.why_it_applies || output.gita_analysis || verse.english_translation), default_open: false }},
+            {{ label: "Show Gita anchor", text: ["Verse: " + text(verse.verse_ref), "English: " + text(verse.english_translation), "Hindi: " + text(verse.hindi_translation)].filter(Boolean).join("\\n"), default_open: false }}
+          ]
+        }} : !closest ? {{
+          title: "Guidance",
+          primary_text: "No verse or closest teaching is currently available for this response.",
+          sections: [
+            {{ label: "Explain simply", text: text(output.gita_analysis || "No additional guidance is attached to this response."), default_open: false }}
+          ]
+        }} : {{
+          title: "Closest Gita Lens",
+          primary_text: "Closest lens: " + text(closestLens) + ". Use this as a lens, not a command.",
+          sections: [
+            {{ label: "Explain simply", text: text(output.gita_analysis || (text(closestLens) + ". Let this lens help you examine motive, impact, and next step before acting.")), default_open: false }},
+            {{ label: "Why this stays provisional", text: "This is not a direct verse verdict. The situation needs judgment beyond a single quote.", default_open: false }}
+          ]
+        }};
+        const share = output.share_layer || {{}};
+        return {{
+          presentation_mode: "standard",
+          verdict_card: {{
+            title: "Verdict",
+            primary_text: text(output.verdict_sentence),
+            sections: [
+              {{ label: "Explain simply", text: text(output.core_reading), default_open: false }},
+              {{ label: "Why this applies to your situation", text: ["Dilemma context: " + text(output.dilemma), "Core reading: " + text(output.core_reading), "Gita analysis: " + text(output.gita_analysis)].join("\\n"), default_open: false }}
+            ]
+          }},
+          guidance_card: guidance,
+          if_you_continue_card: {{
+            title: "If You Continue",
+            primary_text: ["Short-term: " + text(output.if_you_continue && output.if_you_continue.short_term), "Long-term: " + text(output.if_you_continue && output.if_you_continue.long_term)].join("\\n"),
+            sections: [
+              {{ label: "Short-term - Explain simply", text: text(output.if_you_continue && output.if_you_continue.short_term), default_open: false }},
+              {{ label: "Long-term - Explain simply", text: text(output.if_you_continue && output.if_you_continue.long_term), default_open: false }},
+              {{ label: "Why this applies here", text: text(output.core_reading), default_open: false }}
+            ]
+          }},
+          counterfactuals_card: {{
+            title: "Counterfactuals",
+            primary_text: ["Adharmic path: " + text(output.counterfactuals && output.counterfactuals.clearly_adharmic_version && output.counterfactuals.clearly_adharmic_version.decision), "Dharmic path: " + text(output.counterfactuals && output.counterfactuals.clearly_dharmic_version && output.counterfactuals.clearly_dharmic_version.decision)].join("\\n"),
+            sections: [
+              {{ label: "Adharmic assumed inner state", text: text(output.counterfactuals && output.counterfactuals.clearly_adharmic_version && output.counterfactuals.clearly_adharmic_version.assumed_context), default_open: false }},
+              {{ label: "Adharmic likely decision", text: text(output.counterfactuals && output.counterfactuals.clearly_adharmic_version && output.counterfactuals.clearly_adharmic_version.decision), default_open: false }},
+              {{ label: "Adharmic - Why this matters", text: text(output.counterfactuals && output.counterfactuals.clearly_adharmic_version && output.counterfactuals.clearly_adharmic_version.why), default_open: false }},
+              {{ label: "Dharmic assumed inner state", text: text(output.counterfactuals && output.counterfactuals.clearly_dharmic_version && output.counterfactuals.clearly_dharmic_version.assumed_context), default_open: false }},
+              {{ label: "Dharmic likely decision", text: text(output.counterfactuals && output.counterfactuals.clearly_dharmic_version && output.counterfactuals.clearly_dharmic_version.decision), default_open: false }},
+              {{ label: "Dharmic - Why this matters", text: text(output.counterfactuals && output.counterfactuals.clearly_dharmic_version && output.counterfactuals.clearly_dharmic_version.why), default_open: false }}
+            ]
+          }},
+          higher_path_card: {{
+            title: "Higher Path",
+            primary_text: text(output.higher_path),
+            sections: [
+              {{ label: "Explain simply", text: text(output.higher_path), default_open: false }},
+              {{ label: "Why this applies here", text: text(output.core_reading), default_open: false }}
+            ]
+          }},
+          ethical_dimensions_card: {{
+            title: "Ethical Dimensions",
+            primary_text: text(output.classification) + " (" + text(output.alignment_score) + ")",
+            sections: Object.entries(output.ethical_dimensions || {{}}).map(([key, value]) => {{
+              return {{ label: key, text: "Score: " + text(value && value.score) + "\\nContext-specific reason: " + text(value && value.note), default_open: false }};
+            }})
+          }},
+          share_card: {{
+            title: text(share.anonymous_share_title || "Share Layer"),
+            primary_text: text(share.card_quote),
+            sections: [
+              {{ label: "Reflective question", text: text(share.reflective_question), default_open: false }},
+              {{ label: "Copy refinement note", text: "This card preserves V1 copy and is marked for V1.1 context-specific rewrite.", default_open: false }}
+            ],
+            needs_copy_refinement: true
+          }},
+          safety_card: null,
+          meta: {{ presentation_version: "client-fallback", public_schema_changed: false, contract_version: meta && meta.contract_version, presentation_mode: "standard" }}
+        }};
+      }}
       function renderSuccess(payload, requestId) {{
         const output = payload && payload.output ? payload.output : {{}};
         const meta = payload && payload.meta ? payload.meta : {{}};
+        const presentation = payload && payload.presentation ? payload.presentation : buildClientPresentation(output, meta);
+        const mode = (presentation && presentation.presentation_mode) || "standard";
+        const crisis = mode === "crisis_safe";
         const tone = summaryTone(output.classification);
         resultRoot.replaceChildren();
+
+        if (presentation.safety_card) {{
+          resultRoot.appendChild(renderPresentationCard(presentation.safety_card, "safety-card", "safety"));
+        }}
+        if (crisis && presentation.higher_path_card) {{
+          resultRoot.appendChild(renderPresentationCard(presentation.higher_path_card, "crisis-immediate", "higher-path"));
+        }}
 
         const metaCard = make("section", "card meta");
         metaCard.appendChild(make("h2", "", "Analysis Result"));
         const mg = make("div", "meta-grid");
         appendPair(mg, "Contract", meta.contract_version);
         appendPair(mg, "Engine", meta.engine_version);
+        appendPair(mg, "Presentation mode", (presentation && presentation.presentation_mode) || "standard");
         metaCard.appendChild(mg);
         if (requestId) appendPair(metaCard, "Request ID", requestId);
         resultRoot.appendChild(metaCard);
 
         const hero = make("section", "hero-grid");
         const verdict = make("div", "card verdict " + tone);
+        verdict.dataset.card = "verdict";
         verdict.appendChild(make("h3", "", "Verdict"));
-        verdict.appendChild(make("p", "lead", text(output.verdict_sentence)));
+        const verdictPrimary = make("p", "lead", text(presentation.verdict_card && presentation.verdict_card.primary_text));
+        verdictPrimary.dataset.cardPrimary = "true";
+        verdict.appendChild(verdictPrimary);
         const summary = make("div", "summary-grid");
         [["Classification", output.classification], ["Alignment Score", output.alignment_score], ["Confidence", output.confidence]].forEach(([label, value]) => {{
           const m = make("div", "metric");
@@ -250,55 +447,48 @@ def shell_view(request: HttpRequest) -> HttpResponse:
           summary.appendChild(m);
         }});
         verdict.appendChild(summary);
+        (presentation.verdict_card && Array.isArray(presentation.verdict_card.sections) ? presentation.verdict_card.sections : []).forEach((section) => {{
+          if (text(section && section.text)) verdict.appendChild(renderExpandableSection(section));
+        }});
         hero.appendChild(verdict);
 
-        const shareSpotlight = make("div", "card share spotlight");
-        shareSpotlight.appendChild(make("div", "share-tag", "Share-ready"));
-        shareSpotlight.appendChild(make("h3", "share-title", text(output.share_layer && output.share_layer.anonymous_share_title)));
-        shareSpotlight.appendChild(make("div", "share-quote", text(output.share_layer && output.share_layer.card_quote)));
-        shareSpotlight.appendChild(make("p", "share-question", text(output.share_layer && output.share_layer.reflective_question)));
-        hero.appendChild(shareSpotlight);
+        if (!crisis) {{
+          const shareSpotlight = make("div", "card share spotlight");
+          shareSpotlight.dataset.card = "share-spotlight";
+          if (presentation.share_card && presentation.share_card.needs_copy_refinement) shareSpotlight.dataset.needsCopyRefinement = "true";
+          shareSpotlight.appendChild(make("div", "share-tag", "Share-ready"));
+          shareSpotlight.appendChild(make("h3", "share-title", text(presentation.share_card && presentation.share_card.title)));
+          const spotlightQuote = make("div", "share-quote", text(presentation.share_card && presentation.share_card.primary_text));
+          spotlightQuote.dataset.cardPrimary = "true";
+          shareSpotlight.appendChild(spotlightQuote);
+          shareSpotlight.appendChild(make("p", "share-question", sectionText(presentation.share_card, "Reflective question")));
+          hero.appendChild(shareSpotlight);
+        }}
         resultRoot.appendChild(hero);
 
-        const inner = make("section", "card");
-        inner.appendChild(make("h3", "", "Inner Dynamics"));
-        const two = make("div", "two-col");
-        const p1 = make("div", "subtle-panel"); appendPair(p1, "Primary Driver", output.internal_driver && output.internal_driver.primary); two.appendChild(p1);
-        const p2 = make("div", "subtle-panel"); appendPair(p2, "Hidden Risk", output.internal_driver && output.internal_driver.hidden_risk); two.appendChild(p2);
-        inner.appendChild(two);
-        const reading = make("div", "reading-block");
-        appendPair(reading, "Core Reading", output.core_reading);
-        appendPair(reading, "Gita Analysis", output.gita_analysis);
-        inner.appendChild(reading);
-        resultRoot.appendChild(inner);
+        if (!crisis) {{
+          const inner = make("section", "card");
+          inner.appendChild(make("h3", "", "Inner Dynamics"));
+          const two = make("div", "two-col");
+          const p1 = make("div", "subtle-panel"); appendPair(p1, "Primary Driver", output.internal_driver && output.internal_driver.primary); two.appendChild(p1);
+          const p2 = make("div", "subtle-panel"); appendPair(p2, "Hidden Risk", output.internal_driver && output.internal_driver.hidden_risk); two.appendChild(p2);
+          inner.appendChild(two);
+          const reading = make("div", "reading-block");
+          appendPair(reading, "Core Reading", output.core_reading);
+          appendPair(reading, "Gita Analysis", output.gita_analysis);
+          inner.appendChild(reading);
+          resultRoot.appendChild(inner);
+        }}
 
-        resultRoot.appendChild(renderVerse(output));
-
-        const iyc = make("section", "card");
-        iyc.appendChild(make("h3", "", "If You Continue"));
-        const iycCols = make("div", "two-col");
-        const st = make("div", "subtle-panel"); appendPair(st, "Short-term", output.if_you_continue && output.if_you_continue.short_term); iycCols.appendChild(st);
-        const lt = make("div", "subtle-panel"); appendPair(lt, "Long-term", output.if_you_continue && output.if_you_continue.long_term); iycCols.appendChild(lt);
-        iyc.appendChild(iycCols);
-        resultRoot.appendChild(iyc);
-
-        const cf = make("section", "card");
-        cf.appendChild(make("h3", "", "Counterfactuals"));
-        const cfCols = make("div", "two-col");
-        cfCols.appendChild(renderCounterfactual("Clearly Adharmic Version", output.counterfactuals && output.counterfactuals.clearly_adharmic_version, "risk"));
-        cfCols.appendChild(renderCounterfactual("Clearly Dharmic Version", output.counterfactuals && output.counterfactuals.clearly_dharmic_version, "path"));
-        cf.appendChild(cfCols);
-        resultRoot.appendChild(cf);
-
-        const hp = make("section", "card");
-        hp.appendChild(make("h3", "", "Higher Path"));
-        hp.appendChild(make("p", "higher-path", text(output.higher_path)));
-        resultRoot.appendChild(hp);
-
-        const dims = make("section", "card");
-        dims.appendChild(make("h3", "", "Ethical Dimensions"));
-        dims.appendChild(renderDimensions(output.ethical_dimensions));
-        resultRoot.appendChild(dims);
+        resultRoot.appendChild(renderPresentationCard(presentation.guidance_card, crisis ? "" : "verse", "guidance"));
+        resultRoot.appendChild(renderPresentationCard(presentation.if_you_continue_card, "", "if-you-continue"));
+        resultRoot.appendChild(renderPresentationCard(presentation.counterfactuals_card, "", "counterfactuals"));
+        if (!crisis) {{
+          resultRoot.appendChild(renderPresentationCard(presentation.higher_path_card, "", "higher-path"));
+        }}
+        if (!crisis) {{
+          resultRoot.appendChild(renderPresentationCard(presentation.ethical_dimensions_card, "", "ethical-dimensions"));
+        }}
 
         const mf = make("section", "card missing-facts");
         mf.appendChild(make("h3", "", "Missing Facts"));
@@ -306,12 +496,21 @@ def shell_view(request: HttpRequest) -> HttpResponse:
         mf.appendChild(renderMissingFacts(output.missing_facts));
         resultRoot.appendChild(mf);
 
-        const share = make("section", "card share");
-        share.appendChild(make("h3", "", "Share Layer"));
-        appendPair(share, "Title", output.share_layer && output.share_layer.anonymous_share_title);
-        share.appendChild(make("blockquote", "", text(output.share_layer && output.share_layer.card_quote)));
-        appendPair(share, "Reflective Question", output.share_layer && output.share_layer.reflective_question);
-        resultRoot.appendChild(share);
+        if (!crisis) {{
+          const share = make("section", "card share");
+          share.dataset.card = "share";
+          if (presentation.share_card && presentation.share_card.needs_copy_refinement) share.dataset.needsCopyRefinement = "true";
+          share.appendChild(make("h3", "", "Share Layer"));
+          appendPair(share, "Title", presentation.share_card && presentation.share_card.title);
+          const shareQuote = make("blockquote", "", text(presentation.share_card && presentation.share_card.primary_text));
+          shareQuote.dataset.cardPrimary = "true";
+          share.appendChild(shareQuote);
+          appendPair(share, "Reflective Question", sectionText(presentation.share_card, "Reflective question"));
+          (presentation.share_card && Array.isArray(presentation.share_card.sections) ? presentation.share_card.sections : []).forEach((section) => {{
+            if (section && section.label !== "Copy refinement note" && text(section.text)) share.appendChild(renderExpandableSection(section));
+          }});
+          resultRoot.appendChild(share);
+        }}
       }}
 
       form.addEventListener("submit", function (e) {{
@@ -327,7 +526,7 @@ def shell_view(request: HttpRequest) -> HttpResponse:
         }}
         validation.textContent = "";
         setLoading(true);
-        fetch("/api/v1/analyze", {{
+        fetch("/api/v1/analyze/presentation", {{
           method: "POST",
           headers: {{
             "Content-Type": "application/json",

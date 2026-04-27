@@ -1,0 +1,2315 @@
+{
+  "step": "31F",
+  "title": "Browser smoke full visible prose capture (post crisis-safe presentation)",
+  "run_started_at": "2026-04-26T22:26:42.399392+00:00",
+  "run_completed_at": "2026-04-26T22:32:32.128249+00:00",
+  "base_url": "http://127.0.0.1:48717",
+  "summary": {
+    "case_count": 12,
+    "api_200": 12,
+    "cases_with_details": 12,
+    "cases_with_openable_details": 12,
+    "console_error_cases": 0,
+    "network_error_cases": 0,
+    "layout_issue_cases": 0
+  },
+  "warnings": {
+    "empty_or_missing_card_text": [],
+    "too_long_card_text": [],
+    "repeated_placeholder_text": {
+      "Move now with partial transparency; tidy the record later if pressed.": 4,
+      "The line moves when method stops being accountable. The slip is believable because it feels efficient.": 4,
+      "One bounded, reviewable move before anything irreversible.": 4,
+      "The upgrade is procedural: same situation, clearer safeguards—so the trade you are in stays honest.": 4,
+      "The engine did not select a direct verse_match for this case. This card preserves the existing closest_teaching fallback": 7,
+      "Optimize for relief or leverage now; let clarity arrive later if at all.": 6,
+      "One honest conversation with specifics, then space or support—not a courtroom.": 6,
+      "Write a short paragraph you would stand by if forwarded—then send it once, to the smallest circle that can act on it; le": 4
+    }
+  },
+  "cases": [
+    {
+      "case_id": "wallet_found_cash",
+      "prompt": "I found a wallet with cash and an ID in a cafe, and I am tempted to keep the cash because my rent is due.",
+      "timestamp": "2026-04-26T22:27:06.200534+00:00",
+      "api_status": 200,
+      "classification": "Adharmic",
+      "alignment_score": -88,
+      "confidence": 0.85,
+      "rendered_guidance_branch": "verse_match",
+      "verse_ref": "6.5",
+      "cards": [
+        {
+          "card": "verdict",
+          "title": "Verdict",
+          "primary_text": "Taking the cash would be theft, regardless of your financial pressure—return the wallet intact.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "Your rent pressure doesn't transform theft into something else—the wallet has an owner waiting.",
+              "open": false
+            },
+            {
+              "label": "Why this applies to your situation",
+              "text": "Dilemma context: I found a wallet with cash and an ID in a cafe, and I am tempted to keep the cash because my rent is due.\nCore reading: Your rent pressure doesn't transform theft into something else—the wallet has an owner waiting.\nGita analysis: The Gita warns against letting rajas (agitation from financial stress) override buddhi (moral discrimination). Your temporary difficulty doesn't grant license to create permanent harm to another.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "guidance",
+          "title": "Gita Verse",
+          "primary_text": "You become either your own ally or your own saboteur through action. It speaks directly to the tension around action, restraint. It also fits signals like found-property in your situation. Its emphasis aligns with the dominant ethical pull in this dilemma.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "You become either your own ally or your own saboteur through action. It speaks directly to the tension around action, restraint. It also fits signals like found-property in your situation. Its emphasis aligns with the dominant ethical pull in this dilemma.",
+              "open": false
+            },
+            {
+              "label": "Show Gita anchor",
+              "text": "Verse: 6.5\nEnglish: Let one lift oneself by oneself; let one not degrade oneself. For the self alone is the friend of the self, and the self alone is the enemy of the self.\nHindi: अपने द्वारा अपने आप का उद्धार करे, अपने को गिराए नहीं। क्योंकि आत्मा ही आत्मा का मित्र है, और आत्मा ही आत्मा का शत्रु है।",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "if-you-continue",
+          "title": "If You Continue",
+          "primary_text": "Short-term: You buy days of relief by polishing your inner narration and dodging the one detail you do not want said aloud. (Normalizing taking shortcuts when stressed, eroding your ethical… gets louder when nothing is named.)\nLong-term: You get fluent at plausible deniability—not as a villain move, but as a fatigue move.",
+          "sections": [
+            {
+              "label": "Short-term - Explain simply",
+              "text": "You buy days of relief by polishing your inner narration and dodging the one detail you do not want said aloud. (Normalizing taking shortcuts when stressed, eroding your ethical… gets louder when nothing is named.)",
+              "open": false
+            },
+            {
+              "label": "Long-term - Explain simply",
+              "text": "You get fluent at plausible deniability—not as a villain move, but as a fatigue move.",
+              "open": false
+            },
+            {
+              "label": "Why this applies here",
+              "text": "Dilemma context: I found a wallet with cash and an ID in a cafe, and I am tempted to keep the cash because my rent is due.\nCore reading: Your rent pressure doesn't transform theft into something else—the wallet has an owner waiting.\nGita analysis: The Gita warns against letting rajas (agitation from financial stress) override buddhi (moral discrimination). Your temporary difficulty doesn't grant license to create permanent harm to another.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "counterfactuals",
+          "title": "Counterfactuals",
+          "primary_text": "Adharmic path: Move now with partial transparency; tidy the record later if pressed.\nDharmic path: One bounded, reviewable move before anything irreversible.",
+          "sections": [
+            {
+              "label": "Adharmic assumed inner state",
+              "text": "Same scene: I found a wallet with cash and an ID in a cafe, and I am tempted to keep the cash because my rent is due. — here Normalizing taking shortcuts when stressed, eroding your ethical foundation quietly sets the pace: you trim context, borrow legitimacy from urgency, and treat duty and role, truth-telling as optional detail.",
+              "open": false
+            },
+            {
+              "label": "Adharmic likely decision",
+              "text": "Move now with partial transparency; tidy the record later if pressed.",
+              "open": false
+            },
+            {
+              "label": "Adharmic - Why this matters",
+              "text": "The line moves when method stops being accountable. The slip is believable because it feels efficient.",
+              "open": false
+            },
+            {
+              "label": "Dharmic assumed inner state",
+              "text": "Same scene: I found a wallet with cash and an ID in a cafe, and I am tempted to keep the cash because my rent is due. — here you let Financial desperation creating moral blindness to obvious theft set the *how*, not just the *whether*: verify, bound the next step, and keep clarity and proportion visible in the choice. You still lack key facts (Whether cafe has lost-and-found system; Amount of…",
+              "open": false
+            },
+            {
+              "label": "Dharmic likely decision",
+              "text": "One bounded, reviewable move before anything irreversible.",
+              "open": false
+            },
+            {
+              "label": "Dharmic - Why this matters",
+              "text": "The upgrade is procedural: same situation, clearer safeguards—so the trade you are in stays honest.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "higher-path",
+          "title": "Higher Path",
+          "primary_text": "Name Financial desperation creating moral blindness to obvious theft without adjectives for sixty seconds on paper; delete the story lines; pick the smallest external step that still matches what is left.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "Name Financial desperation creating moral blindness to obvious theft without adjectives for sixty seconds on paper; delete the story lines; pick the smallest external step that still matches what is left.",
+              "open": false
+            },
+            {
+              "label": "Why this applies here",
+              "text": "Dilemma context: I found a wallet with cash and an ID in a cafe, and I am tempted to keep the cash because my rent is due.\nCore reading: Your rent pressure doesn't transform theft into something else—the wallet has an owner waiting.\nGita analysis: The Gita warns against letting rajas (agitation from financial stress) override buddhi (moral discrimination). Your temporary difficulty doesn't grant license to create permanent harm to another.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "ethical-dimensions",
+          "title": "Ethical Dimensions",
+          "primary_text": "Adharmic (-88)",
+          "sections": [
+            {
+              "label": "dharma_duty",
+              "text": "Score: -5\nSimple meaning: Whether the action fits the responsibility in front of you.\nContext-specific reason: Clear duty to return lost property to its owner",
+              "open": false
+            },
+            {
+              "label": "satya_truth",
+              "text": "Score: -5\nSimple meaning: Whether the action stays honest with reality and other people.\nContext-specific reason: Keeping cash requires deception about finding complete wallet",
+              "open": false
+            },
+            {
+              "label": "ahimsa_nonharm",
+              "text": "Score: -4\nSimple meaning: Whether the action reduces harm instead of adding to it.\nContext-specific reason: Causes financial and emotional harm to wallet owner",
+              "open": false
+            },
+            {
+              "label": "nishkama_detachment",
+              "text": "Score: -4\nSimple meaning: Whether the action is clean without clinging to outcome or reward.\nContext-specific reason: Acting from attachment to solving personal financial crisis",
+              "open": false
+            },
+            {
+              "label": "shaucha_intent",
+              "text": "Score: -5\nSimple meaning: Whether the motive behind the action is clean.\nContext-specific reason: Intent corrupted by exploiting another's misfortune",
+              "open": false
+            },
+            {
+              "label": "sanyama_restraint",
+              "text": "Score: -5\nSimple meaning: Whether the action is guided by restraint rather than impulse.\nContext-specific reason: Failure to restrain impulse to take what isn't yours",
+              "open": false
+            },
+            {
+              "label": "lokasangraha_welfare",
+              "text": "Score: -4\nSimple meaning: Whether the action supports the wider good around you.\nContext-specific reason: Undermines social trust in returning lost items",
+              "open": false
+            },
+            {
+              "label": "viveka_discernment",
+              "text": "Score: -3\nSimple meaning: Whether the action comes from clear judgment rather than confusion.\nContext-specific reason: Confusing temporary relief with right action",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "share",
+          "title": "Share Layer",
+          "primary_text": "Most costly moves are not malice—they are hurry with good adjectives.",
+          "sections": [
+            {
+              "label": "Reflective question",
+              "text": "What is the smallest step that keeps I found a wallet with cash and an ID in honest without making harm the delivery vehicle?",
+              "open": false
+            }
+          ]
+        }
+      ],
+      "details_present": true,
+      "details_openable": true,
+      "console_errors": [],
+      "network_errors": [],
+      "layout_issues": [],
+      "desktop_layout": {
+        "overflow_x": false,
+        "viewport_width": 1365,
+        "scroll_width": 1365
+      },
+      "mobile_layout": {
+        "overflow_x": false,
+        "viewport_width": 390,
+        "scroll_width": 390
+      }
+    },
+    {
+      "case_id": "manager_takes_credit_public_correction",
+      "prompt": "My manager publicly took credit for my work, and I am considering correcting the record in the same public meeting.",
+      "timestamp": "2026-04-26T22:27:38.499453+00:00",
+      "api_status": 200,
+      "classification": "Mixed",
+      "alignment_score": 15,
+      "confidence": 0.85,
+      "rendered_guidance_branch": "closest_teaching",
+      "verse_ref": null,
+      "cards": [
+        {
+          "card": "verdict",
+          "title": "Verdict",
+          "primary_text": "Correcting the record publicly serves truth but requires skillful timing and tone to avoid workplace disruption.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "Your manager's theft of credit violates professional ethics and your rightful recognition. The urge to correct this immediately in public stems from both legitimate grievance and wounded pride.",
+              "open": false
+            },
+            {
+              "label": "Why this applies to your situation",
+              "text": "Dilemma context: My manager publicly took credit for my work, and I am considering correcting the record in the same public meeting.\nCore reading: Your manager's theft of credit violates professional ethics and your rightful recognition. The urge to correct this immediately in public stems from both legitimate grievance and wounded pride.\nGita analysis: The Gita teaches that while we have the right to our actions, we don't control their fruits. Here, correcting misattribution serves truth, but the method and timing determine whether this becomes righteous action or ego-driven reaction. Acting from a place of centered clarity rather than emotional reactivity transforms necessary confrontation into dharmic action.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "guidance",
+          "title": "Closest Teaching",
+          "primary_text": "No single verse clears the match threshold, but the closest Gita lens here is clean intention before action. This is concept-level guidance, not a scripture quote. The pull here is mixed, not one-dimensional. The framing is useful, while the modern details still need case-level judgment.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "No single verse clears the match threshold, but the closest Gita lens here is clean intention before action. This is concept-level guidance, not a scripture quote. The pull here is mixed, not one-dimensional. The framing is useful, while the modern details still need case-level judgment.",
+              "open": false
+            },
+            {
+              "label": "Why this is not a direct verse verdict",
+              "text": "The engine did not select a direct verse_match for this case. This card preserves the existing closest_teaching fallback without forcing a verse anchor.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "if-you-continue",
+          "title": "If You Continue",
+          "primary_text": "Short-term: You trade focus for vigilance: small wins in meetings, larger tabs kept open on who said what. (Ego-driven confrontation could overshadow legitimate grievance and… gets louder when nothing is named.)\nLong-term: What people remember is how pressure felt in the room; the factual record stops being the headline.",
+          "sections": [
+            {
+              "label": "Short-term - Explain simply",
+              "text": "You trade focus for vigilance: small wins in meetings, larger tabs kept open on who said what. (Ego-driven confrontation could overshadow legitimate grievance and… gets louder when nothing is named.)",
+              "open": false
+            },
+            {
+              "label": "Long-term - Explain simply",
+              "text": "What people remember is how pressure felt in the room; the factual record stops being the headline.",
+              "open": false
+            },
+            {
+              "label": "Why this applies here",
+              "text": "Dilemma context: My manager publicly took credit for my work, and I am considering correcting the record in the same public meeting.\nCore reading: Your manager's theft of credit violates professional ethics and your rightful recognition. The urge to correct this immediately in public stems from both legitimate grievance and wounded pride.\nGita analysis: The Gita teaches that while we have the right to our actions, we don't control their fruits. Here, correcting misattribution serves truth, but the method and timing determine whether this becomes righteous action or ego-driven reaction. Acting from a place of centered clarity rather than emotional reactivity transforms necessary confrontation into dharmic action.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "counterfactuals",
+          "title": "Counterfactuals",
+          "primary_text": "Adharmic path: Win the room or the narrative first; fix the record only if forced.\nDharmic path: Private specificity first, written follow-up, public only as a bounded last step.",
+          "sections": [
+            {
+              "label": "Adharmic assumed inner state",
+              "text": "Same workplace stakes: My manager publicly took credit for my work, and I am considering correcting the record in the same public meeting. — here you let Ego-driven confrontation could overshadow legitimate grievance and damage career… steer the method—public cornering, selective omission, or quiet sabotage—while sounding blameless.",
+              "open": false
+            },
+            {
+              "label": "Adharmic likely decision",
+              "text": "Win the room or the narrative first; fix the record only if forced.",
+              "open": false
+            },
+            {
+              "label": "Adharmic - Why this matters",
+              "text": "The line moves when truth becomes a tactic and attachment to outcomes, non-harm drives timing. Collateral damage to trust stops being part of the calculation.",
+              "open": false
+            },
+            {
+              "label": "Dharmic assumed inner state",
+              "text": "Same workplace stakes: My manager publicly took credit for my work, and I am considering correcting the record in the same public meeting. — here you keep the grievance real but route it: private naming, dated evidence, escalation along the org norm—not ambush. You still lack key facts (Pattern of credit-taking versus isolated incident; Importance of this specific work to your career), so the…",
+              "open": false
+            },
+            {
+              "label": "Dharmic likely decision",
+              "text": "Private specificity first, written follow-up, public only as a bounded last step.",
+              "open": false
+            },
+            {
+              "label": "Dharmic - Why this matters",
+              "text": "Same facts, safer vehicle. truth-telling, duty and role stays in the loop so the correction does not become the headline you did not intend.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "higher-path",
+          "title": "Higher Path",
+          "primary_text": "Put the dispute in one email thread with specifics and dates; ask for a correction window; if none, attach the same packet to whoever owns integrity reviews—keep the audience shrinking, not growing.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "Put the dispute in one email thread with specifics and dates; ask for a correction window; if none, attach the same packet to whoever owns integrity reviews—keep the audience shrinking, not growing.",
+              "open": false
+            },
+            {
+              "label": "Why this applies here",
+              "text": "Dilemma context: My manager publicly took credit for my work, and I am considering correcting the record in the same public meeting.\nCore reading: Your manager's theft of credit violates professional ethics and your rightful recognition. The urge to correct this immediately in public stems from both legitimate grievance and wounded pride.\nGita analysis: The Gita teaches that while we have the right to our actions, we don't control their fruits. Here, correcting misattribution serves truth, but the method and timing determine whether this becomes righteous action or ego-driven reaction. Acting from a place of centered clarity rather than emotional reactivity transforms necessary confrontation into dharmic action.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "ethical-dimensions",
+          "title": "Ethical Dimensions",
+          "primary_text": "Mixed (15)",
+          "sections": [
+            {
+              "label": "dharma_duty",
+              "text": "Score: 3\nSimple meaning: Whether the action fits the responsibility in front of you.\nContext-specific reason: Professional duty includes accurate attribution and maintaining workplace integrity",
+              "open": false
+            },
+            {
+              "label": "satya_truth",
+              "text": "Score: 4\nSimple meaning: Whether the action stays honest with reality and other people.\nContext-specific reason: Correcting false attribution directly upholds truthfulness",
+              "open": false
+            },
+            {
+              "label": "ahimsa_nonharm",
+              "text": "Score: -1\nSimple meaning: Whether the action reduces harm instead of adding to it.\nContext-specific reason: Public correction may harm manager's reputation and team dynamics",
+              "open": false
+            },
+            {
+              "label": "nishkama_detachment",
+              "text": "Score: -2\nSimple meaning: Whether the action is clean without clinging to outcome or reward.\nContext-specific reason: Strong attachment to recognition drives the impulse to correct immediately",
+              "open": false
+            },
+            {
+              "label": "shaucha_intent",
+              "text": "Score: 2\nSimple meaning: Whether the motive behind the action is clean.\nContext-specific reason: Intent appears focused on fairness rather than revenge, though ego is involved",
+              "open": false
+            },
+            {
+              "label": "sanyama_restraint",
+              "text": "Score: -1\nSimple meaning: Whether the action is guided by restraint rather than impulse.\nContext-specific reason: Immediate public response shows limited restraint in choosing time and method",
+              "open": false
+            },
+            {
+              "label": "lokasangraha_welfare",
+              "text": "Score: 1\nSimple meaning: Whether the action supports the wider good around you.\nContext-specific reason: Establishing proper credit norms benefits team culture long-term",
+              "open": false
+            },
+            {
+              "label": "viveka_discernment",
+              "text": "Score: 0\nSimple meaning: Whether the action comes from clear judgment rather than confusion.\nContext-specific reason: Recognizes the issue but hasn't considered optimal approach or consequences",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "share",
+          "title": "Share Layer",
+          "primary_text": "Public truth can be righteous and still train the room to remember your tone, not the theft.",
+          "sections": [
+            {
+              "label": "Reflective question",
+              "text": "Does the cleaner path—Private specificity first, written…—feel closer than you want to admit, or farther than it should?",
+              "open": false
+            }
+          ]
+        }
+      ],
+      "details_present": true,
+      "details_openable": true,
+      "console_errors": [],
+      "network_errors": [],
+      "layout_issues": [],
+      "desktop_layout": {
+        "overflow_x": false,
+        "viewport_width": 1365,
+        "scroll_width": 1365
+      },
+      "mobile_layout": {
+        "overflow_x": false,
+        "viewport_width": 390,
+        "scroll_width": 390
+      }
+    },
+    {
+      "case_id": "legal_alcohol_shop",
+      "prompt": "I can legally open an alcohol shop in my neighborhood, but I worry it may increase harm even though it would support my family.",
+      "timestamp": "2026-04-26T22:28:06.734527+00:00",
+      "api_status": 200,
+      "classification": "Mixed",
+      "alignment_score": -28,
+      "confidence": 0.85,
+      "rendered_guidance_branch": "verse_match",
+      "verse_ref": "18.47",
+      "cards": [
+        {
+          "card": "verdict",
+          "title": "Verdict",
+          "primary_text": "Legal business rights don't override the predictable harm of increasing alcohol dependency in your community.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "The tension between legal permissibility and moral responsibility reveals how society often sanctions harmful commerce while leaving ethical weight on individual conscience.",
+              "open": false
+            },
+            {
+              "label": "Why this applies to your situation",
+              "text": "Dilemma context: I can legally open an alcohol shop in my neighborhood, but I worry it may increase harm even though it would support my family.\nCore reading: The tension between legal permissibility and moral responsibility reveals how society often sanctions harmful commerce while leaving ethical weight on individual conscience.\nGita analysis: Krishna warns against actions that bind us through their consequences. Running an alcohol shop creates karmic entanglement with every addiction enabled, every family disrupted. The Gita suggests finding livelihood through work that uplifts rather than degrades human potential.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "guidance",
+          "title": "Gita Verse",
+          "primary_text": "Work aligned with your nature is preferable to borrowed ideals. It speaks directly to the tension around duty, right-livelihood. It also fits signals like career-crossroads, livelihood-harm-tradeoff in your situation. Its emphasis aligns with the dominant ethical pull in this dilemma.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "Work aligned with your nature is preferable to borrowed ideals. It speaks directly to the tension around duty, right-livelihood. It also fits signals like career-crossroads, livelihood-harm-tradeoff in your situation. Its emphasis aligns with the dominant ethical pull in this dilemma.",
+              "open": false
+            },
+            {
+              "label": "Show Gita anchor",
+              "text": "Verse: 18.47\nEnglish: Better one's own dharma imperfect than another's well performed. Performing work suited to one's nature, one incurs no sin.\nHindi: अपना धर्म गुणरहित भी दूसरे के अच्छी तरह आचरण किए हुए धर्म से श्रेष्ठ है। स्वभाव से नियत कर्म करता हुआ मनुष्य पाप को प्राप्त नहीं होता।",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "if-you-continue",
+          "title": "If You Continue",
+          "primary_text": "Short-term: Relief if you vent sideways: someone else carries the stress as gossip instead of as information. (Normalizing harm as acceptable cost of economic survival gets louder when nothing is named.)\nLong-term: Trust becomes positional: who is 'in' on edits to the story, and which facts stop traveling with the kids.",
+          "sections": [
+            {
+              "label": "Short-term - Explain simply",
+              "text": "Relief if you vent sideways: someone else carries the stress as gossip instead of as information. (Normalizing harm as acceptable cost of economic survival gets louder when nothing is named.)",
+              "open": false
+            },
+            {
+              "label": "Long-term - Explain simply",
+              "text": "Trust becomes positional: who is 'in' on edits to the story, and which facts stop traveling with the kids.",
+              "open": false
+            },
+            {
+              "label": "Why this applies here",
+              "text": "Dilemma context: I can legally open an alcohol shop in my neighborhood, but I worry it may increase harm even though it would support my family.\nCore reading: The tension between legal permissibility and moral responsibility reveals how society often sanctions harmful commerce while leaving ethical weight on individual conscience.\nGita analysis: Krishna warns against actions that bind us through their consequences. Running an alcohol shop creates karmic entanglement with every addiction enabled, every family disrupted. The Gita suggests finding livelihood through work that uplifts rather than degrades human potential.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "counterfactuals",
+          "title": "Counterfactuals",
+          "primary_text": "Adharmic path: Optimize for relief or leverage now; let clarity arrive later if at all.\nDharmic path: One honest conversation with specifics, then space or support—not a courtroom.",
+          "sections": [
+            {
+              "label": "Adharmic assumed inner state",
+              "text": "Same relationship field: I can legally open an alcohol shop in my neighborhood, but I worry it may increase harm even though it would support my family. — here Normalizing harm as acceptable cost of economic survival becomes the script: you triangulate, withhold selectively, or press for a win while calling it care.",
+              "open": false
+            },
+            {
+              "label": "Adharmic likely decision",
+              "text": "Optimize for relief or leverage now; let clarity arrive later if at all.",
+              "open": false
+            },
+            {
+              "label": "Adharmic - Why this matters",
+              "text": "The line moves when intimacy or duty becomes cover for control. non-harm, restraint quietly runs the decision.",
+              "open": false
+            },
+            {
+              "label": "Dharmic assumed inner state",
+              "text": "Same relationship field: I can legally open an alcohol shop in my neighborhood, but I worry it may increase harm even though it would support my family. — here you slow the tempo: name what is true, name what is unknown, and choose a bounded next step that Financial security for family through accessible business opportunity would respect. You still lack key facts (Current alcohol availability…",
+              "open": false
+            },
+            {
+              "label": "Dharmic likely decision",
+              "text": "One honest conversation with specifics, then space or support—not a courtroom.",
+              "open": false
+            },
+            {
+              "label": "Dharmic - Why this matters",
+              "text": "The upgrade is method: judgment, motive clarity constrains how hard you press while staying truthful.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "higher-path",
+          "title": "Higher Path",
+          "primary_text": "Write a short paragraph you would stand by if forwarded—then send it once, to the smallest circle that can act on it; let silence after that be a choice, not a dodge.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "Write a short paragraph you would stand by if forwarded—then send it once, to the smallest circle that can act on it; let silence after that be a choice, not a dodge.",
+              "open": false
+            },
+            {
+              "label": "Why this applies here",
+              "text": "Dilemma context: I can legally open an alcohol shop in my neighborhood, but I worry it may increase harm even though it would support my family.\nCore reading: The tension between legal permissibility and moral responsibility reveals how society often sanctions harmful commerce while leaving ethical weight on individual conscience.\nGita analysis: Krishna warns against actions that bind us through their consequences. Running an alcohol shop creates karmic entanglement with every addiction enabled, every family disrupted. The Gita suggests finding livelihood through work that uplifts rather than degrades human potential.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "ethical-dimensions",
+          "title": "Ethical Dimensions",
+          "primary_text": "Mixed (-28)",
+          "sections": [
+            {
+              "label": "dharma_duty",
+              "text": "Score: -2\nSimple meaning: Whether the action fits the responsibility in front of you.\nContext-specific reason: Family provision duty conflicts with community protection duty",
+              "open": false
+            },
+            {
+              "label": "satya_truth",
+              "text": "Score: 0\nSimple meaning: Whether the action stays honest with reality and other people.\nContext-specific reason: No deception involved, business would be transparent",
+              "open": false
+            },
+            {
+              "label": "ahimsa_nonharm",
+              "text": "Score: -4\nSimple meaning: Whether the action reduces harm instead of adding to it.\nContext-specific reason: Alcohol shops statistically increase addiction, domestic violence, health issues",
+              "open": false
+            },
+            {
+              "label": "nishkama_detachment",
+              "text": "Score: -2\nSimple meaning: Whether the action is clean without clinging to outcome or reward.\nContext-specific reason: Profit motive from others' potential addiction creates attachment to harmful outcomes",
+              "open": false
+            },
+            {
+              "label": "shaucha_intent",
+              "text": "Score: 1\nSimple meaning: Whether the motive behind the action is clean.\nContext-specific reason: Intent to support family is pure, but method creates impurity",
+              "open": false
+            },
+            {
+              "label": "sanyama_restraint",
+              "text": "Score: -3\nSimple meaning: Whether the action is guided by restraint rather than impulse.\nContext-specific reason: Facilitating others' loss of restraint for profit",
+              "open": false
+            },
+            {
+              "label": "lokasangraha_welfare",
+              "text": "Score: -3\nSimple meaning: Whether the action supports the wider good around you.\nContext-specific reason: Individual family benefit at cost of broader community wellbeing",
+              "open": false
+            },
+            {
+              "label": "viveka_discernment",
+              "text": "Score: 2\nSimple meaning: Whether the action comes from clear judgment rather than confusion.\nContext-specific reason: Shows wisdom in recognizing the ethical conflict before acting",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "share",
+          "title": "Share Layer",
+          "primary_text": "Intimacy is not a license to edit someone else's information for your comfort.",
+          "sections": [
+            {
+              "label": "Reflective question",
+              "text": "If \"Current alcohol availability in area\" were settled, would you still pick the same audience for the hard sentence?",
+              "open": false
+            }
+          ]
+        }
+      ],
+      "details_present": true,
+      "details_openable": true,
+      "console_errors": [],
+      "network_errors": [],
+      "layout_issues": [],
+      "desktop_layout": {
+        "overflow_x": false,
+        "viewport_width": 1365,
+        "scroll_width": 1365
+      },
+      "mobile_layout": {
+        "overflow_x": false,
+        "viewport_width": 390,
+        "scroll_width": 390
+      }
+    },
+    {
+      "case_id": "friends_partner_desire",
+      "prompt": "I have developed desire for my close friend's partner, and they seem interested too, but acting on it would betray my friend.",
+      "timestamp": "2026-04-26T22:28:34.993779+00:00",
+      "api_status": 200,
+      "classification": "Adharmic",
+      "alignment_score": -75,
+      "confidence": 0.85,
+      "rendered_guidance_branch": "closest_teaching",
+      "verse_ref": null,
+      "cards": [
+        {
+          "card": "verdict",
+          "title": "Verdict",
+          "primary_text": "This attraction tests whether you value momentary chemistry over established trust and friendship.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "The Gita warns against actions born from uncontrolled senses that cloud judgment. When desire overrides dharma, it creates a chain of suffering - first deception, then betrayal, then lasting damage to multiple relationships.",
+              "open": false
+            },
+            {
+              "label": "Why this applies to your situation",
+              "text": "Dilemma context: I have developed desire for my close friend's partner, and they seem interested too, but acting on it would betray my friend.\nCore reading: The Gita warns against actions born from uncontrolled senses that cloud judgment. When desire overrides dharma, it creates a chain of suffering - first deception, then betrayal, then lasting damage to multiple relationships.\nGita analysis: Krishna describes how unchecked desire leads to delusion, then poor choices, then destruction of peace. The temporary pleasure from this attraction cannot compensate for the permanent loss of a friendship and your integrity. The Gita emphasizes that true strength lies in mastering impulses that harm others.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "guidance",
+          "title": "Closest Teaching",
+          "primary_text": "No specific verse cleared the threshold for this case. The Gita still offers useful lenses through duty, intention, non-harm, restraint, and welfare-of-all, but this modern structure does not map cleanly to one verse without forced certainty.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "No specific verse cleared the threshold for this case. The Gita still offers useful lenses through duty, intention, non-harm, restraint, and welfare-of-all, but this modern structure does not map cleanly to one verse without forced certainty.",
+              "open": false
+            },
+            {
+              "label": "Why this is not a direct verse verdict",
+              "text": "The engine did not select a direct verse_match for this case. This card preserves the existing closest_teaching fallback without forcing a verse anchor.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "if-you-continue",
+          "title": "If You Continue",
+          "primary_text": "Short-term: Short term you win quiet at the dinner table; the hardest sentence does not get spoken where it belongs. (Using 'mutual interest' to rationalize what you already know is wrong gets louder when nothing is named.)\nLong-term: Trust becomes positional: who is 'in' on edits to the story, and which facts stop traveling with the kids.",
+          "sections": [
+            {
+              "label": "Short-term - Explain simply",
+              "text": "Short term you win quiet at the dinner table; the hardest sentence does not get spoken where it belongs. (Using 'mutual interest' to rationalize what you already know is wrong gets louder when nothing is named.)",
+              "open": false
+            },
+            {
+              "label": "Long-term - Explain simply",
+              "text": "Trust becomes positional: who is 'in' on edits to the story, and which facts stop traveling with the kids.",
+              "open": false
+            },
+            {
+              "label": "Why this applies here",
+              "text": "Dilemma context: I have developed desire for my close friend's partner, and they seem interested too, but acting on it would betray my friend.\nCore reading: The Gita warns against actions born from uncontrolled senses that cloud judgment. When desire overrides dharma, it creates a chain of suffering - first deception, then betrayal, then lasting damage to multiple relationships.\nGita analysis: Krishna describes how unchecked desire leads to delusion, then poor choices, then destruction of peace. The temporary pleasure from this attraction cannot compensate for the permanent loss of a friendship and your integrity. The Gita emphasizes that true strength lies in mastering impulses that harm others.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "counterfactuals",
+          "title": "Counterfactuals",
+          "primary_text": "Adharmic path: Optimize for relief or leverage now; let clarity arrive later if at all.\nDharmic path: One honest conversation with specifics, then space or support—not a courtroom.",
+          "sections": [
+            {
+              "label": "Adharmic assumed inner state",
+              "text": "Same relationship field: I have developed desire for my close friend's partner, and they seem interested too, but acting on it would betray my friend. — here Using 'mutual interest' to rationalize what you already know is wrong becomes the script: you triangulate, withhold selectively, or press for a win while calling it care.",
+              "open": false
+            },
+            {
+              "label": "Adharmic likely decision",
+              "text": "Optimize for relief or leverage now; let clarity arrive later if at all.",
+              "open": false
+            },
+            {
+              "label": "Adharmic - Why this matters",
+              "text": "The line moves when intimacy or duty becomes cover for control. restraint, duty and role quietly runs the decision.",
+              "open": false
+            },
+            {
+              "label": "Dharmic assumed inner state",
+              "text": "Same relationship field: I have developed desire for my close friend's partner, and they seem interested too, but acting on it would betray my friend. — here you slow the tempo: name what is true, name what is unknown, and choose a bounded next step that Desire mixed with the intoxication of being desired in return would respect. You still lack key facts (Duration and depth of the friendship;…",
+              "open": false
+            },
+            {
+              "label": "Dharmic likely decision",
+              "text": "One honest conversation with specifics, then space or support—not a courtroom.",
+              "open": false
+            },
+            {
+              "label": "Dharmic - Why this matters",
+              "text": "The upgrade is method: clarity and proportion constrains how hard you press while staying truthful.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "higher-path",
+          "title": "Higher Path",
+          "primary_text": "Tell the one person who truly needs the fact first, in one sitting, with no audience; refuse to triangulate through kids or group chats; schedule a second conversation instead of a second performance.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "Tell the one person who truly needs the fact first, in one sitting, with no audience; refuse to triangulate through kids or group chats; schedule a second conversation instead of a second performance.",
+              "open": false
+            },
+            {
+              "label": "Why this applies here",
+              "text": "Dilemma context: I have developed desire for my close friend's partner, and they seem interested too, but acting on it would betray my friend.\nCore reading: The Gita warns against actions born from uncontrolled senses that cloud judgment. When desire overrides dharma, it creates a chain of suffering - first deception, then betrayal, then lasting damage to multiple relationships.\nGita analysis: Krishna describes how unchecked desire leads to delusion, then poor choices, then destruction of peace. The temporary pleasure from this attraction cannot compensate for the permanent loss of a friendship and your integrity. The Gita emphasizes that true strength lies in mastering impulses that harm others.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "ethical-dimensions",
+          "title": "Ethical Dimensions",
+          "primary_text": "Adharmic (-75)",
+          "sections": [
+            {
+              "label": "dharma_duty",
+              "text": "Score: -4\nSimple meaning: Whether the action fits the responsibility in front of you.\nContext-specific reason: Friendship creates implicit duties of loyalty and trust that this would violate",
+              "open": false
+            },
+            {
+              "label": "satya_truth",
+              "text": "Score: -3\nSimple meaning: Whether the action stays honest with reality and other people.\nContext-specific reason: Pursuing this requires concealment and deception toward your friend",
+              "open": false
+            },
+            {
+              "label": "ahimsa_nonharm",
+              "text": "Score: -4\nSimple meaning: Whether the action reduces harm instead of adding to it.\nContext-specific reason: Would inflict deep emotional wounds on friend through betrayal",
+              "open": false
+            },
+            {
+              "label": "nishkama_detachment",
+              "text": "Score: -3\nSimple meaning: Whether the action is clean without clinging to outcome or reward.\nContext-specific reason: Acting from intense desire rather than clear judgment",
+              "open": false
+            },
+            {
+              "label": "shaucha_intent",
+              "text": "Score: -4\nSimple meaning: Whether the motive behind the action is clean.\nContext-specific reason: Motive centers on personal gratification despite knowing the harm",
+              "open": false
+            },
+            {
+              "label": "sanyama_restraint",
+              "text": "Score: -5\nSimple meaning: Whether the action is guided by restraint rather than impulse.\nContext-specific reason: Situation explicitly calls for restraint of destructive impulses",
+              "open": false
+            },
+            {
+              "label": "lokasangraha_welfare",
+              "text": "Score: -3\nSimple meaning: Whether the action supports the wider good around you.\nContext-specific reason: Damages social fabric of trust within your circle",
+              "open": false
+            },
+            {
+              "label": "viveka_discernment",
+              "text": "Score: -4\nSimple meaning: Whether the action comes from clear judgment rather than confusion.\nContext-specific reason: Confusing temporary attraction with something worth destroying relationships",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "share",
+          "title": "Share Layer",
+          "primary_text": "Family peace bought with selective silence still has a receipt—someone reads it later.",
+          "sections": [
+            {
+              "label": "Reflective question",
+              "text": "If \"Duration and depth of the friendship\" were settled, would you still pick the same audience for the hard sentence?",
+              "open": false
+            }
+          ]
+        }
+      ],
+      "details_present": true,
+      "details_openable": true,
+      "console_errors": [],
+      "network_errors": [],
+      "layout_issues": [],
+      "desktop_layout": {
+        "overflow_x": false,
+        "viewport_width": 1365,
+        "scroll_width": 1365
+      },
+      "mobile_layout": {
+        "overflow_x": false,
+        "viewport_width": 390,
+        "scroll_width": 390
+      }
+    },
+    {
+      "case_id": "aging_parent_refuses_hospitalization",
+      "prompt": "My aging parent is refusing hospitalization after a serious diagnosis, and I am torn between respecting them and forcing treatment.",
+      "timestamp": "2026-04-26T22:29:01.740928+00:00",
+      "api_status": 200,
+      "classification": "Dharmic",
+      "alignment_score": 40,
+      "confidence": 0.85,
+      "rendered_guidance_branch": "closest_teaching",
+      "verse_ref": null,
+      "cards": [
+        {
+          "card": "verdict",
+          "title": "Verdict",
+          "primary_text": "Respecting your parent's autonomy while ensuring they understand consequences honors both their dignity and your duty of care.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "A competent adult's refusal of treatment reflects their sovereignty over their own life journey, even when that journey approaches its end.",
+              "open": false
+            },
+            {
+              "label": "Why this applies to your situation",
+              "text": "Dilemma context: My aging parent is refusing hospitalization after a serious diagnosis, and I am torn between respecting them and forcing treatment.\nCore reading: A competent adult's refusal of treatment reflects their sovereignty over their own life journey, even when that journey approaches its end.\nGita analysis: The Gita teaches that each soul has its own path and timing. Just as Krishna respects Arjuna's agency even in crisis, you must honor your parent's choice while fulfilling your duty to ensure they're making an informed decision.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "guidance",
+          "title": "Closest Teaching",
+          "primary_text": "No single verse clears the match threshold, but the closest Gita lens here is clean intention before action. This is concept-level guidance, not a scripture quote.  The framing is useful, while the modern details still need case-level judgment.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "No single verse clears the match threshold, but the closest Gita lens here is clean intention before action. This is concept-level guidance, not a scripture quote.  The framing is useful, while the modern details still need case-level judgment.",
+              "open": false
+            },
+            {
+              "label": "Why this is not a direct verse verdict",
+              "text": "The engine did not select a direct verse_match for this case. This card preserves the existing closest_teaching fallback without forcing a verse anchor.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "if-you-continue",
+          "title": "If You Continue",
+          "primary_text": "Short-term: You buy a few calm days by tightening the family narrative—then the next surprise lands louder. (Conflating your anxiety about loss with their best interests gets louder when nothing is named.)\nLong-term: People learn what not to ask you; intimacy shrinks to what can be safely performed.",
+          "sections": [
+            {
+              "label": "Short-term - Explain simply",
+              "text": "You buy a few calm days by tightening the family narrative—then the next surprise lands louder. (Conflating your anxiety about loss with their best interests gets louder when nothing is named.)",
+              "open": false
+            },
+            {
+              "label": "Long-term - Explain simply",
+              "text": "People learn what not to ask you; intimacy shrinks to what can be safely performed.",
+              "open": false
+            },
+            {
+              "label": "Why this applies here",
+              "text": "Dilemma context: My aging parent is refusing hospitalization after a serious diagnosis, and I am torn between respecting them and forcing treatment.\nCore reading: A competent adult's refusal of treatment reflects their sovereignty over their own life journey, even when that journey approaches its end.\nGita analysis: The Gita teaches that each soul has its own path and timing. Just as Krishna respects Arjuna's agency even in crisis, you must honor your parent's choice while fulfilling your duty to ensure they're making an informed decision.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "counterfactuals",
+          "title": "Counterfactuals",
+          "primary_text": "Adharmic path: Optimize for relief or leverage now; let clarity arrive later if at all.\nDharmic path: One honest conversation with specifics, then space or support—not a courtroom.",
+          "sections": [
+            {
+              "label": "Adharmic assumed inner state",
+              "text": "Same relationship field: My aging parent is refusing hospitalization after a serious diagnosis, and I am torn between respecting them and forcing treatment. — here Conflating your anxiety about loss with their best interests becomes the script: you triangulate, withhold selectively, or press for a win while calling it care.",
+              "open": false
+            },
+            {
+              "label": "Adharmic likely decision",
+              "text": "Optimize for relief or leverage now; let clarity arrive later if at all.",
+              "open": false
+            },
+            {
+              "label": "Adharmic - Why this matters",
+              "text": "The line moves when intimacy or duty becomes cover for control. non-harm quietly runs the decision.",
+              "open": false
+            },
+            {
+              "label": "Dharmic assumed inner state",
+              "text": "Same relationship field: My aging parent is refusing hospitalization after a serious diagnosis, and I am torn between respecting them and forcing treatment. — here you slow the tempo: name what is true, name what is unknown, and choose a bounded next step that Fear of losing parent mixed with respect for their life choices would respect. You still lack key facts (Parent's mental competency…",
+              "open": false
+            },
+            {
+              "label": "Dharmic likely decision",
+              "text": "One honest conversation with specifics, then space or support—not a courtroom.",
+              "open": false
+            },
+            {
+              "label": "Dharmic - Why this matters",
+              "text": "The upgrade is method: restraint, truth-telling constrains how hard you press while staying truthful.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "higher-path",
+          "title": "Higher Path",
+          "primary_text": "Write a short paragraph you would stand by if forwarded—then send it once, to the smallest circle that can act on it; let silence after that be a choice, not a dodge.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "Write a short paragraph you would stand by if forwarded—then send it once, to the smallest circle that can act on it; let silence after that be a choice, not a dodge.",
+              "open": false
+            },
+            {
+              "label": "Why this applies here",
+              "text": "Dilemma context: My aging parent is refusing hospitalization after a serious diagnosis, and I am torn between respecting them and forcing treatment.\nCore reading: A competent adult's refusal of treatment reflects their sovereignty over their own life journey, even when that journey approaches its end.\nGita analysis: The Gita teaches that each soul has its own path and timing. Just as Krishna respects Arjuna's agency even in crisis, you must honor your parent's choice while fulfilling your duty to ensure they're making an informed decision.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "ethical-dimensions",
+          "title": "Ethical Dimensions",
+          "primary_text": "Dharmic (40)",
+          "sections": [
+            {
+              "label": "dharma_duty",
+              "text": "Score: 2\nSimple meaning: Whether the action fits the responsibility in front of you.\nContext-specific reason: Filial duty includes both care and respect for parent's autonomy",
+              "open": false
+            },
+            {
+              "label": "satya_truth",
+              "text": "Score: 3\nSimple meaning: Whether the action stays honest with reality and other people.\nContext-specific reason: Honest dialogue about diagnosis and wishes upholds truthful relationship",
+              "open": false
+            },
+            {
+              "label": "ahimsa_nonharm",
+              "text": "Score: -1\nSimple meaning: Whether the action reduces harm instead of adding to it.\nContext-specific reason: Forcing treatment causes psychological harm; refusing may cause physical harm",
+              "open": false
+            },
+            {
+              "label": "nishkama_detachment",
+              "text": "Score: 2\nSimple meaning: Whether the action is clean without clinging to outcome or reward.\nContext-specific reason: Acting from duty rather than fear of loss or guilt",
+              "open": false
+            },
+            {
+              "label": "shaucha_intent",
+              "text": "Score: 3\nSimple meaning: Whether the motive behind the action is clean.\nContext-specific reason: Pure intention seeks parent's genuine wellbeing over personal comfort",
+              "open": false
+            },
+            {
+              "label": "sanyama_restraint",
+              "text": "Score: 4\nSimple meaning: Whether the action is guided by restraint rather than impulse.\nContext-specific reason: Restraining impulse to override their autonomy shows mature love",
+              "open": false
+            },
+            {
+              "label": "lokasangraha_welfare",
+              "text": "Score: 1\nSimple meaning: Whether the action supports the wider good around you.\nContext-specific reason: Balancing individual autonomy with family impact",
+              "open": false
+            },
+            {
+              "label": "viveka_discernment",
+              "text": "Score: 2\nSimple meaning: Whether the action comes from clear judgment rather than confusion.\nContext-specific reason: Distinguishing between competent refusal and fear-based avoidance",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "share",
+          "title": "Share Layer",
+          "primary_text": "The gentlest story can still steer someone if they never get to see the full map.",
+          "sections": [
+            {
+              "label": "Reflective question",
+              "text": "Does the cleaner path—One honest conversation with specifics,…—feel closer than you want to admit, or farther than it should?",
+              "open": false
+            }
+          ]
+        }
+      ],
+      "details_present": true,
+      "details_openable": true,
+      "console_errors": [],
+      "network_errors": [],
+      "layout_issues": [],
+      "desktop_layout": {
+        "overflow_x": false,
+        "viewport_width": 1365,
+        "scroll_width": 1365
+      },
+      "mobile_layout": {
+        "overflow_x": false,
+        "viewport_width": 390,
+        "scroll_width": 390
+      }
+    },
+    {
+      "case_id": "cosmetic_surgery",
+      "prompt": "I am considering cosmetic surgery mainly because I feel insecure and want social approval, though the procedure is legal and safe.",
+      "timestamp": "2026-04-26T22:29:32.027764+00:00",
+      "api_status": 200,
+      "classification": "Adharmic",
+      "alignment_score": -45,
+      "confidence": 0.85,
+      "rendered_guidance_branch": "closest_teaching",
+      "verse_ref": null,
+      "cards": [
+        {
+          "card": "verdict",
+          "title": "Verdict",
+          "primary_text": "Seeking surgical validation for social insecurity typically deepens the very wound it promises to heal.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "The desire stems from equating self-worth with appearance and believing surgical alteration will secure the acceptance you already deserve as you are.",
+              "open": false
+            },
+            {
+              "label": "Why this applies to your situation",
+              "text": "Dilemma context: I am considering cosmetic surgery mainly because I feel insecure and want social approval, though the procedure is legal and safe.\nCore reading: The desire stems from equating self-worth with appearance and believing surgical alteration will secure the acceptance you already deserve as you are.\nGita analysis: Krishna teaches that identifying with the temporary body rather than the eternal self creates suffering. Seeking validation through bodily modification strengthens this misidentification, binding you further to the very insecurity you seek to escape.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "guidance",
+          "title": "Closest Teaching",
+          "primary_text": "No single verse clears the match threshold, but the closest Gita lens here is discernment over emotional rush. This is concept-level guidance, not a scripture quote. Related grounding appears in Chapter 6.  The framing is useful, while the modern details still need case-level judgment.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "No single verse clears the match threshold, but the closest Gita lens here is discernment over emotional rush. This is concept-level guidance, not a scripture quote. Related grounding appears in Chapter 6.  The framing is useful, while the modern details still need case-level judgment.",
+              "open": false
+            },
+            {
+              "label": "Why this is not a direct verse verdict",
+              "text": "The engine did not select a direct verse_match for this case. This card preserves the existing closest_teaching fallback without forcing a verse anchor.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "if-you-continue",
+          "title": "If You Continue",
+          "primary_text": "Short-term: Short term the room relaxes; you pay in private rumination and sharper self-editing. (Surgery may temporarily boost confidence but leave core insecurity… gets louder when nothing is named.)\nLong-term: What starts as a one-time smoothing becomes the default tool whenever stakes rise.",
+          "sections": [
+            {
+              "label": "Short-term - Explain simply",
+              "text": "Short term the room relaxes; you pay in private rumination and sharper self-editing. (Surgery may temporarily boost confidence but leave core insecurity… gets louder when nothing is named.)",
+              "open": false
+            },
+            {
+              "label": "Long-term - Explain simply",
+              "text": "What starts as a one-time smoothing becomes the default tool whenever stakes rise.",
+              "open": false
+            },
+            {
+              "label": "Why this applies here",
+              "text": "Dilemma context: I am considering cosmetic surgery mainly because I feel insecure and want social approval, though the procedure is legal and safe.\nCore reading: The desire stems from equating self-worth with appearance and believing surgical alteration will secure the acceptance you already deserve as you are.\nGita analysis: Krishna teaches that identifying with the temporary body rather than the eternal self creates suffering. Seeking validation through bodily modification strengthens this misidentification, binding you further to the very insecurity you seek to escape.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "counterfactuals",
+          "title": "Counterfactuals",
+          "primary_text": "Adharmic path: Move now with partial transparency; tidy the record later if pressed.\nDharmic path: One bounded, reviewable move before anything irreversible.",
+          "sections": [
+            {
+              "label": "Adharmic assumed inner state",
+              "text": "Same scene: I am considering cosmetic surgery mainly because I feel insecure and want social approval, though the procedure is legal and safe. — here Surgery may temporarily boost confidence but leave core insecurity untouched, requiring… quietly sets the pace: you trim context, borrow legitimacy from urgency, and treat attachment to outcomes, truth-telling as optional detail.",
+              "open": false
+            },
+            {
+              "label": "Adharmic likely decision",
+              "text": "Move now with partial transparency; tidy the record later if pressed.",
+              "open": false
+            },
+            {
+              "label": "Adharmic - Why this matters",
+              "text": "The line moves when method stops being accountable. The slip is believable because it feels efficient.",
+              "open": false
+            },
+            {
+              "label": "Dharmic assumed inner state",
+              "text": "Same scene: I am considering cosmetic surgery mainly because I feel insecure and want social approval, though the procedure is legal and safe. — here you let Fear of social rejection and belief that appearance determines worth set the *how*, not just the *whether*: verify, bound the next step, and keep clarity and proportion visible in the choice. You still lack key facts (Specific insecurity…",
+              "open": false
+            },
+            {
+              "label": "Dharmic likely decision",
+              "text": "One bounded, reviewable move before anything irreversible.",
+              "open": false
+            },
+            {
+              "label": "Dharmic - Why this matters",
+              "text": "The upgrade is procedural: same situation, clearer safeguards—so the trade you are in stays honest.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "higher-path",
+          "title": "Higher Path",
+          "primary_text": "Name Fear of social rejection and belief that appearance determines worth without adjectives for sixty seconds on paper; delete the story lines; pick the smallest external step that still matches what is left.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "Name Fear of social rejection and belief that appearance determines worth without adjectives for sixty seconds on paper; delete the story lines; pick the smallest external step that still matches what is left.",
+              "open": false
+            },
+            {
+              "label": "Why this applies here",
+              "text": "Dilemma context: I am considering cosmetic surgery mainly because I feel insecure and want social approval, though the procedure is legal and safe.\nCore reading: The desire stems from equating self-worth with appearance and believing surgical alteration will secure the acceptance you already deserve as you are.\nGita analysis: Krishna teaches that identifying with the temporary body rather than the eternal self creates suffering. Seeking validation through bodily modification strengthens this misidentification, binding you further to the very insecurity you seek to escape.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "ethical-dimensions",
+          "title": "Ethical Dimensions",
+          "primary_text": "Adharmic (-45)",
+          "sections": [
+            {
+              "label": "dharma_duty",
+              "text": "Score: -1\nSimple meaning: Whether the action fits the responsibility in front of you.\nContext-specific reason: No duty to alter appearance for others' approval; self-care duty better served addressing root insecurity",
+              "open": false
+            },
+            {
+              "label": "satya_truth",
+              "text": "Score: -3\nSimple meaning: Whether the action stays honest with reality and other people.\nContext-specific reason: Avoiding truth that worth isn't appearance-based; surgery masks rather than resolves insecurity",
+              "open": false
+            },
+            {
+              "label": "ahimsa_nonharm",
+              "text": "Score: -1\nSimple meaning: Whether the action reduces harm instead of adding to it.\nContext-specific reason: Physical risks exist even if safe; psychological harm of reinforcing appearance-worth link",
+              "open": false
+            },
+            {
+              "label": "nishkama_detachment",
+              "text": "Score: -4\nSimple meaning: Whether the action is clean without clinging to outcome or reward.\nContext-specific reason: Highly attached to others' perceptions and external validation; opposite of detachment",
+              "open": false
+            },
+            {
+              "label": "shaucha_intent",
+              "text": "Score: -3\nSimple meaning: Whether the motive behind the action is clean.\nContext-specific reason: Intent rooted in insecurity and need for approval rather than genuine self-expression",
+              "open": false
+            },
+            {
+              "label": "sanyama_restraint",
+              "text": "Score: -2\nSimple meaning: Whether the action is guided by restraint rather than impulse.\nContext-specific reason: Lacking restraint from impulse to fix internal problems with external changes",
+              "open": false
+            },
+            {
+              "label": "lokasangraha_welfare",
+              "text": "Score: -1\nSimple meaning: Whether the action supports the wider good around you.\nContext-specific reason: Reinforces harmful beauty standards; resources could address deeper needs",
+              "open": false
+            },
+            {
+              "label": "viveka_discernment",
+              "text": "Score: -3\nSimple meaning: Whether the action comes from clear judgment rather than confusion.\nContext-specific reason: Conflating appearance with worth; not discerning between genuine and superficial acceptance",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "share",
+          "title": "Share Layer",
+          "primary_text": "Clarity without restraint becomes noise; restraint without clarity becomes drift.",
+          "sections": [
+            {
+              "label": "Reflective question",
+              "text": "If \"Specific insecurity triggers and their origins\" were settled, would you still pick the same audience for the hard sentence?",
+              "open": false
+            }
+          ]
+        }
+      ],
+      "details_present": true,
+      "details_openable": true,
+      "console_errors": [],
+      "network_errors": [],
+      "layout_issues": [],
+      "desktop_layout": {
+        "overflow_x": false,
+        "viewport_width": 1365,
+        "scroll_width": 1365
+      },
+      "mobile_layout": {
+        "overflow_x": false,
+        "viewport_width": 390,
+        "scroll_width": 390
+      }
+    },
+    {
+      "case_id": "abusive_parent_no_contact",
+      "prompt": "My parent was abusive for years, and I am considering going no contact even though relatives say it is my duty to stay connected.",
+      "timestamp": "2026-04-26T22:29:55.215624+00:00",
+      "api_status": 200,
+      "classification": "Context-dependent",
+      "alignment_score": 42,
+      "confidence": 0.85,
+      "rendered_guidance_branch": "closest_teaching",
+      "verse_ref": null,
+      "cards": [
+        {
+          "card": "verdict",
+          "title": "Verdict",
+          "primary_text": "Protecting yourself from ongoing harm takes precedence over maintaining harmful family connections out of duty.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "Years of abuse have created a legitimate need for self-protection that overrides conventional family obligations.",
+              "open": false
+            },
+            {
+              "label": "Why this applies to your situation",
+              "text": "Dilemma context: My parent was abusive for years, and I am considering going no contact even though relatives say it is my duty to stay connected.\nCore reading: Years of abuse have created a legitimate need for self-protection that overrides conventional family obligations.\nGita analysis: The Gita teaches that dharma is contextual - protecting oneself from harm aligns with the deeper duty to preserve one's physical and mental well-being, which enables fulfillment of other life purposes.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "guidance",
+          "title": "Closest Teaching",
+          "primary_text": "No single verse clears the match threshold, but the closest Gita lens here is clean intention before action. This is concept-level guidance, not a scripture quote. Related grounding appears in Chapter 6. The dilemma turns on missing context, so this stays provisional. The framing is useful, while the modern details still need case-level judgment.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "No single verse clears the match threshold, but the closest Gita lens here is clean intention before action. This is concept-level guidance, not a scripture quote. Related grounding appears in Chapter 6. The dilemma turns on missing context, so this stays provisional. The framing is useful, while the modern details still need case-level judgment.",
+              "open": false
+            },
+            {
+              "label": "Why this is not a direct verse verdict",
+              "text": "The engine did not select a direct verse_match for this case. This card preserves the existing closest_teaching fallback without forcing a verse anchor.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "if-you-continue",
+          "title": "If You Continue",
+          "primary_text": "Short-term: Short term you win quiet at the dinner table; the hardest sentence does not get spoken where it belongs. (Guilt manipulation may undermine necessary boundaries gets louder when nothing is named.)\nLong-term: The workaround becomes habit—honesty deferred until 'after the holidays' becomes its own kind of policy.",
+          "sections": [
+            {
+              "label": "Short-term - Explain simply",
+              "text": "Short term you win quiet at the dinner table; the hardest sentence does not get spoken where it belongs. (Guilt manipulation may undermine necessary boundaries gets louder when nothing is named.)",
+              "open": false
+            },
+            {
+              "label": "Long-term - Explain simply",
+              "text": "The workaround becomes habit—honesty deferred until 'after the holidays' becomes its own kind of policy.",
+              "open": false
+            },
+            {
+              "label": "Why this applies here",
+              "text": "Dilemma context: My parent was abusive for years, and I am considering going no contact even though relatives say it is my duty to stay connected.\nCore reading: Years of abuse have created a legitimate need for self-protection that overrides conventional family obligations.\nGita analysis: The Gita teaches that dharma is contextual - protecting oneself from harm aligns with the deeper duty to preserve one's physical and mental well-being, which enables fulfillment of other life purposes.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "counterfactuals",
+          "title": "Counterfactuals",
+          "primary_text": "Adharmic path: Optimize for relief or leverage now; let clarity arrive later if at all.\nDharmic path: One honest conversation with specifics, then space or support—not a courtroom.",
+          "sections": [
+            {
+              "label": "Adharmic assumed inner state",
+              "text": "Same relationship field: My parent was abusive for years, and I am considering going no contact even though relatives say it is my duty to stay connected. — here Guilt manipulation may undermine necessary boundaries becomes the script: you triangulate, withhold selectively, or press for a win while calling it care.",
+              "open": false
+            },
+            {
+              "label": "Adharmic likely decision",
+              "text": "Optimize for relief or leverage now; let clarity arrive later if at all.",
+              "open": false
+            },
+            {
+              "label": "Adharmic - Why this matters",
+              "text": "The line moves when intimacy or duty becomes cover for control. duty and role quietly runs the decision.",
+              "open": false
+            },
+            {
+              "label": "Dharmic assumed inner state",
+              "text": "Same relationship field: My parent was abusive for years, and I am considering going no contact even though relatives say it is my duty to stay connected. — here you slow the tempo: name what is true, name what is unknown, and choose a bounded next step that Self-preservation and healing from sustained trauma would respect. You still lack key facts (Current abuse status vs past only; Severity…",
+              "open": false
+            },
+            {
+              "label": "Dharmic likely decision",
+              "text": "One honest conversation with specifics, then space or support—not a courtroom.",
+              "open": false
+            },
+            {
+              "label": "Dharmic - Why this matters",
+              "text": "The upgrade is method: non-harm, judgment constrains how hard you press while staying truthful.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "higher-path",
+          "title": "Higher Path",
+          "primary_text": "Write a short paragraph you would stand by if forwarded—then send it once, to the smallest circle that can act on it; let silence after that be a choice, not a dodge.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "Write a short paragraph you would stand by if forwarded—then send it once, to the smallest circle that can act on it; let silence after that be a choice, not a dodge.",
+              "open": false
+            },
+            {
+              "label": "Why this applies here",
+              "text": "Dilemma context: My parent was abusive for years, and I am considering going no contact even though relatives say it is my duty to stay connected.\nCore reading: Years of abuse have created a legitimate need for self-protection that overrides conventional family obligations.\nGita analysis: The Gita teaches that dharma is contextual - protecting oneself from harm aligns with the deeper duty to preserve one's physical and mental well-being, which enables fulfillment of other life purposes.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "ethical-dimensions",
+          "title": "Ethical Dimensions",
+          "primary_text": "Context-dependent (42)",
+          "sections": [
+            {
+              "label": "dharma_duty",
+              "text": "Score: -2\nSimple meaning: Whether the action fits the responsibility in front of you.\nContext-specific reason: Traditional duty to parents conflicts with self-protection duty",
+              "open": false
+            },
+            {
+              "label": "satya_truth",
+              "text": "Score: 3\nSimple meaning: Whether the action stays honest with reality and other people.\nContext-specific reason: Acknowledging abuse reality rather than maintaining family facade",
+              "open": false
+            },
+            {
+              "label": "ahimsa_nonharm",
+              "text": "Score: 4\nSimple meaning: Whether the action reduces harm instead of adding to it.\nContext-specific reason: Preventing continued psychological/emotional harm to yourself",
+              "open": false
+            },
+            {
+              "label": "nishkama_detachment",
+              "text": "Score: 2\nSimple meaning: Whether the action is clean without clinging to outcome or reward.\nContext-specific reason: Releasing attachment to toxic relationship patterns",
+              "open": false
+            },
+            {
+              "label": "shaucha_intent",
+              "text": "Score: 3\nSimple meaning: Whether the motive behind the action is clean.\nContext-specific reason: Pure intention to heal and protect, not punish",
+              "open": false
+            },
+            {
+              "label": "sanyama_restraint",
+              "text": "Score: 1\nSimple meaning: Whether the action is guided by restraint rather than impulse.\nContext-specific reason: Measured response after years of endurance",
+              "open": false
+            },
+            {
+              "label": "lokasangraha_welfare",
+              "text": "Score: 2\nSimple meaning: Whether the action supports the wider good around you.\nContext-specific reason: Breaking cycles of abuse benefits future generations",
+              "open": false
+            },
+            {
+              "label": "viveka_discernment",
+              "text": "Score: 4\nSimple meaning: Whether the action comes from clear judgment rather than confusion.\nContext-specific reason: Distinguishing between healthy duty and enabling harm",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "share",
+          "title": "Share Layer",
+          "primary_text": "Family peace bought with selective silence still has a receipt—someone reads it later.",
+          "sections": [
+            {
+              "label": "Reflective question",
+              "text": "If \"Current abuse status vs past only\" were settled, would you still pick the same audience for the hard sentence?",
+              "open": false
+            }
+          ]
+        }
+      ],
+      "details_present": true,
+      "details_openable": true,
+      "console_errors": [],
+      "network_errors": [],
+      "layout_issues": [],
+      "desktop_layout": {
+        "overflow_x": false,
+        "viewport_width": 1365,
+        "scroll_width": 1365
+      },
+      "mobile_layout": {
+        "overflow_x": false,
+        "viewport_width": 390,
+        "scroll_width": 390
+      }
+    },
+    {
+      "case_id": "caste_disapproved_marriage",
+      "prompt": "I want to marry someone I love, but my family rejects the relationship because of caste and threatens to cut ties.",
+      "timestamp": "2026-04-26T22:30:20.926828+00:00",
+      "api_status": 200,
+      "classification": "Mixed",
+      "alignment_score": 28,
+      "confidence": 0.85,
+      "rendered_guidance_branch": "verse_match",
+      "verse_ref": "5.18",
+      "cards": [
+        {
+          "card": "verdict",
+          "title": "Verdict",
+          "primary_text": "Choosing authentic love over caste prejudice reflects evolved consciousness, though the family rupture carries real weight.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "The tension between inherited social identity and chosen personal bonds reveals how deeply caste thinking penetrates family love.",
+              "open": false
+            },
+            {
+              "label": "Why this applies to your situation",
+              "text": "Dilemma context: I want to marry someone I love, but my family rejects the relationship because of caste and threatens to cut ties.\nCore reading: The tension between inherited social identity and chosen personal bonds reveals how deeply caste thinking penetrates family love.\nGita analysis: Krishna repeatedly emphasizes acting from one's authentic nature (svabhava) over inherited social roles. The Gita critiques those who mistake temporary social arrangements for eternal dharma.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "guidance",
+          "title": "Gita Verse",
+          "primary_text": "A wise person sees equal dignity across social categories. It speaks directly to the tension around compassion, equality. It also fits signals like caste-or-identity-boundary, family-disapproval in your situation. Its emphasis aligns with the dominant ethical pull in this dilemma.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "A wise person sees equal dignity across social categories. It speaks directly to the tension around compassion, equality. It also fits signals like caste-or-identity-boundary, family-disapproval in your situation. Its emphasis aligns with the dominant ethical pull in this dilemma.",
+              "open": false
+            },
+            {
+              "label": "Show Gita anchor",
+              "text": "Verse: 5.18\nEnglish: The wise see with equal vision a learned brahmin, a cow, an elephant, a dog, and an outcast.\nHindi: विद्या और विनय से युक्त ब्राह्मण में, गाय में, हाथी में, कुत्ते में, और चाण्डाल में भी — पंडित लोग समान दृष्टि रखते हैं।",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "if-you-continue",
+          "title": "If You Continue",
+          "primary_text": "Short-term: You buy a few calm days by tightening the family narrative—then the next surprise lands louder. (Underestimating the psychological toll of family estrangement gets louder when nothing is named.)\nLong-term: People learn what not to ask you; intimacy shrinks to what can be safely performed.",
+          "sections": [
+            {
+              "label": "Short-term - Explain simply",
+              "text": "You buy a few calm days by tightening the family narrative—then the next surprise lands louder. (Underestimating the psychological toll of family estrangement gets louder when nothing is named.)",
+              "open": false
+            },
+            {
+              "label": "Long-term - Explain simply",
+              "text": "People learn what not to ask you; intimacy shrinks to what can be safely performed.",
+              "open": false
+            },
+            {
+              "label": "Why this applies here",
+              "text": "Dilemma context: I want to marry someone I love, but my family rejects the relationship because of caste and threatens to cut ties.\nCore reading: The tension between inherited social identity and chosen personal bonds reveals how deeply caste thinking penetrates family love.\nGita analysis: Krishna repeatedly emphasizes acting from one's authentic nature (svabhava) over inherited social roles. The Gita critiques those who mistake temporary social arrangements for eternal dharma.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "counterfactuals",
+          "title": "Counterfactuals",
+          "primary_text": "Adharmic path: Optimize for relief or leverage now; let clarity arrive later if at all.\nDharmic path: One honest conversation with specifics, then space or support—not a courtroom.",
+          "sections": [
+            {
+              "label": "Adharmic assumed inner state",
+              "text": "Same relationship field: I want to marry someone I love, but my family rejects the relationship because of caste and threatens to cut ties. — here Underestimating the psychological toll of family estrangement becomes the script: you triangulate, withhold selectively, or press for a win while calling it care.",
+              "open": false
+            },
+            {
+              "label": "Adharmic likely decision",
+              "text": "Optimize for relief or leverage now; let clarity arrive later if at all.",
+              "open": false
+            },
+            {
+              "label": "Adharmic - Why this matters",
+              "text": "The line moves when intimacy or duty becomes cover for control. non-harm, duty and role quietly runs the decision.",
+              "open": false
+            },
+            {
+              "label": "Dharmic assumed inner state",
+              "text": "Same relationship field: I want to marry someone I love, but my family rejects the relationship because of caste and threatens to cut ties. — here you slow the tempo: name what is true, name what is unknown, and choose a bounded next step that Desire for authentic partnership over inherited social structures would respect. You still lack key facts (Partner's family stance and support system;…",
+              "open": false
+            },
+            {
+              "label": "Dharmic likely decision",
+              "text": "One honest conversation with specifics, then space or support—not a courtroom.",
+              "open": false
+            },
+            {
+              "label": "Dharmic - Why this matters",
+              "text": "The upgrade is method: truth-telling, motive clarity constrains how hard you press while staying truthful.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "higher-path",
+          "title": "Higher Path",
+          "primary_text": "Write a short paragraph you would stand by if forwarded—then send it once, to the smallest circle that can act on it; let silence after that be a choice, not a dodge.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "Write a short paragraph you would stand by if forwarded—then send it once, to the smallest circle that can act on it; let silence after that be a choice, not a dodge.",
+              "open": false
+            },
+            {
+              "label": "Why this applies here",
+              "text": "Dilemma context: I want to marry someone I love, but my family rejects the relationship because of caste and threatens to cut ties.\nCore reading: The tension between inherited social identity and chosen personal bonds reveals how deeply caste thinking penetrates family love.\nGita analysis: Krishna repeatedly emphasizes acting from one's authentic nature (svabhava) over inherited social roles. The Gita critiques those who mistake temporary social arrangements for eternal dharma.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "ethical-dimensions",
+          "title": "Ethical Dimensions",
+          "primary_text": "Mixed (28)",
+          "sections": [
+            {
+              "label": "dharma_duty",
+              "text": "Score: -1\nSimple meaning: Whether the action fits the responsibility in front of you.\nContext-specific reason: Traditional duty to family clashes with duty to authentic partnership",
+              "open": false
+            },
+            {
+              "label": "satya_truth",
+              "text": "Score: 4\nSimple meaning: Whether the action stays honest with reality and other people.\nContext-specific reason: Living truthfully to your love rather than conforming to caste fiction",
+              "open": false
+            },
+            {
+              "label": "ahimsa_nonharm",
+              "text": "Score: -2\nSimple meaning: Whether the action reduces harm instead of adding to it.\nContext-specific reason: Family experiences pain from rejection of their worldview",
+              "open": false
+            },
+            {
+              "label": "nishkama_detachment",
+              "text": "Score: 2\nSimple meaning: Whether the action is clean without clinging to outcome or reward.\nContext-specific reason: Choosing love over family approval shows detachment from social validation",
+              "open": false
+            },
+            {
+              "label": "shaucha_intent",
+              "text": "Score: 3\nSimple meaning: Whether the motive behind the action is clean.\nContext-specific reason: Pure intention to build life with chosen partner",
+              "open": false
+            },
+            {
+              "label": "sanyama_restraint",
+              "text": "Score: 0\nSimple meaning: Whether the action is guided by restraint rather than impulse.\nContext-specific reason: Neither excessive nor restrained - following natural affection",
+              "open": false
+            },
+            {
+              "label": "lokasangraha_welfare",
+              "text": "Score: 2\nSimple meaning: Whether the action supports the wider good around you.\nContext-specific reason: Challenging caste barriers serves broader social evolution",
+              "open": false
+            },
+            {
+              "label": "viveka_discernment",
+              "text": "Score: 3\nSimple meaning: Whether the action comes from clear judgment rather than confusion.\nContext-specific reason: Seeing through arbitrary social divisions to human connection",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "share",
+          "title": "Share Layer",
+          "primary_text": "The gentlest story can still steer someone if they never get to see the full map.",
+          "sections": [
+            {
+              "label": "Reflective question",
+              "text": "If \"Partner's family stance and support system\" were settled, would you still pick the same audience for the hard sentence?",
+              "open": false
+            }
+          ]
+        }
+      ],
+      "details_present": true,
+      "details_openable": true,
+      "console_errors": [],
+      "network_errors": [],
+      "layout_issues": [],
+      "desktop_layout": {
+        "overflow_x": false,
+        "viewport_width": 1365,
+        "scroll_width": 1365
+      },
+      "mobile_layout": {
+        "overflow_x": false,
+        "viewport_width": 390,
+        "scroll_width": 390
+      }
+    },
+    {
+      "case_id": "anonymous_scathing_restaurant_review",
+      "prompt": "A restaurant treated me badly, and I want to post an anonymous scathing review that might damage their business reputation.",
+      "timestamp": "2026-04-26T22:31:13.441008+00:00",
+      "api_status": 200,
+      "classification": "Adharmic",
+      "alignment_score": -62,
+      "confidence": 0.85,
+      "rendered_guidance_branch": "closest_teaching",
+      "verse_ref": null,
+      "cards": [
+        {
+          "card": "verdict",
+          "title": "Verdict",
+          "primary_text": "Anonymous revenge reviews weaponize truth claims to inflict maximum damage while avoiding accountability.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "The desire for anonymous retaliation reveals unprocessed hurt seeking external validation through causing harm.",
+              "open": false
+            },
+            {
+              "label": "Why this applies to your situation",
+              "text": "Dilemma context: A restaurant treated me badly, and I want to post an anonymous scathing review that might damage their business reputation.\nCore reading: The desire for anonymous retaliation reveals unprocessed hurt seeking external validation through causing harm.\nGita analysis: Krishna warns against action rooted in anger and attachment to results. True strength lies in responding to injustice without becoming unjust yourself.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "guidance",
+          "title": "Closest Teaching",
+          "primary_text": "No single verse clears the match threshold, but the closest Gita lens here is inner restraint before reaction. This is concept-level guidance, not a scripture quote. Related grounding appears in Chapter 17.  The framing is useful, while the modern details still need case-level judgment.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "No single verse clears the match threshold, but the closest Gita lens here is inner restraint before reaction. This is concept-level guidance, not a scripture quote. Related grounding appears in Chapter 17.  The framing is useful, while the modern details still need case-level judgment.",
+              "open": false
+            },
+            {
+              "label": "Why this is not a direct verse verdict",
+              "text": "The engine did not select a direct verse_match for this case. This card preserves the existing closest_teaching fallback without forcing a verse anchor.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "if-you-continue",
+          "title": "If You Continue",
+          "primary_text": "Short-term: Short term the room relaxes; you pay in private rumination and sharper self-editing. (Creating a pattern of anonymous aggression when feeling wronged gets louder when nothing is named.)\nLong-term: The workaround becomes character: faster stories, cleaner self-image, a smaller circle that actually knows what is true.",
+          "sections": [
+            {
+              "label": "Short-term - Explain simply",
+              "text": "Short term the room relaxes; you pay in private rumination and sharper self-editing. (Creating a pattern of anonymous aggression when feeling wronged gets louder when nothing is named.)",
+              "open": false
+            },
+            {
+              "label": "Long-term - Explain simply",
+              "text": "The workaround becomes character: faster stories, cleaner self-image, a smaller circle that actually knows what is true.",
+              "open": false
+            },
+            {
+              "label": "Why this applies here",
+              "text": "Dilemma context: A restaurant treated me badly, and I want to post an anonymous scathing review that might damage their business reputation.\nCore reading: The desire for anonymous retaliation reveals unprocessed hurt seeking external validation through causing harm.\nGita analysis: Krishna warns against action rooted in anger and attachment to results. True strength lies in responding to injustice without becoming unjust yourself.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "counterfactuals",
+          "title": "Counterfactuals",
+          "primary_text": "Adharmic path: Move now with partial transparency; tidy the record later if pressed.\nDharmic path: One bounded, reviewable move before anything irreversible.",
+          "sections": [
+            {
+              "label": "Adharmic assumed inner state",
+              "text": "Same scene: A restaurant treated me badly, and I want to post an anonymous scathing review that might damage their business reputation. — here Creating a pattern of anonymous aggression when feeling wronged quietly sets the pace: you trim context, borrow legitimacy from urgency, and treat non-harm, attachment to outcomes as optional detail.",
+              "open": false
+            },
+            {
+              "label": "Adharmic likely decision",
+              "text": "Move now with partial transparency; tidy the record later if pressed.",
+              "open": false
+            },
+            {
+              "label": "Adharmic - Why this matters",
+              "text": "The line moves when method stops being accountable. The slip is believable because it feels efficient.",
+              "open": false
+            },
+            {
+              "label": "Dharmic assumed inner state",
+              "text": "Same scene: A restaurant treated me badly, and I want to post an anonymous scathing review that might damage their business reputation. — here you let Wounded pride seeking restoration through inflicting reciprocal damage set the *how*, not just the *whether*: verify, bound the next step, and keep clarity and proportion visible in the choice. You still lack key facts (Nature and severity of…",
+              "open": false
+            },
+            {
+              "label": "Dharmic likely decision",
+              "text": "One bounded, reviewable move before anything irreversible.",
+              "open": false
+            },
+            {
+              "label": "Dharmic - Why this matters",
+              "text": "The upgrade is procedural: same situation, clearer safeguards—so the trade you are in stays honest.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "higher-path",
+          "title": "Higher Path",
+          "primary_text": "Before you act, write Creating a pattern of anonymous aggression when feeling wronged as a single observable sentence; strip blame; choose the channel where repair is still possible—not the channel where you win.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "Before you act, write Creating a pattern of anonymous aggression when feeling wronged as a single observable sentence; strip blame; choose the channel where repair is still possible—not the channel where you win.",
+              "open": false
+            },
+            {
+              "label": "Why this applies here",
+              "text": "Dilemma context: A restaurant treated me badly, and I want to post an anonymous scathing review that might damage their business reputation.\nCore reading: The desire for anonymous retaliation reveals unprocessed hurt seeking external validation through causing harm.\nGita analysis: Krishna warns against action rooted in anger and attachment to results. True strength lies in responding to injustice without becoming unjust yourself.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "ethical-dimensions",
+          "title": "Ethical Dimensions",
+          "primary_text": "Adharmic (-62)",
+          "sections": [
+            {
+              "label": "dharma_duty",
+              "text": "Score: -3\nSimple meaning: Whether the action fits the responsibility in front of you.\nContext-specific reason: Duty to provide honest feedback conflicts with anonymous attack mode",
+              "open": false
+            },
+            {
+              "label": "satya_truth",
+              "text": "Score: -2\nSimple meaning: Whether the action stays honest with reality and other people.\nContext-specific reason: Scathing tone likely exaggerates beyond factual experience",
+              "open": false
+            },
+            {
+              "label": "ahimsa_nonharm",
+              "text": "Score: -4\nSimple meaning: Whether the action reduces harm instead of adding to it.\nContext-specific reason: Intent to damage livelihood of staff who may not be responsible",
+              "open": false
+            },
+            {
+              "label": "nishkama_detachment",
+              "text": "Score: -4\nSimple meaning: Whether the action is clean without clinging to outcome or reward.\nContext-specific reason: Emotionally driven retaliation seeking satisfaction from harm",
+              "open": false
+            },
+            {
+              "label": "shaucha_intent",
+              "text": "Score: -4\nSimple meaning: Whether the motive behind the action is clean.\nContext-specific reason: Motivated by anger and desire for revenge rather than constructive purpose",
+              "open": false
+            },
+            {
+              "label": "sanyama_restraint",
+              "text": "Score: -3\nSimple meaning: Whether the action is guided by restraint rather than impulse.\nContext-specific reason: Choosing maximum force response to single bad experience",
+              "open": false
+            },
+            {
+              "label": "lokasangraha_welfare",
+              "text": "Score: -2\nSimple meaning: Whether the action supports the wider good around you.\nContext-specific reason: May warn others but through disproportionate attack",
+              "open": false
+            },
+            {
+              "label": "viveka_discernment",
+              "text": "Score: -3\nSimple meaning: Whether the action comes from clear judgment rather than confusion.\nContext-specific reason: Conflating one experience with entire business character",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "share",
+          "title": "Share Layer",
+          "primary_text": "Clarity without restraint becomes noise; restraint without clarity becomes drift.",
+          "sections": [
+            {
+              "label": "Reflective question",
+              "text": "What is the smallest step that keeps A restaurant treated me badly, and I want to post honest without making harm the delivery vehicle?",
+              "open": false
+            }
+          ]
+        }
+      ],
+      "details_present": true,
+      "details_openable": true,
+      "console_errors": [],
+      "network_errors": [],
+      "layout_issues": [],
+      "desktop_layout": {
+        "overflow_x": false,
+        "viewport_width": 1365,
+        "scroll_width": 1365
+      },
+      "mobile_layout": {
+        "overflow_x": false,
+        "viewport_width": 390,
+        "scroll_width": 390
+      }
+    },
+    {
+      "case_id": "doctor_hiding_terminal_diagnosis",
+      "prompt": "As a doctor, I know a patient has a terminal diagnosis, and the family asks me to hide it from the patient to preserve hope.",
+      "timestamp": "2026-04-26T22:31:39.626359+00:00",
+      "api_status": 200,
+      "classification": "Mixed",
+      "alignment_score": -35,
+      "confidence": 0.85,
+      "rendered_guidance_branch": "verse_match",
+      "verse_ref": "16.1-3",
+      "cards": [
+        {
+          "card": "verdict",
+          "title": "Verdict",
+          "primary_text": "Withholding terminal diagnosis from a competent patient violates their fundamental right to truth and self-determination.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "The family's request stems from love but denies the patient's capacity for courage and choice. Truth enables dignity in facing mortality.",
+              "open": false
+            },
+            {
+              "label": "Why this applies to your situation",
+              "text": "Dilemma context: As a doctor, I know a patient has a terminal diagnosis, and the family asks me to hide it from the patient to preserve hope.\nCore reading: The family's request stems from love but denies the patient's capacity for courage and choice. Truth enables dignity in facing mortality.\nGita analysis: Krishna emphasizes that one cannot escape their appointed time through illusion. The body is temporary, but denying someone knowledge of their transition violates their spiritual agency. Even Arjuna faced his duty with full awareness of consequences.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "guidance",
+          "title": "Gita Verse",
+          "primary_text": "Divine qualities hold truth and compassion together. It speaks directly to the tension around compassion, nonharm. It also fits signals like truth-compassion-conflict in your situation. Its emphasis aligns with the dominant ethical pull in this dilemma.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "Divine qualities hold truth and compassion together. It speaks directly to the tension around compassion, nonharm. It also fits signals like truth-compassion-conflict in your situation. Its emphasis aligns with the dominant ethical pull in this dilemma.",
+              "open": false
+            },
+            {
+              "label": "Show Gita anchor",
+              "text": "Verse: 16.1-3\nEnglish: Non-violence, truth, absence of anger, renunciation, peace, abstention from slander, compassion to all beings, non-covetousness, gentleness, modesty, absence of fickleness — these are the qualities of one born to divine estate.\nHindi: अहिंसा, सत्य, अक्रोध, त्याग, शांति, चुगली न करना, प्राणियों पर दया, लोभ का अभाव, मृदुता, लज्जा, चपलता का अभाव — ये दैवी संपदा के लक्षण हैं।",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "if-you-continue",
+          "title": "If You Continue",
+          "primary_text": "Short-term: You buy a few calm days by tightening the family narrative—then the next surprise lands louder. (Creating precedent where families control patient information access gets louder when nothing is named.)\nLong-term: The workaround becomes habit—honesty deferred until 'after the holidays' becomes its own kind of policy.",
+          "sections": [
+            {
+              "label": "Short-term - Explain simply",
+              "text": "You buy a few calm days by tightening the family narrative—then the next surprise lands louder. (Creating precedent where families control patient information access gets louder when nothing is named.)",
+              "open": false
+            },
+            {
+              "label": "Long-term - Explain simply",
+              "text": "The workaround becomes habit—honesty deferred until 'after the holidays' becomes its own kind of policy.",
+              "open": false
+            },
+            {
+              "label": "Why this applies here",
+              "text": "Dilemma context: As a doctor, I know a patient has a terminal diagnosis, and the family asks me to hide it from the patient to preserve hope.\nCore reading: The family's request stems from love but denies the patient's capacity for courage and choice. Truth enables dignity in facing mortality.\nGita analysis: Krishna emphasizes that one cannot escape their appointed time through illusion. The body is temporary, but denying someone knowledge of their transition violates their spiritual agency. Even Arjuna faced his duty with full awareness of consequences.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "counterfactuals",
+          "title": "Counterfactuals",
+          "primary_text": "Adharmic path: Optimize for relief or leverage now; let clarity arrive later if at all.\nDharmic path: One honest conversation with specifics, then space or support—not a courtroom.",
+          "sections": [
+            {
+              "label": "Adharmic assumed inner state",
+              "text": "Same relationship field: As a doctor, I know a patient has a terminal diagnosis, and the family asks me to hide it from the patient to preserve hope. — here Creating precedent where families control patient information access becomes the script: you triangulate, withhold selectively, or press for a win while calling it care.",
+              "open": false
+            },
+            {
+              "label": "Adharmic likely decision",
+              "text": "Optimize for relief or leverage now; let clarity arrive later if at all.",
+              "open": false
+            },
+            {
+              "label": "Adharmic - Why this matters",
+              "text": "The line moves when intimacy or duty becomes cover for control. truth-telling, duty and role quietly runs the decision.",
+              "open": false
+            },
+            {
+              "label": "Dharmic assumed inner state",
+              "text": "Same relationship field: As a doctor, I know a patient has a terminal diagnosis, and the family asks me to hide it from the patient to preserve hope. — here you slow the tempo: name what is true, name what is unknown, and choose a bounded next step that Avoiding confrontation with family while wrestling with professional integrity would respect. You still lack key facts (Patient's explicit…",
+              "open": false
+            },
+            {
+              "label": "Dharmic likely decision",
+              "text": "One honest conversation with specifics, then space or support—not a courtroom.",
+              "open": false
+            },
+            {
+              "label": "Dharmic - Why this matters",
+              "text": "The upgrade is method: restraint constrains how hard you press while staying truthful.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "higher-path",
+          "title": "Higher Path",
+          "primary_text": "Name the trade in one sentence your future self would sign; pick the channel that protects dignity more than drama; end with a clear next date, not a moral flourish.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "Name the trade in one sentence your future self would sign; pick the channel that protects dignity more than drama; end with a clear next date, not a moral flourish.",
+              "open": false
+            },
+            {
+              "label": "Why this applies here",
+              "text": "Dilemma context: As a doctor, I know a patient has a terminal diagnosis, and the family asks me to hide it from the patient to preserve hope.\nCore reading: The family's request stems from love but denies the patient's capacity for courage and choice. Truth enables dignity in facing mortality.\nGita analysis: Krishna emphasizes that one cannot escape their appointed time through illusion. The body is temporary, but denying someone knowledge of their transition violates their spiritual agency. Even Arjuna faced his duty with full awareness of consequences.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "ethical-dimensions",
+          "title": "Ethical Dimensions",
+          "primary_text": "Mixed (-35)",
+          "sections": [
+            {
+              "label": "dharma_duty",
+              "text": "Score: -3\nSimple meaning: Whether the action fits the responsibility in front of you.\nContext-specific reason: Professional duty requires honest disclosure to patients about their condition",
+              "open": false
+            },
+            {
+              "label": "satya_truth",
+              "text": "Score: -5\nSimple meaning: Whether the action stays honest with reality and other people.\nContext-specific reason: Directly violates truthfulness by concealing critical medical information",
+              "open": false
+            },
+            {
+              "label": "ahimsa_nonharm",
+              "text": "Score: -2\nSimple meaning: Whether the action reduces harm instead of adding to it.\nContext-specific reason: Deception causes harm by denying patient agency in their final period",
+              "open": false
+            },
+            {
+              "label": "nishkama_detachment",
+              "text": "Score: -1\nSimple meaning: Whether the action is clean without clinging to outcome or reward.\nContext-specific reason: Family's attachment to false hope clouds judgment about patient's needs",
+              "open": false
+            },
+            {
+              "label": "shaucha_intent",
+              "text": "Score: 0\nSimple meaning: Whether the motive behind the action is clean.\nContext-specific reason: Family means well but methods compromise ethical purity",
+              "open": false
+            },
+            {
+              "label": "sanyama_restraint",
+              "text": "Score: 2\nSimple meaning: Whether the action is guided by restraint rather than impulse.\nContext-specific reason: Shows restraint in not immediately revealing harsh truth",
+              "open": false
+            },
+            {
+              "label": "lokasangraha_welfare",
+              "text": "Score: -2\nSimple meaning: Whether the action supports the wider good around you.\nContext-specific reason: Undermines trust in medical system and patient autonomy norms",
+              "open": false
+            },
+            {
+              "label": "viveka_discernment",
+              "text": "Score: -3\nSimple meaning: Whether the action comes from clear judgment rather than confusion.\nContext-specific reason: Fails to distinguish between protecting and infantilizing the patient",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "share",
+          "title": "Share Layer",
+          "primary_text": "The gentlest story can still steer someone if they never get to see the full map.",
+          "sections": [
+            {
+              "label": "Reflective question",
+              "text": "If \"Patient's explicit wishes about receiving medical…\" were settled, would you still pick the same audience for the hard sentence?",
+              "open": false
+            }
+          ]
+        }
+      ],
+      "details_present": true,
+      "details_openable": true,
+      "console_errors": [],
+      "network_errors": [],
+      "layout_issues": [],
+      "desktop_layout": {
+        "overflow_x": false,
+        "viewport_width": 1365,
+        "scroll_width": 1365
+      },
+      "mobile_layout": {
+        "overflow_x": false,
+        "viewport_width": 390,
+        "scroll_width": 390
+      }
+    },
+    {
+      "case_id": "crisis_self_harm_adjacent_input",
+      "prompt": "I feel overwhelmed and keep thinking everyone would be better without me, and I want guidance before I do anything harmful.",
+      "timestamp": "2026-04-26T22:32:07.323098+00:00",
+      "api_status": 200,
+      "classification": "Adharmic",
+      "alignment_score": -42,
+      "confidence": 0.85,
+      "rendered_guidance_branch": "crisis_safe_support",
+      "verse_ref": null,
+      "cards": [
+        {
+          "card": "safety",
+          "title": "Safety Note",
+          "primary_text": "This may need immediate human support, not only ethical reflection.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "If this situation involves self-harm, acute crisis, or immediate danger, qualified human support should come before product guidance.",
+              "open": true
+            }
+          ]
+        },
+        {
+          "card": "higher-path",
+          "title": "Immediate Next Step",
+          "primary_text": "Before interpreting this as a moral decision, treat it as a safety moment. Please contact someone who can stay with you or help you right now.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "This is not the moment to judge yourself. The cleanest next step is to create distance from harm and involve a real person immediately.",
+              "open": false
+            },
+            {
+              "label": "What to do now",
+              "text": "Move away from anything you could use to hurt yourself, contact a trusted person, and use local emergency or crisis support if you might act on these thoughts.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "verdict",
+          "title": "Verdict",
+          "primary_text": "Your life has inherent value that pain temporarily obscures, and seeking help honors both your struggle and those who care about you.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "Pausing to reach out is a signal of care for yourself, not a final judgment of your character.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "guidance",
+          "title": "Support first",
+          "primary_text": "Right now, the priority is safety and human connection—not a detailed moral score of your thoughts.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "If you are afraid you might hurt yourself, please reach out to someone who can be with you in real time.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "if-you-continue",
+          "title": "If You Continue",
+          "primary_text": "Short-term: In the near term, focus on being physically safe: stay with someone you trust, or contact local crisis or emergency support if you might act on these thoughts.\nLong-term: Over time, steady support can make intense pain feel less absolute. You do not have to plan the rest of your life in this hour.",
+          "sections": [
+            {
+              "label": "Short-term - Explain simply",
+              "text": "In the near term, focus on being physically safe: stay with someone you trust, or contact local crisis or emergency support if you might act on these thoughts.",
+              "open": false
+            },
+            {
+              "label": "Long-term - Explain simply",
+              "text": "Over time, steady support can make intense pain feel less absolute. You do not have to plan the rest of your life in this hour.",
+              "open": false
+            },
+            {
+              "label": "What helps now",
+              "text": "A small, concrete next step is enough: one message, one call, or one visit to a safe place.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "counterfactuals",
+          "title": "Counterfactuals",
+          "primary_text": "Alternative storylines are not shown in this safety-focused view.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "Comparing paths is de-emphasized so the page does not ask you to rehearse a crisis as a thought experiment. The focus is your immediate safety.",
+              "open": false
+            }
+          ]
+        }
+      ],
+      "details_present": true,
+      "details_openable": true,
+      "console_errors": [],
+      "network_errors": [],
+      "layout_issues": [],
+      "desktop_layout": {
+        "overflow_x": false,
+        "viewport_width": 1365,
+        "scroll_width": 1365
+      },
+      "mobile_layout": {
+        "overflow_x": false,
+        "viewport_width": 390,
+        "scroll_width": 390
+      }
+    },
+    {
+      "case_id": "low_information_vague_input",
+      "prompt": "I need to decide whether to do the thing soon, but I cannot share many details right now.",
+      "timestamp": "2026-04-26T22:32:32.079943+00:00",
+      "api_status": 200,
+      "classification": "Context-dependent",
+      "alignment_score": -10,
+      "confidence": 0.85,
+      "rendered_guidance_branch": "closest_teaching",
+      "verse_ref": null,
+      "cards": [
+        {
+          "card": "verdict",
+          "title": "Verdict",
+          "primary_text": "The ethical verdict turns on unresolved facts that could plausibly reverse this classification, while key facts still shape execution details.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "The vagueness itself is the message - you're either protecting something fragile or avoiding confronting what you already know is problematic.",
+              "open": false
+            },
+            {
+              "label": "Why this applies to your situation",
+              "text": "Dilemma context: I need to decide whether to do the thing soon, but I cannot share many details right now.\nCore reading: The vagueness itself is the message - you're either protecting something fragile or avoiding confronting what you already know is problematic.\nGita analysis: Krishna emphasizes clarity of purpose and transparent action aligned with dharma. Acting from a place of concealment or rushed urgency typically indicates attachment to outcomes rather than righteous duty.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "guidance",
+          "title": "Closest Teaching",
+          "primary_text": "No specific verse cleared the threshold for this case. The Gita still offers useful lenses through duty, intention, non-harm, restraint, and welfare-of-all, but this modern structure does not map cleanly to one verse without forced certainty. The dilemma turns on missing context, so this stays provisional.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "No specific verse cleared the threshold for this case. The Gita still offers useful lenses through duty, intention, non-harm, restraint, and welfare-of-all, but this modern structure does not map cleanly to one verse without forced certainty. The dilemma turns on missing context, so this stays provisional.",
+              "open": false
+            },
+            {
+              "label": "Why this is not a direct verse verdict",
+              "text": "The engine did not select a direct verse_match for this case. This card preserves the existing closest_teaching fallback without forcing a verse anchor.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "if-you-continue",
+          "title": "If You Continue",
+          "primary_text": "Short-term: You buy days of relief by polishing your inner narration and dodging the one detail you do not want said aloud. (Making rushed decisions while withholding information often masks… gets louder when nothing is named.)\nLong-term: What starts as a one-time smoothing becomes the default tool whenever stakes rise.",
+          "sections": [
+            {
+              "label": "Short-term - Explain simply",
+              "text": "You buy days of relief by polishing your inner narration and dodging the one detail you do not want said aloud. (Making rushed decisions while withholding information often masks… gets louder when nothing is named.)",
+              "open": false
+            },
+            {
+              "label": "Long-term - Explain simply",
+              "text": "What starts as a one-time smoothing becomes the default tool whenever stakes rise.",
+              "open": false
+            },
+            {
+              "label": "Why this applies here",
+              "text": "Dilemma context: I need to decide whether to do the thing soon, but I cannot share many details right now.\nCore reading: The vagueness itself is the message - you're either protecting something fragile or avoiding confronting what you already know is problematic.\nGita analysis: Krishna emphasizes clarity of purpose and transparent action aligned with dharma. Acting from a place of concealment or rushed urgency typically indicates attachment to outcomes rather than righteous duty.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "counterfactuals",
+          "title": "Counterfactuals",
+          "primary_text": "Adharmic path: Move now with partial transparency; tidy the record later if pressed.\nDharmic path: One bounded, reviewable move before anything irreversible.",
+          "sections": [
+            {
+              "label": "Adharmic assumed inner state",
+              "text": "Same scene: I need to decide whether to do the thing soon, but I cannot share many details right now. — here Making rushed decisions while withholding information often masks avoiding accountability quietly sets the pace: you trim context, borrow legitimacy from urgency, and treat judgment, truth-telling as optional detail.",
+              "open": false
+            },
+            {
+              "label": "Adharmic likely decision",
+              "text": "Move now with partial transparency; tidy the record later if pressed.",
+              "open": false
+            },
+            {
+              "label": "Adharmic - Why this matters",
+              "text": "The line moves when method stops being accountable. The slip is believable because it feels efficient.",
+              "open": false
+            },
+            {
+              "label": "Dharmic assumed inner state",
+              "text": "Same scene: I need to decide whether to do the thing soon, but I cannot share many details right now. — here you let Urgency mixed with secrecy suggests either shame, fear of judgment, or external pressure set the *how*, not just the *whether*: verify, bound the next step, and keep clarity and proportion visible in the choice. You still lack key facts (What 'the thing' actually is; Why details…",
+              "open": false
+            },
+            {
+              "label": "Dharmic likely decision",
+              "text": "One bounded, reviewable move before anything irreversible.",
+              "open": false
+            },
+            {
+              "label": "Dharmic - Why this matters",
+              "text": "The upgrade is procedural: same situation, clearer safeguards—so the trade you are in stays honest.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "higher-path",
+          "title": "Higher Path",
+          "primary_text": "Before you act, write Making rushed decisions while withholding information often masks… as a single observable sentence; strip blame; choose the channel where repair is still possible—not the channel where you win.",
+          "sections": [
+            {
+              "label": "Explain simply",
+              "text": "Before you act, write Making rushed decisions while withholding information often masks… as a single observable sentence; strip blame; choose the channel where repair is still possible—not the channel where you win.",
+              "open": false
+            },
+            {
+              "label": "Why this applies here",
+              "text": "Dilemma context: I need to decide whether to do the thing soon, but I cannot share many details right now.\nCore reading: The vagueness itself is the message - you're either protecting something fragile or avoiding confronting what you already know is problematic.\nGita analysis: Krishna emphasizes clarity of purpose and transparent action aligned with dharma. Acting from a place of concealment or rushed urgency typically indicates attachment to outcomes rather than righteous duty.",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "ethical-dimensions",
+          "title": "Ethical Dimensions",
+          "primary_text": "Context-dependent (-10)",
+          "sections": [
+            {
+              "label": "dharma_duty",
+              "text": "Score: 0\nSimple meaning: Whether the action fits the responsibility in front of you.\nContext-specific reason: Unknown responsibilities and obligations involved",
+              "open": false
+            },
+            {
+              "label": "satya_truth",
+              "text": "Score: -1\nSimple meaning: Whether the action stays honest with reality and other people.\nContext-specific reason: Withholding details suggests possible deception or secrecy",
+              "open": false
+            },
+            {
+              "label": "ahimsa_nonharm",
+              "text": "Score: 0\nSimple meaning: Whether the action reduces harm instead of adding to it.\nContext-specific reason: Cannot assess potential harm without context",
+              "open": false
+            },
+            {
+              "label": "nishkama_detachment",
+              "text": "Score: 0\nSimple meaning: Whether the action is clean without clinging to outcome or reward.\nContext-specific reason: Unknown if driven by attachment or genuine need",
+              "open": false
+            },
+            {
+              "label": "shaucha_intent",
+              "text": "Score: -1\nSimple meaning: Whether the motive behind the action is clean.\nContext-specific reason: Secrecy raises questions about purity of motive",
+              "open": false
+            },
+            {
+              "label": "sanyama_restraint",
+              "text": "Score: 0\nSimple meaning: Whether the action is guided by restraint rather than impulse.\nContext-specific reason: Cannot evaluate if action shows proper restraint",
+              "open": false
+            },
+            {
+              "label": "lokasangraha_welfare",
+              "text": "Score: 0\nSimple meaning: Whether the action supports the wider good around you.\nContext-specific reason: Impact on collective good entirely unclear",
+              "open": false
+            },
+            {
+              "label": "viveka_discernment",
+              "text": "Score: -2\nSimple meaning: Whether the action comes from clear judgment rather than confusion.\nContext-specific reason: Seeking guidance without providing substance shows poor discernment",
+              "open": false
+            }
+          ]
+        },
+        {
+          "card": "share",
+          "title": "Share Layer",
+          "primary_text": "Most costly moves are not malice—they are hurry with good adjectives.",
+          "sections": [
+            {
+              "label": "Reflective question",
+              "text": "What is the smallest step that keeps I need to decide whether to do the thing soon, honest without making harm the delivery vehicle?",
+              "open": false
+            }
+          ]
+        }
+      ],
+      "details_present": true,
+      "details_openable": true,
+      "console_errors": [],
+      "network_errors": [],
+      "layout_issues": [],
+      "desktop_layout": {
+        "overflow_x": false,
+        "viewport_width": 1365,
+        "scroll_width": 1365
+      },
+      "mobile_layout": {
+        "overflow_x": false,
+        "viewport_width": 390,
+        "scroll_width": 390
+      }
+    }
+  ],
+  "note": "Step 31F run after crisis_safe presentation mode. No engine/schema changes; UI-only safety layer."
+}

@@ -45,9 +45,16 @@ def test_frontend_shell_disclaimer_and_input_safety_present() -> None:
     assert "acute crisis" in html
 
 
-def test_frontend_shell_client_submission_path_uses_public_api() -> None:
+def test_frontend_shell_presentation_mode_and_crisis_branch_present() -> None:
     html = _page_html()
-    assert 'fetch("/api/v1/analyze"' in html
+    assert "presentation_mode" in html
+    assert "crisis_safe" in html
+    assert "buildClientPresentation" in html
+
+
+def test_frontend_shell_client_submission_path_uses_presentation_api_without_changing_public_api() -> None:
+    html = _page_html()
+    assert 'fetch("/api/v1/analyze/presentation"' in html
     assert '"Content-Type": "application/json"' in html
     assert '"X-CSRFToken": csrfToken' in html
     assert 'JSON.stringify({ dilemma: dilemma, contract_version: "1.0" })' in html
@@ -59,6 +66,7 @@ def test_frontend_shell_success_section_renderers_present() -> None:
     html = _page_html()
     for section in [
         "Analysis Result",
+        "Presentation mode",
         "Verdict",
         "Inner Dynamics",
         "If You Continue",
@@ -73,6 +81,9 @@ def test_frontend_shell_success_section_renderers_present() -> None:
     assert '"hero-grid"' in html
     assert '"card share spotlight"' in html
     assert '"Share-ready"' in html
+    assert "renderPresentationCard" in html
+    assert "renderExpandableSection" in html
+    assert "presentation-section" in html
 
 
 def test_frontend_shell_public_error_renderer_present() -> None:
@@ -91,9 +102,10 @@ def test_frontend_shell_request_id_display_on_error_present() -> None:
 
 def test_frontend_shell_verse_branch_behavior_present() -> None:
     html = _page_html()
-    assert "renderVerse(output)" in html
-    assert "\"Verse Match\"" in html
-    assert "\"Closest Teaching\"" in html
+    assert "\"Gita Verse\"" in html
+    assert "\"Closest Gita Lens\"" in html
+    assert "\"Show Gita anchor\"" in html
+    assert "\"Why this stays provisional\"" in html
     assert "\"No verse or closest teaching is currently available for this response.\"" in html
 
 

@@ -17,6 +17,7 @@ from django.views.decorators.http import require_POST
 from app.core.models import EngineAnalyzeErrorResponse
 from app.engine.analyzer import build_engine_error_response, handle_engine_request
 from app.engine.public_errors import PUBLIC_ERROR_CODES, PUBLIC_ERROR_HTTP_STATUS
+from app.presentation import build_result_view_model
 
 _SUPPORTED_CONTRACT_VERSIONS = {"1.0"}
 _REQUEST_ID_HEADER = "X-Request-ID"
@@ -63,6 +64,77 @@ def analyze_view(request: HttpRequest) -> JsonResponse:
 
     try:
         body, status, outcome, contract_version = _execute_public_payload(payload)
+    except Exception as exc:  # noqa: BLE001
+        _emit_error_log(
+            request_id=request_id,
+            request=request,
+            contract_version=contract_version,
+            exc=exc,
+        )
+        fallback = build_engine_error_response(code="engine_execution_failed", message="unexpected transport failure")
+        body = fallback.model_dump(mode="json")
+        status = int(HTTPStatus.INTERNAL_SERVER_ERROR)
+        outcome = "engine_execution_failed"
+
+    response = _json_response(body, status=status, request_id=request_id)
+    _emit_access_log(
+        request_id=request_id,
+        request=request,
+        status_code=status,
+        duration_ms=_duration_ms_since(start),
+        contract_version=contract_version,
+        outcome=outcome,
+    )
+    return response
+
+
+@require_POST
+def analyze_presentation_view(request: HttpRequest) -> JsonResponse:
+    """
+    POST /api/v1/analyze/presentation
+
+    Internal browser-shell helper.  It preserves the public engine response under
+    ``meta`` + ``output`` and adds a presentation-only view model for UI cards.
+    The public ``/api/v1/analyze`` contract remains unchanged.
+    """
+    request_id = _extract_or_generate_request_id(request)
+    start = time.perf_counter()
+    contract_version = None
+    status = int(HTTPStatus.INTERNAL_SERVER_ERROR)
+    outcome = "engine_execution_failed"
+    try:
+        raw_payload = request.body.decode("utf-8") if request.body else "{}"
+        payload = json.loads(raw_payload)
+    except Exception:  # noqa: BLE001
+        error = build_engine_error_response(
+            code="request_validation_failed",
+            message="Malformed JSON payload.",
+        )
+        status = int(HTTPStatus.BAD_REQUEST)
+        outcome = "request_validation_failed"
+        response = _json_response(error.model_dump(mode="json"), status=status, request_id=request_id)
+        _emit_access_log(
+            request_id=request_id,
+            request=request,
+            status_code=status,
+            duration_ms=_duration_ms_since(start),
+            contract_version=contract_version,
+            outcome=outcome,
+        )
+        return response
+
+    if isinstance(payload, dict):
+        contract_version = _extract_contract_version(payload)
+
+    try:
+        body, status, outcome, contract_version = _execute_public_payload(payload)
+        if status == int(HTTPStatus.OK) and "output" in body:
+            view_model = build_result_view_model(body)
+            body = {
+                "meta": body["meta"],
+                "output": body["output"],
+                "presentation": view_model.model_dump(mode="json"),
+            }
     except Exception as exc:  # noqa: BLE001
         _emit_error_log(
             request_id=request_id,
