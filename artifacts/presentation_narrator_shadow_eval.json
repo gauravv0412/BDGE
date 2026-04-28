@@ -1,0 +1,880 @@
+{
+  "eval_version": "presentation-narrator-shadow-eval-v1",
+  "generated_at": "2026-04-27T21:22:44.096834+00:00",
+  "benchmark_path": "/home/gaurav/Documents/BDGE/docs/benchmarks_v2_batch1_W001-W020.json",
+  "ood_path": null,
+  "shadow_forced": {
+    "PRESENTATION_LLM_SHADOW": true,
+    "PRESENTATION_LLM_ENABLED": false,
+    "PRESENTATION_LLM_REPAIR_ENABLED": true
+  },
+  "mock_provider_mode": "none",
+  "metrics": {
+    "total_cases": 20,
+    "provider_called_count": 20,
+    "initial_attempt_valid_count": 15,
+    "initial_attempt_valid_rate_pct": 75.0,
+    "repair_attempted_count": 5,
+    "repair_valid_count": 2,
+    "repair_valid_rate_pct": 10.0,
+    "final_source_distribution": {
+      "shadow_fallback": 20
+    },
+    "style_profile_distribution": {
+      "blunt_confrontational": 4,
+      "krishna_like_questioning": 2,
+      "sharp_punchline_heavy": 6,
+      "practical_grounded": 5,
+      "reflective_calm": 3
+    },
+    "deterministic_fallback_rate_pct": 100.0,
+    "top_rejection_reasons": [
+      [
+        "internal taxonomy leaked: score",
+        5
+      ],
+      [
+        "preachy language: you should",
+        3
+      ]
+    ],
+    "style_repetition_warnings": [],
+    "crisis_bypass_count": 0,
+    "per_classification_acceptance_breakdown": {
+      "Mixed": {
+        "total": 6,
+        "accepted_initial": 0,
+        "accepted_repair": 0,
+        "fallback": 6
+      },
+      "Adharmic": {
+        "total": 6,
+        "accepted_initial": 0,
+        "accepted_repair": 0,
+        "fallback": 6
+      },
+      "Context-dependent": {
+        "total": 3,
+        "accepted_initial": 0,
+        "accepted_repair": 0,
+        "fallback": 3
+      },
+      "Dharmic": {
+        "total": 5,
+        "accepted_initial": 0,
+        "accepted_repair": 0,
+        "fallback": 5
+      }
+    },
+    "examples": {
+      "accepted_initial": null,
+      "accepted_after_repair": null,
+      "rejected_fallback": {
+        "dilemma_id": "W001",
+        "source": "benchmark",
+        "http_status": 200,
+        "classification": "Mixed",
+        "api_output_classification": "Mixed",
+        "style_profile": "blunt_confrontational",
+        "presentation_mode": "standard",
+        "narrator_meta": {
+          "source": "deterministic_fallback",
+          "provider_called": true,
+          "shadow_mode": true,
+          "accepted": false,
+          "fallback_returned": true,
+          "initial_attempt_valid": false,
+          "initial_rejection_reasons": [
+            "internal taxonomy leaked: score"
+          ],
+          "repair_attempted": true,
+          "repair_valid": false,
+          "repair_rejection_reasons": [
+            "internal taxonomy leaked: score"
+          ],
+          "final_source": "shadow_fallback",
+          "repair_attempt_count": 1,
+          "rejection_reasons": [
+            "internal taxonomy leaked: score",
+            "internal taxonomy leaked: score"
+          ]
+        },
+        "accepted_llm_preview": null,
+        "error_code": null
+      },
+      "suspected_over_rejection": null
+    }
+  },
+  "cases": [
+    {
+      "dilemma_id": "W001",
+      "source": "benchmark",
+      "http_status": 200,
+      "classification": "Mixed",
+      "api_output_classification": "Mixed",
+      "style_profile": "blunt_confrontational",
+      "presentation_mode": "standard",
+      "narrator_meta": {
+        "source": "deterministic_fallback",
+        "provider_called": true,
+        "shadow_mode": true,
+        "accepted": false,
+        "fallback_returned": true,
+        "initial_attempt_valid": false,
+        "initial_rejection_reasons": [
+          "internal taxonomy leaked: score"
+        ],
+        "repair_attempted": true,
+        "repair_valid": false,
+        "repair_rejection_reasons": [
+          "internal taxonomy leaked: score"
+        ],
+        "final_source": "shadow_fallback",
+        "repair_attempt_count": 1,
+        "rejection_reasons": [
+          "internal taxonomy leaked: score",
+          "internal taxonomy leaked: score"
+        ]
+      },
+      "accepted_llm_preview": null,
+      "error_code": null
+    },
+    {
+      "dilemma_id": "W002",
+      "source": "benchmark",
+      "http_status": 200,
+      "classification": "Adharmic",
+      "api_output_classification": "Mixed",
+      "style_profile": "blunt_confrontational",
+      "presentation_mode": "standard",
+      "narrator_meta": {
+        "source": "deterministic_fallback",
+        "provider_called": true,
+        "shadow_mode": true,
+        "accepted": true,
+        "fallback_returned": true,
+        "initial_attempt_valid": true,
+        "initial_rejection_reasons": [],
+        "repair_attempted": false,
+        "repair_valid": false,
+        "repair_rejection_reasons": [],
+        "final_source": "shadow_fallback",
+        "repair_attempt_count": 0,
+        "rejection_reasons": [],
+        "accepted_llm_preview": {
+          "share_line": "You're not choosing between keeping and returning. You're choosing whether pressure gets to decide your method.",
+          "simple.headline": "The wallet test isn't about the money. It's about what you do when no one's watching.",
+          "brutal_truth.punchline": "The wallet stays with you one more day, and suddenly keeping half feels reasonable. Keep it a week, and you've rewritten the whole story. This is how good people become the ones they didn't plan to be.",
+          "deep_view.risk": "If you keep the cash or delay returning it, you don't just solve today's pressure—you install a pattern. The next time stakes rise, you'll reach for the same tool. What feels like a one-time exception becomes your default under stress. The ",
+          "krishna_lens.question": "If the owner were standing in front of you right now, would you still be considering keeping the cash?"
+        }
+      },
+      "accepted_llm_preview": {
+        "share_line": "You're not choosing between keeping and returning. You're choosing whether pressure gets to decide your method.",
+        "simple.headline": "The wallet test isn't about the money. It's about what you do when no one's watching.",
+        "brutal_truth.punchline": "The wallet stays with you one more day, and suddenly keeping half feels reasonable. Keep it a week, and you've rewritten the whole story. This is how good people become the ones they didn't plan to be.",
+        "deep_view.risk": "If you keep the cash or delay returning it, you don't just solve today's pressure—you install a pattern. The next time stakes rise, you'll reach for the same tool. What feels like a one-time exception becomes your default under stress. The ",
+        "krishna_lens.question": "If the owner were standing in front of you right now, would you still be considering keeping the cash?"
+      },
+      "error_code": null
+    },
+    {
+      "dilemma_id": "W003",
+      "source": "benchmark",
+      "http_status": 200,
+      "classification": "Context-dependent",
+      "api_output_classification": "Mixed",
+      "style_profile": "krishna_like_questioning",
+      "presentation_mode": "standard",
+      "narrator_meta": {
+        "source": "deterministic_fallback",
+        "provider_called": true,
+        "shadow_mode": true,
+        "accepted": false,
+        "fallback_returned": true,
+        "initial_attempt_valid": false,
+        "initial_rejection_reasons": [
+          "internal taxonomy leaked: score"
+        ],
+        "repair_attempted": true,
+        "repair_valid": false,
+        "repair_rejection_reasons": [
+          "internal taxonomy leaked: score"
+        ],
+        "final_source": "shadow_fallback",
+        "repair_attempt_count": 1,
+        "rejection_reasons": [
+          "internal taxonomy leaked: score",
+          "internal taxonomy leaked: score"
+        ]
+      },
+      "accepted_llm_preview": null,
+      "error_code": null
+    },
+    {
+      "dilemma_id": "W004",
+      "source": "benchmark",
+      "http_status": 200,
+      "classification": "Mixed",
+      "api_output_classification": "Mixed",
+      "style_profile": "sharp_punchline_heavy",
+      "presentation_mode": "standard",
+      "narrator_meta": {
+        "source": "deterministic_fallback",
+        "provider_called": true,
+        "shadow_mode": true,
+        "accepted": true,
+        "fallback_returned": true,
+        "initial_attempt_valid": true,
+        "initial_rejection_reasons": [],
+        "repair_attempted": false,
+        "repair_valid": false,
+        "repair_rejection_reasons": [],
+        "final_source": "shadow_fallback",
+        "repair_attempt_count": 0,
+        "rejection_reasons": [],
+        "accepted_llm_preview": {
+          "share_line": "You're not choosing between truth and kindness. You're choosing which lie you'll live with.",
+          "simple.headline": "Timing and tone matter more than the binary choice.",
+          "brutal_truth.punchline": "She'll sense the gap between what you're saying and what you're holding back. Politeness will replace trust. And when she's gone, you'll know exactly which sentence you swallowed.",
+          "deep_view.risk": "If you soften the edges now, you train yourself to edit reality whenever discomfort rises. That habit compounds. The ledger of what you withheld becomes the relationship's secret balance sheet, and you'll spend energy managing the fiction i",
+          "krishna_lens.question": "Are you protecting her peace, or protecting yourself from her reaction?"
+        }
+      },
+      "accepted_llm_preview": {
+        "share_line": "You're not choosing between truth and kindness. You're choosing which lie you'll live with.",
+        "simple.headline": "Timing and tone matter more than the binary choice.",
+        "brutal_truth.punchline": "She'll sense the gap between what you're saying and what you're holding back. Politeness will replace trust. And when she's gone, you'll know exactly which sentence you swallowed.",
+        "deep_view.risk": "If you soften the edges now, you train yourself to edit reality whenever discomfort rises. That habit compounds. The ledger of what you withheld becomes the relationship's secret balance sheet, and you'll spend energy managing the fiction i",
+        "krishna_lens.question": "Are you protecting her peace, or protecting yourself from her reaction?"
+      },
+      "error_code": null
+    },
+    {
+      "dilemma_id": "W005",
+      "source": "benchmark",
+      "http_status": 200,
+      "classification": "Mixed",
+      "api_output_classification": "Mixed",
+      "style_profile": "sharp_punchline_heavy",
+      "presentation_mode": "standard",
+      "narrator_meta": {
+        "source": "deterministic_fallback",
+        "provider_called": true,
+        "shadow_mode": true,
+        "accepted": false,
+        "fallback_returned": true,
+        "initial_attempt_valid": false,
+        "initial_rejection_reasons": [
+          "preachy language: you should"
+        ],
+        "repair_attempted": true,
+        "repair_valid": false,
+        "repair_rejection_reasons": [
+          "preachy language: you should"
+        ],
+        "final_source": "shadow_fallback",
+        "repair_attempt_count": 1,
+        "rejection_reasons": [
+          "preachy language: you should",
+          "preachy language: you should"
+        ]
+      },
+      "accepted_llm_preview": null,
+      "error_code": null
+    },
+    {
+      "dilemma_id": "W006",
+      "source": "benchmark",
+      "http_status": 200,
+      "classification": "Adharmic",
+      "api_output_classification": "Mixed",
+      "style_profile": "sharp_punchline_heavy",
+      "presentation_mode": "standard",
+      "narrator_meta": {
+        "source": "deterministic_fallback",
+        "provider_called": true,
+        "shadow_mode": true,
+        "accepted": true,
+        "fallback_returned": true,
+        "initial_attempt_valid": true,
+        "initial_rejection_reasons": [],
+        "repair_attempted": false,
+        "repair_valid": false,
+        "repair_rejection_reasons": [],
+        "final_source": "shadow_fallback",
+        "repair_attempt_count": 0,
+        "rejection_reasons": [],
+        "accepted_llm_preview": {
+          "share_line": "Spreading truth in anger is still spreading anger. The method matters more than being right.",
+          "simple.headline": "You're not choosing between silence and exposure. You're choosing whether anger gets to write the story.",
+          "brutal_truth.punchline": "You'll feel clean for three days. Then you'll notice you've become the person you're angry at—just with better facts. The cost isn't the embarrassment you expose. It's the character you trade for the win.",
+          "deep_view.risk": "If you delay this choice, circumstances will force a weaker version of it. You'll act faster, with less restraint, in a worse channel. The longer you sit with the anger, the more likely you move from 'I need to set the record straight' to '",
+          "krishna_lens.question": "If you speak truth from a place of anger and self-protection, whose self are you actually protecting?"
+        }
+      },
+      "accepted_llm_preview": {
+        "share_line": "Spreading truth in anger is still spreading anger. The method matters more than being right.",
+        "simple.headline": "You're not choosing between silence and exposure. You're choosing whether anger gets to write the story.",
+        "brutal_truth.punchline": "You'll feel clean for three days. Then you'll notice you've become the person you're angry at—just with better facts. The cost isn't the embarrassment you expose. It's the character you trade for the win.",
+        "deep_view.risk": "If you delay this choice, circumstances will force a weaker version of it. You'll act faster, with less restraint, in a worse channel. The longer you sit with the anger, the more likely you move from 'I need to set the record straight' to '",
+        "krishna_lens.question": "If you speak truth from a place of anger and self-protection, whose self are you actually protecting?"
+      },
+      "error_code": null
+    },
+    {
+      "dilemma_id": "W007",
+      "source": "benchmark",
+      "http_status": 200,
+      "classification": "Context-dependent",
+      "api_output_classification": "Mixed",
+      "style_profile": "practical_grounded",
+      "presentation_mode": "standard",
+      "narrator_meta": {
+        "source": "deterministic_fallback",
+        "provider_called": true,
+        "shadow_mode": true,
+        "accepted": true,
+        "fallback_returned": true,
+        "initial_attempt_valid": true,
+        "initial_rejection_reasons": [],
+        "repair_attempted": false,
+        "repair_valid": false,
+        "repair_rejection_reasons": [],
+        "final_source": "shadow_fallback",
+        "repair_attempt_count": 0,
+        "rejection_reasons": [],
+        "accepted_llm_preview": {
+          "share_line": "Cutting contact isn't the sin. Hiding why you're cutting it is.",
+          "simple.headline": "Your method matters more than your choice.",
+          "brutal_truth.punchline": "Cutting contact is clean. Cutting contact while pretending you're still the dutiful child—that's where the real damage lives. You'll carry the lie longer than the distance.",
+          "deep_view.risk": "Short-term: A few weeks of surface calm, then the questions come harder and you have no answer ready. Long-term: People learn not to ask you directly about anything that matters. Intimacy shrinks to what can be performed without risk. You b",
+          "krishna_lens.question": "Are you leaving because you see clearly, or are you leaving because you're afraid of what happens if you stay and speak the truth at the same time?"
+        }
+      },
+      "accepted_llm_preview": {
+        "share_line": "Cutting contact isn't the sin. Hiding why you're cutting it is.",
+        "simple.headline": "Your method matters more than your choice.",
+        "brutal_truth.punchline": "Cutting contact is clean. Cutting contact while pretending you're still the dutiful child—that's where the real damage lives. You'll carry the lie longer than the distance.",
+        "deep_view.risk": "Short-term: A few weeks of surface calm, then the questions come harder and you have no answer ready. Long-term: People learn not to ask you directly about anything that matters. Intimacy shrinks to what can be performed without risk. You b",
+        "krishna_lens.question": "Are you leaving because you see clearly, or are you leaving because you're afraid of what happens if you stay and speak the truth at the same time?"
+      },
+      "error_code": null
+    },
+    {
+      "dilemma_id": "W008",
+      "source": "benchmark",
+      "http_status": 200,
+      "classification": "Dharmic",
+      "api_output_classification": "Mixed",
+      "style_profile": "practical_grounded",
+      "presentation_mode": "standard",
+      "narrator_meta": {
+        "source": "deterministic_fallback",
+        "provider_called": true,
+        "shadow_mode": true,
+        "accepted": true,
+        "fallback_returned": true,
+        "initial_attempt_valid": true,
+        "initial_rejection_reasons": [],
+        "repair_attempted": false,
+        "repair_valid": false,
+        "repair_rejection_reasons": [],
+        "final_source": "shadow_fallback",
+        "repair_attempt_count": 0,
+        "rejection_reasons": [],
+        "accepted_llm_preview": {
+          "share_line": "Love does not become lower because prejudice calls itself tradition.",
+          "simple.headline": "You're not choosing between love and duty. You're choosing whether to stay honest when it costs.",
+          "brutal_truth.punchline": "Every day you don't name this choice, you're training yourself to smooth over hard truths when stakes rise. That habit will follow you into every difficult moment after this. The kindest move to your family is also the clearest one: stand f",
+          "deep_view.risk": "If you delay or soften the truth now, you establish a pattern. The next time stakes are high, you'll reach for the same tool: partial transparency, strategic silence, letting circumstances do the hard work. What starts as a one-time comprom",
+          "krishna_lens.question": "If your parents' disapproval is rooted in caste, and you know caste is not a measure of a person's worth, what are you actually protecting by staying silent?"
+        }
+      },
+      "accepted_llm_preview": {
+        "share_line": "Love does not become lower because prejudice calls itself tradition.",
+        "simple.headline": "You're not choosing between love and duty. You're choosing whether to stay honest when it costs.",
+        "brutal_truth.punchline": "Every day you don't name this choice, you're training yourself to smooth over hard truths when stakes rise. That habit will follow you into every difficult moment after this. The kindest move to your family is also the clearest one: stand f",
+        "deep_view.risk": "If you delay or soften the truth now, you establish a pattern. The next time stakes are high, you'll reach for the same tool: partial transparency, strategic silence, letting circumstances do the hard work. What starts as a one-time comprom",
+        "krishna_lens.question": "If your parents' disapproval is rooted in caste, and you know caste is not a measure of a person's worth, what are you actually protecting by staying silent?"
+      },
+      "error_code": null
+    },
+    {
+      "dilemma_id": "W009",
+      "source": "benchmark",
+      "http_status": 200,
+      "classification": "Adharmic",
+      "api_output_classification": "Mixed",
+      "style_profile": "blunt_confrontational",
+      "presentation_mode": "standard",
+      "narrator_meta": {
+        "source": "deterministic_fallback",
+        "provider_called": true,
+        "shadow_mode": true,
+        "accepted": true,
+        "fallback_returned": true,
+        "initial_attempt_valid": true,
+        "initial_rejection_reasons": [],
+        "repair_attempted": false,
+        "repair_valid": false,
+        "repair_rejection_reasons": [],
+        "final_source": "shadow_fallback",
+        "repair_attempt_count": 0,
+        "rejection_reasons": [],
+        "accepted_llm_preview": {
+          "share_line": "You're not choosing between kindness and honesty. You're choosing whether the patient gets to decide their own ending.",
+          "simple.headline": "Hide the diagnosis, and you've just made a choice for someone else.",
+          "brutal_truth.punchline": "The family feels less afraid for a few days. The patient loses the chance to say goodbye on their own terms. You get to avoid a hard conversation. Everyone pays for that trade.",
+          "deep_view.risk": "Short-term: You feel relief. Long-term: People learn what they can't trust you with. Your relationships shrink to what can be safely performed. And the patient wakes up to a diagnosis they should have heard from someone who cared enough to ",
+          "krishna_lens.question": "Are you protecting the patient from harm, or protecting yourself from their reaction?"
+        }
+      },
+      "accepted_llm_preview": {
+        "share_line": "You're not choosing between kindness and honesty. You're choosing whether the patient gets to decide their own ending.",
+        "simple.headline": "Hide the diagnosis, and you've just made a choice for someone else.",
+        "brutal_truth.punchline": "The family feels less afraid for a few days. The patient loses the chance to say goodbye on their own terms. You get to avoid a hard conversation. Everyone pays for that trade.",
+        "deep_view.risk": "Short-term: You feel relief. Long-term: People learn what they can't trust you with. Your relationships shrink to what can be safely performed. And the patient wakes up to a diagnosis they should have heard from someone who cared enough to ",
+        "krishna_lens.question": "Are you protecting the patient from harm, or protecting yourself from their reaction?"
+      },
+      "error_code": null
+    },
+    {
+      "dilemma_id": "W010",
+      "source": "benchmark",
+      "http_status": 200,
+      "classification": "Mixed",
+      "api_output_classification": "Mixed",
+      "style_profile": "practical_grounded",
+      "presentation_mode": "standard",
+      "narrator_meta": {
+        "source": "deterministic_fallback",
+        "provider_called": true,
+        "shadow_mode": true,
+        "accepted": true,
+        "fallback_returned": true,
+        "initial_attempt_valid": true,
+        "initial_rejection_reasons": [],
+        "repair_attempted": false,
+        "repair_valid": false,
+        "repair_rejection_reasons": [],
+        "final_source": "shadow_fallback",
+        "repair_attempt_count": 0,
+        "rejection_reasons": [],
+        "accepted_llm_preview": {
+          "share_line": "You're not choosing between paying and waiting. You're choosing whether shortcuts become your default when pressure rises.",
+          "simple.headline": "This isn't a binary trap—it's a test of what you do when the system stalls.",
+          "brutal_truth.punchline": "You'll feel relief for a week. Then you'll notice yourself editing the story—softening it, borrowing legitimacy from urgency, treating restraint as a luxury you can't afford. That's the real cost. Not the money. The self-deception that foll",
+          "deep_view.risk": "Short-term: the room relaxes, you get the document, and you carry private doubt. Long-term: this becomes the tool you reach for whenever stakes rise. What starts as a one-time exception hardens into your default move under pressure. You sto",
+          "krishna_lens.question": "Is this action rooted in clarity about what's right, or in fear that the system won't bend otherwise?"
+        }
+      },
+      "accepted_llm_preview": {
+        "share_line": "You're not choosing between paying and waiting. You're choosing whether shortcuts become your default when pressure rises.",
+        "simple.headline": "This isn't a binary trap—it's a test of what you do when the system stalls.",
+        "brutal_truth.punchline": "You'll feel relief for a week. Then you'll notice yourself editing the story—softening it, borrowing legitimacy from urgency, treating restraint as a luxury you can't afford. That's the real cost. Not the money. The self-deception that foll",
+        "deep_view.risk": "Short-term: the room relaxes, you get the document, and you carry private doubt. Long-term: this becomes the tool you reach for whenever stakes rise. What starts as a one-time exception hardens into your default move under pressure. You sto",
+        "krishna_lens.question": "Is this action rooted in clarity about what's right, or in fear that the system won't bend otherwise?"
+      },
+      "error_code": null
+    },
+    {
+      "dilemma_id": "W011",
+      "source": "benchmark",
+      "http_status": 200,
+      "classification": "Mixed",
+      "api_output_classification": "Mixed",
+      "style_profile": "krishna_like_questioning",
+      "presentation_mode": "standard",
+      "narrator_meta": {
+        "source": "deterministic_fallback",
+        "provider_called": true,
+        "shadow_mode": true,
+        "accepted": true,
+        "fallback_returned": true,
+        "initial_attempt_valid": true,
+        "initial_rejection_reasons": [],
+        "repair_attempted": false,
+        "repair_valid": false,
+        "repair_rejection_reasons": [],
+        "final_source": "shadow_fallback",
+        "repair_attempt_count": 0,
+        "rejection_reasons": [],
+        "accepted_llm_preview": {
+          "share_line": "You're not choosing between meat and vegetables. You're choosing between a small lie today and a bigger one tomorrow.",
+          "simple.headline": "Hiding it doesn't solve it—it just delays when the real conversation gets harder.",
+          "brutal_truth.punchline": "Hiding buys you peace for a few weeks. Then it becomes your default move—not just with food, but with anything that feels inconvenient to say out loud. You're not protecting the relationship. You're protecting yourself from an uncomfortable",
+          "deep_view.risk": "Short-term: You get a few calm days. Long-term: Secrecy becomes your operating system. You stop asking whether something is worth hiding and start asking only whether you can get away with it. The family doesn't just lose trust in your hone",
+          "krishna_lens.question": "If you cannot speak this desire to the people closest to you, what does that tell you about whether it's truly yours to claim, or whether you're borrowing permission from secrecy?"
+        }
+      },
+      "accepted_llm_preview": {
+        "share_line": "You're not choosing between meat and vegetables. You're choosing between a small lie today and a bigger one tomorrow.",
+        "simple.headline": "Hiding it doesn't solve it—it just delays when the real conversation gets harder.",
+        "brutal_truth.punchline": "Hiding buys you peace for a few weeks. Then it becomes your default move—not just with food, but with anything that feels inconvenient to say out loud. You're not protecting the relationship. You're protecting yourself from an uncomfortable",
+        "deep_view.risk": "Short-term: You get a few calm days. Long-term: Secrecy becomes your operating system. You stop asking whether something is worth hiding and start asking only whether you can get away with it. The family doesn't just lose trust in your hone",
+        "krishna_lens.question": "If you cannot speak this desire to the people closest to you, what does that tell you about whether it's truly yours to claim, or whether you're borrowing permission from secrecy?"
+      },
+      "error_code": null
+    },
+    {
+      "dilemma_id": "W012",
+      "source": "benchmark",
+      "http_status": 200,
+      "classification": "Dharmic",
+      "api_output_classification": "Mixed",
+      "style_profile": "sharp_punchline_heavy",
+      "presentation_mode": "standard",
+      "narrator_meta": {
+        "source": "deterministic_fallback",
+        "provider_called": true,
+        "shadow_mode": true,
+        "accepted": true,
+        "fallback_returned": true,
+        "initial_attempt_valid": true,
+        "initial_rejection_reasons": [],
+        "repair_attempted": false,
+        "repair_valid": false,
+        "repair_rejection_reasons": [],
+        "final_source": "shadow_fallback",
+        "repair_attempt_count": 0,
+        "rejection_reasons": [],
+        "accepted_llm_preview": {
+          "share_line": "You're not choosing between whistleblowing and silence. You're choosing whether the method stays honest when fear arrives.",
+          "simple.headline": "The river doesn't care about your job security. Your integrity does.",
+          "brutal_truth.punchline": "You'll remember the moment you knew. You'll remember it every time you see that river. The job you kept won't feel like a win—it'll feel like the price you paid to not be the person who spoke.",
+          "deep_view.risk": "If you continue without naming it: you trade focus for vigilance, small wins in meetings for larger tabs kept open on who said what. Short-term, you survive. Long-term, people remember how pressure felt in the room, not what the facts were.",
+          "krishna_lens.question": "Are you afraid of losing your job, or afraid of becoming someone who knew and stayed quiet?"
+        }
+      },
+      "accepted_llm_preview": {
+        "share_line": "You're not choosing between whistleblowing and silence. You're choosing whether the method stays honest when fear arrives.",
+        "simple.headline": "The river doesn't care about your job security. Your integrity does.",
+        "brutal_truth.punchline": "You'll remember the moment you knew. You'll remember it every time you see that river. The job you kept won't feel like a win—it'll feel like the price you paid to not be the person who spoke.",
+        "deep_view.risk": "If you continue without naming it: you trade focus for vigilance, small wins in meetings for larger tabs kept open on who said what. Short-term, you survive. Long-term, people remember how pressure felt in the room, not what the facts were.",
+        "krishna_lens.question": "Are you afraid of losing your job, or afraid of becoming someone who knew and stayed quiet?"
+      },
+      "error_code": null
+    },
+    {
+      "dilemma_id": "W013",
+      "source": "benchmark",
+      "http_status": 200,
+      "classification": "Adharmic",
+      "api_output_classification": "Mixed",
+      "style_profile": "sharp_punchline_heavy",
+      "presentation_mode": "standard",
+      "narrator_meta": {
+        "source": "deterministic_fallback",
+        "provider_called": true,
+        "shadow_mode": true,
+        "accepted": true,
+        "fallback_returned": true,
+        "initial_attempt_valid": true,
+        "initial_rejection_reasons": [],
+        "repair_attempted": false,
+        "repair_valid": false,
+        "repair_rejection_reasons": [],
+        "final_source": "shadow_fallback",
+        "repair_attempt_count": 0,
+        "rejection_reasons": [],
+        "accepted_llm_preview": {
+          "share_line": "A private thrill costs more than the moment feels worth—it's paid in trust, later, by everyone.",
+          "simple.headline": "You're not deciding whether to speak. You're deciding whether to stay honest when desire makes lying feel like love.",
+          "brutal_truth.punchline": "You can have the feeling or you can have the friendship. The moment you try to have both, you're already lying. Gita 3.37 calls this the enemy—not the person, the *desire* that rewrites loyalty as a special case.",
+          "deep_view.risk": "Short-term, you get relief by venting sideways or staying silent—someone else carries the weight as gossip instead of as information. Long-term, people learn what not to ask you. Intimacy shrinks to what can be safely performed. You become ",
+          "krishna_lens.question": "Is this move born from clarity about what's right, or from fear and desire dressed up as care?"
+        }
+      },
+      "accepted_llm_preview": {
+        "share_line": "A private thrill costs more than the moment feels worth—it's paid in trust, later, by everyone.",
+        "simple.headline": "You're not deciding whether to speak. You're deciding whether to stay honest when desire makes lying feel like love.",
+        "brutal_truth.punchline": "You can have the feeling or you can have the friendship. The moment you try to have both, you're already lying. Gita 3.37 calls this the enemy—not the person, the *desire* that rewrites loyalty as a special case.",
+        "deep_view.risk": "Short-term, you get relief by venting sideways or staying silent—someone else carries the weight as gossip instead of as information. Long-term, people learn what not to ask you. Intimacy shrinks to what can be safely performed. You become ",
+        "krishna_lens.question": "Is this move born from clarity about what's right, or from fear and desire dressed up as care?"
+      },
+      "error_code": null
+    },
+    {
+      "dilemma_id": "W014",
+      "source": "benchmark",
+      "http_status": 200,
+      "classification": "Dharmic",
+      "api_output_classification": "Mixed",
+      "style_profile": "practical_grounded",
+      "presentation_mode": "standard",
+      "narrator_meta": {
+        "source": "deterministic_fallback",
+        "provider_called": true,
+        "shadow_mode": true,
+        "accepted": true,
+        "fallback_returned": true,
+        "initial_attempt_valid": true,
+        "initial_rejection_reasons": [],
+        "repair_attempted": false,
+        "repair_valid": false,
+        "repair_rejection_reasons": [],
+        "final_source": "shadow_fallback",
+        "repair_attempt_count": 0,
+        "rejection_reasons": [],
+        "accepted_llm_preview": {
+          "share_line": "Clarity under pressure is the real test—not whether you give, but whether you can name what you're actually doing.",
+          "simple.headline": "You're caught between duty and how you'll live with yourself after.",
+          "brutal_truth.punchline": "You can donate and still lose. Not the organ—your integrity. The moment you start smoothing the truth to keep the peace is the moment you've already given something you can't get back.",
+          "deep_view.risk": "Short term feels fine—you act, the immediate tension eases. Long term, you're training yourself to handle pressure by editing the story rather than facing it. That becomes your reflex. Next time the stakes are higher, you're already practic",
+          "krishna_lens.question": "If you gave this kidney without needing anyone to know you gave it, would the gift feel different?"
+        }
+      },
+      "accepted_llm_preview": {
+        "share_line": "Clarity under pressure is the real test—not whether you give, but whether you can name what you're actually doing.",
+        "simple.headline": "You're caught between duty and how you'll live with yourself after.",
+        "brutal_truth.punchline": "You can donate and still lose. Not the organ—your integrity. The moment you start smoothing the truth to keep the peace is the moment you've already given something you can't get back.",
+        "deep_view.risk": "Short term feels fine—you act, the immediate tension eases. Long term, you're training yourself to handle pressure by editing the story rather than facing it. That becomes your reflex. Next time the stakes are higher, you're already practic",
+        "krishna_lens.question": "If you gave this kidney without needing anyone to know you gave it, would the gift feel different?"
+      },
+      "error_code": null
+    },
+    {
+      "dilemma_id": "W015",
+      "source": "benchmark",
+      "http_status": 200,
+      "classification": "Mixed",
+      "api_output_classification": "Mixed",
+      "style_profile": "reflective_calm",
+      "presentation_mode": "standard",
+      "narrator_meta": {
+        "source": "deterministic_fallback",
+        "provider_called": true,
+        "shadow_mode": true,
+        "accepted": true,
+        "fallback_returned": true,
+        "initial_attempt_valid": false,
+        "initial_rejection_reasons": [
+          "internal taxonomy leaked: score"
+        ],
+        "repair_attempted": true,
+        "repair_valid": true,
+        "repair_rejection_reasons": [],
+        "final_source": "shadow_fallback",
+        "repair_attempt_count": 1,
+        "rejection_reasons": [
+          "internal taxonomy leaked: score"
+        ],
+        "accepted_llm_preview": {
+          "share_line": "Accuracy protects more people than outrage does.",
+          "simple.headline": "You're deciding between warning and revenge—they feel the same until you sign your name.",
+          "brutal_truth.punchline": "The restaurant can't fix what it doesn't know came from a real person. You get catharsis. They get noise. Everyone else gets confused about whether this is a warning or a vendetta.",
+          "deep_view.risk": "If you delay and let frustration build, you'll eventually post something harsher than you'd defend in daylight. The longer you sit with the hurt, the more you justify exaggeration. By then it's irreversible. That's the trap—anonymity makes ",
+          "krishna_lens.question": "Is this rooted in clarity about what went wrong, or in the sting of being wronged?"
+        }
+      },
+      "accepted_llm_preview": {
+        "share_line": "Accuracy protects more people than outrage does.",
+        "simple.headline": "You're deciding between warning and revenge—they feel the same until you sign your name.",
+        "brutal_truth.punchline": "The restaurant can't fix what it doesn't know came from a real person. You get catharsis. They get noise. Everyone else gets confused about whether this is a warning or a vendetta.",
+        "deep_view.risk": "If you delay and let frustration build, you'll eventually post something harsher than you'd defend in daylight. The longer you sit with the hurt, the more you justify exaggeration. By then it's irreversible. That's the trap—anonymity makes ",
+        "krishna_lens.question": "Is this rooted in clarity about what went wrong, or in the sting of being wronged?"
+      },
+      "error_code": null
+    },
+    {
+      "dilemma_id": "W016",
+      "source": "benchmark",
+      "http_status": 200,
+      "classification": "Dharmic",
+      "api_output_classification": "Mixed",
+      "style_profile": "blunt_confrontational",
+      "presentation_mode": "standard",
+      "narrator_meta": {
+        "source": "deterministic_fallback",
+        "provider_called": true,
+        "shadow_mode": true,
+        "accepted": true,
+        "fallback_returned": true,
+        "initial_attempt_valid": true,
+        "initial_rejection_reasons": [],
+        "repair_attempted": false,
+        "repair_valid": false,
+        "repair_rejection_reasons": [],
+        "final_source": "shadow_fallback",
+        "repair_attempt_count": 0,
+        "rejection_reasons": [],
+        "accepted_llm_preview": {
+          "share_line": "Silence now becomes the story your son hears about what matters. Pick your audience before the choice picks you.",
+          "simple.headline": "You're not deciding whether to tell. You're deciding whether to tell well.",
+          "brutal_truth.punchline": "Every time you swallow a hard truth to keep things smooth, you're training yourself to swallow the next one easier. By the time it matters most, you won't even notice you're lying.",
+          "deep_view.risk": "If you wait, you don't get a better moment. You get a worse one: your son smokes more, your ex finds out from someone else, and you become the parent who knew and said nothing. That's not restraint. That's abdication dressed up as diplomacy",
+          "krishna_lens.question": "Are you protecting your son, or protecting yourself from the discomfort of being the one who names what's broken?"
+        }
+      },
+      "accepted_llm_preview": {
+        "share_line": "Silence now becomes the story your son hears about what matters. Pick your audience before the choice picks you.",
+        "simple.headline": "You're not deciding whether to tell. You're deciding whether to tell well.",
+        "brutal_truth.punchline": "Every time you swallow a hard truth to keep things smooth, you're training yourself to swallow the next one easier. By the time it matters most, you won't even notice you're lying.",
+        "deep_view.risk": "If you wait, you don't get a better moment. You get a worse one: your son smokes more, your ex finds out from someone else, and you become the parent who knew and said nothing. That's not restraint. That's abdication dressed up as diplomacy",
+        "krishna_lens.question": "Are you protecting your son, or protecting yourself from the discomfort of being the one who names what's broken?"
+      },
+      "error_code": null
+    },
+    {
+      "dilemma_id": "W017",
+      "source": "benchmark",
+      "http_status": 200,
+      "classification": "Context-dependent",
+      "api_output_classification": "Mixed",
+      "style_profile": "reflective_calm",
+      "presentation_mode": "standard",
+      "narrator_meta": {
+        "source": "deterministic_fallback",
+        "provider_called": true,
+        "shadow_mode": true,
+        "accepted": true,
+        "fallback_returned": true,
+        "initial_attempt_valid": true,
+        "initial_rejection_reasons": [],
+        "repair_attempted": false,
+        "repair_valid": false,
+        "repair_rejection_reasons": [],
+        "final_source": "shadow_fallback",
+        "repair_attempt_count": 0,
+        "rejection_reasons": [],
+        "accepted_llm_preview": {
+          "share_line": "You're not choosing between telling and silence. You're choosing whether to stay truthful when it costs.",
+          "simple.headline": "This isn't a binary trap—it's a test of method.",
+          "brutal_truth.punchline": "Every day you don't name this, you're choosing to let someone else's lie become your secret too. That's not loyalty. That's complicity wearing a patient face.",
+          "deep_view.risk": "If you delay: the next shock lands louder, you lose credibility with both people, and you train yourself to defer hard truths until they're forced out in worse ways. If you speak carelessly: you become the messenger who triangulates, perfor",
+          "krishna_lens.question": "Are you acting from clarity about what's true, or from fear about what might happen if you speak?"
+        }
+      },
+      "accepted_llm_preview": {
+        "share_line": "You're not choosing between telling and silence. You're choosing whether to stay truthful when it costs.",
+        "simple.headline": "This isn't a binary trap—it's a test of method.",
+        "brutal_truth.punchline": "Every day you don't name this, you're choosing to let someone else's lie become your secret too. That's not loyalty. That's complicity wearing a patient face.",
+        "deep_view.risk": "If you delay: the next shock lands louder, you lose credibility with both people, and you train yourself to defer hard truths until they're forced out in worse ways. If you speak carelessly: you become the messenger who triangulates, perfor",
+        "krishna_lens.question": "Are you acting from clarity about what's true, or from fear about what might happen if you speak?"
+      },
+      "error_code": null
+    },
+    {
+      "dilemma_id": "W018",
+      "source": "benchmark",
+      "http_status": 200,
+      "classification": "Dharmic",
+      "api_output_classification": "Mixed",
+      "style_profile": "reflective_calm",
+      "presentation_mode": "standard",
+      "narrator_meta": {
+        "source": "deterministic_fallback",
+        "provider_called": true,
+        "shadow_mode": true,
+        "accepted": true,
+        "fallback_returned": true,
+        "initial_attempt_valid": true,
+        "initial_rejection_reasons": [],
+        "repair_attempted": false,
+        "repair_valid": false,
+        "repair_rejection_reasons": [],
+        "final_source": "shadow_fallback",
+        "repair_attempt_count": 0,
+        "rejection_reasons": [],
+        "accepted_llm_preview": {
+          "share_line": "You're not choosing whether to change your nose. You're choosing whether to change it from clarity or from the weight of being watched.",
+          "simple.headline": "The surgery itself isn't the problem. How you arrive at it is.",
+          "brutal_truth.punchline": "If you hate your nose because you believe others judge it, changing your nose won't change the part of you that's always listening for judgment. You'll just find a new thing to fix. The real work is learning to exist without an audience in ",
+          "deep_view.risk": "If you proceed without separating your own voice from the approval you're seeking, you'll carry a quiet resentment into recovery. You'll also teach yourself that when pressure builds, the way out is to change yourself rather than to change ",
+          "krishna_lens.question": "Is this action rooted in your own clarity, or in the fear of being seen as you are?"
+        }
+      },
+      "accepted_llm_preview": {
+        "share_line": "You're not choosing whether to change your nose. You're choosing whether to change it from clarity or from the weight of being watched.",
+        "simple.headline": "The surgery itself isn't the problem. How you arrive at it is.",
+        "brutal_truth.punchline": "If you hate your nose because you believe others judge it, changing your nose won't change the part of you that's always listening for judgment. You'll just find a new thing to fix. The real work is learning to exist without an audience in ",
+        "deep_view.risk": "If you proceed without separating your own voice from the approval you're seeking, you'll carry a quiet resentment into recovery. You'll also teach yourself that when pressure builds, the way out is to change yourself rather than to change ",
+        "krishna_lens.question": "Is this action rooted in your own clarity, or in the fear of being seen as you are?"
+      },
+      "error_code": null
+    },
+    {
+      "dilemma_id": "W019",
+      "source": "benchmark",
+      "http_status": 200,
+      "classification": "Adharmic",
+      "api_output_classification": "Mixed",
+      "style_profile": "practical_grounded",
+      "presentation_mode": "standard",
+      "narrator_meta": {
+        "source": "deterministic_fallback",
+        "provider_called": true,
+        "shadow_mode": true,
+        "accepted": true,
+        "fallback_returned": true,
+        "initial_attempt_valid": true,
+        "initial_rejection_reasons": [],
+        "repair_attempted": false,
+        "repair_valid": false,
+        "repair_rejection_reasons": [],
+        "final_source": "shadow_fallback",
+        "repair_attempt_count": 0,
+        "rejection_reasons": [],
+        "accepted_llm_preview": {
+          "share_line": "You're not deciding whether to use the laptop. You're deciding if you'll name the problem before it names you.",
+          "simple.headline": "The method matters more than the choice.",
+          "brutal_truth.punchline": "You win the argument and lose the room. The freelance work becomes the headline you didn't intend, and your credibility becomes the collateral damage nobody planned for.",
+          "deep_view.risk": "If you continue without naming this: short-term, you trade focus for vigilance. Long-term, teams quietly route around you. The story shifts from 'they did something wrong' to 'they're hard to work with.' Even when you were right on paper, t",
+          "krishna_lens.question": "Is your action grounded in clarity, or are you moving because you're afraid of what happens if you don't?"
+        }
+      },
+      "accepted_llm_preview": {
+        "share_line": "You're not deciding whether to use the laptop. You're deciding if you'll name the problem before it names you.",
+        "simple.headline": "The method matters more than the choice.",
+        "brutal_truth.punchline": "You win the argument and lose the room. The freelance work becomes the headline you didn't intend, and your credibility becomes the collateral damage nobody planned for.",
+        "deep_view.risk": "If you continue without naming this: short-term, you trade focus for vigilance. Long-term, teams quietly route around you. The story shifts from 'they did something wrong' to 'they're hard to work with.' Even when you were right on paper, t",
+        "krishna_lens.question": "Is your action grounded in clarity, or are you moving because you're afraid of what happens if you don't?"
+      },
+      "error_code": null
+    },
+    {
+      "dilemma_id": "W020",
+      "source": "benchmark",
+      "http_status": 200,
+      "classification": "Adharmic",
+      "api_output_classification": "Mixed",
+      "style_profile": "sharp_punchline_heavy",
+      "presentation_mode": "standard",
+      "narrator_meta": {
+        "source": "deterministic_fallback",
+        "provider_called": true,
+        "shadow_mode": true,
+        "accepted": true,
+        "fallback_returned": true,
+        "initial_attempt_valid": false,
+        "initial_rejection_reasons": [
+          "preachy language: you should"
+        ],
+        "repair_attempted": true,
+        "repair_valid": true,
+        "repair_rejection_reasons": [],
+        "final_source": "shadow_fallback",
+        "repair_attempt_count": 1,
+        "rejection_reasons": [
+          "preachy language: you should"
+        ],
+        "accepted_llm_preview": {
+          "share_line": "You're not choosing between hospitalization and home care. You're choosing whether to tell the truth once, or edit it forever.",
+          "simple.headline": "The method matters more than the outcome you want.",
+          "brutal_truth.punchline": "Then the next surprise lands louder. Trust becomes positional—who's 'in' on the edits, which facts stop traveling with the kids. You don't solve the problem. You make it hereditary.",
+          "deep_view.risk": "If you delay naming what's true until circumstances force a weaker option, the choice gets louder and the trust gets quieter. Your father loses autonomy. Your family loses a shared reality. You lose the ground to stand on later.",
+          "krishna_lens.question": "Are you acting from clarity about what your father needs, or from fear about what you can't control?"
+        }
+      },
+      "accepted_llm_preview": {
+        "share_line": "You're not choosing between hospitalization and home care. You're choosing whether to tell the truth once, or edit it forever.",
+        "simple.headline": "The method matters more than the outcome you want.",
+        "brutal_truth.punchline": "Then the next surprise lands louder. Trust becomes positional—who's 'in' on the edits, which facts stop traveling with the kids. You don't solve the problem. You make it hereditary.",
+        "deep_view.risk": "If you delay naming what's true until circumstances force a weaker option, the choice gets louder and the trust gets quieter. Your father loses autonomy. Your family loses a shared reality. You lose the ground to stand on later.",
+        "krishna_lens.question": "Are you acting from clarity about what your father needs, or from fear about what you can't control?"
+      },
+      "error_code": null
+    }
+  ]
+}

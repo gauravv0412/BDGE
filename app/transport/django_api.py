@@ -17,7 +17,7 @@ from django.views.decorators.http import require_POST
 from app.core.models import EngineAnalyzeErrorResponse
 from app.engine.analyzer import build_engine_error_response, handle_engine_request
 from app.engine.public_errors import PUBLIC_ERROR_CODES, PUBLIC_ERROR_HTTP_STATUS
-from app.presentation import build_result_view_model
+from app.presentation import build_card_copy_overlay, build_presentation_narrator, build_result_view_model
 
 _SUPPORTED_CONTRACT_VERSIONS = {"1.0"}
 _REQUEST_ID_HEADER = "X-Request-ID"
@@ -130,10 +130,24 @@ def analyze_presentation_view(request: HttpRequest) -> JsonResponse:
         body, status, outcome, contract_version = _execute_public_payload(payload)
         if status == int(HTTPStatus.OK) and "output" in body:
             view_model = build_result_view_model(body)
+            narrator, narrator_meta = build_presentation_narrator(
+                engine_response=body,
+                deterministic_presentation=view_model.model_dump(mode="json"),
+            )
+            presentation = view_model.model_dump(mode="json")
+            presentation["cards"] = build_card_copy_overlay(
+                output=body["output"],
+                deterministic_presentation=presentation,
+                narrator=narrator,
+            )
             body = {
                 "meta": body["meta"],
                 "output": body["output"],
-                "presentation": view_model.model_dump(mode="json"),
+                "presentation": {
+                    **presentation,
+                    "narrator": narrator,
+                    "narrator_meta": narrator_meta,
+                },
             }
     except Exception as exc:  # noqa: BLE001
         _emit_error_log(

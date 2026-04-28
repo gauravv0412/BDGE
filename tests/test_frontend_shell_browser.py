@@ -13,13 +13,23 @@ import pytest
 from django.core.wsgi import get_wsgi_application
 from playwright.sync_api import Browser, Page, Playwright, sync_playwright
 
-from app.presentation import build_result_view_model
+from app.presentation import build_card_copy_overlay, build_result_view_model
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "tests.django_test_settings")
 django.setup()
 
 
 def _success_payload(*, verse: bool = False, closest: bool = True) -> dict[str, object]:
+    dimensions = {
+        "dharma_duty": {"score": 1, "note": "Partially aligned"},
+        "satya_truth": {"score": 1, "note": "Truth under pressure"},
+        "ahimsa_nonharm": {"score": 0, "note": "Harm depends on the next step"},
+        "nishkama_detachment": {"score": 1, "note": "Outcome anxiety is present"},
+        "shaucha_intent": {"score": 0, "note": "Motive is mixed"},
+        "sanyama_restraint": {"score": 1, "note": "Restraint is still available"},
+        "lokasangraha_welfare": {"score": 0, "note": "Wider impact is limited"},
+        "viveka_discernment": {"score": 1, "note": "The facts support a careful step"},
+    }
     payload: dict[str, object] = {
         "meta": {"contract_version": "1.0", "engine_version": "2.1", "semantic_mode_default": "stub_default"},
         "output": {
@@ -44,10 +54,7 @@ def _success_payload(*, verse: bool = False, closest: bool = True) -> dict[str, 
                 },
             },
             "higher_path": "Choose transparent correction.",
-            "ethical_dimensions": {
-                "dharma_duty": {"score": 1, "note": "Partially aligned"},
-                "satya_truth": {"score": 1, "note": "Truth under pressure"},
-            },
+            "ethical_dimensions": dimensions,
             "missing_facts": ["Stakeholder timing"],
             "share_layer": {
                 "anonymous_share_title": "Duty vs convenience",
@@ -73,13 +80,50 @@ def _success_payload(*, verse: bool = False, closest: bool = True) -> dict[str, 
     return payload
 
 
-def with_presentation_payload(payload: dict[str, object]) -> dict[str, object]:
+def _valid_narrator() -> dict[str, object]:
+    return {
+        "share_line": "LLM share line: clean pressure needs a clean method.",
+        "simple": {
+            "headline": "Correct it without hiding the method.",
+            "explanation": "The narrator copy says the visible test is whether fear makes truth negotiable.",
+            "next_step": "Choose transparent correction.",
+        },
+        "krishna_lens": {
+            "question": "What correction stays clean after the pressure fades?",
+            "teaching": "Use duty as a practical check on method.",
+            "mirror": "Fear can be loud without becoming the decision-maker.",
+        },
+        "brutal_truth": {
+            "headline": "Shortcut now, residue later.",
+            "punchline": "The method becomes the memory.",
+            "share_quote": "A clean action survives pressure.",
+        },
+        "deep_view": {
+            "what_is_happening": "Fear is narrowing the visible options.",
+            "risk": "The risk is letting convenience train the next compromise.",
+            "higher_path": "Correct the record transparently and keep the method accountable.",
+        },
+    }
+
+
+def with_presentation_payload(payload: dict[str, object], *, narrator: dict[str, object] | None = None) -> dict[str, object]:
     """Match production: /analyze/presentation attaches the server-built view model."""
     if "error" in payload:
         return payload
+    presentation = build_result_view_model(payload).model_dump(mode="json")
+    output = payload["output"]
+    assert isinstance(output, dict)
+    presentation["cards"] = build_card_copy_overlay(
+        output=output,
+        deterministic_presentation=presentation,
+        narrator=narrator,
+    )
+    if narrator is not None:
+        presentation["narrator"] = narrator
+        presentation["narrator_meta"] = {"final_source": "llm_initial", "fallback_returned": False}
     return {
         **payload,
-        "presentation": build_result_view_model(payload).model_dump(mode="json"),
+        "presentation": presentation,
     }
 
 
@@ -141,7 +185,6 @@ def _submit(page: Page, dilemma: str) -> None:
 def _extract_cards(page: Page) -> list[dict[str, object]]:
     return page.evaluate(
         """() => Array.from(document.querySelectorAll('[data-card]'))
-          .filter((node) => node.dataset.card !== 'share-spotlight')
           .map((node) => ({
             card: node.dataset.card || '',
             title: (node.querySelector('h2,h3')?.textContent || '').trim(),
@@ -150,6 +193,17 @@ def _extract_cards(page: Page) -> list[dict[str, object]]:
               label: details.dataset.sectionLabel || (details.querySelector('summary')?.textContent || '').trim(),
               text: (details.querySelector('[data-section-text]')?.textContent || '').trim()
             }))
+          }))"""
+    )
+
+
+def _extract_if_you_continue_blocks(page: Page) -> list[dict[str, str]]:
+    return page.evaluate(
+        """() => Array.from(document.querySelectorAll('[data-card="if-you-continue"] [data-consequence-term]'))
+          .map((node) => ({
+            term: node.dataset.consequenceTerm || '',
+            consequence: (node.querySelector('[data-consequence]')?.textContent || '').trim(),
+            explain: (node.querySelector('[data-explain-simply]')?.textContent || '').trim()
           }))"""
     )
 
@@ -189,7 +243,7 @@ def test_success_renders_major_sections(page: Page, live_server_url: str) -> Non
         "Higher Path",
         "Ethical Dimensions",
         "Missing Facts",
-        "Share Layer",
+        "Shareable Insight",
     ]:
         page.wait_for_selector(f"text={section}")
 
@@ -200,7 +254,10 @@ def test_verse_match_branch_renders(page: Page, live_server_url: str) -> None:
     page.goto(f"{live_server_url}/")
     _submit(page, "Another synthetic dilemma for the analyzer stub path, long enough for schema.")
     page.wait_for_selector("text=Gita Verse")
-    page.locator("summary", has_text="Show Gita anchor").wait_for()
+    page.wait_for_selector("text=कर्मण्येवाधिकारस्ते")
+    page.wait_for_selector("text=karmaṇy evādhikāras te")
+    page.wait_for_selector("text=Source: Gita")
+    page.wait_for_selector("text=Thy right is to work only.")
     assert page.locator("text=Closest Teaching").count() == 0
 
 
@@ -210,9 +267,11 @@ def test_closest_teaching_branch_renders(page: Page, live_server_url: str) -> No
     page.goto(f"{live_server_url}/")
     _submit(page, "Another synthetic dilemma for the analyzer stub path, long enough for schema.")
     page.wait_for_selector("text=Closest Gita Lens")
-    page.locator("summary", has_text="Why this stays provisional").wait_for()
+    page.wait_for_selector("text=Why this stays provisional")
     assert page.locator("text=Gita Verse").count() == 0
     assert page.locator("summary", has_text="Show Gita anchor").count() == 0
+    assert page.locator("text=कर्मण्येवाधिकारस्ते").count() == 0
+    assert page.locator("text=Paraphrased teaching, not a quoted verse").count() > 0
 
 
 @pytest.mark.browser
@@ -270,9 +329,74 @@ def test_share_spotlight_renders_in_dom(page: Page, live_server_url: str) -> Non
     page.goto(f"{live_server_url}/")
     _submit(page, "Another synthetic dilemma for the analyzer stub path, long enough for schema.")
     page.wait_for_selector("text=Share-ready")
-    spotlight_text = page.locator("[data-card='share-spotlight'] [data-card-primary]").inner_text().strip()
+    spotlight_text = page.locator("[data-card='share'] [data-card-primary]").inner_text().strip()
     assert spotlight_text
     assert len(spotlight_text) <= 160
+    assert page.locator("[data-card='share'] .share-question").inner_text().strip().endswith("?")
+
+
+@pytest.mark.browser
+def test_if_you_continue_renders_non_duplicate_humanized_rows(page: Page, live_server_url: str) -> None:
+    _route_api(page, payload=with_presentation_payload(_success_payload()))
+    page.goto(f"{live_server_url}/")
+    _submit(page, "Another synthetic dilemma for the analyzer stub path, long enough for schema.")
+    page.wait_for_selector("[data-card='if-you-continue']")
+
+    blocks = _extract_if_you_continue_blocks(page)
+    assert {block["term"] for block in blocks} == {"short_term", "long_term"}
+    for block in blocks:
+        assert block["consequence"]
+        assert block["explain"]
+        assert block["consequence"] != block["explain"]
+    visible = page.locator("[data-card='if-you-continue']").inner_text()
+    assert visible.count("Relief with residue.") == 1
+    assert visible.count("Compounded ethical debt.") == 1
+    visible_lower = visible.lower()
+    assert "what happens soon" in visible_lower
+    assert "what this means" in visible_lower
+    assert "what it can become" in visible_lower
+
+
+@pytest.mark.browser
+def test_hero_share_card_uses_llm_narrator_copy_once(page: Page, live_server_url: str) -> None:
+    narrator = _valid_narrator()
+    _route_api(page, payload=with_presentation_payload(_success_payload(), narrator=narrator))
+    page.goto(f"{live_server_url}/")
+    _submit(page, "Another synthetic dilemma for the analyzer stub path, long enough for schema.")
+    page.wait_for_selector("[data-card='share']")
+
+    share_line = str(narrator["share_line"])
+    reflective_question = str(narrator["krishna_lens"]["question"])
+    assert page.locator("[data-card='share'] [data-card-primary]").inner_text().strip() == share_line
+    assert page.locator("[data-card='share'] .share-question").inner_text().strip() == reflective_question
+    assert page.locator(".share-question", has_text=reflective_question).count() == 1
+    for forbidden in ("Dilemma context:", "Core reading:", "Gita analysis:"):
+        assert page.locator("body", has_text=forbidden).count() == 0
+
+
+@pytest.mark.browser
+def test_hero_share_copy_buttons_copy_expected_payloads(page: Page, live_server_url: str) -> None:
+    narrator = _valid_narrator()
+    _route_api(page, payload=with_presentation_payload(_success_payload(), narrator=narrator))
+    page.goto(f"{live_server_url}/")
+    page.evaluate("() => { window.__copiedPayloads = []; }")
+    _submit(page, "Another synthetic dilemma for the analyzer stub path, long enough for schema.")
+    page.wait_for_selector("[data-card='share']")
+
+    page.locator("[data-card='share'] [data-copy-action='share-line']").click()
+    page.wait_for_function("() => window.__copiedPayloads && window.__copiedPayloads.length === 1")
+    first_payload = page.evaluate("() => window.__copiedPayloads[0]")
+    assert str(narrator["share_line"]) in first_payload
+    assert str(narrator["krishna_lens"]["question"]) in first_payload
+
+    page.locator("[data-card='share'] [data-copy-action='full-insight']").click()
+    page.wait_for_function("() => window.__copiedPayloads && window.__copiedPayloads.length === 2")
+    second_payload = page.evaluate("() => window.__copiedPayloads[1]")
+    assert str(narrator["share_line"]) in second_payload
+    assert "Choose truthful action with disciplined intent." in second_payload
+    assert str(narrator["krishna_lens"]["question"]) in second_payload
+    assert page.locator(".share-question", has_text=str(narrator["krishna_lens"]["question"])).count() == 1
+    assert page.locator("[data-card='share'] .copy-state").inner_text() == "Copied"
 
 
 @pytest.mark.browser
@@ -288,12 +412,54 @@ def test_expandable_sections_open_on_click(page: Page, live_server_url: str) -> 
 
 
 @pytest.mark.browser
+def test_ethical_dimensions_all_visible_by_default(page: Page, live_server_url: str) -> None:
+    _route_api(page, payload=with_presentation_payload(_success_payload()))
+    page.goto(f"{live_server_url}/")
+    _submit(page, "Another synthetic dilemma for the analyzer stub path, long enough for schema.")
+    page.wait_for_selector("[data-card='ethical-dimensions']")
+    dimension_details = page.locator("[data-card='ethical-dimensions'] details.presentation-section")
+    assert dimension_details.count() == 8
+    for index in range(8):
+        assert dimension_details.nth(index).evaluate("el => el.open") is True
+    assert page.locator("[data-card='ethical-dimensions']", has_text="dharma_duty").count() == 1
+    assert page.locator("[data-card='ethical-dimensions']", has_text="viveka_discernment").count() == 1
+
+
+@pytest.mark.browser
+def test_verdict_and_higher_path_hide_raw_context_labels(page: Page, live_server_url: str) -> None:
+    _route_api(page, payload=with_presentation_payload(_success_payload()))
+    page.goto(f"{live_server_url}/")
+    _submit(page, "Another synthetic dilemma for the analyzer stub path, long enough for schema.")
+    page.wait_for_selector("[data-card='higher-path']")
+    cards = _extract_cards(page)
+    by_key = {str(card["card"]): card for card in cards}
+    text_blob = " ".join(
+        [
+            *[section["text"] for section in by_key["verdict"]["sections"]],
+            *[section["text"] for section in by_key["higher-path"]["sections"]],
+        ]
+    )
+    for forbidden in ("Dilemma context:", "Core reading:", "Gita analysis:"):
+        assert forbidden not in text_blob
+
+
+@pytest.mark.browser
 def test_mobile_viewport_has_no_horizontal_overflow(page: Page, live_server_url: str) -> None:
-    _route_api(page, payload=with_presentation_payload(_success_payload(verse=True, closest=False)))
+    narrator = _valid_narrator()
+    _route_api(page, payload=with_presentation_payload(_success_payload(verse=True, closest=False), narrator=narrator))
     page.set_viewport_size({"width": 390, "height": 844})
     page.goto(f"{live_server_url}/")
     _submit(page, "Another synthetic dilemma for the analyzer stub path, long enough for schema.")
     page.wait_for_selector("text=Gita Verse")
+
+    share_card = page.locator("[data-card='share']")
+    assert share_card.is_visible()
+    assert page.locator("[data-card='share'] [data-copy-action='share-line']").is_visible()
+    assert page.locator("[data-card='share'] [data-copy-action='full-insight']").is_visible()
+    assert page.locator(".share-question", has_text=str(narrator["krishna_lens"]["question"])).count() == 1
+    assert page.locator("[data-card='ethical-dimensions'] details.presentation-section").count() == 8
+    assert page.locator("[data-card='guidance'] .verse-sanskrit", has_text="कर्मण्येवाधिकारस्ते").is_visible()
+
     has_overflow = page.evaluate(
         "() => Math.max(document.documentElement.scrollWidth, document.body.scrollWidth) > document.documentElement.clientWidth + 2"
     )
@@ -311,19 +477,20 @@ def test_browser_smoke_capture_reads_full_card_and_section_text(page: Page, live
 
     assert by_key["verdict"]["primary_text"] == "Choose truthful action with disciplined intent."
     assert by_key["guidance"]["title"] == "Closest Gita Lens"
-    assert "Closest lens: Act from duty without clinging to outcomes." in by_key["guidance"]["primary_text"]
-    guidance_sections = {section["label"]: section["text"] for section in by_key["guidance"]["sections"]}
-    assert "Duty and truth should remain aligned." in guidance_sections["Explain simply"]
-    assert "not a direct verse verdict" in guidance_sections["Why this stays provisional"]
-    assert "Show Gita anchor" not in guidance_sections
-    combined = " ".join([by_key["guidance"]["primary_text"], *guidance_sections.values()]).lower()
+    assert "Paraphrased teaching, not a quoted verse" in by_key["guidance"]["primary_text"]
+    guidance_text = page.locator("[data-card='guidance']").inner_text()
+    assert "Duty and truth should remain aligned." in guidance_text
+    assert "not a direct verse verdict" in guidance_text
+    assert "Show Gita anchor" not in guidance_text
+    combined = guidance_text.lower()
     for forbidden in ("engine", "threshold", "fallback", "verse_match", "selected", "retrieval", "schema"):
         assert forbidden not in combined
     assert by_key["share"]["primary_text"]
     assert len(by_key["share"]["primary_text"]) <= 160
-    share_sections = {section["label"]: section["text"] for section in by_key["share"]["sections"]}
-    assert share_sections["Reflective question"].endswith("?")
-    assert " keeps I " not in share_sections["Reflective question"]
+    share_question = page.locator("[data-card='share'] .share-question").inner_text().strip()
+    assert share_question.endswith("?")
+    assert " keeps I " not in share_question
+    assert page.locator(".share-question", has_text=share_question).count() == 1
 
 
 @pytest.mark.browser
@@ -416,10 +583,11 @@ def test_guidance_and_higher_path_explain_simply_are_not_duplicates(page: Page, 
     cards = _extract_cards(page)
     by_key = {str(card["card"]): card for card in cards}
     guidance = by_key["guidance"]
-    g_sections = {section["label"]: section["text"] for section in guidance["sections"]}
-    assert g_sections["Explain simply"] != guidance["primary_text"]
-    assert "signals" not in g_sections["Explain simply"].lower()
-    assert "dominant ethical pull" not in g_sections["Explain simply"].lower()
+    guidance_text = page.locator("[data-card='guidance']").inner_text()
+    assert "strengthens you or weakens you" in guidance["primary_text"]
+    assert guidance["primary_text"] != "The verse points to self-mastery before impulse takes over."
+    assert "signals" not in guidance_text.lower()
+    assert "dominant ethical pull" not in guidance_text.lower()
     higher = by_key["higher-path"]
     h_sections = {section["label"]: section["text"] for section in higher["sections"]}
     assert h_sections["Explain simply"] != higher["primary_text"]

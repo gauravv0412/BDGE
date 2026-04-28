@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from copy import deepcopy
 
-from app.presentation import ResultPresentationViewModel, build_result_view_model
+from app.presentation import ResultPresentationViewModel, build_card_copy_overlay, build_result_view_model
 
 
 def _base_output() -> dict[str, object]:
@@ -135,6 +135,77 @@ def test_adapter_accepts_verse_match_response_and_builds_expected_cards() -> Non
     assert view_model.safety_card is None
 
 
+def test_verdict_and_higher_path_cards_do_not_expose_raw_context_labels() -> None:
+    vm = build_result_view_model(_envelope(_base_output()))
+    text_blob = " ".join(
+        [
+            *[section.text for section in vm.verdict_card.sections],
+            *[section.text for section in vm.higher_path_card.sections],
+        ]
+    )
+    for forbidden in ("Dilemma context:", "Core reading:", "Gita analysis:"):
+        assert forbidden not in text_blob
+    assert "Why this path applies" in _section_labels(vm.higher_path_card)
+    assert "What it is trying to protect" in _section_labels(vm.higher_path_card)
+
+
+def test_ethical_dimensions_are_open_by_default() -> None:
+    vm = build_result_view_model(_envelope(_base_output()))
+
+    assert len(vm.ethical_dimensions_card.sections) == 8
+    assert all(section.default_open for section in vm.ethical_dimensions_card.sections)
+
+
+def test_if_you_continue_overlay_has_non_duplicative_explanations() -> None:
+    output = _base_output()
+    presentation = build_result_view_model(_envelope(output)).model_dump(mode="json")
+
+    cards = build_card_copy_overlay(output=output, deterministic_presentation=presentation, narrator=None)
+    if_you_continue = cards["if_you_continue"]
+
+    assert if_you_continue["short_term"]["consequence"] == output["if_you_continue"]["short_term"]
+    assert if_you_continue["long_term"]["consequence"] == output["if_you_continue"]["long_term"]
+    assert if_you_continue["short_term"]["explain_simply"] != if_you_continue["short_term"]["consequence"]
+    assert if_you_continue["long_term"]["explain_simply"] != if_you_continue["long_term"]["consequence"]
+    assert "owner" in if_you_continue["why_this_applies"].lower() or "permission" in if_you_continue["why_this_applies"].lower()
+
+
+def test_if_you_continue_overlay_uses_valid_narrator_copy_without_repeating_consequence() -> None:
+    output = _base_output()
+    presentation = build_result_view_model(_envelope(output)).model_dump(mode="json")
+    narrator = {
+        "share_line": "Pressure is real; ownership still matters.",
+        "simple": {
+            "headline": "Return it cleanly.",
+            "explanation": "You may get immediate relief, but you start managing discomfort instead of solving the ethical problem.",
+            "next_step": "Return the wallet first.",
+        },
+        "krishna_lens": {
+            "question": "What action survives daylight?",
+            "teaching": "Method under pressure reveals alignment.",
+            "mirror": "Need can be real without becoming permission.",
+        },
+        "brutal_truth": {
+            "headline": "Quick relief, long residue.",
+            "punchline": "The shortcut can become easier to defend every time.",
+            "share_quote": "Need explains pressure, not ownership.",
+        },
+        "deep_view": {
+            "what_is_happening": "Urgency is narrowing judgment.",
+            "risk": "The risk is training need to override ownership.",
+            "higher_path": "Return it intact.",
+        },
+    }
+
+    cards = build_card_copy_overlay(output=output, deterministic_presentation=presentation, narrator=narrator)
+    if_you_continue = cards["if_you_continue"]
+
+    assert if_you_continue["short_term"]["explain_simply"] == narrator["simple"]["explanation"]
+    assert if_you_continue["long_term"]["explain_simply"] == narrator["deep_view"]["risk"]
+    assert if_you_continue["short_term"]["explain_simply"] != if_you_continue["short_term"]["consequence"]
+    assert if_you_continue["long_term"]["explain_simply"] != if_you_continue["long_term"]["consequence"]
+
+
 def test_adapter_accepts_closest_teaching_without_faking_direct_verse() -> None:
     output = _base_output()
 
@@ -190,13 +261,13 @@ def test_adapter_output_contains_expandable_sections_and_preserves_primary_text(
 
     assert view_model.verdict_card.primary_text == "Return what can be returned."
     assert "Explain simply" in _section_labels(view_model.verdict_card)
-    assert "Why this applies to your situation" in _section_labels(view_model.verdict_card)
+    assert "Why this verdict applies" in _section_labels(view_model.verdict_card)
     assert "Short-term: You may feel immediate relief." in view_model.if_you_continue_card.primary_text
     assert "Long-term: The act becomes easier to justify next time." in view_model.if_you_continue_card.primary_text
     assert "Adharmic assumed inner state" in _section_labels(view_model.counterfactuals_card)
     assert "Dharmic likely decision" in _section_labels(view_model.counterfactuals_card)
     assert _section_text(view_model.higher_path_card, "Explain simply") != view_model.higher_path_card.primary_text
-    assert view_model.share_card.title == "Share Layer"
+    assert view_model.share_card.title == "Shareable Insight"
     assert view_model.share_card.needs_copy_refinement is False
     assert len(view_model.share_card.primary_text) <= 160
     question = _section_text(view_model.share_card, "Reflective question")
@@ -210,7 +281,7 @@ def test_verdict_fallback_explain_simply_has_no_engine_wording() -> None:
     output["core_reading"] = ""
     vm = build_result_view_model(_envelope(output))
     explain = _section_text(vm.verdict_card, "Explain simply").lower()
-    assert "based on the available details" in explain
+    assert "ethical center" in explain or "direction check" in explain
     assert "engine" not in explain
     assert "classifies" not in explain
 

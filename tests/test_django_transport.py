@@ -14,6 +14,8 @@ import pytest
 from app.core.models import EngineAnalyzeErrorResponse, EngineAnalyzeResponse, WisdomizeEngineOutput
 from app.core.validator import validate_against_output_schema, validate_against_schema
 from app.engine.analyzer import build_engine_error_response
+from app.presentation.config import PresentationLLMConfig
+from app.presentation.provider import ProviderCallResult
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "tests.django_test_settings")
 django.setup()
@@ -109,6 +111,32 @@ def _sample_success_response() -> EngineAnalyzeResponse:
     )
 
 
+def _valid_provider_narrator() -> dict[str, object]:
+    return {
+        "share_line": "LLM share line: pressure is real, but method still matters.",
+        "simple": {
+            "headline": "Choose the clean correction.",
+            "explanation": "The narrator says the issue is not only outcome, but whether the method protects trust.",
+            "next_step": "Make the transparent correction first.",
+        },
+        "krishna_lens": {
+            "question": "Which correction stays clean after the pressure fades?",
+            "teaching": "Use duty as a method check, not a way to dramatize the verdict.",
+            "mirror": "A clean method protects clarity when fear is loud.",
+        },
+        "brutal_truth": {
+            "headline": "Convenience is not clarity.",
+            "punchline": "The shortcut can become the new habit.",
+            "share_quote": "Clean action survives pressure.",
+        },
+        "deep_view": {
+            "what_is_happening": "Fear is narrowing the visible options.",
+            "risk": "The risk is training convenience to override truth.",
+            "higher_path": "Correct the record transparently and keep the method accountable.",
+        },
+    }
+
+
 def test_django_analyze_success_snapshot_200(monkeypatch) -> None:
     monkeypatch.setattr("app.transport.django_api.handle_engine_request", lambda payload: _sample_success_response())
     client = Client()
@@ -166,6 +194,10 @@ def test_django_analyze_success_snapshot_200(monkeypatch) -> None:
 
 def test_django_analyze_presentation_success_adds_internal_view_model(monkeypatch) -> None:
     monkeypatch.setattr("app.transport.django_api.handle_engine_request", lambda payload: _sample_success_response())
+    monkeypatch.setattr(
+        "app.presentation.llm_narrator.load_presentation_llm_config",
+        lambda: PresentationLLMConfig(enabled=True, shadow=False, provider="none", repair_enabled=True),
+    )
     client = Client()
     response = client.post(
         "/api/v1/analyze/presentation",
@@ -182,10 +214,199 @@ def test_django_analyze_presentation_success_adds_internal_view_model(monkeypatc
     assert body["presentation"]["verdict_card"]["primary_text"] == body["output"]["verdict_sentence"]
     assert body["presentation"]["guidance_card"]["title"] == "Closest Gita Lens"
     assert body["presentation"]["share_card"]["needs_copy_refinement"] is False
+    assert body["presentation"]["cards"]["share"]["share_line"]
+    assert body["presentation"]["cards"]["share"]["reflective_question"].endswith("?")
+    assert body["presentation"]["cards"]["if_you_continue"]["short_term"]["explain_simply"]
+    assert (
+        body["presentation"]["cards"]["if_you_continue"]["short_term"]["explain_simply"]
+        != body["presentation"]["cards"]["if_you_continue"]["short_term"]["consequence"]
+    )
+    assert body["presentation"]["cards"]["if_you_continue"]["why_this_applies"]
+    assert "Dilemma context:" not in body["presentation"]["cards"]["verdict"]["why_this_applies"]
+    assert "narrator" in body["presentation"]
+    assert "narrator_meta" in body["presentation"]
+    assert set(body["presentation"]["narrator"].keys()) == {"share_line", "simple", "krishna_lens", "brutal_truth", "deep_view"}
+    assert body["presentation"]["narrator"]["share_line"]
+    assert body["presentation"]["narrator_meta"]["source"] in {"llm_initial", "llm_repair", "deterministic_fallback"}
+    assert body["presentation"]["narrator_meta"]["provider_called"] is False
 
     output_ok, output_errors = validate_against_output_schema(body["output"])
     assert output_ok, output_errors
     EngineAnalyzeResponse.model_validate({"meta": body["meta"], "output": body["output"]})
+
+
+def test_django_analyze_presentation_returns_accepted_llm_narrator_when_valid(monkeypatch) -> None:
+    monkeypatch.setattr("app.transport.django_api.handle_engine_request", lambda payload: _sample_success_response())
+    monkeypatch.setattr(
+        "app.presentation.llm_narrator.load_presentation_llm_config",
+        lambda: PresentationLLMConfig(
+            enabled=True,
+            shadow=False,
+            provider="anthropic",
+            repair_enabled=True,
+            base_url="https://provider.example.invalid",
+            api_key="placeholder-test-key",
+        ),
+    )
+    calls = {"n": 0}
+
+    def _provider(**kwargs):
+        calls["n"] += 1
+        return ProviderCallResult(ok=True, payload=_valid_provider_narrator())
+
+    monkeypatch.setattr("app.presentation.llm_narrator.call_presentation_provider", _provider)
+
+    response = Client().post(
+        "/api/v1/analyze/presentation",
+        data=json.dumps(_success_request_payload()),
+        content_type="application/json",
+    )
+
+    assert response.status_code == 200
+    body = response.json()
+    assert calls["n"] == 1
+    assert body["presentation"]["narrator_meta"]["final_source"] == "llm_initial"
+    assert body["presentation"]["narrator"]["share_line"] == _valid_provider_narrator()["share_line"]
+    assert body["presentation"]["cards"]["share"]["share_line"] == _valid_provider_narrator()["share_line"]
+    assert "narrator" not in body["output"]
+    assert "cards" not in body["output"]
+
+
+def test_django_analyze_presentation_invalid_llm_falls_back_cleanly(monkeypatch) -> None:
+    monkeypatch.setattr("app.transport.django_api.handle_engine_request", lambda payload: _sample_success_response())
+    monkeypatch.setattr(
+        "app.presentation.llm_narrator.load_presentation_llm_config",
+        lambda: PresentationLLMConfig(
+            enabled=True,
+            shadow=False,
+            provider="anthropic",
+            repair_enabled=True,
+            max_repair_attempts=1,
+            base_url="https://provider.example.invalid",
+            api_key="placeholder-test-key",
+        ),
+    )
+    calls = {"n": 0}
+
+    def _provider(**kwargs):
+        calls["n"] += 1
+        return ProviderCallResult(
+            ok=True,
+            payload={
+                "share_line": "This works today. It weakens you tomorrow.",
+                "simple": {"headline": "classification says this is fine", "explanation": "theme and scorer confirm", "next_step": "proceed"},
+                "krishna_lens": {"question": "q?", "teaching": "t", "mirror": "m"},
+                "brutal_truth": {"headline": "h", "punchline": "p", "share_quote": "s"},
+                "deep_view": {"what_is_happening": "w", "risk": "r", "higher_path": "h"},
+            },
+        )
+
+    monkeypatch.setattr("app.presentation.llm_narrator.call_presentation_provider", _provider)
+
+    response = Client().post(
+        "/api/v1/analyze/presentation",
+        data=json.dumps(_success_request_payload()),
+        content_type="application/json",
+    )
+
+    assert response.status_code == 200
+    body = response.json()
+    assert calls["n"] == 2
+    assert body["presentation"]["narrator_meta"]["final_source"] == "deterministic_fallback"
+    assert body["presentation"]["narrator_meta"]["fallback_returned"] is True
+    assert body["presentation"]["cards"]["share"]["share_line"]
+
+
+def test_django_analyze_presentation_provider_failure_falls_back_cleanly(monkeypatch) -> None:
+    monkeypatch.setattr("app.transport.django_api.handle_engine_request", lambda payload: _sample_success_response())
+    monkeypatch.setattr(
+        "app.presentation.llm_narrator.load_presentation_llm_config",
+        lambda: PresentationLLMConfig(
+            enabled=True,
+            shadow=False,
+            provider="anthropic",
+            repair_enabled=True,
+            base_url="https://provider.example.invalid",
+            api_key="placeholder-test-key",
+        ),
+    )
+    monkeypatch.setattr(
+        "app.presentation.llm_narrator.call_presentation_provider",
+        lambda **_: ProviderCallResult(ok=False, payload=None, error_code="timeout"),
+    )
+
+    response = Client().post(
+        "/api/v1/analyze/presentation",
+        data=json.dumps(_success_request_payload()),
+        content_type="application/json",
+    )
+
+    assert response.status_code == 200
+    body = response.json()
+    assert body["presentation"]["narrator_meta"]["final_source"] == "deterministic_fallback"
+    assert body["presentation"]["narrator_meta"]["fallback_returned"] is True
+    assert body["presentation"]["narrator_meta"]["provider_called"] is True
+    assert body["presentation"]["cards"]["share"]["reflective_question"].endswith("?")
+
+
+def test_django_analyze_presentation_crisis_bypasses_provider_when_enabled(monkeypatch) -> None:
+    crisis = _sample_success_response().model_dump(mode="json")
+    crisis["output"]["dilemma"] = "I feel everyone would be better without me and I may do anything harmful tonight."
+    crisis_response = EngineAnalyzeResponse.model_validate(crisis)
+    monkeypatch.setattr("app.transport.django_api.handle_engine_request", lambda payload: crisis_response)
+    monkeypatch.setattr(
+        "app.presentation.llm_narrator.load_presentation_llm_config",
+        lambda: PresentationLLMConfig(
+            enabled=True,
+            shadow=False,
+            provider="anthropic",
+            repair_enabled=True,
+            base_url="https://provider.example.invalid",
+            api_key="placeholder-test-key",
+        ),
+    )
+    calls = {"n": 0}
+
+    def _provider(**kwargs):
+        calls["n"] += 1
+        return ProviderCallResult(ok=True, payload=_valid_provider_narrator())
+
+    monkeypatch.setattr("app.presentation.llm_narrator.call_presentation_provider", _provider)
+
+    response = Client().post(
+        "/api/v1/analyze/presentation",
+        data=json.dumps(_success_request_payload()),
+        content_type="application/json",
+    )
+
+    assert response.status_code == 200
+    body = response.json()
+    assert calls["n"] == 0
+    assert body["presentation"]["presentation_mode"] == "crisis_safe"
+    assert body["presentation"]["narrator_meta"]["provider_called"] is False
+    crisis_values: list[str] = []
+    for block in body["presentation"]["narrator"].values():
+        if isinstance(block, dict):
+            crisis_values.extend(str(value) for value in block.values())
+        else:
+            crisis_values.append(str(block))
+    crisis_text = " ".join(crisis_values).lower()
+    assert "viral" not in crisis_text
+    assert "krishna" not in crisis_text
+
+
+def test_django_analyze_endpoint_remains_unchanged_without_presentation_field(monkeypatch) -> None:
+    monkeypatch.setattr("app.transport.django_api.handle_engine_request", lambda payload: _sample_success_response())
+    client = Client()
+    response = client.post(
+        "/api/v1/analyze",
+        data=json.dumps(_success_request_payload()),
+        content_type="application/json",
+    )
+    assert response.status_code == 200
+    body = response.json()
+    _assert_key_order(body, ["meta", "output"])
+    assert "presentation" not in body
 
 
 def test_django_analyze_invalid_request_snapshot_400() -> None:

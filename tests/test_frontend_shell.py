@@ -74,16 +74,28 @@ def test_frontend_shell_success_section_renderers_present() -> None:
         "Higher Path",
         "Ethical Dimensions",
         "Missing Facts",
-        "Share Layer",
+        "Shareable Insight",
     ]:
         assert f'"{section}"' in html
     assert "renderSuccess(payload, requestId)" in html
     assert '"hero-grid"' in html
     assert '"card share spotlight"' in html
     assert '"Share-ready"' in html
+    assert '"Copy share line"' in html
+    assert '"Copy full insight"' in html
+    assert "compactSharePayload" in html
+    assert "presentationCardCopy" in html
     assert "renderPresentationCard" in html
     assert "renderExpandableSection" in html
     assert "presentation-section" in html
+
+
+def test_frontend_shell_no_raw_context_labels_in_client_renderer() -> None:
+    html = _page_html()
+    assert "Dilemma context:" not in html
+    assert "Core reading:" not in html
+    assert "Gita analysis:" not in html
+    assert "Copy refinement note" not in html
 
 
 def test_frontend_shell_public_error_renderer_present() -> None:

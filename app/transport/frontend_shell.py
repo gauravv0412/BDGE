@@ -37,10 +37,15 @@ def shell_view(request: HttpRequest) -> HttpResponse:
     .error .code-chip {{ display: inline-block; background: #f3dede; color: #7f2626; border-radius: 999px; padding: 4px 10px; font-size: 12px; margin-bottom: 8px; }}
     .share {{ border-left: 5px solid #5b49d8; background: linear-gradient(155deg, #f6f2ff 0%, #fbf9ff 100%); }}
     .share.spotlight {{ border-left-width: 0; border: 1px solid #d9cffd; background: linear-gradient(145deg, #f1ebff 0%, #fcfaff 100%); box-shadow: 0 12px 26px rgba(91, 73, 216, 0.14); }}
+    .share.spotlight h3 {{ margin-bottom: 6px; }}
     .share-title {{ margin: 0; color: #3d2f90; font-size: 20px; letter-spacing: -0.01em; }}
     .share-tag {{ display: inline-block; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; background: #e6ddff; color: #4a3bb9; padding: 4px 8px; border-radius: 999px; margin-bottom: 8px; }}
     .share-quote {{ margin: 10px 0; padding: 12px 14px; background: rgba(255,255,255,0.72); border-left: 4px solid #6e59e0; border-radius: 10px; font-size: 19px; font-weight: 700; color: #241a55; }}
     .share-question {{ margin-top: 8px; color: #433784; font-weight: 600; }}
+    .share-actions {{ display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 12px; }}
+    .share-actions button {{ margin-top: 0; background: #5947c7; padding: 8px 11px; font-size: 13px; }}
+    .share-actions button.secondary {{ background: #ffffff; color: #4a3bb9; border: 1px solid #cfc4fb; }}
+    .copy-state {{ color: #3d2f90; font-size: 12px; font-weight: 700; min-height: 18px; }}
     textarea {{ width: 100%; min-height: 128px; border-radius: 10px; border: 1px solid #c7cfdf; padding: 12px; font-size: 14px; resize: vertical; }}
     textarea:focus {{ outline: 2px solid #8fb0ff; border-color: #7fa2f9; }}
     button {{ margin-top: 12px; background: #1d4ed8; color: #fff; border: none; border-radius: 10px; padding: 10px 16px; cursor: pointer; font-weight: 600; font-size: 14px; }}
@@ -57,12 +62,20 @@ def shell_view(request: HttpRequest) -> HttpResponse:
     .verse {{ background: linear-gradient(180deg, #fffdf7 0%, #fffcf2 100%); border-left: 5px solid #af8a2a; }}
     .verse .capture-note {{ display: inline-block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: #7b6438; background: #f4e9cb; padding: 4px 7px; border-radius: 999px; margin-bottom: 8px; }}
     .verse-ref {{ color: #7a5c1e; font-size: 13px; margin: 0 0 6px; letter-spacing: 0.04em; text-transform: uppercase; }}
-    .verse-sanskrit {{ font-size: 22px; color: #5a3e10; margin: 4px 0 2px; line-height: 1.4; }}
+    .verse-sanskrit {{ font-size: 22px; color: #5a3e10; margin: 4px 0 2px; line-height: 1.4; overflow-wrap: anywhere; }}
     .verse-iast {{ font-style: italic; color: #9a7640; font-size: 13px; margin: 0 0 10px; }}
     .verse-translations {{ background: rgba(255,255,255,0.65); border-radius: 8px; padding: 8px 12px; margin: 6px 0 10px; border: 1px solid rgba(175,138,42,0.15); }}
     .verse-translations p {{ margin: 4px 0; font-size: 14px; }}
     .verse-why {{ margin-top: 8px; }}
     .verse-confidence {{ color: #9a8250; font-size: 13px; margin-top: 6px; }}
+    .verse-source {{ color: #7b6438; font-size: 13px; margin-top: 8px; }}
+    .verse-block {{ padding: 12px 14px; background: rgba(255,255,255,0.76); border: 1px solid rgba(175,138,42,0.18); border-radius: 10px; margin: 8px 0 10px; }}
+    .consequence-grid {{ display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; }}
+    .consequence-card {{ background: #f8faff; border: 1px solid #e2e8f6; border-radius: 11px; padding: 12px 14px; }}
+    .consequence-label {{ display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: #5b6682; font-weight: 700; margin-bottom: 4px; }}
+    .consequence-text {{ margin: 0 0 10px; font-weight: 650; color: #1f2a44; }}
+    .consequence-explain {{ margin: 0; color: #3c4862; }}
+    .why-applies {{ margin-top: 12px; padding: 11px 13px; background: #fbfcff; border: 1px solid #e4ebf8; border-radius: 10px; }}
     .two-col {{ display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }}
     .subtle-panel {{ background: #f7f9fe; border: 1px solid #e5eaf7; border-radius: 10px; padding: 10px 12px; }}
     .reading-block {{ margin-top: 10px; padding: 12px; background: #f9fbff; border-radius: 10px; border: 1px solid #e4ebf8; }}
@@ -90,9 +103,49 @@ def shell_view(request: HttpRequest) -> HttpResponse:
     .global-foot {{ margin-top: 28px; padding: 16px 20px 28px; border-top: 1px solid #dde3f0; background: #eef2fb; color: #3d4a63; font-size: 13px; line-height: 1.55; max-width: 1040px; margin-left: auto; margin-right: auto; }}
     .global-foot strong {{ color: #243047; }}
     @media (max-width: 860px) {{
-      .summary-grid, .two-col, .row, .meta-grid, .hero-grid {{ grid-template-columns: 1fr; }}
+      .summary-grid, .two-col, .row, .meta-grid, .hero-grid, .consequence-grid {{ grid-template-columns: 1fr; }}
       .lead {{ font-size: 24px; }}
       .share-quote {{ font-size: 17px; }}
+    }}
+    @media (max-width: 520px) {{
+      body {{ background: #f6f8fd; }}
+      .container {{ padding: 18px 12px 30px; }}
+      h1 {{ font-size: 27px; }}
+      h2 {{ font-size: 20px; }}
+      h3 {{ font-size: 16px; margin-bottom: 8px; }}
+      .subtitle {{ font-size: 14px; margin-bottom: 12px; }}
+      .card {{ border-radius: 12px; padding: 14px 14px; margin: 10px 0; box-shadow: 0 5px 15px rgba(17, 28, 45, 0.05); }}
+      .stack {{ gap: 10px; }}
+      .hero-grid {{ gap: 10px; }}
+      .verdict {{ border-left-width: 4px; }}
+      .lead {{ font-size: 21px; line-height: 1.26; margin: 4px 0 12px; }}
+      .summary-grid {{ grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }}
+      .metric {{ padding: 7px 8px; border-radius: 9px; }}
+      .metric-label {{ font-size: 10px; line-height: 1.2; }}
+      .metric-value {{ font-size: 14px; }}
+      .presentation-section {{ margin-top: 8px; border-radius: 9px; }}
+      .presentation-section summary {{ padding: 8px 10px; font-size: 13px; }}
+      .presentation-section p {{ padding: 8px 10px 10px; font-size: 14px; }}
+      .share.spotlight {{ padding: 13px 14px; }}
+      .share-tag {{ font-size: 10px; padding: 3px 7px; margin-bottom: 5px; }}
+      .share-title {{ font-size: 17px; }}
+      .share-quote {{ margin: 8px 0; padding: 10px 11px; font-size: 16px; line-height: 1.35; border-left-width: 3px; }}
+      .share-question {{ margin: 7px 0 0; font-size: 14px; line-height: 1.35; }}
+      .share-actions {{ gap: 6px; margin-top: 10px; }}
+      .share-actions button {{ padding: 7px 9px; font-size: 12px; border-radius: 8px; }}
+      .copy-state {{ font-size: 11px; min-height: 16px; }}
+      .consequence-grid {{ gap: 8px; }}
+      .consequence-card, .why-applies, .subtle-panel, .reading-block {{ padding: 10px 11px; border-radius: 10px; }}
+      .consequence-label {{ font-size: 10px; }}
+      .consequence-text, .consequence-explain, .why-applies p {{ font-size: 14px; }}
+      .verse {{ border-left-width: 4px; }}
+      .verse-block {{ padding: 10px 11px; margin: 6px 0 8px; }}
+      .verse-sanskrit {{ font-size: 19px; line-height: 1.5; }}
+      .verse-iast, .verse-source, .verse-confidence {{ font-size: 12px; }}
+      .verse-translations {{ padding: 7px 10px; }}
+      .verse-translations p {{ font-size: 13px; }}
+      .dim {{ padding: 7px 9px; font-size: 13px; }}
+      .global-foot {{ margin-top: 18px; padding: 13px 14px 22px; font-size: 12px; }}
     }}
   </style>
 </head>
@@ -155,10 +208,65 @@ def shell_view(request: HttpRequest) -> HttpResponse:
         p.appendChild(document.createTextNode(text(value)));
         parent.appendChild(p);
       }}
+      function compactSharePayload(shareLine, shareQuestion) {{
+        const line = text(shareLine).trim();
+        const question = text(shareQuestion).trim();
+        if (question && (line + "\\n" + question).length <= 220) return line + "\\n" + question;
+        return line;
+      }}
+      function fullInsightPayload(shareLine, verdictSentence, shareQuestion) {{
+        return [text(shareLine).trim(), text(verdictSentence).trim(), text(shareQuestion).trim()]
+          .filter(Boolean)
+          .join("\\n");
+      }}
+      function copyTextToClipboard(value, stateNode) {{
+        const payload = text(value).trim();
+        if (!payload) return;
+        const done = function () {{
+          stateNode.textContent = "Copied";
+          window.setTimeout(function () {{ stateNode.textContent = ""; }}, 1400);
+        }};
+        if (Array.isArray(window.__copiedPayloads)) {{
+          window.__copiedPayloads.push(payload);
+          done();
+          return;
+        }}
+        if (navigator.clipboard && navigator.clipboard.writeText) {{
+          navigator.clipboard.writeText(payload).then(done).catch(function () {{
+            fallbackCopy(payload);
+            done();
+          }});
+        }} else {{
+          fallbackCopy(payload);
+          done();
+        }}
+      }}
+      function fallbackCopy(value) {{
+        const area = document.createElement("textarea");
+        area.value = value;
+        area.setAttribute("readonly", "readonly");
+        area.style.position = "fixed";
+        area.style.left = "-9999px";
+        document.body.appendChild(area);
+        area.select();
+        try {{ document.execCommand("copy"); }} catch (_err) {{}}
+        document.body.removeChild(area);
+      }}
       function sectionText(card, label) {{
         const sections = card && Array.isArray(card.sections) ? card.sections : [];
         const hit = sections.find((s) => text(s && s.label) === label);
         return text(hit && hit.text);
+      }}
+      function presentationCard(presentation, cardKey) {{
+        const cards = presentation && presentation.cards ? presentation.cards : {{}};
+        return cards && cards[cardKey] ? cards[cardKey] : {{}};
+      }}
+      function presentationCardCopy(presentation, cardKey, fieldName) {{
+        const card = presentationCard(presentation, cardKey);
+        return text(card && card[fieldName]);
+      }}
+      function overlaySection(label, sectionText, defaultOpen) {{
+        return {{ label: label, text: text(sectionText), default_open: Boolean(defaultOpen) }};
       }}
       function humanizeClosestTeaching(raw) {{
         const value = text(raw).trim();
@@ -188,26 +296,40 @@ def shell_view(request: HttpRequest) -> HttpResponse:
         if (requestId) appendPair(card, "Request ID", requestId);
         resultRoot.appendChild(card);
       }}
-      function renderVerse(output) {{
+      function renderGuidanceCard(output, presentation, crisis) {{
+        if (crisis) return renderPresentationCard(presentation.guidance_card, "", "guidance");
         const verse = output && output.verse_match;
         const closest = output && output.closest_teaching;
         const card = make("section", "card verse");
+        card.dataset.card = "guidance";
         if (verse) {{
           card.appendChild(make("div", "capture-note", "Scriptural guidance"));
-          card.appendChild(make("h3", "", "Verse Match"));
+          card.appendChild(make("h3", "", "Gita Verse"));
           card.appendChild(make("p", "verse-ref", text(verse.verse_ref)));
-          card.appendChild(make("p", "verse-sanskrit", text(verse.sanskrit_devanagari)));
-          card.appendChild(make("p", "verse-iast", text(verse.sanskrit_iast)));
+          const verseBlock = make("div", "verse-block");
+          if (text(verse.sanskrit_devanagari)) verseBlock.appendChild(make("p", "verse-sanskrit", text(verse.sanskrit_devanagari)));
+          if (text(verse.sanskrit_iast)) verseBlock.appendChild(make("p", "verse-iast", text(verse.sanskrit_iast)));
+          card.appendChild(verseBlock);
           const tr = make("div", "verse-translations");
           appendPair(tr, "Hindi", verse.hindi_translation);
           appendPair(tr, "English", verse.english_translation);
           card.appendChild(tr);
-          appendPair(card, "Why it applies", verse.why_it_applies);
+          if (text(verse.source)) card.appendChild(make("p", "verse-source", "Source: " + text(verse.source)));
+          const why = presentationCardCopy(presentation, "gita_lens", "teaching") || sectionText(presentation.guidance_card, "Explain simply") || text(verse.why_it_applies);
+          const whyPrimary = make("p", "verse-why", why);
+          whyPrimary.dataset.cardPrimary = "true";
+          card.appendChild(whyPrimary);
           card.appendChild(make("p", "verse-confidence", "Match confidence: " + text(verse.match_confidence)));
         }} else if (closest) {{
           card.appendChild(make("div", "capture-note", "Scriptural guidance"));
-          card.appendChild(make("h3", "", "Closest Teaching"));
-          card.appendChild(make("p", "", text(closest)));
+          card.appendChild(make("h3", "", "Closest Gita Lens"));
+          const primary = make("p", "presentation-primary", "Paraphrased teaching, not a quoted verse: " + text(closest));
+          primary.dataset.cardPrimary = "true";
+          card.appendChild(primary);
+          const why = presentationCardCopy(presentation, "gita_lens", "teaching") || sectionText(presentation.guidance_card, "Explain simply");
+          if (why) appendPair(card, "Why it applies", why);
+          const provisional = sectionText(presentation.guidance_card, "Why this stays provisional");
+          if (provisional) appendPair(card, "Why this stays provisional", provisional);
         }} else {{
           card.appendChild(make("h3", "", "Guidance"));
           card.appendChild(make("p", "", "No verse or closest teaching is currently available for this response."));
@@ -267,6 +389,41 @@ def shell_view(request: HttpRequest) -> HttpResponse:
         }});
         return node;
       }}
+      function withCardSections(card, sections) {{
+        return Object.assign({{}}, card || {{}}, {{ sections: sections.filter((section) => text(section && section.text)) }});
+      }}
+      function renderIfYouContinueCard(presentation) {{
+        const copy = presentationCard(presentation, "if_you_continue");
+        const card = make("section", "card");
+        card.dataset.card = "if-you-continue";
+        card.appendChild(make("h3", "", "If You Continue"));
+        const grid = make("div", "consequence-grid");
+        [
+          ["short_term", "What happens soon", "What this means"],
+          ["long_term", "What it can become", "What this means"]
+        ].forEach(([key, consequenceLabel, explainLabel]) => {{
+          const block = copy && copy[key] ? copy[key] : {{}};
+          const item = make("div", "consequence-card");
+          item.dataset.consequenceTerm = key;
+          item.appendChild(make("span", "consequence-label", consequenceLabel));
+          const consequence = make("p", "consequence-text", text(block.consequence));
+          consequence.dataset.consequence = "true";
+          item.appendChild(consequence);
+          item.appendChild(make("span", "consequence-label", explainLabel));
+          const explain = make("p", "consequence-explain", text(block.explain_simply));
+          explain.dataset.explainSimply = "true";
+          item.appendChild(explain);
+          grid.appendChild(item);
+        }});
+        card.appendChild(grid);
+        const why = text(copy && copy.why_this_applies);
+        if (why) {{
+          const whyBlock = make("div", "why-applies");
+          appendPair(whyBlock, "Why this applies", why);
+          card.appendChild(whyBlock);
+        }}
+        return card;
+      }}
       function buildClientPresentation(output, meta) {{
         const crisisText = [output.dilemma, output.verdict_sentence, output.core_reading, output.gita_analysis, output.higher_path].map(text).join(" ").toLowerCase();
         const hasSafety = ["self-harm", "self harm", "suicide", "kill myself", "end my life", "hurt myself", "harm myself", "better without me", "do anything harmful"].some((term) => crisisText.includes(term));
@@ -312,7 +469,7 @@ def shell_view(request: HttpRequest) -> HttpResponse:
               primary_text: "Dimension scores and detailed reasons are not shown in this safety-focused view.",
               sections: []
             }},
-            share_card: {{ title: "Share Layer", primary_text: "", sections: [], needs_copy_refinement: false }},
+            share_card: {{ title: "Shareable Insight", primary_text: "", sections: [], needs_copy_refinement: false }},
             safety_card: {{
               title: "Safety Note",
               primary_text: "This may need immediate human support, not only ethical reflection.",
@@ -352,8 +509,8 @@ def shell_view(request: HttpRequest) -> HttpResponse:
             title: "Verdict",
             primary_text: text(output.verdict_sentence),
             sections: [
-              {{ label: "Explain simply", text: text(output.core_reading), default_open: false }},
-              {{ label: "Why this applies to your situation", text: ["Dilemma context: " + text(output.dilemma), "Core reading: " + text(output.core_reading), "Gita analysis: " + text(output.gita_analysis)].join("\\n"), default_open: false }}
+              {{ label: "Explain simply", text: text(output.core_reading || "This verdict is a direction check based on motive, method, and likely harm."), default_open: false }},
+              {{ label: "Why this verdict applies", text: text(output.gita_analysis || "The next step should stay honest, proportionate, and clean under pressure."), default_open: false }}
             ]
           }},
           guidance_card: guidance,
@@ -383,24 +540,58 @@ def shell_view(request: HttpRequest) -> HttpResponse:
             primary_text: text(output.higher_path),
             sections: [
               {{ label: "Explain simply", text: text(output.higher_path), default_open: false }},
-              {{ label: "Why this applies here", text: text(output.core_reading), default_open: false }}
+              {{ label: "Why this path applies", text: text(output.gita_analysis || "This path keeps the next move accountable instead of letting pressure choose the method."), default_open: false }},
+              {{ label: "What it is trying to protect", text: text(output.core_reading || "Truth, non-harm, and a next step that can be defended later."), default_open: false }}
             ]
           }},
           ethical_dimensions_card: {{
             title: "Ethical Dimensions",
             primary_text: text(output.classification) + " (" + text(output.alignment_score) + ")",
             sections: Object.entries(output.ethical_dimensions || {{}}).map(([key, value]) => {{
-              return {{ label: key, text: "Score: " + text(value && value.score) + "\\nContext-specific reason: " + text(value && value.note), default_open: false }};
+              return {{ label: key, text: "Score: " + text(value && value.score) + "\\nContext-specific reason: " + text(value && value.note), default_open: true }};
             }})
           }},
           share_card: {{
-            title: text(share.anonymous_share_title || "Share Layer"),
+            title: "Shareable Insight",
             primary_text: text(share.card_quote),
             sections: [
-              {{ label: "Reflective question", text: text(share.reflective_question), default_open: false }},
-              {{ label: "Copy refinement note", text: "This card preserves V1 copy and is marked for V1.1 context-specific rewrite.", default_open: false }}
+              {{ label: "Reflective question", text: text(share.reflective_question), default_open: false }}
             ],
-            needs_copy_refinement: true
+            needs_copy_refinement: false
+          }},
+          cards: {{
+            verdict: {{
+              explain_simply: text(output.core_reading || "This verdict is a direction check based on motive, method, and likely harm."),
+              why_this_applies: text(output.gita_analysis || "The next step should stay honest, proportionate, and clean under pressure.")
+            }},
+            higher_path: {{
+              explain_simply: text(output.higher_path),
+              why_this_applies: text(output.gita_analysis || "This path keeps the next move accountable instead of letting pressure choose the method."),
+              what_it_is_trying_to_protect: text(output.core_reading || "Truth, non-harm, and a next step that can be defended later.")
+            }},
+            share: {{
+              share_line: text(share.card_quote),
+              reflective_question: text(share.reflective_question)
+            }},
+            if_you_continue: {{
+              short_term: {{
+                consequence: text(output.if_you_continue && output.if_you_continue.short_term),
+                explain_simply: "You may get quick relief, but the ethical tension remains active instead of resolved."
+              }},
+              long_term: {{
+                consequence: text(output.if_you_continue && output.if_you_continue.long_term),
+                explain_simply: "If this pattern repeats, the shortcut becomes easier to defend next time."
+              }},
+              why_this_applies: text(output.gita_analysis || "The consequences follow from whether the next step stays honest, proportionate, and clean.")
+            }},
+            inner_dynamics: {{
+              what_is_happening: text(output.core_reading),
+              risk: text(output.internal_driver && output.internal_driver.hidden_risk)
+            }},
+            gita_lens: {{
+              teaching: text(output.gita_analysis),
+              question: text(share.reflective_question)
+            }}
           }},
           safety_card: null,
           meta: {{ presentation_version: "client-fallback", public_schema_changed: false, contract_version: meta && meta.contract_version, presentation_mode: "standard" }}
@@ -413,6 +604,17 @@ def shell_view(request: HttpRequest) -> HttpResponse:
         const mode = (presentation && presentation.presentation_mode) || "standard";
         const crisis = mode === "crisis_safe";
         const tone = summaryTone(output.classification);
+        const verdictSections = withCardSections(presentation.verdict_card, [
+          overlaySection("Explain simply", presentationCardCopy(presentation, "verdict", "explain_simply") || sectionText(presentation.verdict_card, "Explain simply"), false),
+          overlaySection("Why this verdict applies", presentationCardCopy(presentation, "verdict", "why_this_applies") || sectionText(presentation.verdict_card, "Why this verdict applies") || sectionText(presentation.verdict_card, "Why this applies to your situation"), false)
+        ]);
+        const higherPathSections = withCardSections(presentation.higher_path_card, [
+          overlaySection("Explain simply", presentationCardCopy(presentation, "higher_path", "explain_simply") || sectionText(presentation.higher_path_card, "Explain simply"), false),
+          overlaySection("Why this path applies", presentationCardCopy(presentation, "higher_path", "why_this_applies") || sectionText(presentation.higher_path_card, "Why this path applies") || sectionText(presentation.higher_path_card, "Why this applies here"), false),
+          overlaySection("What it is trying to protect", presentationCardCopy(presentation, "higher_path", "what_it_is_trying_to_protect") || sectionText(presentation.higher_path_card, "What it is trying to protect"), false)
+        ]);
+        const shareLine = presentationCardCopy(presentation, "share", "share_line") || text(presentation.share_card && presentation.share_card.primary_text);
+        const shareQuestion = presentationCardCopy(presentation, "share", "reflective_question") || sectionText(presentation.share_card, "Reflective question");
         resultRoot.replaceChildren();
 
         if (presentation.safety_card) {{
@@ -447,21 +649,40 @@ def shell_view(request: HttpRequest) -> HttpResponse:
           summary.appendChild(m);
         }});
         verdict.appendChild(summary);
-        (presentation.verdict_card && Array.isArray(presentation.verdict_card.sections) ? presentation.verdict_card.sections : []).forEach((section) => {{
+        (verdictSections && Array.isArray(verdictSections.sections) ? verdictSections.sections : []).forEach((section) => {{
           if (text(section && section.text)) verdict.appendChild(renderExpandableSection(section));
         }});
         hero.appendChild(verdict);
 
         if (!crisis) {{
           const shareSpotlight = make("div", "card share spotlight");
-          shareSpotlight.dataset.card = "share-spotlight";
+          shareSpotlight.dataset.card = "share";
           if (presentation.share_card && presentation.share_card.needs_copy_refinement) shareSpotlight.dataset.needsCopyRefinement = "true";
           shareSpotlight.appendChild(make("div", "share-tag", "Share-ready"));
-          shareSpotlight.appendChild(make("h3", "share-title", text(presentation.share_card && presentation.share_card.title)));
-          const spotlightQuote = make("div", "share-quote", text(presentation.share_card && presentation.share_card.primary_text));
+          shareSpotlight.appendChild(make("h3", "share-title", "Shareable Insight"));
+          const spotlightQuote = make("div", "share-quote", shareLine);
           spotlightQuote.dataset.cardPrimary = "true";
           shareSpotlight.appendChild(spotlightQuote);
-          shareSpotlight.appendChild(make("p", "share-question", sectionText(presentation.share_card, "Reflective question")));
+          if (shareQuestion) shareSpotlight.appendChild(make("p", "share-question", shareQuestion));
+          const shareActions = make("div", "share-actions");
+          const copyShare = make("button", "", "Copy share line");
+          copyShare.type = "button";
+          copyShare.dataset.copyAction = "share-line";
+          const copyFull = make("button", "secondary", "Copy full insight");
+          copyFull.type = "button";
+          copyFull.dataset.copyAction = "full-insight";
+          const copyState = make("span", "copy-state", "");
+          copyState.setAttribute("aria-live", "polite");
+          copyShare.addEventListener("click", function () {{
+            copyTextToClipboard(compactSharePayload(shareLine, shareQuestion), copyState);
+          }});
+          copyFull.addEventListener("click", function () {{
+            copyTextToClipboard(fullInsightPayload(shareLine, output.verdict_sentence, shareQuestion), copyState);
+          }});
+          shareActions.appendChild(copyShare);
+          shareActions.appendChild(copyFull);
+          shareActions.appendChild(copyState);
+          shareSpotlight.appendChild(shareActions);
           hero.appendChild(shareSpotlight);
         }}
         resultRoot.appendChild(hero);
@@ -471,20 +692,20 @@ def shell_view(request: HttpRequest) -> HttpResponse:
           inner.appendChild(make("h3", "", "Inner Dynamics"));
           const two = make("div", "two-col");
           const p1 = make("div", "subtle-panel"); appendPair(p1, "Primary Driver", output.internal_driver && output.internal_driver.primary); two.appendChild(p1);
-          const p2 = make("div", "subtle-panel"); appendPair(p2, "Hidden Risk", output.internal_driver && output.internal_driver.hidden_risk); two.appendChild(p2);
+          const p2 = make("div", "subtle-panel"); appendPair(p2, "Hidden Risk", presentationCardCopy(presentation, "inner_dynamics", "risk") || (output.internal_driver && output.internal_driver.hidden_risk)); two.appendChild(p2);
           inner.appendChild(two);
           const reading = make("div", "reading-block");
-          appendPair(reading, "Core Reading", output.core_reading);
-          appendPair(reading, "Gita Analysis", output.gita_analysis);
+          appendPair(reading, "What is happening", presentationCardCopy(presentation, "inner_dynamics", "what_is_happening") || output.core_reading);
+          appendPair(reading, "Gita lens", presentationCardCopy(presentation, "gita_lens", "teaching") || output.gita_analysis);
           inner.appendChild(reading);
           resultRoot.appendChild(inner);
         }}
 
-        resultRoot.appendChild(renderPresentationCard(presentation.guidance_card, crisis ? "" : "verse", "guidance"));
-        resultRoot.appendChild(renderPresentationCard(presentation.if_you_continue_card, "", "if-you-continue"));
+        resultRoot.appendChild(renderGuidanceCard(output, presentation, crisis));
+        resultRoot.appendChild(crisis ? renderPresentationCard(presentation.if_you_continue_card, "", "if-you-continue") : renderIfYouContinueCard(presentation));
         resultRoot.appendChild(renderPresentationCard(presentation.counterfactuals_card, "", "counterfactuals"));
         if (!crisis) {{
-          resultRoot.appendChild(renderPresentationCard(presentation.higher_path_card, "", "higher-path"));
+          resultRoot.appendChild(renderPresentationCard(higherPathSections, "", "higher-path"));
         }}
         if (!crisis) {{
           resultRoot.appendChild(renderPresentationCard(presentation.ethical_dimensions_card, "", "ethical-dimensions"));
@@ -496,21 +717,6 @@ def shell_view(request: HttpRequest) -> HttpResponse:
         mf.appendChild(renderMissingFacts(output.missing_facts));
         resultRoot.appendChild(mf);
 
-        if (!crisis) {{
-          const share = make("section", "card share");
-          share.dataset.card = "share";
-          if (presentation.share_card && presentation.share_card.needs_copy_refinement) share.dataset.needsCopyRefinement = "true";
-          share.appendChild(make("h3", "", "Share Layer"));
-          appendPair(share, "Title", presentation.share_card && presentation.share_card.title);
-          const shareQuote = make("blockquote", "", text(presentation.share_card && presentation.share_card.primary_text));
-          shareQuote.dataset.cardPrimary = "true";
-          share.appendChild(shareQuote);
-          appendPair(share, "Reflective Question", sectionText(presentation.share_card, "Reflective question"));
-          (presentation.share_card && Array.isArray(presentation.share_card.sections) ? presentation.share_card.sections : []).forEach((section) => {{
-            if (section && section.label !== "Copy refinement note" && text(section.text)) share.appendChild(renderExpandableSection(section));
-          }});
-          resultRoot.appendChild(share);
-        }}
       }}
 
       form.addEventListener("submit", function (e) {{
