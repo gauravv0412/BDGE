@@ -15,7 +15,7 @@ django.setup()
 
 def _page_html() -> str:
     client = Client()
-    response = client.get("/")
+    response = client.get("/analyze/")
     assert response.status_code == 200
     return response.content.decode("utf-8")
 
@@ -100,16 +100,28 @@ def test_frontend_shell_no_raw_context_labels_in_client_renderer() -> None:
 
 def test_frontend_shell_public_error_renderer_present() -> None:
     html = _page_html()
-    assert "renderError(error, requestId)" in html
-    assert "\"Request Failed\"" in html
+    assert "function renderError()" in html
+    assert "\"Something went wrong\"" in html
+    assert "\"Something went wrong while reading this dilemma. Please try again.\"" in html
+    assert "retry.dataset.retryAction" in html
+
+
+def test_frontend_shell_public_error_hides_request_id_and_internals() -> None:
+    html = _page_html()
+    assert "response.headers.get(\"X-Request-ID\")" in html
+    assert "appendPair(card, \"Request ID\", requestId)" not in html
     assert "\"engine_execution_failed\"" in html
     assert "\"Internal engine failure.\"" in html
 
 
-def test_frontend_shell_request_id_display_on_error_present() -> None:
+def test_frontend_shell_loading_and_theme_controls_present() -> None:
     html = _page_html()
-    assert "response.headers.get(\"X-Request-ID\")" in html
-    assert "appendPair(card, \"Request ID\", requestId)" in html
+    assert 'id="loading" class="loading-card"' in html
+    assert "Reading this dilemma with care..." in html
+    assert "Separating pressure from facts" in html
+    assert "let isPending = false;" in html
+    assert 'id="theme-toggle"' in html
+    assert "localStorage.setItem(\"wisdomize-theme\"" in html
 
 
 def test_frontend_shell_verse_branch_behavior_present() -> None:

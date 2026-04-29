@@ -1,0 +1,38 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Wisdomize{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'web/web.css' %}">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav-shell" aria-label="Primary navigation">
+      <a class="brand" href="/">
+        <span class="brand-mark">W</span>
+        <span>Wisdomize</span>
+      </a>
+      <div class="nav-links">
+        <a href="/analyze/">Analyze</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/about/">About</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/contact/">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <strong>Wisdomize</strong> offers reflective guidance, not professional advice. In crisis or immediate danger,
+      contact local emergency services or a trusted person.
+    </div>
+  </footer>
+</body>
+</html>

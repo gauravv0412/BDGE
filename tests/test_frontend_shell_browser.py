@@ -142,7 +142,7 @@ def live_server_url() -> str:
     thread = threading.Thread(target=server.serve_forever, daemon=True)
     thread.start()
     try:
-        yield f"http://{host}:{port}"
+        yield f"http://{host}:{port}/analyze"
     finally:
         server.shutdown()
         thread.join(timeout=5)
@@ -182,6 +182,71 @@ def _submit(page: Page, dilemma: str) -> None:
     page.click("#submit-btn")
 
 
+def _site_root(live_server_url: str) -> str:
+    return live_server_url.rsplit("/analyze", 1)[0]
+
+
+def _install_pending_fetch(page: Page, payload: dict[str, object], *, ok: bool = True) -> None:
+    page.add_init_script(
+        f"""
+        (() => {{
+          const payload = {json.dumps(payload)};
+          const status = {200 if ok else 500};
+          window.__presentationFetchCalls = [];
+          window.__resolvePresentationFetch = null;
+          const originalFetch = window.fetch.bind(window);
+          window.fetch = (url, options) => {{
+            const urlText = String(url);
+            if (urlText.endsWith('/api/v1/analyze/presentation')) {{
+              window.__presentationFetchCalls.push({{ url: urlText, body: options && options.body }});
+              return new Promise((resolve) => {{
+                window.__resolvePresentationFetch = () => resolve(new Response(JSON.stringify(payload), {{
+                  status,
+                  headers: {{ 'Content-Type': 'application/json', 'X-Request-ID': 'req-hidden-from-ui' }}
+                }}));
+              }});
+            }}
+            if (urlText.endsWith('/api/v1/analyze')) {{
+              window.__presentationFetchCalls.push({{ url: urlText, body: options && options.body, wrongEndpoint: true }});
+              return Promise.resolve(new Response(JSON.stringify({{ error: {{ message: 'wrong endpoint' }} }}), {{ status: 418 }}));
+            }}
+            return originalFetch(url, options);
+          }};
+        }})();
+        """
+    )
+
+
+def _install_pending_feedback_fetch(page: Page, *, ok: bool = True) -> None:
+    page.add_init_script(
+        f"""
+        (() => {{
+          const status = {200 if ok else 500};
+          window.__feedbackFetchCalls = [];
+          window.__resolveFeedbackFetch = null;
+          const previousFetch = window.fetch.bind(window);
+          window.fetch = (url, options) => {{
+            const urlText = String(url);
+            if (urlText.endsWith('/api/v1/feedback')) {{
+              window.__feedbackFetchCalls.push({{ url: urlText, body: options && options.body }});
+              return new Promise((resolve) => {{
+                window.__resolveFeedbackFetch = () => resolve(new Response(JSON.stringify({{
+                  ok: {str(ok).lower()},
+                  feedback_id: 'fb-browser-1',
+                  error: {{ code: 'feedback_storage_failed', message: 'internal hidden failure' }}
+                }}), {{
+                  status,
+                  headers: {{ 'Content-Type': 'application/json', 'X-Request-ID': 'feedback-hidden-id' }}
+                }}));
+              }});
+            }}
+            return previousFetch(url, options);
+          }};
+        }})();
+        """
+    )
+
+
 def _extract_cards(page: Page) -> list[dict[str, object]]:
     return page.evaluate(
         """() => Array.from(document.querySelectorAll('[data-card]'))
@@ -209,8 +274,46 @@ def _extract_if_you_continue_blocks(page: Page) -> list[dict[str, str]]:
 
 
 @pytest.mark.browser
+def test_public_landing_page_loads_at_desktop_viewport(page: Page, live_server_url: str) -> None:
+    page.set_viewport_size({"width": 1280, "height": 900})
+    page.goto(f"{_site_root(live_server_url)}/")
+    page.wait_for_selector("text=Ethical clarity for real-life dilemmas")
+    assert page.locator("text=Analyze a dilemma").is_visible()
+
+
+@pytest.mark.browser
+def test_public_landing_page_mobile_has_no_horizontal_overflow(page: Page, live_server_url: str) -> None:
+    page.set_viewport_size({"width": 390, "height": 844})
+    page.goto(f"{_site_root(live_server_url)}/")
+    page.wait_for_selector("text=Ethical clarity for real-life dilemmas")
+    has_overflow = page.evaluate(
+        "() => Math.max(document.documentElement.scrollWidth, document.body.scrollWidth) > document.documentElement.clientWidth + 2"
+    )
+    assert has_overflow is False
+
+
+@pytest.mark.browser
+def test_public_landing_cta_opens_analyze_ui(page: Page, live_server_url: str) -> None:
+    page.goto(f"{_site_root(live_server_url)}/")
+    page.locator("a", has_text="Analyze a dilemma").first.click()
+    page.wait_for_url("**/analyze/")
+    page.wait_for_selector("#dilemma")
+    assert page.locator("text=Wisdomize Read-Only Shell").is_visible()
+
+
+@pytest.mark.browser
+def test_public_faq_page_is_reachable_from_nav(page: Page, live_server_url: str) -> None:
+    page.goto(f"{_site_root(live_server_url)}/")
+    page.locator("nav a", has_text="FAQ").click()
+    page.wait_for_url("**/faq/")
+    page.wait_for_selector("text=Why does it sometimes show")
+    assert page.locator("text=Crisis-safe mode").is_visible()
+
+
+@pytest.mark.browser
 def test_shell_page_loads_and_submits_via_client_request(page: Page, live_server_url: str) -> None:
     call_count = {"n": 0}
+    wrong_endpoint_count = {"n": 0}
 
     def _handler(route):
         call_count["n"] += 1
@@ -221,12 +324,54 @@ def test_shell_page_loads_and_submits_via_client_request(page: Page, live_server
         )
 
     page.route("**/api/v1/analyze/presentation", _handler)
+    page.route("**/api/v1/analyze", lambda route: (wrong_endpoint_count.__setitem__("n", wrong_endpoint_count["n"] + 1), route.abort()))
     page.goto(f"{live_server_url}/")
     _submit(page, "Another synthetic dilemma for the analyzer stub path, long enough for schema.")
     page.wait_for_selector("text=Analysis Result")
     assert call_count["n"] == 1
+    assert wrong_endpoint_count["n"] == 0
     assert page.locator("text=Verdict").count() > 0
     assert page.locator("text=Classification").count() > 0
+
+
+@pytest.mark.browser
+def test_loading_state_disables_button_and_blocks_duplicate_submit(page: Page, live_server_url: str) -> None:
+    _install_pending_fetch(page, with_presentation_payload(_success_payload()))
+    page.goto(f"{live_server_url}/")
+    page.fill("#dilemma", "Another synthetic dilemma for the analyzer stub path, long enough for schema.")
+    page.click("#submit-btn")
+
+    page.wait_for_selector("#loading")
+    assert page.locator("#submit-btn").is_disabled()
+    assert page.locator("#submit-btn").inner_text() == "Analyzing..."
+    assert page.locator("text=Reading this dilemma with care").is_visible()
+
+    page.evaluate("() => document.getElementById('analyze-form').requestSubmit()")
+    assert page.evaluate("() => window.__presentationFetchCalls.length") == 1
+
+    page.evaluate("() => window.__resolvePresentationFetch()")
+    page.wait_for_selector("text=Analysis Result")
+    loading_display = page.eval_on_selector("#loading", "el => getComputedStyle(el).display")
+    assert loading_display == "none"
+    assert not page.locator("#submit-btn").is_disabled()
+    assert page.locator("#submit-btn").inner_text() == "Analyze Dilemma"
+
+
+@pytest.mark.browser
+def test_theme_toggle_switches_and_persists_after_reload(page: Page, live_server_url: str) -> None:
+    page.goto(f"{live_server_url}/")
+    initial_theme = page.evaluate("() => document.documentElement.dataset.theme")
+    assert initial_theme in {"light", "dark"}
+
+    page.locator("#theme-toggle").click()
+    toggled_theme = page.evaluate("() => document.documentElement.dataset.theme")
+    assert toggled_theme in {"light", "dark"}
+    assert toggled_theme != initial_theme
+    assert page.evaluate("() => localStorage.getItem('wisdomize-theme')") == toggled_theme
+
+    page.reload()
+    page.wait_for_selector("#theme-toggle")
+    assert page.evaluate("() => document.documentElement.dataset.theme") == toggled_theme
 
 
 @pytest.mark.browser
@@ -249,6 +394,85 @@ def test_success_renders_major_sections(page: Page, live_server_url: str) -> Non
 
 
 @pytest.mark.browser
+def test_feedback_ui_hidden_before_result_and_visible_after_success(page: Page, live_server_url: str) -> None:
+    _route_api(page, payload=with_presentation_payload(_success_payload()))
+    page.goto(f"{live_server_url}/")
+    assert page.locator("[data-card='feedback']").count() == 0
+
+    _submit(page, "Another synthetic dilemma for the analyzer stub path, long enough for schema.")
+    page.wait_for_selector("[data-card='feedback']")
+    assert page.locator("[data-card='feedback']", has_text="Was this useful?").count() == 1
+
+
+@pytest.mark.browser
+def test_feedback_usefulness_submit_sends_safe_payload(page: Page, live_server_url: str) -> None:
+    captured: list[dict[str, object]] = []
+    raw_dilemma = "Another synthetic dilemma for the analyzer stub path, long enough for schema."
+
+    def _feedback_handler(route):
+        captured.append(json.loads(route.request.post_data or "{}"))
+        route.fulfill(status=200, headers={"Content-Type": "application/json"}, body=json.dumps({"ok": True, "feedback_id": "fb-1"}))
+
+    _route_api(page, payload=with_presentation_payload(_success_payload()))
+    page.route("**/api/v1/feedback", _feedback_handler)
+    page.goto(f"{live_server_url}/")
+    _submit(page, raw_dilemma)
+    page.wait_for_selector("[data-card='feedback']")
+
+    page.locator("[data-card='feedback'] [data-feedback-group='usefulness'][data-feedback-value='up']").click()
+    page.locator("[data-card='feedback'] [data-feedback-submit='true']").click()
+    page.wait_for_selector("text=Thanks — this helps improve Wisdomize.")
+
+    assert len(captured) == 1
+    body = captured[0]
+    assert body["result_id"] == "browser-1"
+    assert body["usefulness"] == "up"
+    assert body["route"] == "presentation"
+    assert body["guidance_type"] == "closest_teaching"
+    serialized = json.dumps(body)
+    assert raw_dilemma not in serialized
+    assert "output" not in body
+    assert "verdict_sentence" not in serialized
+
+
+@pytest.mark.browser
+def test_feedback_duplicate_submission_is_prevented(page: Page, live_server_url: str) -> None:
+    _install_pending_feedback_fetch(page)
+    _route_api(page, payload=with_presentation_payload(_success_payload()))
+    page.goto(f"{live_server_url}/")
+    _submit(page, "Another synthetic dilemma for the analyzer stub path, long enough for schema.")
+    page.wait_for_selector("[data-card='feedback']")
+
+    page.locator("[data-card='feedback'] [data-feedback-group='usefulness'][data-feedback-value='down']").click()
+    page.locator("[data-card='feedback'] [data-feedback-submit='true']").click()
+    page.wait_for_function("() => window.__feedbackFetchCalls && window.__feedbackFetchCalls.length === 1")
+    assert page.locator("[data-card='feedback'] [data-feedback-submit='true']").is_disabled()
+
+    page.evaluate("() => document.querySelector('[data-feedback-submit=\"true\"]').click()")
+    assert page.evaluate("() => window.__feedbackFetchCalls.length") == 1
+    page.evaluate("() => window.__resolveFeedbackFetch()")
+    page.wait_for_selector("text=Thanks — this helps improve Wisdomize.")
+
+
+@pytest.mark.browser
+def test_feedback_failure_shows_friendly_retryable_error(page: Page, live_server_url: str) -> None:
+    _install_pending_feedback_fetch(page, ok=False)
+    _route_api(page, payload=with_presentation_payload(_success_payload()))
+    page.goto(f"{live_server_url}/")
+    _submit(page, "Another synthetic dilemma for the analyzer stub path, long enough for schema.")
+    page.wait_for_selector("[data-card='feedback']")
+
+    page.locator("[data-card='feedback'] [data-feedback-group='usefulness'][data-feedback-value='up']").click()
+    page.locator("[data-card='feedback'] [data-feedback-submit='true']").click()
+    page.evaluate("() => window.__resolveFeedbackFetch()")
+    page.wait_for_selector("text=Feedback could not be saved. Please try again.")
+
+    assert page.locator("[data-card='feedback'] [data-feedback-submit='true']").inner_text() == "Try again"
+    assert page.locator("text=internal hidden failure").count() == 0
+    assert page.locator("text=feedback-hidden-id").count() == 0
+
+
+@pytest.mark.browser
 def test_verse_match_branch_renders(page: Page, live_server_url: str) -> None:
     _route_api(page, payload=with_presentation_payload(_success_payload(verse=True, closest=False)))
     page.goto(f"{live_server_url}/")
@@ -259,6 +483,7 @@ def test_verse_match_branch_renders(page: Page, live_server_url: str) -> None:
     page.wait_for_selector("text=Source: Gita")
     page.wait_for_selector("text=Thy right is to work only.")
     assert page.locator("text=Closest Teaching").count() == 0
+    assert page.locator("[data-card='feedback']", has_text="Verse relevance").count() == 1
 
 
 @pytest.mark.browser
@@ -272,6 +497,7 @@ def test_closest_teaching_branch_renders(page: Page, live_server_url: str) -> No
     assert page.locator("summary", has_text="Show Gita anchor").count() == 0
     assert page.locator("text=कर्मण्येवाधिकारस्ते").count() == 0
     assert page.locator("text=Paraphrased teaching, not a quoted verse").count() > 0
+    assert page.locator("[data-card='feedback']", has_text="Teaching relevance").count() == 1
 
 
 @pytest.mark.browser
@@ -284,7 +510,7 @@ def test_null_null_guidance_fallback_renders(page: Page, live_server_url: str) -
 
 
 @pytest.mark.browser
-def test_public_error_and_request_id_render_and_loading_clears(page: Page, live_server_url: str) -> None:
+def test_public_error_is_friendly_retryable_and_loading_clears(page: Page, live_server_url: str) -> None:
     _route_api(
         page,
         payload={
@@ -300,12 +526,38 @@ def test_public_error_and_request_id_render_and_loading_clears(page: Page, live_
     )
     page.goto(f"{live_server_url}/")
     _submit(page, "Another synthetic dilemma for the analyzer stub path, long enough for schema.")
-    page.wait_for_selector("text=Request Failed")
-    page.wait_for_selector("text=Internal engine failure.")
-    page.wait_for_selector("text=Request ID: req-error-browser-1")
+    page.wait_for_selector("text=Something went wrong")
+    page.wait_for_selector("text=Something went wrong while reading this dilemma. Please try again.")
+    assert page.locator("[data-retry-action='true']").is_visible()
     assert page.locator("text=this must never be shown").count() == 0
+    assert page.locator("text=Internal engine failure.").count() == 0
+    assert page.locator("text=req-error-browser-1").count() == 0
     loading_display = page.eval_on_selector("#loading", "el => getComputedStyle(el).display")
     assert loading_display == "none"
+
+
+@pytest.mark.browser
+def test_failed_request_loading_appears_then_disappears(page: Page, live_server_url: str) -> None:
+    _install_pending_fetch(
+        page,
+        {
+            "meta": {"contract_version": "1.0", "engine_version": "2.1", "semantic_mode_default": "stub_default"},
+            "error": {"code": "engine_execution_failed", "message": "Provider timeout", "debug": "hidden"},
+        },
+        ok=False,
+    )
+    page.goto(f"{live_server_url}/")
+    page.fill("#dilemma", "Another synthetic dilemma for the analyzer stub path, long enough for schema.")
+    page.click("#submit-btn")
+    page.wait_for_selector("#loading")
+    assert page.locator("#loading").is_visible()
+
+    page.evaluate("() => window.__resolvePresentationFetch()")
+    page.wait_for_selector("text=Something went wrong while reading this dilemma. Please try again.")
+    loading_display = page.eval_on_selector("#loading", "el => getComputedStyle(el).display")
+    assert loading_display == "none"
+    assert page.locator("text=Provider timeout").count() == 0
+    assert page.locator("text=hidden").count() == 0
 
 
 @pytest.mark.browser
@@ -458,6 +710,7 @@ def test_mobile_viewport_has_no_horizontal_overflow(page: Page, live_server_url:
     assert page.locator("[data-card='share'] [data-copy-action='full-insight']").is_visible()
     assert page.locator(".share-question", has_text=str(narrator["krishna_lens"]["question"])).count() == 1
     assert page.locator("[data-card='ethical-dimensions'] details.presentation-section").count() == 8
+    assert page.locator("[data-card='ethical-dimensions'] details.presentation-section").first.evaluate("el => el.open") is False
     assert page.locator("[data-card='guidance'] .verse-sanskrit", has_text="कर्मण्येवाधिकारस्ते").is_visible()
 
     has_overflow = page.evaluate(

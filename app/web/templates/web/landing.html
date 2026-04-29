@@ -1,0 +1,74 @@
+{% extends "web/base.html" %}
+
+{% block title %}Wisdomize - Ethical clarity for real-life dilemmas{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow">Inspired by the Bhagavad Gita</p>
+    <h1>Ethical clarity for real-life dilemmas.</h1>
+    <p class="hero-text">
+      Wisdomize reads a hard choice through duty, truth, harm, intent, and restraint. It gives you a verdict,
+      the inner driver, a higher path, likely consequences, and a relevant Gita verse or teaching when appropriate.
+    </p>
+    <div class="hero-actions">
+      <a class="button primary" href="/analyze/">Analyze a dilemma</a>
+      <a class="button secondary" href="/faq/">Read the FAQ</a>
+    </div>
+  </div>
+  <aside class="preview-card" aria-label="Sample output preview">
+    <span class="preview-label">Sample output preview</span>
+    <h2>Mixed, but correctable.</h2>
+    <p>The pressure is real, but the method still matters.</p>
+    <div class="preview-grid">
+      <span>Verdict</span><strong>Direction check</strong>
+      <span>Inner driver</span><strong>Fear under pressure</strong>
+      <span>Higher path</span><strong>Correct transparently</strong>
+    </div>
+  </aside>
+</section>
+
+<section class="section">
+  <p class="eyebrow">How it works</p>
+  <div class="three-grid">
+    <article class="info-card">
+      <h2>1. Describe the dilemma</h2>
+      <p>Write the real tension without needing to make it sound spiritual or polished.</p>
+    </article>
+    <article class="info-card">
+      <h2>2. See the ethical reading</h2>
+      <p>Wisdomize weighs duty, truth, non-harm, detachment, intent, restraint, welfare, and discernment.</p>
+    </article>
+    <article class="info-card">
+      <h2>3. Choose with more clarity</h2>
+      <p>The result is built for reflection, not blind obedience or moral performance.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section split">
+  <div>
+    <p class="eyebrow">Trust and safety</p>
+    <h2>Not a guru. Not a shortcut around judgment.</h2>
+    <p>
+      Wisdomize offers a structured lens inspired by the Bhagavad Gita. It is not religious authority,
+      therapy, legal advice, medical advice, or a replacement for qualified human support.
+    </p>
+  </div>
+  <div class="note-card">
+    <h3>When scripture fits, it appears.</h3>
+    <p>
+      A verse is shown only when retrieval clears the match threshold. Otherwise, Wisdomize uses a closest
+      teaching as a paraphrased lens, not a quoted verse.
+    </p>
+  </div>
+</section>
+
+<section class="section faq-teaser">
+  <div>
+    <p class="eyebrow">Questions before trying it?</p>
+    <h2>Read how Wisdomize handles privacy, crisis-safe mode, and verse matching.</h2>
+  </div>
+  <a class="button secondary" href="/faq/">Open FAQ</a>
+</section>
+{% endblock %}

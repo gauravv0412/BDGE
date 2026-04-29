@@ -17,6 +17,7 @@ from django.views.decorators.http import require_POST
 from app.core.models import EngineAnalyzeErrorResponse
 from app.engine.analyzer import build_engine_error_response, handle_engine_request
 from app.engine.public_errors import PUBLIC_ERROR_CODES, PUBLIC_ERROR_HTTP_STATUS
+from app.feedback import FeedbackValidationError, append_feedback_record, validate_feedback_payload
 from app.presentation import build_card_copy_overlay, build_presentation_narrator, build_result_view_model
 
 _SUPPORTED_CONTRACT_VERSIONS = {"1.0"}
@@ -171,6 +172,48 @@ def analyze_presentation_view(request: HttpRequest) -> JsonResponse:
         outcome=outcome,
     )
     return response
+
+
+@require_POST
+def feedback_view(request: HttpRequest) -> JsonResponse:
+    """POST /api/v1/feedback with a small, safe, allowlisted payload."""
+    request_id = _extract_or_generate_request_id(request)
+    try:
+        raw_payload = request.body.decode("utf-8") if request.body else "{}"
+        payload = json.loads(raw_payload)
+        validated = validate_feedback_payload(payload)
+        record = append_feedback_record(validated)
+    except (FeedbackValidationError, json.JSONDecodeError, UnicodeDecodeError):
+        return _json_response(
+            {
+                "ok": False,
+                "error": {
+                    "code": "feedback_validation_failed",
+                    "message": "Feedback could not be saved. Please check the fields and try again.",
+                },
+            },
+            status=int(HTTPStatus.BAD_REQUEST),
+            request_id=request_id,
+        )
+    except Exception as exc:  # noqa: BLE001
+        _emit_error_log(request_id=request_id, request=request, contract_version=None, exc=exc)
+        return _json_response(
+            {
+                "ok": False,
+                "error": {
+                    "code": "feedback_storage_failed",
+                    "message": "Feedback could not be saved right now. Please try again.",
+                },
+            },
+            status=int(HTTPStatus.INTERNAL_SERVER_ERROR),
+            request_id=request_id,
+        )
+
+    return _json_response(
+        {"ok": True, "feedback_id": record["feedback_id"]},
+        status=int(HTTPStatus.OK),
+        request_id=request_id,
+    )
 
 
 def _validate_contract_version(payload: dict[str, object]) -> EngineAnalyzeErrorResponse | None:

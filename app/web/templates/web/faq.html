@@ -1,0 +1,46 @@
+{% extends "web/base.html" %}
+
+{% block title %}FAQ - Wisdomize{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <p class="eyebrow">FAQ</p>
+  <h1>Clear answers before you use Wisdomize.</h1>
+  <p>Short, practical notes on what the product does, what it does not do, and how it handles safety.</p>
+</section>
+
+<section class="faq-list">
+  <article class="faq-item">
+    <h2>What is Wisdomize?</h2>
+    <p>Wisdomize is an ethical decision engine for real-life dilemmas. It gives a verdict, inner driver, higher path, consequences, and a Gita verse or teaching when appropriate.</p>
+  </article>
+  <article class="faq-item">
+    <h2>Is this religious advice?</h2>
+    <p>No. It is a reflective lens inspired by the Bhagavad Gita, not a claim of spiritual authority or a command about what you must do.</p>
+  </article>
+  <article class="faq-item">
+    <h2>Does it replace therapy, legal, or medical advice?</h2>
+    <p>No. Wisdomize is not a substitute for qualified professional help, especially for legal, medical, clinical, financial, or emergency situations.</p>
+  </article>
+  <article class="faq-item">
+    <h2>Does it always quote the Bhagavad Gita?</h2>
+    <p>No. A verse appears only when retrieval clears the match threshold. Wisdomize should not force scripture onto a dilemma when the match is weak.</p>
+  </article>
+  <article class="faq-item">
+    <h2>Why does it sometimes show “closest teaching” instead of a verse?</h2>
+    <p>Closest teaching is a paraphrased ethical lens, not scripture. It appears when no verse match is strong enough for a direct quote.</p>
+  </article>
+  <article class="faq-item">
+    <h2>Are my dilemmas stored?</h2>
+    <p>Raw dilemma logging is not enabled by default. The public feedback layer does not store raw dilemma text or the full engine response.</p>
+  </article>
+  <article class="faq-item">
+    <h2>How is feedback used?</h2>
+    <p>Feedback stores small allowlisted signals like usefulness, verse or teaching relevance, tags, theme, and an optional short comment. It does not store provider prompts, LLM responses, raw dilemmas, or full output JSON.</p>
+  </article>
+  <article class="faq-item">
+    <h2>What happens in crisis or self-harm situations?</h2>
+    <p>Crisis-safe mode focuses on immediate safety and human support. It bypasses spiritual, viral, and share-oriented framing so the response does not turn a crisis into content.</p>
+  </article>
+</section>
+{% endblock %}
