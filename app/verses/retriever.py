@@ -6,6 +6,7 @@ import re
 from typing import TypedDict
 
 from app.core.models import EthicalDimensions, VerseMatch
+from app.config.runtime_config import get_verse_match_score_threshold
 from app.verses.catalog import VerseCatalog
 from app.verses.fallback import build_closest_teaching
 from app.verses.loader import load_curated_verses
@@ -20,7 +21,6 @@ class VerseResult(TypedDict):
     closest_teaching: str | None
 
 
-_MATCH_THRESHOLD = 6
 _SEVERE_BLOCKERS = {
     "active-harm",
     "imminent-violence",
@@ -400,9 +400,13 @@ def _build_context(
 
 
 def _score_to_confidence(score: int) -> float:
-    """Map eligible score (>=6) into [0.6, 1.0]."""
-    bounded = max(_MATCH_THRESHOLD, min(score, 14))
-    return round(0.6 + ((bounded - _MATCH_THRESHOLD) / (14 - _MATCH_THRESHOLD)) * 0.4, 2)
+    """Map eligible score (>= threshold) into [0.6, 1.0]."""
+    thr = get_verse_match_score_threshold()
+    upper = 14
+    if thr >= upper:
+        return 0.6
+    bounded = max(thr, min(score, upper))
+    return round(0.6 + ((bounded - thr) / (upper - thr)) * 0.4, 2)
 
 
 def _build_why_basis(best: VerseScoreResult, core_teaching: str) -> str:
@@ -449,7 +453,8 @@ def retrieve_verse(
         return VerseResult(verse_match=None, closest_teaching=fallback.closest_teaching)
 
     best = ranked[0]
-    if best.rejected or best.total_score < _MATCH_THRESHOLD:
+    threshold = get_verse_match_score_threshold()
+    if best.rejected or best.total_score < threshold:
         fallback = build_closest_teaching(context)
         return VerseResult(verse_match=None, closest_teaching=fallback.closest_teaching)
 

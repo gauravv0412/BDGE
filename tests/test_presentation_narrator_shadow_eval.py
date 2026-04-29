@@ -122,7 +122,7 @@ def test_no_prompt_or_key_leakage_in_artifacts(tmp_path: Path, monkeypatch) -> N
     assert "super-secret-key" not in blob
     assert "engine_output" not in blob
     assert "rejected_narrator_output" not in blob
-    assert "simple.headline" in blob
+    assert "Accepted LLM Preview Snippets" in blob
 
 
 def test_provider_unavailable_fails_cleanly_without_mock(tmp_path: Path, monkeypatch) -> None:

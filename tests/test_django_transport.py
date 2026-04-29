@@ -8,11 +8,13 @@ import os
 import re
 
 import django
+from django.contrib.auth.models import User
 from django.test import Client
 import pytest
 
 from app.core.models import EngineAnalyzeErrorResponse, EngineAnalyzeResponse, WisdomizeEngineOutput
 from app.core.validator import validate_against_output_schema, validate_against_schema
+from app.accounts.services import ensure_profile
 from app.engine.analyzer import build_engine_error_response
 from app.presentation.config import PresentationLLMConfig
 from app.presentation.provider import ProviderCallResult
@@ -111,6 +113,14 @@ def _sample_success_response() -> EngineAnalyzeResponse:
     )
 
 
+def _authenticated_client(username: str = "transport-user") -> Client:
+    user = User.objects.create_user(username=username, password="test-pass-12345")
+    ensure_profile(user, verified=True, provider="password")
+    client = Client()
+    assert client.login(username=username, password="test-pass-12345")
+    return client
+
+
 def _valid_provider_narrator() -> dict[str, object]:
     return {
         "share_line": "LLM share line: pressure is real, but method still matters.",
@@ -139,7 +149,7 @@ def _valid_provider_narrator() -> dict[str, object]:
 
 def test_django_analyze_success_snapshot_200(monkeypatch) -> None:
     monkeypatch.setattr("app.transport.django_api.handle_engine_request", lambda payload: _sample_success_response())
-    client = Client()
+    client = _authenticated_client()
     response = client.post(
         "/api/v1/analyze",
         data=json.dumps(_success_request_payload()),
@@ -198,7 +208,7 @@ def test_django_analyze_presentation_success_adds_internal_view_model(monkeypatc
         "app.presentation.llm_narrator.load_presentation_llm_config",
         lambda: PresentationLLMConfig(enabled=True, shadow=False, provider="none", repair_enabled=True),
     )
-    client = Client()
+    client = _authenticated_client("presentation-view-user")
     response = client.post(
         "/api/v1/analyze/presentation",
         data=json.dumps(_success_request_payload()),
@@ -235,6 +245,18 @@ def test_django_analyze_presentation_success_adds_internal_view_model(monkeypatc
     EngineAnalyzeResponse.model_validate({"meta": body["meta"], "output": body["output"]})
 
 
+def test_django_analyze_presentation_rejects_anonymous_requests() -> None:
+    response = Client().post(
+        "/api/v1/analyze/presentation",
+        data=json.dumps(_success_request_payload()),
+        content_type="application/json",
+    )
+
+    assert response.status_code == 401
+    assert response.json()["error"]["code"] == "authentication_required"
+    assert response["X-Request-ID"]
+
+
 def test_django_analyze_presentation_returns_accepted_llm_narrator_when_valid(monkeypatch) -> None:
     monkeypatch.setattr("app.transport.django_api.handle_engine_request", lambda payload: _sample_success_response())
     monkeypatch.setattr(
@@ -256,7 +278,7 @@ def test_django_analyze_presentation_returns_accepted_llm_narrator_when_valid(mo
 
     monkeypatch.setattr("app.presentation.llm_narrator.call_presentation_provider", _provider)
 
-    response = Client().post(
+    response = _authenticated_client("llm-user").post(
         "/api/v1/analyze/presentation",
         data=json.dumps(_success_request_payload()),
         content_type="application/json",
@@ -303,7 +325,7 @@ def test_django_analyze_presentation_invalid_llm_falls_back_cleanly(monkeypatch)
 
     monkeypatch.setattr("app.presentation.llm_narrator.call_presentation_provider", _provider)
 
-    response = Client().post(
+    response = _authenticated_client("fallback-user").post(
         "/api/v1/analyze/presentation",
         data=json.dumps(_success_request_payload()),
         content_type="application/json",
@@ -335,7 +357,7 @@ def test_django_analyze_presentation_provider_failure_falls_back_cleanly(monkeyp
         lambda **_: ProviderCallResult(ok=False, payload=None, error_code="timeout"),
     )
 
-    response = Client().post(
+    response = _authenticated_client("provider-failure-user").post(
         "/api/v1/analyze/presentation",
         data=json.dumps(_success_request_payload()),
         content_type="application/json",
@@ -373,7 +395,7 @@ def test_django_analyze_presentation_crisis_bypasses_provider_when_enabled(monke
 
     monkeypatch.setattr("app.presentation.llm_narrator.call_presentation_provider", _provider)
 
-    response = Client().post(
+    response = _authenticated_client("crisis-user").post(
         "/api/v1/analyze/presentation",
         data=json.dumps(_success_request_payload()),
         content_type="application/json",

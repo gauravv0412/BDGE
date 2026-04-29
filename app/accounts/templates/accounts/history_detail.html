@@ -1,0 +1,45 @@
+{% extends "web/base.html" %}
+
+{% block title %}Analysis detail · Wisdomize{% endblock %}
+
+{% block content %}
+<section class="page-hero narrow">
+  <p class="eyebrow"><a href="{% url 'dashboard:index' %}">Dashboard</a></p>
+  <h1>{{ detail_title }}</h1>
+  <p>Analyzed {{ record.created_at|date:"M j, Y · g:i A" }}</p>
+  <div class="hero-actions">
+    <a class="button secondary" href="{% url 'dashboard:index' %}">← Back to history</a>
+    <a class="button primary" href="/analyze/">Analyze another dilemma</a>
+  </div>
+</section>
+
+<section class="section narrow">
+  <article class="history-detail-panel">
+    <div class="history-detail-badges">
+      <span class="history-badge">{{ record.classification }}</span>
+      <span class="history-badge">Alignment {{ record.alignment_score }}</span>
+      {% if record.has_verse_match and record.verse_ref %}
+        <span class="history-badge">Gita {{ record.verse_ref }}</span>
+      {% else %}
+        <span class="history-badge">Closest teaching</span>
+      {% endif %}
+    </div>
+    <h2 class="history-detail-verdict">{{ record.verdict_sentence }}</h2>
+    <div class="history-detail-block">
+      <h3>Your dilemma</h3>
+      <p class="history-detail-dilemma">{{ record.dilemma_text }}</p>
+    </div>
+    {% if record.share_card_quote %}
+      <div class="history-detail-block subtle">
+        <h3>Share line</h3>
+        <p>{{ record.share_card_quote }}</p>
+      </div>
+    {% endif %}
+  </article>
+
+  <form method="post" action="{% url 'dashboard:history-delete' record.pk %}" class="history-detail-actions" onsubmit="return confirm('Remove this analysis from your history?');">
+    {% csrf_token %}
+    <button type="submit" class="button danger-quiet">Remove from history</button>
+  </form>
+</section>
+{% endblock %}

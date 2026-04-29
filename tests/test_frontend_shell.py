@@ -7,7 +7,11 @@ import re
 from pathlib import Path
 
 import django
+from django.contrib.auth.models import User
 from django.test import Client
+
+from app.accounts.services import ensure_profile
+from app.config.runtime_config import get_feedback_comment_max_len
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "tests.django_test_settings")
 django.setup()
@@ -15,9 +19,27 @@ django.setup()
 
 def _page_html() -> str:
     client = Client()
+    user = User.objects.create_user(username="shell-user", password="test-pass-12345")
+    ensure_profile(user, verified=True, provider="password")
+    assert client.login(username="shell-user", password="test-pass-12345")
     response = client.get("/analyze/")
     assert response.status_code == 200
     return response.content.decode("utf-8")
+
+
+def test_frontend_shell_feedback_comment_max_length_matches_runtime_config() -> None:
+    html = _page_html()
+    expected = get_feedback_comment_max_len()
+    assert f"comment.maxLength = {expected};" in html
+
+
+def test_frontend_shell_feedback_comment_max_length_reflects_env_override(monkeypatch) -> None:
+    monkeypatch.setenv("WISDOMIZE_FEEDBACK_COMMENT_MAX_LEN", "321")
+    try:
+        html = _page_html()
+        assert "comment.maxLength = 321;" in html
+    finally:
+        monkeypatch.delenv("WISDOMIZE_FEEDBACK_COMMENT_MAX_LEN", raising=False)
 
 
 def test_frontend_shell_page_presence() -> None:
@@ -26,6 +48,8 @@ def test_frontend_shell_page_presence() -> None:
     assert 'textarea id="dilemma"' in html
     assert 'id="result-root"' in html
     assert "Ready for Analysis" in html
+    assert 'href="/billing/"' in html
+    assert "window.__WISDOMIZE_USAGE__" in html
 
 
 def test_first_user_readiness_doc_exists() -> None:
@@ -100,7 +124,7 @@ def test_frontend_shell_no_raw_context_labels_in_client_renderer() -> None:
 
 def test_frontend_shell_public_error_renderer_present() -> None:
     html = _page_html()
-    assert "function renderError()" in html
+    assert "function renderError(err, requestId)" in html
     assert "\"Something went wrong\"" in html
     assert "\"Something went wrong while reading this dilemma. Please try again.\"" in html
     assert "retry.dataset.retryAction" in html

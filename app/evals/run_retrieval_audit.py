@@ -8,6 +8,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
 
+from app.config.runtime_config import get_verse_match_score_threshold
 from app.core.benchmark_loader import DEFAULT_BENCHMARK_PATH, load_dilemmas
 from app.core.models import EthicalDimensions
 from app.evals.run_verse_retrieval_benchmarks import (
@@ -17,7 +18,7 @@ from app.evals.run_verse_retrieval_benchmarks import (
 )
 from app.verses.catalog import VerseCatalog
 from app.verses.loader import load_curated_verses
-from app.verses.retriever import _MATCH_THRESHOLD, _SEVERE_BLOCKERS, retrieve_verse
+from app.verses.retriever import _SEVERE_BLOCKERS, retrieve_verse
 from app.verses.scorer import RetrievalContext, VerseScoreResult, rank_candidates
 
 _LOW_MARGIN_MAX = 1
@@ -116,9 +117,10 @@ def _case_flags(
 
     if actual_ref is None and candidates:
         top = candidates[0]
+        thr = get_verse_match_score_threshold()
         if (
             not top["rejected"]
-            and _MATCH_THRESHOLD - _NEAR_THRESHOLD_DELTA <= top["total_score"] < _MATCH_THRESHOLD
+            and thr - _NEAR_THRESHOLD_DELTA <= top["total_score"] < thr
         ):
             flags.append("fallback despite near-threshold strong candidate")
 
@@ -206,7 +208,7 @@ def _near_threshold_fallback_cases(cases: list[dict[str, Any]]) -> list[dict[str
                 "dilemma_id": case["dilemma_id"],
                 "top_candidate": top["verse_ref"] if top else None,
                 "top_candidate_score": top["total_score"] if top else None,
-                "threshold": _MATCH_THRESHOLD,
+                "threshold": get_verse_match_score_threshold(),
             }
         )
     return rows
@@ -356,7 +358,7 @@ def run_retrieval_audit(*, input_path: Path | None = None) -> dict[str, Any]:
     report = {
         "audit_version": "retrieval-audit-v1",
         "benchmark_source_path": str(resolved_path),
-        "retrieval_threshold": _MATCH_THRESHOLD,
+        "retrieval_threshold": get_verse_match_score_threshold(),
         "summary": _summary(cases, concentration_warnings),
         "cases": sorted(cases, key=_risk_sort_key),
     }

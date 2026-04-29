@@ -1,0 +1,28 @@
+{% extends "web/base.html" %}
+
+{% block title %}Verify your Wisdomize email{% endblock %}
+
+{% block content %}
+<section class="auth-page">
+  <div class="auth-card">
+    <p class="eyebrow">Email verification</p>
+    <h1>Check your email to verify your account</h1>
+    <p class="auth-intro">
+      {% if email %}
+        We sent a verification link to <strong>{{ email }}</strong>. Open it to unlock the analyze workspace.
+      {% else %}
+        Please verify your email before using the analyze workspace.
+      {% endif %}
+    </p>
+    {% if debug_verification_url %}
+      <div class="debug-token">
+        Local verification link: <a href="{{ debug_verification_url }}">{{ debug_verification_url }}</a>
+      </div>
+    {% endif %}
+    <div class="hero-actions">
+      <a class="button secondary" href="/accounts/login/">Back to login</a>
+      <a class="button secondary" href="/">Home</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

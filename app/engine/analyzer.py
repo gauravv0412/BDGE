@@ -26,6 +26,7 @@ from __future__ import annotations
 import uuid
 from typing import Any
 
+from app.config.runtime_config import get_runtime_config
 from app.core.models import (
     Counterfactuals,
     EngineAnalyzeErrorResponse,
@@ -88,6 +89,9 @@ def _run_pipeline(
     dimensions = EthicalDimensions.model_validate(semantic["ethical_dimensions"])
     ambiguity_flag = bool(semantic["ambiguity_flag"])
     missing_facts = list(semantic["missing_facts"])
+    max_mf = get_runtime_config().max_missing_facts
+    if len(missing_facts) > max_mf:
+        missing_facts = missing_facts[:max_mf]
 
     # Stage 2 — deterministic verdict layer
     verdict = aggregate_verdict(

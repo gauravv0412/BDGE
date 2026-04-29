@@ -1,0 +1,19 @@
+{% extends "web/base.html" %}
+
+{% block title %}Google sign-in setup pending{% endblock %}
+
+{% block content %}
+<section class="auth-page">
+  <div class="auth-card">
+    <p class="eyebrow">Google sign-in</p>
+    <h1>Google sign-in is not active yet.</h1>
+    <p class="auth-intro">
+      The app is ready for Google OAuth credentials, but this environment is not configured for live Google sign-in.
+    </p>
+    <div class="hero-actions">
+      <a class="button primary" href="/accounts/signup/">Use email signup</a>
+      <a class="button secondary" href="/accounts/login/">Back to login</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

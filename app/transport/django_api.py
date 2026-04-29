@@ -15,6 +15,7 @@ from django.http import HttpRequest, JsonResponse
 from django.views.decorators.http import require_POST
 
 from app.core.models import EngineAnalyzeErrorResponse
+from app.billing.services import check_presentation_quota, record_presentation_success
 from app.engine.analyzer import build_engine_error_response, handle_engine_request
 from app.engine.public_errors import PUBLIC_ERROR_CODES, PUBLIC_ERROR_HTTP_STATUS
 from app.feedback import FeedbackValidationError, append_feedback_record, validate_feedback_payload
@@ -99,6 +100,9 @@ def analyze_presentation_view(request: HttpRequest) -> JsonResponse:
     The public ``/api/v1/analyze`` contract remains unchanged.
     """
     request_id = _extract_or_generate_request_id(request)
+    if not _is_authenticated(request):
+        return _auth_required_response(request_id=request_id)
+
     start = time.perf_counter()
     contract_version = None
     status = int(HTTPStatus.INTERNAL_SERVER_ERROR)
@@ -127,6 +131,25 @@ def analyze_presentation_view(request: HttpRequest) -> JsonResponse:
     if isinstance(payload, dict):
         contract_version = _extract_contract_version(payload)
 
+    quota = check_presentation_quota(request.user)
+    if not quota.allowed:
+        error = build_engine_error_response(
+            code="usage_limit_reached",
+            message=quota.user_message or "You have reached your monthly analysis limit.",
+        )
+        status = int(HTTPStatus.TOO_MANY_REQUESTS)
+        outcome = "usage_limit_reached"
+        response = _json_response(error.model_dump(mode="json"), status=status, request_id=request_id)
+        _emit_access_log(
+            request_id=request_id,
+            request=request,
+            status_code=status,
+            duration_ms=_duration_ms_since(start),
+            contract_version=contract_version,
+            outcome=outcome,
+        )
+        return response
+
     try:
         body, status, outcome, contract_version = _execute_public_payload(payload)
         if status == int(HTTPStatus.OK) and "output" in body:
@@ -150,6 +173,10 @@ def analyze_presentation_view(request: HttpRequest) -> JsonResponse:
                     "narrator_meta": narrator_meta,
                 },
             }
+            try:
+                record_presentation_success(user=request.user, response_body=body)
+            except Exception as exc:  # noqa: BLE001
+                _LOGGER.warning("presentation_finalize_failed", extra={"error_type": type(exc).__name__})
     except Exception as exc:  # noqa: BLE001
         _emit_error_log(
             request_id=request_id,
@@ -163,6 +190,10 @@ def analyze_presentation_view(request: HttpRequest) -> JsonResponse:
         outcome = "engine_execution_failed"
 
     response = _json_response(body, status=status, request_id=request_id)
+    if status == int(HTTPStatus.OK) and isinstance(body, dict) and "output" in body:
+        refreshed = check_presentation_quota(request.user)
+        if refreshed.limit > 0:
+            response["X-Wisdomize-Usage"] = f"{refreshed.used}/{refreshed.limit}"
     _emit_access_log(
         request_id=request_id,
         request=request,
@@ -178,6 +209,9 @@ def analyze_presentation_view(request: HttpRequest) -> JsonResponse:
 def feedback_view(request: HttpRequest) -> JsonResponse:
     """POST /api/v1/feedback with a small, safe, allowlisted payload."""
     request_id = _extract_or_generate_request_id(request)
+    if not _is_authenticated(request):
+        return _auth_required_response(request_id=request_id)
+
     try:
         raw_payload = request.body.decode("utf-8") if request.body else "{}"
         payload = json.loads(raw_payload)
@@ -283,6 +317,25 @@ def _json_response(body: dict[str, object], *, status: int, request_id: str) -> 
     response = JsonResponse(body, status=status)
     response[_REQUEST_ID_HEADER] = request_id
     return response
+
+
+def _auth_required_response(*, request_id: str) -> JsonResponse:
+    return _json_response(
+        {
+            "ok": False,
+            "error": {
+                "code": "authentication_required",
+                "message": "Please log in to use Wisdomize.",
+            },
+        },
+        status=int(HTTPStatus.UNAUTHORIZED),
+        request_id=request_id,
+    )
+
+
+def _is_authenticated(request: HttpRequest) -> bool:
+    user = getattr(request, "user", None)
+    return bool(user and user.is_authenticated)
 
 
 def _extract_contract_version(payload: dict[str, object]) -> str | None:

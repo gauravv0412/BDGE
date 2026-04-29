@@ -1,0 +1,14 @@
+{% extends "web/base.html" %}
+
+{% block title %}Verification link invalid{% endblock %}
+
+{% block content %}
+<section class="auth-page">
+  <div class="auth-card">
+    <p class="eyebrow">Verification issue</p>
+    <h1>This verification link is invalid or expired.</h1>
+    <p class="auth-intro">Please create a new account or contact support if this keeps happening.</p>
+    <a class="button primary" href="/accounts/signup/">Create account</a>
+  </div>
+</section>
+{% endblock %}

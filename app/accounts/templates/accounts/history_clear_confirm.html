@@ -1,0 +1,26 @@
+{% extends "web/base.html" %}
+
+{% block title %}Clear all history · Wisdomize{% endblock %}
+
+{% block content %}
+<section class="page-hero narrow">
+  <p class="eyebrow"><a href="{% url 'dashboard:index' %}">Dashboard</a></p>
+  <h1>Clear all analysis history</h1>
+  <p>
+    {% if count %}
+      This will permanently remove <strong>{{ count }}</strong> saved analysis record{{ count|pluralize }} from your account. Other users are not affected.
+    {% else %}
+      You have no saved analyses to clear.
+    {% endif %}
+  </p>
+  <div class="hero-actions">
+    <a class="button secondary" href="{% url 'dashboard:index' %}">Cancel</a>
+    {% if count %}
+      <form method="post" action="{% url 'dashboard:history-clear' %}" class="inline-form">
+        {% csrf_token %}
+        <button type="submit" class="button danger">Clear all history</button>
+      </form>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

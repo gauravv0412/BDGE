@@ -332,6 +332,7 @@ def run_shadow_eval(
     from django.test import Client
 
     django.setup()
+    from django.contrib.auth.models import User
 
     config = load_presentation_llm_config()
     if mock_provider_mode == "none":
@@ -357,6 +358,11 @@ def run_shadow_eval(
         mock.patch("app.engine.analyzer.semantic_scorer", _semantic_stub_only),
     ):
         client = Client()
+        eval_user, _created = User.objects.get_or_create(username="presentation-shadow-eval")
+        eval_user.set_password("presentation-shadow-eval-pass")
+        eval_user.save(update_fields=["password"])
+        if not client.login(username="presentation-shadow-eval", password="presentation-shadow-eval-pass"):
+            raise RuntimeError("Could not authenticate presentation shadow eval client.")
         for case in cases:
             rows.append(_run_case(client, case))
 

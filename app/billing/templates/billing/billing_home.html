@@ -1,0 +1,41 @@
+{% extends "web/base.html" %}
+
+{% block title %}Billing - Wisdomize{% endblock %}
+
+{% block content %}
+<section class="page-hero narrow">
+  <p class="eyebrow">Billing</p>
+  <h1>Plan &amp; usage</h1>
+  <p class="muted-lead">
+    Payments are not enabled yet. Limits and prices below come from the same configuration as the public pricing page.
+  </p>
+</section>
+
+<section class="section narrow">
+  <div class="dashboard-usage billing-usage-card">
+    <p class="eyebrow">Current period ({{ period }})</p>
+    <h2>{{ quota.plan_label }} plan</h2>
+    <p class="muted-lead">
+      <strong>{{ quota.used }}</strong> of <strong>{{ quota.limit }}</strong> included analyses used this month.
+    </p>
+    <p class="muted-lead"><a class="text-link" href="/analyze/">Return to Analyze</a></p>
+  </div>
+</section>
+
+<section class="section narrow">
+  <h2 class="section-title">Available plans</h2>
+  <div class="pricing-grid">
+    {% for plan in all_plans %}
+      <article class="pricing-card {% if not plan.enabled %}pricing-card-disabled{% endif %}">
+        <h3>{{ plan.label }}</h3>
+        <p class="pricing-price">{{ plan.price_display }}</p>
+        <p class="muted-lead">Up to {{ plan.monthly_analysis_limit }} analyses / month</p>
+        {% if not plan.enabled %}
+          <p class="hint">Currently unavailable</p>
+        {% endif %}
+        <button type="button" class="button secondary" disabled aria-disabled="true">Upgrade coming soon</button>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

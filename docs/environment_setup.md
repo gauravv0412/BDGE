@@ -25,9 +25,9 @@ pip install -r requirements-ci.txt
 
 ## Django settings
 
-- **Transport and API tests** use `DJANGO_SETTINGS_MODULE=tests.django_test_settings` (minimal `ROOT_URLCONF`, `SECRET_KEY`, etc.).
-- The smoke script and `pytest` set or assume this module where needed.
-- There is **no** separate production settings package in this milestone; run the Django dev server with the same test settings only for local demos unless you add your own settings module.
+- **Transport and API tests / CI** use `DJANGO_SETTINGS_MODULE=tests.django_test_settings` (minimal `ROOT_URLCONF`, `SECRET_KEY`, etc.).
+- **Production-oriented** settings live in `DJANGO_SETTINGS_MODULE=app.deploy.site_settings` — see `docs/production_settings.md`.
+- The smoke script and `pytest` default to the test settings module.
 
 ## Environment variables
 

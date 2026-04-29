@@ -1,0 +1,40 @@
+{% extends "web/base.html" %}
+
+{% block title %}Create your Wisdomize account{% endblock %}
+
+{% block content %}
+<section class="auth-page">
+  <div class="auth-card">
+    <p class="eyebrow">Create account</p>
+    <h1>Create your Wisdomize account</h1>
+    <p class="auth-intro">Save your ethical readings, revisit your history, and keep the product workspace private.</p>
+
+    {% if google_configured %}
+      <a class="button secondary auth-google" href="/accounts/google/?next={{ next_url|urlencode }}">Continue with Google</a>
+    {% else %}
+      <div class="auth-google disabled" aria-disabled="true">Google sign-in is not configured in this environment.</div>
+    {% endif %}
+
+    <div class="auth-divider"><span>or sign up with email</span></div>
+
+    <form method="post" class="auth-form" novalidate>
+      {% csrf_token %}
+      <input type="hidden" name="next" value="{{ next_url }}">
+      {% if form.non_field_errors %}
+        <div class="form-errors" role="alert">{{ form.non_field_errors }}</div>
+      {% endif %}
+      {% for field in form %}
+        <div class="form-field">
+          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+          {{ field }}
+          {% if field.help_text %}<p class="field-help">{{ field.help_text }}</p>{% endif %}
+          {% if field.errors %}<div class="field-errors" role="alert">{{ field.errors }}</div>{% endif %}
+        </div>
+      {% endfor %}
+      <button class="button primary auth-submit" type="submit">Create account</button>
+    </form>
+
+    <p class="auth-switch">Already have an account? <a href="/accounts/login/?next={{ next_url|urlencode }}">Log in</a>.</p>
+  </div>
+</section>
+{% endblock %}

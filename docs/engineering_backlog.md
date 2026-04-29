@@ -89,4 +89,27 @@ Valid but should not interrupt progress:
 - Add production logging / log shipping notes when a real deployment exists.
 - Optional: CPU-only `torch` wheel in `requirements-ci.txt` if semantic code starts importing torch in CI.
 - Optional: `requirements-dev.txt` symlink or merge strategy to avoid drift between `requirements-ci.txt` and `requirements.txt` pins.
-- Document a hardened `DJANGO_SETTINGS_MODULE` for production when that milestone exists (not `tests.django_test_settings`).
+- Expand production operations: log shipping, alerting, Sentry (policy: no dilemma text / provider payloads in telemetry). `app.deploy.site_settings` shipped in Step 37A; see `docs/production_settings.md`.
+
+## Billing / payments / quota (post–Step 38A)
+
+Explicit product/engineering work before real monetization:
+
+- **Real checkout integration** (hosted checkout or embedded flow) wired to plan catalog and account state.
+- **Payment provider decision**: Razorpay vs Stripe (and jurisdiction, reconciliation, ops).
+- **Webhook verification** (signature, replay protection, idempotent event handling).
+- **Signed / server-trusted plan changes** (no client-trusted plan upgrades; admin or payment webhooks only).
+- **Payment idempotency** (duplicate charge protection, safe retries).
+- **Invoices / receipts** (tax fields, email delivery, retention policy).
+- **Cancellation / refund policy** (product copy + operational rules + provider alignment).
+- **Quota race / TOCTOU fix before paid plans** (atomic check-and-consume or equivalent so two parallel requests cannot exceed quota at the boundary).
+- **Stale / unknown `plan_key` safe fallback** before self-serve plan changes (if `BillingProfile.plan_key` no longer exists in config, avoid crashing; degrade gracefully with support path).
+
+### Claude Code review notes (non-blocking, Step 38A)
+
+- Quota **TOCTOU race at the monthly limit boundary** — same as above; document and fix before relying on paid limits.
+- **`get_plan()` KeyError** if a stored `BillingProfile.plan_key` no longer exists in the loaded plan catalog.
+- **`_env_int` silently defaulting** on invalid env strings — consider logging a warning once observability is in place.
+- **`WISDOMIZE_PLANS_CONFIG_PATH` file override** — expand automated test coverage later (inline JSON is covered more heavily).
+- **Usage period rollover** — add tests for month-boundary behavior when presentation usage buckets advance.
+- **Layering**: `get_runtime_config()` imports presentation LLM config — acceptable for now; revisit if config modules grow tangled.

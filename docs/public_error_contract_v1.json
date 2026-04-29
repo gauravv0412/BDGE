@@ -17,13 +17,20 @@
       "meaning": "Unexpected internal failure while processing an accepted request.",
       "message_policy": "fixed_sanitized_public_message",
       "fixed_message": "Internal engine failure."
+    },
+    {
+      "code": "usage_limit_reached",
+      "http_status": 429,
+      "meaning": "Authenticated presentation analyze quota for the current billing month is exhausted.",
+      "message_policy": "descriptive_user_safe_message_bounded_to_500_chars"
     }
   ],
   "client_reliance": {
     "stable_fields": ["error.code", "http_status", "envelope_shape"],
     "message_stability": {
       "request_validation_failed": "descriptive_but_not_programmatic",
-      "engine_execution_failed": "fixed_string"
+      "engine_execution_failed": "fixed_string",
+      "usage_limit_reached": "descriptive_but_not_programmatic"
     }
   }
 }

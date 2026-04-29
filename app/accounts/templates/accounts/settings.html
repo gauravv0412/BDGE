@@ -1,0 +1,42 @@
+{% extends "web/base.html" %}
+
+{% block title %}Account settings · Wisdomize{% endblock %}
+
+{% block content %}
+<section class="page-hero narrow">
+  <p class="eyebrow">Account</p>
+  <h1>Settings</h1>
+  <p>Your sign-in email is fixed for now. You can update how your name appears in Wisdomize.</p>
+</section>
+
+<section class="section narrow">
+  <div class="settings-panel">
+    <dl class="settings-readonly">
+      <div>
+        <dt>Email</dt>
+        <dd>{{ email }}</dd>
+      </div>
+      <div>
+        <dt>Verification</dt>
+        <dd>{% if email_verified %}Verified{% else %}Not verified{% endif %}</dd>
+      </div>
+      <div>
+        <dt>Member since</dt>
+        <dd>{{ account_created|date:"M j, Y" }}</dd>
+      </div>
+    </dl>
+
+    <form method="post" class="auth-form settings-form" novalidate>
+      {% csrf_token %}
+      {% for field in form %}
+        <div class="form-field">
+          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+          {{ field }}
+          {% if field.errors %}<div class="field-errors" role="alert">{{ field.errors }}</div>{% endif %}
+        </div>
+      {% endfor %}
+      <button class="button primary" type="submit">Save name</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

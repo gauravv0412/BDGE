@@ -1,0 +1,73 @@
+{% extends "web/base.html" %}
+
+{% block title %}Your Wisdomize dashboard{% endblock %}
+
+{% block content %}
+<section class="page-hero narrow">
+  <p class="eyebrow">Dashboard</p>
+  <h1>Your analysis history</h1>
+  <p>Private summaries of verdict, classification, and guidance type—rerun anytime from Analyze.</p>
+  <div class="dashboard-usage" style="margin-bottom: 22px;">
+    <p class="eyebrow">Usage ({{ usage_period }})</p>
+    <h2 class="section-title" style="margin: 0 0 6px; font-size: 20px;">{{ usage_plan_label }}</h2>
+    <p class="muted-lead" style="margin: 0;">
+      <strong>{{ usage_used }}</strong> of <strong>{{ usage_limit }}</strong> included analyses used this month.
+      <a class="text-link" href="/billing/">Billing</a>
+    </p>
+  </div>
+  <div class="hero-actions dashboard-hero-actions">
+    <a class="button primary dashboard-cta" href="/analyze/">Analyze another dilemma</a>
+    {% if history_count %}
+      <a class="button ghost-quiet" href="{% url 'dashboard:history-clear-confirm' %}">Clear all history…</a>
+    {% endif %}
+    <a class="button secondary" href="/faq/">Privacy & FAQ</a>
+  </div>
+</section>
+
+<section class="section narrow">
+  {% if history %}
+    <div class="history-list">
+      {% for item in history %}
+        <article class="history-card">
+          <div class="history-card-top">
+            <a class="history-card-main" href="{% url 'dashboard:history-detail' item.pk %}">
+              <div class="history-meta">
+                <span>{{ item.created_at|date:"M j, Y · g:i A" }}</span>
+                <span>{{ item.classification }}</span>
+              </div>
+              <h2>{{ item.verdict_sentence }}</h2>
+              <p class="history-preview">{{ item.dilemma_text|truncatechars:220 }}</p>
+              <div class="history-badges">
+                <span class="history-badge">Score {{ item.alignment_score }}</span>
+                {% if item.has_verse_match and item.verse_ref %}
+                  <span class="history-badge">Gita {{ item.verse_ref }}</span>
+                {% else %}
+                  <span class="history-badge neutral">Teaching lens</span>
+                {% endif %}
+              </div>
+            </a>
+            <form method="post" action="{% url 'dashboard:history-delete' item.pk %}" class="history-delete-form" onsubmit="return confirm('Remove this analysis from your history?');">
+              {% csrf_token %}
+              <button type="submit" class="button danger-quiet">Remove</button>
+            </form>
+          </div>
+          <div class="history-card-footer">
+            <a class="text-link" href="{% url 'dashboard:history-detail' item.pk %}">View detail</a>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="dashboard-empty faq-teaser">
+      <div class="dashboard-empty-copy">
+        <p class="eyebrow">No history yet</p>
+        <h2>Your Wisdomize history will appear here.</h2>
+        <p class="muted-lead">
+          When you run an analysis while signed in, we save your dilemma text and verdict summary privately—nothing from provider internals.
+        </p>
+      </div>
+      <a class="button primary dashboard-cta" href="/analyze/">Analyze your first dilemma</a>
+    </div>
+  {% endif %}
+</section>
+{% endblock %}

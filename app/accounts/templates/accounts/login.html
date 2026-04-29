@@ -1,0 +1,39 @@
+{% extends "web/base.html" %}
+
+{% block title %}Log in to Wisdomize{% endblock %}
+
+{% block content %}
+<section class="auth-page">
+  <div class="auth-card">
+    <p class="eyebrow">Welcome back</p>
+    <h1>Continue your Wisdomize journey</h1>
+    <p class="auth-intro">Log in to analyze a dilemma, review your recent history, and continue from a calmer place.</p>
+
+    {% if google_configured %}
+      <a class="button secondary auth-google" href="/accounts/google/?next={{ next_url|urlencode }}">Continue with Google</a>
+    {% else %}
+      <div class="auth-google disabled" aria-disabled="true">Google sign-in is not configured in this environment.</div>
+    {% endif %}
+
+    <div class="auth-divider"><span>or log in with email</span></div>
+
+    <form method="post" class="auth-form" novalidate>
+      {% csrf_token %}
+      <input type="hidden" name="next" value="{{ next_url }}">
+      {% if form.non_field_errors %}
+        <div class="form-errors" role="alert">{{ form.non_field_errors }}</div>
+      {% endif %}
+      {% for field in form %}
+        <div class="form-field">
+          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+          {{ field }}
+          {% if field.errors %}<div class="field-errors" role="alert">{{ field.errors }}</div>{% endif %}
+        </div>
+      {% endfor %}
+      <button class="button primary auth-submit" type="submit">Log in</button>
+    </form>
+
+    <p class="auth-switch">New to Wisdomize? <a href="/accounts/signup/?next={{ next_url|urlencode }}">Create an account</a>.</p>
+  </div>
+</section>
+{% endblock %}

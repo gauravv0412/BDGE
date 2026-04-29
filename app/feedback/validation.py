@@ -5,6 +5,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any
 
+from app.config.runtime_config import get_feedback_comment_max_len
+
 ALLOWED_SIGNALS = {"up", "down"}
 ALLOWED_TAGS = {
     "verdict_felt_right",
@@ -28,7 +30,6 @@ ALLOWED_KEYS = {
     "guidance_type",
 }
 MAX_RESULT_ID_LEN = 64
-MAX_COMMENT_LEN = 500
 MAX_TAGS = 5
 
 
@@ -128,6 +129,6 @@ def _clean_comment(value: Any) -> str | None:
     cleaned = value.strip()
     if not cleaned:
         return None
-    if len(cleaned) > MAX_COMMENT_LEN:
+    if len(cleaned) > get_feedback_comment_max_len():
         raise FeedbackValidationError()
     return cleaned

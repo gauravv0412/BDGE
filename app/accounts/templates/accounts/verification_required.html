@@ -1,0 +1,30 @@
+{% extends "web/base.html" %}
+
+{% block title %}Verify your email · Wisdomize{% endblock %}
+
+{% block content %}
+<section class="auth-page">
+  <div class="auth-card">
+    <p class="eyebrow">Verification</p>
+    <h1>Please verify your email to continue</h1>
+    <p class="auth-intro">
+      {% if email %}
+        We need a confirmed address for <strong>{{ email }}</strong> before you can use the analyze workspace and save history.
+      {% else %}
+        Confirm the address you used to sign up before using the analyze workspace.
+      {% endif %}
+    </p>
+    <p class="auth-intro subtle-copy">Open the link in your inbox, or request a new message below. (We use the same response every time so someone cannot probe which emails are registered.)</p>
+
+    <form method="post" action="{% url 'accounts:verification-resend' %}" class="auth-form">
+      {% csrf_token %}
+      <button type="submit" class="button primary auth-submit">Resend verification email</button>
+    </form>
+
+    <div class="hero-actions">
+      <a class="button secondary" href="/accounts/login/">Back to login</a>
+      <a class="button secondary" href="/">Home</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

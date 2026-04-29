@@ -6,8 +6,10 @@ import json
 import os
 
 import django
+from django.contrib.auth.models import User
 from django.test import Client
 
+from app.accounts.services import ensure_profile
 from app.core.models import EngineAnalyzeResponse, WisdomizeEngineOutput
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "tests.django_test_settings")
@@ -30,8 +32,9 @@ def test_landing_page_returns_200_and_contains_positioning() -> None:
 
 def test_faq_page_contains_privacy_verse_and_crisis_safe_content() -> None:
     html = _html("/faq/")
-    assert "Raw dilemma logging is not enabled by default" in html
-    assert "feedback layer does not store raw dilemma text or the full engine response" in html
+    assert "Signed-in account history stores your submitted dilemmas" in html
+    assert "does not store provider prompts, LLM responses, raw dilemmas, or full output JSON" in html
+    assert "Planned backlog" in html and "data export" in html
     assert "A verse appears only when retrieval clears the match threshold" in html
     assert "Closest teaching is a paraphrased ethical lens" in html
     assert "Crisis-safe mode" in html
@@ -43,15 +46,22 @@ def test_placeholder_pages_return_200() -> None:
         assert Client().get(path).status_code == 200
 
 
+def test_pricing_page_renders_plan_cards_from_config() -> None:
+    html = _html("/pricing/")
+    assert "Free" in html
+    assert "₹199" in html or "199" in html
+    assert "Upgrade coming soon" in html
+
+
 def test_landing_page_cta_points_to_analyze_ui_route() -> None:
     html = _html("/")
-    assert 'href="/analyze/"' in html
+    assert 'href="/accounts/signup/?next=/analyze/"' in html
     assert "Analyze a dilemma" in html
 
 
 def test_public_nav_links_and_footer_disclaimer_render() -> None:
     html = _html("/")
-    for href in ['href="/analyze/"', 'href="/faq/"', 'href="/about/"', 'href="/pricing/"', 'href="/contact/"']:
+    for href in ['href="/"', 'href="/faq/"', 'href="/pricing/"', 'href="/accounts/login/"', 'href="/accounts/signup/"']:
         assert href in html
     assert "contact local emergency services or a trusted person" in html
 
@@ -118,6 +128,12 @@ def test_api_analyze_still_behaves_unchanged(monkeypatch) -> None:
 
 
 def test_analyze_ui_still_posts_to_presentation_route() -> None:
-    html = _html("/analyze/")
+    client = Client()
+    user = User.objects.create_user(username="web-shell-user", password="test-pass-12345")
+    ensure_profile(user, verified=True, provider="password")
+    assert client.login(username="web-shell-user", password="test-pass-12345")
+    response = client.get("/analyze/")
+    assert response.status_code == 200
+    html = response.content.decode("utf-8")
     assert 'fetch("/api/v1/analyze/presentation"' in html
     assert 'fetch("/api/v1/analyze",' not in html

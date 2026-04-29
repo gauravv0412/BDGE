@@ -2,18 +2,34 @@
 
 from __future__ import annotations
 
+import json
 from html import escape
 
+from django.conf import settings
+from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest, HttpResponse
 from django.middleware.csrf import get_token
+from django.shortcuts import redirect
 from django.views.decorators.http import require_GET
+
+from app.accounts.services import user_is_verified
+from app.billing.services import check_presentation_quota
+from app.config.runtime_config import get_feedback_comment_max_len
 
 _MIN_DILEMMA_LEN = 20
 
 
 @require_GET
+@login_required(login_url=settings.LOGIN_URL)
 def shell_view(request: HttpRequest) -> HttpResponse:
+    if not user_is_verified(request.user):
+        request.session["verification_next_url"] = request.path
+        request.session["verification_pending_email"] = request.user.email or request.user.username
+        return redirect("accounts:verification-required")
     csrf_token = get_token(request)
+    _quota = check_presentation_quota(request.user)
+    usage_script = json.dumps({"used": _quota.used, "limit": _quota.limit, "plan_label": _quota.plan_label})
+    feedback_comment_max_len = int(get_feedback_comment_max_len())
     return HttpResponse(
         f"""<!doctype html>
 <html lang="en">
@@ -98,6 +114,18 @@ def shell_view(request: HttpRequest) -> HttpResponse:
     }}
     * {{ box-sizing: border-box; }}
     body {{ font-family: Inter, Arial, sans-serif; margin: 0; background: radial-gradient(circle at top left, rgba(93, 117, 255, 0.10), transparent 32%), var(--page-bg); color: var(--text); line-height: 1.5; }}
+    a {{ color: inherit; }}
+    .site-header {{ position: sticky; top: 0; z-index: 10; backdrop-filter: blur(14px); background: color-mix(in srgb, var(--page-bg) 88%, transparent); border-bottom: 1px solid var(--border); }}
+    .nav-shell {{ max-width: 1040px; margin: 0 auto; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }}
+    .brand {{ display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 850; color: var(--text-strong); }}
+    .brand-mark {{ display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 12px; background: linear-gradient(145deg, var(--button-bg), #af8a2a); color: #fff; }}
+    .nav-links {{ display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 14px; color: var(--muted); font-weight: 700; font-size: 14px; }}
+    .nav-links a {{ text-decoration: none; }}
+    .nav-links a:hover {{ color: var(--text-strong); }}
+    .usage-chip {{ font-size: 12px; font-weight: 750; color: var(--muted); border: 1px solid var(--border); border-radius: 999px; padding: 5px 11px; white-space: nowrap; max-width: min(280px, 100%); overflow: hidden; text-overflow: ellipsis; }}
+    .nav-logout {{ margin: 0; }}
+    .nav-logout button {{ appearance: none; border: 0; padding: 0; margin: 0; background: transparent; color: var(--muted); font: inherit; font-weight: 700; cursor: pointer; }}
+    .nav-logout button:hover {{ color: var(--text-strong); background: transparent; transform: none; }}
     .container {{ max-width: 1040px; margin: 0 auto; padding: 28px 20px 42px; }}
     h1 {{ margin: 0 0 6px; font-size: 34px; letter-spacing: -0.02em; }}
     h2 {{ margin: 0 0 10px; font-size: 23px; }}
@@ -221,6 +249,8 @@ def shell_view(request: HttpRequest) -> HttpResponse:
     }}
     @media (max-width: 520px) {{
       body {{ background: var(--page-bg); }}
+      .nav-shell {{ align-items: flex-start; flex-direction: column; padding: 13px 12px; }}
+      .nav-links {{ justify-content: flex-start; gap: 10px; font-size: 13px; }}
       .container {{ padding: 18px 12px 30px; }}
       .topbar {{ align-items: stretch; flex-direction: column; gap: 10px; margin-bottom: 12px; }}
       .theme-toggle {{ align-self: flex-start; box-shadow: none; }}
@@ -267,8 +297,29 @@ def shell_view(request: HttpRequest) -> HttpResponse:
       .global-foot {{ margin-top: 18px; padding: 13px 14px 22px; font-size: 12px; }}
     }}
   </style>
+  <script>window.__WISDOMIZE_USAGE__ = {usage_script};</script>
 </head>
 <body>
+  <header class="site-header">
+    <nav class="nav-shell" aria-label="Primary navigation">
+      <a class="brand" href="/">
+        <span class="brand-mark">W</span>
+        <span>Wisdomize</span>
+      </a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/analyze/">Analyze</a>
+        <a href="/dashboard/">Dashboard</a>
+        <a href="/billing/">Billing</a>
+        <a href="/faq/">FAQ</a>
+        <span id="usage-chip" class="usage-chip" aria-live="polite"></span>
+        <form class="nav-logout" method="post" action="/accounts/logout/">
+          <input type="hidden" name="csrfmiddlewaretoken" value="{escape(csrf_token)}">
+          <button type="submit">Logout</button>
+        </form>
+      </div>
+    </nav>
+  </header>
   <div class="container">
     <header class="topbar">
       <div>
@@ -323,6 +374,20 @@ def shell_view(request: HttpRequest) -> HttpResponse:
   <script>
     (function() {{
       const MIN_LEN = {_MIN_DILEMMA_LEN};
+      function refreshUsageChip() {{
+        const el = document.getElementById("usage-chip");
+        if (!el) return;
+        const u = window.__WISDOMIZE_USAGE__ || {{}};
+        const lim = typeof u.limit === "number" ? u.limit : 0;
+        const used = typeof u.used === "number" ? u.used : 0;
+        if (!lim || lim <= 0) {{
+          el.textContent = "";
+          el.style.display = "none";
+          return;
+        }}
+        el.style.display = "inline-flex";
+        el.textContent = "This month: " + used + " / " + lim + " analyses";
+      }}
       const csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
       const form = document.getElementById("analyze-form");
       const textarea = document.getElementById("dilemma");
@@ -442,21 +507,51 @@ def shell_view(request: HttpRequest) -> HttpResponse:
         submitBtn.disabled = isLoading;
         submitBtn.textContent = isLoading ? "Analyzing..." : "Analyze Dilemma";
       }}
-      function renderError() {{
+      function renderError(err, requestId) {{
+        err = err || {{}};
+        const code = err.code || "engine_execution_failed";
+        const msg = err.message || "Something went wrong while reading this dilemma. Please try again.";
         resultRoot.replaceChildren();
         const card = make("section", "card error");
         card.setAttribute("role", "alert");
-        card.appendChild(make("h2", "", "Something went wrong"));
-        card.appendChild(make("p", "", "Something went wrong while reading this dilemma. Please try again."));
-        const actions = make("div", "error-actions");
-        const retry = make("button", "", "Try again");
-        retry.type = "button";
-        retry.dataset.retryAction = "true";
-        retry.addEventListener("click", function () {{
-          if (!isPending) form.requestSubmit();
-        }});
-        actions.appendChild(retry);
-        card.appendChild(actions);
+        if (code === "usage_limit_reached") {{
+          card.appendChild(make("h2", "", "Monthly analysis limit reached"));
+          card.appendChild(make("p", "", msg));
+          const actions = make("div", "error-actions");
+          const billing = document.createElement("a");
+          billing.className = "button secondary";
+          billing.href = "/billing/";
+          billing.textContent = "Open billing";
+          actions.appendChild(billing);
+          const retry = make("button", "", "Close");
+          retry.type = "button";
+          retry.addEventListener("click", function () {{
+            resultRoot.replaceChildren();
+            const empty = make("section", "card meta");
+            empty.id = "empty-state";
+            empty.appendChild(make("h2", "", "Ready for Analysis"));
+            empty.appendChild(make("p", "empty-hint", "Submit a dilemma to render a screenshot-ready Wisdomize response here."));
+            resultRoot.appendChild(empty);
+          }});
+          actions.appendChild(retry);
+          card.appendChild(actions);
+        }} else {{
+          const displayMsg =
+            code === "engine_execution_failed"
+              ? "Something went wrong while reading this dilemma. Please try again."
+              : msg;
+          card.appendChild(make("h2", "", "Something went wrong"));
+          card.appendChild(make("p", "", displayMsg));
+          const actions = make("div", "error-actions");
+          const retry = make("button", "", "Try again");
+          retry.type = "button";
+          retry.dataset.retryAction = "true";
+          retry.addEventListener("click", function () {{
+            if (!isPending) form.requestSubmit();
+          }});
+          actions.appendChild(retry);
+          card.appendChild(actions);
+        }}
         resultRoot.appendChild(card);
       }}
       function renderGuidanceCard(output, presentation, crisis) {{
@@ -671,7 +766,7 @@ def shell_view(request: HttpRequest) -> HttpResponse:
 
         const comment = document.createElement("textarea");
         comment.dataset.feedbackComment = "true";
-        comment.maxLength = 500;
+        comment.maxLength = {feedback_comment_max_len};
         comment.placeholder = crisis ? "Optional note..." : "Optional short comment...";
         card.appendChild(comment);
 
@@ -1028,6 +1123,7 @@ def shell_view(request: HttpRequest) -> HttpResponse:
       }}
 
       applyTheme(document.documentElement.dataset.theme || "light", false);
+      refreshUsageChip();
       themeToggle.addEventListener("click", function () {{
         applyTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark", true);
       }});
@@ -1069,6 +1165,14 @@ def shell_view(request: HttpRequest) -> HttpResponse:
               payload = {{ error: {{ code: "engine_execution_failed", message: "Internal engine failure." }} }};
             }}
             if (response.ok && payload.output) {{
+              const uh = response.headers.get("X-Wisdomize-Usage");
+              if (uh) {{
+                const parts = uh.split("/");
+                window.__WISDOMIZE_USAGE__ = window.__WISDOMIZE_USAGE__ || {{}};
+                window.__WISDOMIZE_USAGE__.used = parseInt(parts[0], 10) || 0;
+                window.__WISDOMIZE_USAGE__.limit = parseInt(parts[1], 10) || 0;
+                refreshUsageChip();
+              }}
               renderSuccess(payload, requestId);
             }} else {{
               renderError(payload.error || {{ code: "engine_execution_failed", message: "Internal engine failure." }}, requestId);

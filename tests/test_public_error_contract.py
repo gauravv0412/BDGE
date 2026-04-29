@@ -23,10 +23,11 @@ django.setup()
 
 
 def test_public_error_taxonomy_codes_and_status_mapping_locked() -> None:
-    assert PUBLIC_ERROR_CODES == {"request_validation_failed", "engine_execution_failed"}
+    assert PUBLIC_ERROR_CODES == {"request_validation_failed", "engine_execution_failed", "usage_limit_reached"}
     assert PUBLIC_ERROR_HTTP_STATUS == {
         "request_validation_failed": 400,
         "engine_execution_failed": 500,
+        "usage_limit_reached": 429,
     }
 
 

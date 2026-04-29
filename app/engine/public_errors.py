@@ -8,10 +8,12 @@ PUBLIC_ERROR_CONTRACT_VERSION = "1.0"
 PUBLIC_ERROR_CODES = {
     "request_validation_failed",
     "engine_execution_failed",
+    "usage_limit_reached",
 }
 PUBLIC_ERROR_HTTP_STATUS = {
     "request_validation_failed": int(HTTPStatus.BAD_REQUEST),
     "engine_execution_failed": int(HTTPStatus.INTERNAL_SERVER_ERROR),
+    "usage_limit_reached": int(HTTPStatus.TOO_MANY_REQUESTS),
 }
 PUBLIC_ERROR_FIXED_MESSAGES = {
     "engine_execution_failed": "Internal engine failure.",

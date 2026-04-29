@@ -6,6 +6,7 @@ import json
 import os
 import socket
 import threading
+import uuid
 from wsgiref.simple_server import WSGIRequestHandler, make_server
 
 import django
@@ -157,9 +158,28 @@ def browser() -> Browser:
 
 
 @pytest.fixture
-def page(browser: Browser) -> Page:
+def anonymous_page(browser: Browser) -> Page:
     context = browser.new_context()
     p = context.new_page()
+    yield p
+    context.close()
+
+
+@pytest.fixture
+def page(browser: Browser, live_server_url: str) -> Page:
+    context = browser.new_context()
+    p = context.new_page()
+    root = _site_root(live_server_url)
+    email = f"browser-{uuid.uuid4().hex[:10]}@example.com"
+    p.goto(f"{root}/accounts/signup/?next=/analyze/")
+    p.fill("input[name='full_name']", "Browser User")
+    p.fill("input[name='email']", email)
+    p.fill("input[name='password1']", "test-pass-12345")
+    p.fill("input[name='password2']", "test-pass-12345")
+    p.click("button[type='submit']")
+    p.wait_for_url("**/accounts/verify/sent/")
+    p.locator(".debug-token a").click()
+    p.wait_for_url("**/analyze/")
     yield p
     context.close()
 
@@ -274,40 +294,125 @@ def _extract_if_you_continue_blocks(page: Page) -> list[dict[str, str]]:
 
 
 @pytest.mark.browser
-def test_public_landing_page_loads_at_desktop_viewport(page: Page, live_server_url: str) -> None:
-    page.set_viewport_size({"width": 1280, "height": 900})
-    page.goto(f"{_site_root(live_server_url)}/")
-    page.wait_for_selector("text=Ethical clarity for real-life dilemmas")
-    assert page.locator("text=Analyze a dilemma").is_visible()
+def test_public_landing_page_loads_at_desktop_viewport(anonymous_page: Page, live_server_url: str) -> None:
+    anonymous_page.set_viewport_size({"width": 1280, "height": 900})
+    anonymous_page.goto(f"{_site_root(live_server_url)}/")
+    anonymous_page.wait_for_selector("text=Ethical clarity for real-life dilemmas")
+    assert anonymous_page.locator("text=Analyze a dilemma").is_visible()
 
 
 @pytest.mark.browser
-def test_public_landing_page_mobile_has_no_horizontal_overflow(page: Page, live_server_url: str) -> None:
-    page.set_viewport_size({"width": 390, "height": 844})
-    page.goto(f"{_site_root(live_server_url)}/")
-    page.wait_for_selector("text=Ethical clarity for real-life dilemmas")
-    has_overflow = page.evaluate(
+def test_public_landing_page_mobile_has_no_horizontal_overflow(anonymous_page: Page, live_server_url: str) -> None:
+    anonymous_page.set_viewport_size({"width": 390, "height": 844})
+    anonymous_page.goto(f"{_site_root(live_server_url)}/")
+    anonymous_page.wait_for_selector("text=Ethical clarity for real-life dilemmas")
+    has_overflow = anonymous_page.evaluate(
         "() => Math.max(document.documentElement.scrollWidth, document.body.scrollWidth) > document.documentElement.clientWidth + 2"
     )
     assert has_overflow is False
 
 
 @pytest.mark.browser
-def test_public_landing_cta_opens_analyze_ui(page: Page, live_server_url: str) -> None:
-    page.goto(f"{_site_root(live_server_url)}/")
-    page.locator("a", has_text="Analyze a dilemma").first.click()
-    page.wait_for_url("**/analyze/")
-    page.wait_for_selector("#dilemma")
-    assert page.locator("text=Wisdomize Read-Only Shell").is_visible()
+def test_anonymous_landing_cta_leads_to_signup_before_analyze_ui(anonymous_page: Page, live_server_url: str) -> None:
+    anonymous_page.goto(f"{_site_root(live_server_url)}/")
+    anonymous_page.locator("a", has_text="Analyze a dilemma").first.click()
+    anonymous_page.wait_for_url("**/accounts/signup/**")
+    assert anonymous_page.locator("#dilemma").count() == 0
+    assert anonymous_page.get_by_role("button", name="Create account").is_visible()
 
 
 @pytest.mark.browser
-def test_public_faq_page_is_reachable_from_nav(page: Page, live_server_url: str) -> None:
-    page.goto(f"{_site_root(live_server_url)}/")
-    page.locator("nav a", has_text="FAQ").click()
-    page.wait_for_url("**/faq/")
-    page.wait_for_selector("text=Why does it sometimes show")
-    assert page.locator("text=Crisis-safe mode").is_visible()
+def test_anonymous_analyze_does_not_show_product_form(anonymous_page: Page, live_server_url: str) -> None:
+    anonymous_page.goto(f"{live_server_url}/")
+    anonymous_page.wait_for_url("**/accounts/login/**")
+    assert anonymous_page.locator("#dilemma").count() == 0
+    assert anonymous_page.locator("text=Continue your Wisdomize journey").is_visible()
+
+
+@pytest.mark.browser
+def test_signup_flow_captures_name_email_and_reaches_verification_pending(
+    anonymous_page: Page, live_server_url: str
+) -> None:
+    root = _site_root(live_server_url)
+    email = f"signup-{uuid.uuid4().hex[:10]}@example.com"
+    anonymous_page.goto(f"{root}/accounts/signup/?next=/analyze/")
+    anonymous_page.fill("input[name='full_name']", "Signup Browser")
+    anonymous_page.fill("input[name='email']", email)
+    anonymous_page.fill("input[name='password1']", "test-pass-12345")
+    anonymous_page.fill("input[name='password2']", "test-pass-12345")
+    anonymous_page.click("button[type='submit']")
+    anonymous_page.wait_for_url("**/accounts/verify/sent/")
+    anonymous_page.wait_for_selector("text=Check your email to verify your account")
+    assert anonymous_page.locator("body", has_text=email).count() == 1
+
+
+@pytest.mark.browser
+def test_verified_login_flow_reaches_analyze(anonymous_page: Page, live_server_url: str) -> None:
+    root = _site_root(live_server_url)
+    email = f"verified-{uuid.uuid4().hex[:10]}@example.com"
+    anonymous_page.goto(f"{root}/accounts/signup/?next=/analyze/")
+    anonymous_page.fill("input[name='full_name']", "Verified Browser")
+    anonymous_page.fill("input[name='email']", email)
+    anonymous_page.fill("input[name='password1']", "test-pass-12345")
+    anonymous_page.fill("input[name='password2']", "test-pass-12345")
+    anonymous_page.click("button[type='submit']")
+    anonymous_page.wait_for_url("**/accounts/verify/sent/")
+    anonymous_page.locator(".debug-token a").click()
+    anonymous_page.wait_for_url("**/analyze/")
+    anonymous_page.wait_for_selector("#dilemma")
+    assert anonymous_page.locator("text=Wisdomize Read-Only Shell").is_visible()
+
+
+@pytest.mark.browser
+def test_logout_prevents_returning_to_analyze(page: Page, live_server_url: str) -> None:
+    root = _site_root(live_server_url)
+    page.goto(f"{root}/")
+    page.locator("button", has_text="Logout").click()
+    page.wait_for_url(f"{root}/")
+    page.goto(f"{live_server_url}/")
+    page.wait_for_url("**/accounts/login/**")
+    assert page.locator("#dilemma").count() == 0
+
+
+@pytest.mark.browser
+def test_nav_changes_between_logged_out_and_logged_in_states(
+    anonymous_page: Page, page: Page, live_server_url: str
+) -> None:
+    root = _site_root(live_server_url)
+    anonymous_page.goto(f"{root}/")
+    assert anonymous_page.locator("nav a", has_text="Login").is_visible()
+    assert anonymous_page.locator("nav a", has_text="Sign up").is_visible()
+    assert anonymous_page.locator("nav a", has_text="Dashboard").count() == 0
+
+    page.goto(f"{root}/")
+    assert page.locator("nav a", has_text="Home").is_visible()
+    assert page.locator("nav a", has_text="Analyze").is_visible()
+    assert page.locator("nav a", has_text="Dashboard").is_visible()
+    assert page.locator("nav a", has_text="FAQ").is_visible()
+    assert page.locator("nav button", has_text="Logout").is_visible()
+    assert page.locator("nav a", has_text="Login").count() == 0
+
+
+@pytest.mark.browser
+def test_auth_pages_render_cleanly_on_mobile(anonymous_page: Page, live_server_url: str) -> None:
+    root = _site_root(live_server_url)
+    anonymous_page.set_viewport_size({"width": 390, "height": 844})
+    for path, selector in [("/accounts/signup/", "text=Create your Wisdomize account"), ("/accounts/login/", "text=Continue your Wisdomize journey")]:
+        anonymous_page.goto(f"{root}{path}")
+        anonymous_page.wait_for_selector(selector)
+        has_overflow = anonymous_page.evaluate(
+            "() => Math.max(document.documentElement.scrollWidth, document.body.scrollWidth) > document.documentElement.clientWidth + 2"
+        )
+        assert has_overflow is False
+
+
+@pytest.mark.browser
+def test_public_faq_page_is_reachable_from_nav(anonymous_page: Page, live_server_url: str) -> None:
+    anonymous_page.goto(f"{_site_root(live_server_url)}/")
+    anonymous_page.locator("nav a", has_text="FAQ").click()
+    anonymous_page.wait_for_url("**/faq/")
+    anonymous_page.wait_for_selector("text=Why does it sometimes show")
+    assert anonymous_page.locator("text=Crisis-safe mode").is_visible()
 
 
 @pytest.mark.browser
@@ -326,12 +431,164 @@ def test_shell_page_loads_and_submits_via_client_request(page: Page, live_server
     page.route("**/api/v1/analyze/presentation", _handler)
     page.route("**/api/v1/analyze", lambda route: (wrong_endpoint_count.__setitem__("n", wrong_endpoint_count["n"] + 1), route.abort()))
     page.goto(f"{live_server_url}/")
+    assert page.locator("header.site-header").is_visible()
+    assert page.locator("nav a", has_text="Home").is_visible()
+    assert page.locator("nav a", has_text="Dashboard").is_visible()
+    assert page.locator("nav a", has_text="FAQ").is_visible()
+    assert page.locator("nav button", has_text="Logout").is_visible()
     _submit(page, "Another synthetic dilemma for the analyzer stub path, long enough for schema.")
     page.wait_for_selector("text=Analysis Result")
     assert call_count["n"] == 1
     assert wrong_endpoint_count["n"] == 0
     assert page.locator("text=Verdict").count() > 0
     assert page.locator("text=Classification").count() > 0
+
+
+@pytest.mark.browser
+def test_logged_in_user_can_submit_through_presentation_api(page: Page, live_server_url: str) -> None:
+    page.goto(f"{live_server_url}/")
+    _submit(page, "I found a wallet with cash and an ID in a cafe, and I am tempted to keep the cash.")
+    page.wait_for_selector("text=Analysis Result", timeout=60000)
+    assert page.locator("[data-card='verdict']").count() == 1
+
+
+@pytest.mark.browser
+def test_dashboard_shows_submitted_analysis_after_completion(page: Page, live_server_url: str) -> None:
+    page.goto(f"{live_server_url}/")
+    _submit(page, "Another synthetic dilemma for the analyzer stub path, long enough for schema.")
+    page.wait_for_selector("text=Analysis Result", timeout=60000)
+    page.locator("nav a", has_text="Dashboard").click()
+    page.wait_for_url("**/dashboard/")
+    page.wait_for_selector("text=Another synthetic dilemma", timeout=30000)
+    assert page.locator("text=Another synthetic dilemma").count() > 0
+
+
+@pytest.mark.browser
+def test_dashboard_empty_state_shows_then_analyze_another_cta(page: Page, live_server_url: str) -> None:
+    root = _site_root(live_server_url)
+    page.goto(f"{root}/dashboard/")
+    page.wait_for_selector("text=Your Wisdomize history will appear here.")
+    assert page.locator("a.dashboard-cta").count() >= 1
+
+
+@pytest.mark.browser
+def test_dashboard_click_history_opens_detail_page(page: Page, live_server_url: str) -> None:
+    page.goto(f"{live_server_url}/")
+    _submit(page, "Another synthetic dilemma for the analyzer stub path, long enough for schema.")
+    page.wait_for_selector("text=Analysis Result", timeout=60000)
+    page.locator("nav a", has_text="Dashboard").click()
+    page.wait_for_url("**/dashboard/")
+    page.locator("a.history-card-main").first.click()
+    page.wait_for_url("**/dashboard/history/**")
+    page.wait_for_selector("text=Your dilemma", timeout=15000)
+
+
+@pytest.mark.browser
+def test_dashboard_delete_removes_row_after_confirm(page: Page, live_server_url: str) -> None:
+    page.goto(f"{live_server_url}/")
+    _submit(page, "Another synthetic dilemma for the analyzer stub path, long enough for schema.")
+    page.wait_for_selector("text=Analysis Result", timeout=60000)
+    page.locator("nav a", has_text="Dashboard").click()
+    page.wait_for_url("**/dashboard/")
+    page.once("dialog", lambda d: d.accept())
+    page.locator(".history-delete-form button").first.click()
+    page.wait_for_url("**/dashboard/**")
+    page.wait_for_selector("text=Your Wisdomize history will appear here.", timeout=15000)
+
+
+@pytest.mark.browser
+def test_clear_all_history_empties_dashboard(page: Page, live_server_url: str) -> None:
+    page.goto(f"{live_server_url}/")
+    _submit(page, "Another synthetic dilemma for the analyzer stub path, long enough for schema.")
+    page.wait_for_selector("text=Analysis Result", timeout=60000)
+    page.locator("nav a", has_text="Dashboard").click()
+    page.wait_for_url("**/dashboard/**")
+    page.locator("a", has_text="Clear all history").click()
+    page.wait_for_url("**/dashboard/history/clear/confirm/**")
+    page.locator("form.inline-form button", has_text="Clear all history").click()
+    page.wait_for_url("**/dashboard/**")
+    page.wait_for_selector("text=Your Wisdomize history will appear here.", timeout=15000)
+
+
+@pytest.mark.browser
+def test_other_user_gets_404_when_opening_foreign_history_detail(page: Page, live_server_url: str, browser: Browser) -> None:
+    root = _site_root(live_server_url)
+    page.goto(f"{live_server_url}/")
+    _submit(page, "Another synthetic dilemma for the analyzer stub path, long enough for schema.")
+    page.wait_for_selector("text=Analysis Result", timeout=60000)
+    page.goto(f"{root}/dashboard/")
+    href = page.locator("a.history-card-main").first.get_attribute("href")
+    assert href
+    ctx = browser.new_context()
+    p2 = ctx.new_page()
+    p2.goto(f"{root}/accounts/signup/?next=/analyze/")
+    p2.fill("input[name='full_name']", "Other Dash")
+    oe = f"browser-other-{uuid.uuid4().hex[:8]}@example.com"
+    p2.fill("input[name='email']", oe)
+    p2.fill("input[name='password1']", "test-pass-12345")
+    p2.fill("input[name='password2']", "test-pass-12345")
+    p2.click("button[type='submit']")
+    p2.wait_for_url("**/accounts/verify/sent/")
+    p2.locator(".debug-token a").click()
+    p2.wait_for_url("**/analyze/")
+    resp = p2.goto(f"{root}{href}", wait_until="domcontentloaded")
+    assert resp is not None
+    assert resp.status == 404
+    ctx.close()
+
+
+@pytest.mark.browser
+def test_account_settings_page_loads(page: Page, live_server_url: str) -> None:
+    root = _site_root(live_server_url)
+    page.goto(f"{root}/accounts/settings/")
+    page.wait_for_selector("h1:has-text('Settings')")
+    assert page.locator("dt:has-text('Verification')").count() == 1
+
+
+@pytest.mark.browser
+def test_full_name_update_reflects_in_settings_header(page: Page, live_server_url: str) -> None:
+    root = _site_root(live_server_url)
+    page.goto(f"{root}/accounts/settings/")
+    page.fill("input[name='full_name']", "Updated Browser Name")
+    page.locator("button", has_text="Save name").click()
+    page.wait_for_url("**/accounts/settings/")
+    expect_val = page.locator("input[name='full_name']").input_value()
+    assert "Updated" in expect_val
+
+
+@pytest.mark.browser
+def test_unverified_user_sees_verify_page_with_resend(browser: Browser, live_server_url: str) -> None:
+    root = _site_root(live_server_url)
+    ctx = browser.new_context()
+    p = ctx.new_page()
+    p.goto(f"{root}/accounts/signup/")
+    em = f"noverify-{uuid.uuid4().hex[:8]}@example.com"
+    p.fill("input[name='full_name']", "No Verify Yet")
+    p.fill("input[name='email']", em)
+    p.fill("input[name='password1']", "test-pass-12345")
+    p.fill("input[name='password2']", "test-pass-12345")
+    p.click("button[type='submit']")
+    p.wait_for_url("**/accounts/verify/sent/")
+    p.goto(f"{root}/accounts/login/")
+    p.fill("input[name='username']", em)
+    p.fill("input[name='password']", "test-pass-12345")
+    p.click("button[type='submit']")
+    p.wait_for_url("**/accounts/verify/required/")
+    assert p.locator("text=Please verify your email to continue").count() >= 1
+    p.locator("button", has_text="Resend verification email").click()
+    p.wait_for_url("**/accounts/verify/sent/")
+    ctx.close()
+
+
+@pytest.mark.browser
+def test_logged_in_shell_nav_still_works_on_mobile(page: Page, live_server_url: str) -> None:
+    root = _site_root(live_server_url)
+    page.set_viewport_size({"width": 390, "height": 844})
+    page.goto(f"{live_server_url}/")
+    assert page.locator("textarea#dilemma").is_visible()
+    assert page.locator("nav a", has_text="Dashboard").is_visible()
+    page.goto(f"{root}/dashboard/")
+    page.wait_for_selector("text=Your Wisdomize history will appear here.")
 
 
 @pytest.mark.browser
@@ -885,3 +1142,64 @@ def test_crisis_safe_no_duplicate_higher_path_card(page: Page, live_server_url: 
     _submit(page, "I may hurt myself and need help before I do anything harmful.")
     page.wait_for_selector("[data-card='higher-path']")
     assert page.locator("[data-card='higher-path']").count() == 1
+
+
+@pytest.mark.browser
+def test_analyze_shell_shows_usage_chip(page: Page, live_server_url: str) -> None:
+    page.goto(f"{live_server_url}/")
+    page.wait_for_selector("#usage-chip")
+    txt = page.locator("#usage-chip").inner_text()
+    assert "This month:" in txt and "/ 5 analyses" in txt
+
+
+@pytest.mark.browser
+def test_pricing_anonymous_cta_signup(anonymous_page: Page, live_server_url: str) -> None:
+    root = _site_root(live_server_url)
+    anonymous_page.goto(f"{root}/pricing/")
+    anonymous_page.wait_for_selector("text=Plans")
+    assert anonymous_page.locator("a.button.primary", has_text="Sign up").count() == 1
+
+
+@pytest.mark.browser
+def test_pricing_logged_in_cta_billing(page: Page, live_server_url: str) -> None:
+    root = _site_root(live_server_url)
+    page.goto(f"{root}/pricing/")
+    page.wait_for_selector("text=Plans")
+    assert page.locator("a.button.primary", has_text="Go to Billing").count() == 1
+
+
+@pytest.mark.browser
+def test_billing_page_loads_for_logged_in_user(page: Page, live_server_url: str) -> None:
+    root = _site_root(live_server_url)
+    page.goto(f"{root}/billing/")
+    page.wait_for_selector("h1:has-text('Plan')")
+    assert page.locator("text=Upgrade coming soon").count() >= 1
+
+
+@pytest.mark.browser
+def test_dashboard_shows_usage_card(page: Page, live_server_url: str) -> None:
+    root = _site_root(live_server_url)
+    page.goto(f"{root}/dashboard/")
+    page.wait_for_selector("text=Usage")
+    assert page.locator("text=included analyses").count() >= 1
+
+
+@pytest.mark.browser
+def test_mobile_pricing_billing_no_horizontal_overflow(page: Page, live_server_url: str) -> None:
+    root = _site_root(live_server_url)
+    page.set_viewport_size({"width": 375, "height": 720})
+    page.goto(f"{root}/pricing/")
+    page.wait_for_selector(".pricing-grid")
+    sw = page.evaluate("() => document.documentElement.scrollWidth")
+    vw = page.evaluate("() => window.innerWidth")
+    assert sw <= vw + 2
+    page.goto(f"{root}/billing/")
+    page.wait_for_selector(".billing-usage-card")
+    sw2 = page.evaluate("() => document.documentElement.scrollWidth")
+    vw2 = page.evaluate("() => window.innerWidth")
+    assert sw2 <= vw2 + 2
+    page.goto(f"{live_server_url}/")
+    page.wait_for_selector("#usage-chip")
+    sw3 = page.evaluate("() => document.documentElement.scrollWidth")
+    vw3 = page.evaluate("() => window.innerWidth")
+    assert sw3 <= vw3 + 2
